@@ -1,4 +1,6 @@
+import LigthBtn from "../../../../shared/components/Buttons/LigthBtn";
 import { StyledWrapper } from "./Welcome.styled";
+import AuthLink from "../../../../shared/components/StyledLink/StyledLink";
 
 const Welcome = () => {
   return (
@@ -9,6 +11,9 @@ const Welcome = () => {
         to be your very own digital cookbook. You can easily save and retrieve
         your own recipes at any time.
       </p>
+
+      <LigthBtn>Sign Up</LigthBtn>
+      <AuthLink to="/login">Sign In</AuthLink>
     </StyledWrapper>
   );
 };

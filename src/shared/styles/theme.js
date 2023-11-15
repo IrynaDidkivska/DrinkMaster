@@ -14,9 +14,9 @@ export const darkTheme = {
     dropdown: "#161F37",
   },
   button: {
-    backgroundNoActive: "#F3F3F3",
-    backgroundActive: "#161F37",
-    backgroundCancel: "#434D67",
+    ligth: "#F3F3F3",
+    dark: "#161F37",
+    cancel: "#434D67",
   },
 
   transition: "all 300ms cubic-bezier(0.53, 0.5, 0.53, 0.52)",
@@ -37,9 +37,9 @@ export const ligthTheme = {
     dropdown: "#FFFFFF",
   },
   button: {
-    backgroundNoActive: "#161F37",
-    backgroundActive: "#F3F3F3",
-    backgroundCancel: "#434D67",
+    ligth: "#161F37",
+    dark: "#F3F3F3",
+    cancel: "#434D67",
   },
 
   transition: "all 300ms cubic-bezier(0.53, 0.5, 0.53, 0.52)",
