@@ -7,7 +7,7 @@ const Navbar = () => {
       <StyledHeaderLink>Drinks</StyledHeaderLink>
       <StyledHeaderLink>Add drink</StyledHeaderLink>
       <StyledHeaderLink>My drinks</StyledHeaderLink>
-      <StyledHeaderLink>Favorites </StyledHeaderLink>
+      <StyledHeaderLink>Favorites</StyledHeaderLink>
     </StyledNavBar>
   );
 };
