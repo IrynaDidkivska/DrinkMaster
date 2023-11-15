@@ -1,23 +1,18 @@
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
-export const StyledNavBar = styled.nav`
-  display: flex;
-  align-items: center;
-  gap: 16px;
-`;
-
-export const StyledHeaderLink = styled(Link)`
+export const LinkStyled = styled(Link)`
   padding: 8px 16px;
   border-radius: 40px;
   border: 1px solid rgba(243, 243, 243, 0.2);
-  outline: transparent;
+  outline: none;
 
   font-family: 'Manrope-500', sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
-  line-height: 22.4px;
+  line-height: 1.42; /* 128.571% */
+  text-align: center;
 
   color: ${({ theme }) => theme.colors.mainText};
   background: transparent;
@@ -27,8 +22,8 @@ export const StyledHeaderLink = styled(Link)`
     cursor: pointer;
     transition: ${({ theme }) => theme.transition};
   }
-
   &:active {
+    /* border: transparent; */
     color: ${({ theme }) => theme.colors.mainText};
     background: ${({ theme }) => theme.background.dropdown};
   }
