@@ -1,7 +1,7 @@
-import Route from "../../shared/HOC/PageWrapper";
+import PageWrapper from "../../shared/HOC/PageWrapper";
 
 const HomePage = () => {
-  return <Route>HomePage</Route>;
+  return <PageWrapper>HomePage</PageWrapper>;
 };
 
 export default HomePage;
