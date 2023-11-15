@@ -1,11 +1,5 @@
-import FollowUs from "../../../../shared/components/FollowUs/FollowUs";
-
 const Footer = () => {
-  return (
-    <div>
-      <FollowUs />
-    </div>
-  );
+  return <div>Footer</div>;
 };
 
 export default Footer;
