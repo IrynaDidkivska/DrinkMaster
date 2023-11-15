@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import SharedLayout from "./shared/components/SharedLayout/SharedLayout";
 import { routes } from "./shared/services/routes";
 import { lazy } from "react";
+import NotFound from "./pages/NotFound/NotFound";
 import {
   AddDrink,
   Drinks,
@@ -11,9 +12,7 @@ import {
   MyDrinks,
   Signin,
   Signup,
-  NotFound,
 } from "./pages";
-import PageWrapper from "./shared/HOC/PageWrapper";
 
 const Welcome = lazy(() =>
   import("./modules/welcome/components/Welcome/Welcome")
@@ -73,7 +72,7 @@ function App() {
         />
       </Route>
 
-      <Route path="*" element={<PageWrapper component={<NotFound />} />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
