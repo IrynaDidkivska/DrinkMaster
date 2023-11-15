@@ -1,6 +1,6 @@
 import LigthBtn from "../../../../shared/components/Buttons/LigthBtn";
+import { AuthLink } from "../../../../shared/components/StyledLink/StyledLink..styled";
 import { StyledWrapper } from "./Welcome.styled";
-import AuthLink from "../../../../shared/components/StyledLink/StyledLink";
 
 const Welcome = () => {
   return (
