@@ -2,20 +2,20 @@ import { Suspense } from "react";
 import { Container } from "../../styles/Container";
 import { Outlet } from "react-router-dom";
 import Loader from "../Loader/Loader";
+import Footer from "../../../modules/footer/components/Footer/Footer";
 
-const Layout = () => {
+const SharedLayout = () => {
   return (
-    <>
+    <Container>
       <header>Header</header>
       <main>
         <Suspense fallback={<Loader />}>
-          <Container>
-            <Outlet />
-          </Container>
+          <Outlet />
         </Suspense>
       </main>
-    </>
+      <Footer />
+    </Container>
   );
 };
 
-export default Layout;
+export default SharedLayout;

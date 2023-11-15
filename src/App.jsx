@@ -1,17 +1,24 @@
 import { Route, Routes } from "react-router-dom";
-import Layout from "./shared/components/Layout/Layout";
+import SharedLayout from "./shared/components/SharedLayout/SharedLayout";
 import { routes } from "./shared/services/routes";
-import NotFound from "./pages/NotFound/NotFound";
-// import PublicRoute from "./shared/HOC/PublicRoute";
-import HomePage from "./pages/HomePage/HomePage";
-// import PrivateRoute from "./shared/HOC/PrivateRoute";
-import Signup from "./pages/Signup/Signup";
-import Signin from "./pages/Signin/Signin";
-import Drinks from "./pages/Drinks/Drinks";
-import AddDrink from "./pages/AddDrink/AddDrink";
-import Favorites from "./pages/Favorites/Favorites";
-import MyDrinks from "./pages/MyDrinks/MyDrinks";
-import Welcome from "./modules/welcome/components/Welcome/Welcome";
+import { lazy } from "react";
+import {
+  AddDrink,
+  Drinks,
+  DrinkWithID,
+  Favorites,
+  HomePage,
+  MyDrinks,
+  Signin,
+  Signup,
+  NotFound,
+} from "./pages";
+
+const Welcome = lazy(() =>
+  import("./modules/welcome/components/Welcome/Welcome")
+);
+// const PrivateRoute = lazy(() => import("./shared/HOC/PublicRoute"));
+// const PublickRoute = lazy(() => import("./shared/HOC/PublicRoute"));
 
 function App() {
   return (
@@ -26,12 +33,12 @@ function App() {
         // element={<PublicRoute component={<Signin />} />}
         element={<Signin />}
       />
-      <Route path={routes.ROOT} element={<Layout />}>
-        <Route
-          index
-          element={<Welcome />}
-          // element={<PublicRoute component={<Welcome />} />}
-        />
+      <Route
+        path={routes.WELCOME}
+        element={<Welcome />}
+        // element={<PublicRoute component={<Welcome />} />}
+      />
+      <Route path={routes.ROOT} element={<SharedLayout />}>
         <Route
           path={routes.HOME}
           // element={<PrivateRoute component={<HomePage />} />}
@@ -56,6 +63,11 @@ function App() {
           path={routes.MYDRINKS}
           // element={<PrivateRoute component={<MyDrinks />} />}
           element={<MyDrinks />}
+        />
+        <Route
+          path={routes.DRINKSPAGEWITHID}
+          // element={<PrivateRoute component={<DrinkWithID />} />}
+          element={<DrinkWithID />}
         />
       </Route>
 
