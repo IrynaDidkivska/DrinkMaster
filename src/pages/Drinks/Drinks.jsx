@@ -1,5 +1,10 @@
+import SearchForm from "../../modules/drinks/components/SearchForm/SearchForm";
+
 const Drinks = () => {
-  return <div>Drinks</div>;
+  return <div>
+    <SearchForm/>
+    Drinks
+  </div>;
 };
 
 export default Drinks;
