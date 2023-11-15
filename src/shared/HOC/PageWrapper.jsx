@@ -1,9 +1,10 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
+import Header from '../../modules/header/components/Header/Header';
 
 const PageWrapper = ({ children }) => {
   return (
     <>
-      <header></header>
+      <Header />
       <main>{children}</main>
       <footer></footer>
     </>
