@@ -13,6 +13,7 @@ import {
   Signup,
   NotFound,
 } from "./pages";
+import PageWrapper from "./shared/HOC/PageWrapper";
 
 const Welcome = lazy(() =>
   import("./modules/welcome/components/Welcome/Welcome")
@@ -23,21 +24,6 @@ const Welcome = lazy(() =>
 function App() {
   return (
     <Routes>
-      <Route
-        path={routes.SIGNUP}
-        // element={<PublicRoute component={<Signup />} />}
-        element={<Signup />}
-      />
-      <Route
-        path={routes.SIGNIN}
-        // element={<PublicRoute component={<Signin />} />}
-        element={<Signin />}
-      />
-      <Route
-        path={routes.WELCOME}
-        element={<Welcome />}
-        // element={<PublicRoute component={<Welcome />} />}
-      />
       <Route path={routes.ROOT} element={<SharedLayout />}>
         <Route
           path={routes.HOME}
@@ -69,9 +55,25 @@ function App() {
           // element={<PrivateRoute component={<DrinkWithID />} />}
           element={<DrinkWithID />}
         />
+
+        <Route
+          path={routes.SIGNUP}
+          // element={<PublicRoute component={<Signup />} />}
+          element={<Signup />}
+        />
+        <Route
+          path={routes.SIGNIN}
+          // element={<PublicRoute component={<Signin />} />}
+          element={<Signin />}
+        />
+        <Route
+          path={routes.WELCOME}
+          element={<Welcome />}
+          // element={<PublicRoute component={<Welcome />} />}
+        />
       </Route>
 
-      <Route path="*" element={<NotFound />} />
+      <Route path="*" element={<PageWrapper component={<NotFound />} />} />
     </Routes>
   );
 }
