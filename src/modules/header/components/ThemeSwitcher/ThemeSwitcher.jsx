@@ -1,4 +1,4 @@
-import { Switcher } from "./ThemeSwitcher.styled";
+import { Switcher } from './ThemeSwitcher.styled';
 
 const ThemeSwitcher = () => {
   return (

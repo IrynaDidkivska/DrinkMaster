@@ -22,4 +22,7 @@ export const StyledSocLink = styled(Link)`
 	border-radius: 10px;
 	border: 1px solid rgba(243, 243, 243, 0.2);
 	margin-bottom: 94px;
+	@media screen and (min-width: 768px) {
+		margin-bottom: 40px;
+	}
 `
