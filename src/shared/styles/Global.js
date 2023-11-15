@@ -5,7 +5,7 @@ export const Global = createGlobalStyle`
 body {
  
 color: ${({ theme }) => theme.colors.mainText};
- background: ${({ theme }) => theme.background.main};;
+ background: ${({ theme }) => theme.background.main};
 transition: ${({ theme }) => theme.transition};
 }
 
