@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const PageWrapper = ({ children }) => {
   return (
     <>
@@ -9,3 +11,7 @@ const PageWrapper = ({ children }) => {
 };
 
 export default PageWrapper;
+
+PageWrapper.propTypes = {
+  children: PropTypes.node,
+};
