@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
-import { LinkStyled } from "./StyledLink..styled";
+import PropTypes from 'prop-types';
+import { LinkStyled } from './StyledLink.styled';
 
 const StyledLink = ({ children }) => {
   return <LinkStyled>{children}</LinkStyled>;
