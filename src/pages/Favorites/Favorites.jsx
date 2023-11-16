@@ -1,5 +1,8 @@
-const Favorites = () => {
-  return <div>Favorites</div>;
+import { DrinkList } from "../../shared/components/DrinkList/DrinkList";
+
+
+const DrinksListFav = () => {
+  return <DrinkList />;
 };
 
-export default Favorites;
+export default DrinksListFav;
