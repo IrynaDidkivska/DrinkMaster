@@ -158,7 +158,13 @@ const DrinkCardItemFaxDel = styled.button`
   border-color: transparent;
   position: relative;
   align-items: center;
-
+  svg {
+    stroke: ${({ theme }) => theme.button.ligth};
+    background: transparent;
+    width: 24px;
+    height: 24px;
+    align-items: center;
+  }
   @media screen and (min-width: 768px) {
     width: 56px;
     height: 54px;
@@ -167,24 +173,6 @@ const DrinkCardItemFaxDel = styled.button`
   @media screen and (min-width: 1440px) {
     width: 56px;
     height: 54px;
-  }
-`;
-const SpriteSVG = styled.svg`
-  fill: ${({ theme }) => theme.button.ligth};
-  background: ${({ theme }) => theme.background.main};
-  width: 24px;
-  height: 24px;
-  align-items: center;
-  position: absolute;
-
-  @media screen and (min-width: 768px) {
-    width: 24px;
-    height: 24px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 24px;
-    height: 24px;
   }
 `;
 
@@ -198,5 +186,4 @@ export {
   DrinkCardItemFaxNavi,
   DrinkCardItemFaxBtn,
   DrinkCardItemFaxDel,
-  SpriteSVG,
 };
