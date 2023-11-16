@@ -151,42 +151,35 @@ const DrinkCardItemFaxBtn = styled.button`
 
 const DrinkCardItemFaxDel = styled.button`
   background-color: #161f37;
+  stroke: #f3f3f3;
   width: 46px;
   height: 46px;
-  /* padding: 11px 22px; */
+  padding: 10px 10px;
   border-radius: 100px;
   border-color: transparent;
-  position: relative;
   align-items: center;
 
   @media screen and (min-width: 768px) {
     width: 56px;
     height: 54px;
+    padding: 10px 15px;
   }
 
-  @media screen and (min-width: 1440px) {
+  /* @media screen and (min-width: 1440px) {
     width: 56px;
     height: 54px;
-  }
+  } */
 `;
-const SpriteSVG = styled.svg`
-  fill: ${({ theme }) => theme.button.ligth};
-  background: ${({ theme }) => theme.background.main};
-  width: 24px;
-  height: 24px;
-  align-items: center;
-  position: absolute;
+// const SpriteSVG = styled.svg`
+//   fill: ${({ theme }) => theme.button.ligth};
+//   background: ${({ theme }) => theme.background.main};
+//   stroke: #f3f3f3;
+//   width: 24px;
+//   height: 24px;
+//   align-items: center;
+//   position: absolute;
 
-  @media screen and (min-width: 768px) {
-    width: 24px;
-    height: 24px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 24px;
-    height: 24px;
-  }
-`;
+// `;
 
 export {
   DrinkCardItemFaxContainer,
@@ -198,5 +191,4 @@ export {
   DrinkCardItemFaxNavi,
   DrinkCardItemFaxBtn,
   DrinkCardItemFaxDel,
-  SpriteSVG,
 };
