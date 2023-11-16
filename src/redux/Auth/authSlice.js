@@ -4,13 +4,12 @@ import { signupThunk, signinThunk, logoutThunk } from "./operations";
 const initialState = {
   user: {
     email: "",
-    password: "",
     username: "",
+    birthdate: "",
   },
   isAuth: false,
   isLoading: false,
   isRefresh: false,
-  isAdult: false,
   error: "",
   token: "",
 };
@@ -22,7 +21,10 @@ export const authSlice = createSlice({
     builder
       .addCase(signupThunk.fulfilled, (state, { payload }) => {
         state.user = payload.user;
-        state.token = payload.token;
+        state.user.username = payload.username;
+        state.user.email = payload.email;
+        state.user.birthdate = payload.birthdate;
+        // state.token = payload.token;
         state.isAuth = true;
         state.isLoading = false;
       })
@@ -33,11 +35,12 @@ export const authSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(signinThunk.fulfilled, (state, { payload }) => {
-        state.user = payload.user;
+        state.user.email = payload.email;
+        state.user.username = payload.username;
+        state.user.birthdate = payload.birthdate;
         state.token = payload.token;
         state.isLoading = false;
         state.isAuth = true;
-        console.log(signinThunk);
       })
       .addCase(signinThunk.pending, (state) => {
         state.isLoading = true;

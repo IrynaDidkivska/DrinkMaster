@@ -1,9 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { toast } from "react-toastify";
+// import { toast } from "re act-toastify";
 
 export const API = axios.create({
-  baseURL: "https://drink-master-project.onrender.com",
+  baseURL: "https://drink-master-project.onrender.com/",
 });
 
 const setToken = (token) => {
@@ -18,12 +18,13 @@ export const signupThunk = createAsyncThunk(
   "auth/signup",
   async (credentials, thunkAPI) => {
     try {
-      const res = await API.post("/api/auth/users/signup", credentials);
-      setToken(res.data.token);
-      toast.success(`Hello ${editString(res.data.user.username) || ""} !`);
+      const res = await API.post("api/auth/users/signup", credentials);
+      // setToken(res.data.token);
+      console.log(res);
+      // toast.success(`Hello ${editString(res.data.user.username) || ""} !`);
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -37,7 +38,7 @@ export const signinThunk = createAsyncThunk(
 
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
