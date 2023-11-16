@@ -151,10 +151,10 @@ const DrinkCardItemFaxBtn = styled.button`
 
 const DrinkCardItemFaxDel = styled.button`
   background-color: #161f37;
-  stroke: #f3f3f3;
+  /* stroke: #f3f3f3; */
   width: 46px;
   height: 46px;
-  padding: 10px 10px;
+  /* padding: 10px 10px; */
   border-radius: 100px;
   border-color: transparent;
   align-items: center;
