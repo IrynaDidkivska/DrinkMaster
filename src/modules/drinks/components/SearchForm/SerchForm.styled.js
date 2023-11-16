@@ -76,9 +76,9 @@ export const SelectStyled = styled(Select)`
       height: 54px;
       border-radius: 200px;
       background-color: ${({ theme }) => theme.colors.secondaryText}; //#161F37
-
-      border: none;
-      outline: none;
+      border: none !important;
+      box-shadow: none !important;
+      outline: none !important;
 
       &:hover,
       &:focus {
