@@ -44,7 +44,8 @@ const DrinkCardItemContainerDiscr = styled.div`
   height: 18px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
+  margin-top: 14px;
 
   @media screen and (min-width: 768px) {
     .drinkCardItem-img {

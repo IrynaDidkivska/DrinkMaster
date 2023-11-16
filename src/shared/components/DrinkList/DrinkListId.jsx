@@ -1,12 +1,12 @@
 import { DrinkItemsList } from './DrinkList.styled';
-import DrinkCardItem from '../DrinkCardItem/DrinkCardItem'
+import DrinkCardItemFav from '../DrinkCardItemFav/DrinkCardItemFav';
 
-const DrinkList = () => {
+const DrinkListID = () => {
   const drinkItems = Array(8).fill(null).map((_, index) => (
-    <DrinkCardItem key={index} />
+    <DrinkCardItemFav key={index} />
   ));
 
   return <DrinkItemsList>{drinkItems}</DrinkItemsList>;
 };
 
-export { DrinkList };
+export { DrinkListID };
