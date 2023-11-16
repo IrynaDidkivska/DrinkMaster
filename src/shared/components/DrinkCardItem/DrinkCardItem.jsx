@@ -1,5 +1,26 @@
-const DrinkCardItem = () => {
-  return <div>DrinkCardItem</div>;
+import ShotImage from '../../components/DrinkCardItem/pictures/Shot.png';
+import {
+  DrinkCardItemContainer,
+  DrinkCardItemImage,
+  DrinkCardItemName,
+  DrinkCardItemSeeMore,
+  DrinkCardItemContainerDiscr
+} from './DrinkCardItem.styled';
+
+const DrinkCartItem = () => {
+  return (
+    <DrinkCardItemContainer>
+      <DrinkCardItemImage src={ShotImage} alt="Coctail's name" />
+    <DrinkCardItemContainerDiscr>
+      <DrinkCardItemName>A Furlong Too Late</DrinkCardItemName>
+      <DrinkCardItemSeeMore
+        href="E:\Julia\IT\BOOTCAMP\Node\DrinkMaster\src\pages\MyDrinks\MyDrinks.jsx"
+      >
+        See more
+        </DrinkCardItemSeeMore>
+        </DrinkCardItemContainerDiscr>
+    </DrinkCardItemContainer>
+  );
 };
 
-export default DrinkCardItem;
+export default DrinkCartItem;
