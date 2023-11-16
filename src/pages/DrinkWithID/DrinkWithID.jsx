@@ -1,5 +1,8 @@
+import { DrinkListID } from "../../shared/components/DrinkList/DrinkListId";
+
+
 const DrinkWithID = () => {
-  return <div>DrinkWithID</div>;
+  return <DrinkListID/>
 };
 
 export default DrinkWithID;

@@ -1,4 +1,4 @@
-import ShotImage from '../../components/DrinkCardItem/Rectangle40559.png';
+import DrinkFavImage from '../../components/DrinkCardItem/Rectangle40559.png';
 import {
   DrinkCardItemContainer,
   DrinkCardItemImage,
@@ -10,7 +10,7 @@ import {
 const DrinkCartItem = () => {
   return (
     <DrinkCardItemContainer>
-      <DrinkCardItemImage src={ShotImage} alt="Coctail's name" />
+      <DrinkCardItemImage src={DrinkFavImage} alt="Coctail's name" />
     <DrinkCardItemContainerDiscr>
       <DrinkCardItemName>A Furlong Too Late</DrinkCardItemName>
       <DrinkCardItemSeeMore
