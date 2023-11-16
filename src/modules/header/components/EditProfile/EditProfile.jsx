@@ -1,13 +1,15 @@
 import profileFoto from '../../images/profile-foto.png';
-import { StyledBtnProfile, StyledProfileName } from './EditProfile';
+import {
+  StyledBtnProfile,
+  StyledImgProfile,
+  StyledProfileName,
+} from './EditProfile';
 
-const EditProfile = () => {
+export const EditProfile = () => {
   return (
     <StyledBtnProfile>
-      <img src={profileFoto} alt="profile foto" />
+      <StyledImgProfile src={profileFoto} alt="profile foto" />
       <StyledProfileName>Victoria</StyledProfileName>
     </StyledBtnProfile>
   );
 };
-
-export default EditProfile;
