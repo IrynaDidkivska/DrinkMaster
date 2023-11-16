@@ -1,4 +1,4 @@
-import ShotImage from '../../components/DrinkCardItem/pictures/Shot.png';
+import ShotImage from '../../components/DrinkCardItem/Rectangle40559.png';
 import {
   DrinkCardItemContainer,
   DrinkCardItemImage,
