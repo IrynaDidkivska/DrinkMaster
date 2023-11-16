@@ -20,7 +20,7 @@ export const Overlay = styled.div`
     left: -768px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
     width: 784px;
     height: 849px;
     top: 20px;
