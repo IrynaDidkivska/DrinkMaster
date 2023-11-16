@@ -7,7 +7,7 @@ export const StyledNavBar = styled.nav`
   gap: 16px;
 `;
 
-export const StyledHeaderLink = styled(Link)`
+export const StyledLink = styled(Link)`
   padding: 8px 16px;
   border-radius: 40px;
   border: 1px solid rgba(243, 243, 243, 0.2);
