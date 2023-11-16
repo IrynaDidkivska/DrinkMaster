@@ -6,12 +6,13 @@ import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher';
 import {
   SrtledHeaderInner,
   StyledHeader,
-  StyledLeftWrapper,
+  StyledRightWrapper,
   StyledMobileMenuBtn,
 } from './Header.styled';
 import { MobileMenu } from '../MobileMenu/MobileMenu.jsx';
 import { useEffect, useState } from 'react';
 import { EditProfile } from '../EditProfile/EditProfile.jsx';
+import { SpriteSVG } from '../../../../shared/icons/SpriteSVG.jsx';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,8 +29,8 @@ const Header = () => {
     }
   }, [isOpen]);
 
-  const isDesktopScreen = useMediaQuery({ query: '(min-width: 1440px)' });
   const isTabletScreen = useMediaQuery({ query: '(max-width: 1439px)' });
+  const isDesktopScreen = useMediaQuery({ query: '(min-width: 1440px)' });
 
   return (
     <StyledHeader>
@@ -38,51 +39,16 @@ const Header = () => {
           <Logo />
           {isDesktopScreen ? <Navbar /> : null}
 
-          <StyledLeftWrapper>
+          <StyledRightWrapper>
             {isDesktopScreen ? <ThemeSwitcher /> : null}
 
             <EditProfile />
             {isTabletScreen ? (
               <StyledMobileMenuBtn onClick={toggleMenu}>
-                <svg
-                  width="38"
-                  height="38"
-                  viewBox="0 0 38 38"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M33.25 15.8333H4.75"
-                    stroke="#F3F3F3"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M33.25 9.5H4.75"
-                    stroke="#F3F3F3"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M33.25 22.1667H4.75"
-                    stroke="#F3F3F3"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M33.25 28.5H4.75"
-                    stroke="#F3F3F3"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+                <SpriteSVG name="toggle" />
               </StyledMobileMenuBtn>
             ) : null}
-          </StyledLeftWrapper>
+          </StyledRightWrapper>
         </SrtledHeaderInner>
       </Container>
       {isTabletScreen ? (
