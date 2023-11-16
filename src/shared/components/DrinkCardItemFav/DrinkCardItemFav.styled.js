@@ -150,25 +150,24 @@ const DrinkCardItemFaxBtn = styled.button`
 `;
 
 const DrinkCardItemFaxDel = styled.button`
-  background-color: #161f37;
-  /* stroke: #f3f3f3; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 46px;
   height: 46px;
-  /* padding: 10px 10px; */
   border-radius: 100px;
   border-color: transparent;
-  align-items: center;
+  background-color: ${({ theme }) => theme.button.dark};
+
   svg {
     stroke: ${({ theme }) => theme.button.ligth};
     background: transparent;
     width: 24px;
     height: 24px;
-    align-items: center;
   }
   @media screen and (min-width: 768px) {
     width: 56px;
     height: 54px;
-    padding: 10px 15px;
   }
 `;
 
