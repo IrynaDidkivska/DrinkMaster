@@ -4,7 +4,6 @@ import {
   signinThunk,
   logoutThunk,
   currentUserThunk,
-  updateUser,
   updateUserThunk,
 } from "./operations";
 
@@ -63,7 +62,7 @@ export const authSlice = createSlice({
         state.isAuth = true;
         state.isRefresh = false;
       })
-      .addCase(currentUserThunk.pending, (state, { payload }) => {
+      .addCase(currentUserThunk.pending, (state) => {
         state.isRefresh = true;
       })
       .addCase(currentUserThunk.rejected, (state, { payload }) => {

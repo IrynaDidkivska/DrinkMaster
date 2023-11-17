@@ -1,4 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, isAnyOf } from "@reduxjs/toolkit";
+import {
+  getCategoriesThunk,
+  getDrinksByQueryThunk,
+  getGlassesThunk,
+  getIngredientsThunk,
+} from "./operations";
 
 const initialState = {
   categories: [],
@@ -32,7 +38,56 @@ const fitlerSlice = createSlice({
       state.page = payload;
     },
   },
-  extraReducers: {}, // буде білдер
+  extraReducers: (builder) => {
+    builder
+      .addCase(getCategoriesThunk.fulfilled, (state, { payload }) => {
+        state.categories = payload;
+      })
+      .addCase(getIngredientsThunk.fulfilled, (state, { payload }) => {
+        state.ingredients = payload;
+      })
+      .addCase(getGlassesThunk.fulfilled, (state, { payload }) => {
+        state.glasses = payload;
+      })
+      .addCase(getDrinksByQueryThunk.fulfilled, (state, { payload }) => {
+        state.searchResult = payload;
+      })
+      .addMatcher(
+        isAnyOf(
+          getCategoriesThunk.pending,
+          getIngredientsThunk.pending,
+          getGlassesThunk.pending,
+          getDrinksByQueryThunk.pending
+        ),
+        (state) => {
+          state.isLoading = true;
+          state.error = "";
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          getCategoriesThunk.fulfilled,
+          getIngredientsThunk.fulfilled,
+          getGlassesThunk.fulfilled,
+          getDrinksByQueryThunk.fulfilled
+        ),
+        (state) => {
+          state.isLoading = false;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          getCategoriesThunk.rejected,
+          getIngredientsThunk.rejected,
+          getGlassesThunk.rejected,
+          getDrinksByQueryThunk.rejected
+        ),
+        (state, { payload }) => {
+          state.isLoading = false;
+          state.error = payload;
+        }
+      );
+  },
 });
 
 export const filterReducer = fitlerSlice.reducer;
