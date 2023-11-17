@@ -13,6 +13,7 @@ import storage from "redux-persist/lib/storage";
 import { userReducer } from "./Auth/authSlice";
 import { filterReducer } from "./Filters/filtersSlice";
 import { drinkReducer } from "./Drinks/drinksSlice";
+import { themeReducer } from "./theme/slice";
 
 const persistConfigUser = {
   key: "root",
@@ -26,6 +27,7 @@ export const store = configureStore({
     auth: persistReducer(persistConfigUser, userReducer),
     filter: filterReducer,
     drinks: drinkReducer,
+    theme: themeReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
