@@ -33,4 +33,10 @@ export const SubscribeButtonStyled = styled.button`
 	border: 1px solid rgba(243, 243, 243, 0.2);
 	opacity: 0.8;
 	background: ${({ theme }) => theme.background.main};
+	&:hover,
+	&:focus {
+		color: ${({ theme }) => theme.button.dark};
+		background: ${({ theme }) => theme.button.ligth};
+		transition: ${({ theme }) => theme.transition};
+	}
 `
