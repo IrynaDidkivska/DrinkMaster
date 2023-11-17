@@ -1,7 +1,7 @@
-import Select from "react-select";
-import styled from "styled-components";
+import Select from 'react-select';
+import styled from 'styled-components';
 
-export const FormStyled = styled("form")`
+export const FormStyled = styled('form')`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -12,7 +12,7 @@ export const FormStyled = styled("form")`
     gap: 8px;
   }
 `;
-export const InputContStyled = styled("div")`
+export const InputContStyled = styled('div')`
   width: fit-content;
   position: relative;
   width: 100%;
@@ -28,7 +28,7 @@ export const InputContStyled = styled("div")`
   }
 `;
 
-export const InputStyled = styled("input")`
+export const InputStyled = styled('input')`
   width: 100%;
   height: 54px;
   padding: 18px 24px;
@@ -38,14 +38,14 @@ export const InputStyled = styled("input")`
   outline: none;
   opacity: 0.8;
   color: ${({ theme }) => theme.colors.mainText};
-  font-family: "Manrope-400";
+  font-family: 'Manrope-400';
   font-size: 14px;
   font-weight: 400;
   line-height: 1.28; /* 128.571% */
 
   &::placeholder {
     color: ${({ theme }) => theme.colors.mainText};
-    font-family: "Manrope-400";
+    font-family: 'Manrope-400';
     font-size: 14px;
     font-weight: 400;
     line-height: 1.28; /* 128.571% */
@@ -67,7 +67,7 @@ export const SelectStyled = styled(Select)`
   .customSelect__ {
     &control {
       color: ${({ theme }) => theme.colors.mainText}; //#F3F3F3
-      font-family: "Manrope-400";
+      font-family: 'Manrope-400';
       font-size: 14px;
       font-weight: 400;
       line-height: 1.28;
@@ -154,11 +154,12 @@ export const SelectStyled = styled(Select)`
       margin-top: 4px;
       border-radius: 12px;
       background-color: #161f37;
-      font-family: "Manrope-400";
+      font-family: 'Manrope-400';
       font-size: 14px;
       font-weight: 400;
       line-height: 128%;
       padding: 8px;
+      white-space: nowrap;
       @media (min-width: 768px) {
         width: 199px;
         font-size: 17px;
@@ -167,9 +168,10 @@ export const SelectStyled = styled(Select)`
       }
     }
     &menu-list {
+      text-overflow: ellipsis;
+      gap: 6px;
       display: flex;
       flex-direction: column;
-
       padding: 10px;
       &::-webkit-scrollbar {
         width: 8px;
@@ -187,6 +189,8 @@ export const SelectStyled = styled(Select)`
       }
     }
     &option {
+      text-overflow: ellipsis;
+      height: 18px;
       cursor: pointer;
       color: rgba(243, 243, 243, 0.4);
       background: none;
