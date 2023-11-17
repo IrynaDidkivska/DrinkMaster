@@ -1,16 +1,13 @@
 //getUser from state
-export const getUser = (state) => {
-  console.log(state.user.user);
-  return state.user.user;
-};
-
+export const getUser = (state) => state.auth.user; // обєкт всього юзера
+// FIXME: переробити на selectUser
 export const getIsLoading = (state) => {
-  return state.user.isLoading;
+  return state.auth.isLoading;
 };
 
 export const getIsAuth = (state) => {
-  return state.user.isAuth;
+  return state.auth.isAuth;
 };
 export const getIsAdult = (state) => {
-  return state.user.isAdult;
+  return state.auth.isAdult;
 };

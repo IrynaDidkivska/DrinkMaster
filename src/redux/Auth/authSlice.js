@@ -1,11 +1,20 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { signupThunk, signinThunk, logoutThunk } from "./operations";
+import { createSlice, isAnyOf } from "@reduxjs/toolkit";
+import {
+  signupThunk,
+  signinThunk,
+  logoutThunk,
+  currentUserThunk,
+  updateUser,
+  updateUserThunk,
+} from "./operations";
 
 const initialState = {
   user: {
     email: "",
     username: "",
     birthdate: "",
+    isAdult: false,
+    avatar: "",
   },
   isAuth: false,
   isLoading: false,
@@ -14,40 +23,29 @@ const initialState = {
   token: "",
 };
 export const authSlice = createSlice({
-  name: "user",
+  name: "auth",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(signupThunk.fulfilled, (state, { payload }) => {
-        state.user = payload.user;
         state.user.username = payload.username;
         state.user.email = payload.email;
-        state.user.birthdate = payload.birthdate;
+        // isAduld
         // state.token = payload.token;
         state.isAuth = true;
         state.isLoading = false;
       })
-      .addCase(signupThunk.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(signupThunk.rejected, (state) => {
-        state.isLoading = false;
-      })
+
       .addCase(signinThunk.fulfilled, (state, { payload }) => {
         state.user.email = payload.email;
         state.user.username = payload.username;
-        state.user.birthdate = payload.birthdate;
+        // isAduld, username, avatar
         state.token = payload.token;
         state.isLoading = false;
         state.isAuth = true;
       })
-      .addCase(signinThunk.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(signinThunk.rejected, (state) => {
-        state.isLoading = false;
-      })
+
       .addCase(logoutThunk.fulfilled, (state) => {
         state.user = {
           name: "",
@@ -57,25 +55,52 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.isAuth = false;
       })
-      .addCase(logoutThunk.pending, (state) => {
-        state.isLoading = true;
+
+      .addCase(currentUserThunk.fulfilled, (state, { payload }) => {
+        state.user.email = payload.email;
+        state.user.avatar = payload.avatar;
+        // isAduld, username
+        state.isAuth = true;
+        state.isRefresh = false;
       })
-      .addCase(logoutThunk.rejected, (state) => {
-        state.isLoading = false;
-      });
-    //   .addCase(currentUser.fulfilled, (state, { payload }) => {
-    //     state.user.email = payload.email;
-    //     state.user.username = payload.username;
-    //     state.isAuth = true;
-    //     state.isRefresh = false;
-    //   })
-    //   .addCase(currentUser.pending, (state, { payload }) => {
-    //     state.isRefresh = true;
-    //   })
-    //   .addCase(currentUser.rejected, (state, { payload }) => {
-    //     state.error = payload;
-    //     state.isRefresh = false;
-    //   });
+      .addCase(currentUserThunk.pending, (state, { payload }) => {
+        state.isRefresh = true;
+      })
+      .addCase(currentUserThunk.rejected, (state, { payload }) => {
+        state.error = payload;
+        state.isRefresh = false;
+      })
+      .addCase(updateUserThunk.fulfilled, (state, { payload }) => {
+        state.user.username = payload.username;
+        state.user.avatar = payload.avatar;
+      })
+
+      .addMatcher(
+        isAnyOf(
+          signinThunk.pending,
+          signupThunk.pending,
+          logoutThunk.pending,
+          updateUserThunk.pending,
+          currentUserThunk.pending
+        ),
+        (state) => {
+          state.isLoading = true;
+          state.error = "";
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          signinThunk.rejected,
+          signupThunk.rejected,
+          logoutThunk.rejected,
+          updateUserThunk.rejected,
+          currentUserThunk.rejected
+        ),
+        (state, { payload }) => {
+          state.isLoading = false;
+          state.error = payload;
+        }
+      );
   },
 });
 

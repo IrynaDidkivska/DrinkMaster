@@ -54,24 +54,23 @@ function App() {
           // element={<PrivateRoute component={<DrinkWithID />} />}
           element={<DrinkWithID />}
         />
-
-        <Route
-          path={routes.SIGNUP}
-          // element={<PublicRoute component={<Signup />} />}
-          element={<Signup />}
-        />
-        <Route
-          path={routes.SIGNIN}
-          // element={<PublicRoute component={<Signin />} />}
-          element={<Signin />}
-        />
-        <Route
-          path={routes.WELCOME}
-          element={<Welcome />}
-          // element={<PublicRoute component={<Welcome />} />}
-        />
       </Route>
 
+      <Route
+        path={routes.SIGNUP}
+        // element={<PublicRoute component={<Signup />} />}
+        element={<Signup />}
+      />
+      <Route
+        path={routes.SIGNIN}
+        // element={<PublicRoute component={<Signin />} />}
+        element={<Signin />}
+      />
+      <Route
+        path={routes.WELCOME}
+        element={<Welcome />}
+        // element={<PublicRoute component={<Welcome />} />}
+      />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
