@@ -1,7 +1,7 @@
 // import { IngridientsContainer } from "../../modules/addDrink/components/Ingredients/Ingredients.styles";
 import Ingredients from "../../modules/addDrink/components/Ingredients/IngredientsItem/Ingredients";
 const AddDrink = () => {
-  return <Ingredients/>
+  return <div>Add drink</div>
 };
 
 export default AddDrink;
