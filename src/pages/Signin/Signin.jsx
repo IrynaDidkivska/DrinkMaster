@@ -1,8 +1,26 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import AuthLink from "../../shared/components/AuthForm/AuthLink/AuthLink";
+import { useDispatch, useSelector } from "react-redux";
+import { selectIsLoading } from "../../redux/Auth/selectors";
+import { signinThunk } from "../../redux/Auth/operations";
+import {
+  SignButton,
+  StyledAuthLink,
+  StyledForm,
+  Wrapper,
+} from "./Signin.styled";
+import { toast } from "react-toastify";
+import { useLocation, useNavigate } from "react-router-dom";
+import Subtitle from "../../shared/components/Title/Subtitle";
+import { confirmNamePage } from "../../shared/helpers/confirmNamePage";
 
 const SignIn = () => {
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const namePage = confirmNamePage(location.pathname);
+  const navigate = useNavigate();
+  const isLoading = useSelector(selectIsLoading);
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -19,17 +37,32 @@ const SignIn = () => {
     onSubmit: (values) => {
       // Handle form submission logic here
       console.log(values);
+      const credentials = { password: values.password, email: values.email };
+      dispatch(signinThunk(credentials))
+        .unwrap()
+        .then(() => {
+          navigate("/home"); // Redirect to /home after successful login
+        })
+        .catch((error) => {
+          const { message } = error.response.credentials;
+          if (message.length > 5) {
+            toast.error(message);
+          } else {
+            message.forEach((el) => toast.error(el));
+          }
+        });
     },
   });
 
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <div>
-        <label htmlFor="email">Email</label>
+    <StyledForm onSubmit={formik.handleSubmit}>
+      <Subtitle name={namePage}>Sign In</Subtitle>
+      <Wrapper>
         <input
           type="email"
           id="email"
           name="email"
+          placeholder="Email"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
@@ -37,14 +70,11 @@ const SignIn = () => {
         {formik.touched.email && formik.errors.email ? (
           <div>{formik.errors.email}</div>
         ) : null}
-      </div>
-
-      <div>
-        <label htmlFor="password">Password</label>
         <input
           type="password"
           id="password"
           name="password"
+          placeholder="Password"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.password}
@@ -52,12 +82,15 @@ const SignIn = () => {
         {formik.touched.password && formik.errors.password ? (
           <div>{formik.errors.password}</div>
         ) : null}
-      </div>
+      </Wrapper>
 
-      <div>
-        <AuthLink />
-      </div>
-    </form>
+      <Wrapper>
+        <SignButton type="submit" disabled={isLoading}>
+          Sign In
+        </SignButton>
+        <StyledAuthLink to="/signup">Sign Up</StyledAuthLink>
+      </Wrapper>
+    </StyledForm>
   );
 };
 

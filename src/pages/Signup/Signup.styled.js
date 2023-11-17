@@ -5,70 +5,78 @@ import Datetime from "react-datetime";
 export const StyledDatatimeWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-
-  .rdtPicker {
-    width: 280px;
-    border: none;
-    border-radius: 8px;
-    background: linear-gradient(
-      360deg,
-      rgba(83, 61, 186, 1) 0%,
-      rgba(80, 48, 154, 1) 35.94%,
-      rgba(106, 70, 165, 1) 61.04%,
-      rgba(133, 93, 175, 1) 100%
-    );
-
-    @media screen and (min-width: 768px) {
-      width: 250px;
-    }
-  }
-  .rdtPicker td.rdtActive,
-  .rdtPicker td.rdtActive:hover {
-    border-radius: 20px;
-  }
-  .rdtPicker td.rdtToday:before {
-    display: none;
-  }
-  td.rdtActive.rdtToday:before {
-    display: none;
-  }
-  .rdtPicker td:hover {
-    background: linear-gradient(
-      96.76deg,
-      #ffc727 -16.42%,
-      #9e40ba 97.04%,
-      #7000ff 150.71%
-    );
-    text-shadow: 0 -1px 0 rgba (0, 0, 0, 0.25);
-    border-radius: 20px;
-  }
-
-  element.style {
-  }
-  .rdtPicker thead tr:first-of-type th:hover {
-    background: transparent;
-  }
 `;
 export const StyledDatetime = styled(Datetime)`
-  input {
-    width: 280px;
-    font-family: Poppins-Regular;
-    font-size: 18px;
-    line-height: 1.5;
+  font-family: "Manrope-500";
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.32px;
+
+  .rdtPicker {
+    width: 219px;
+    height: 242px;
+    padding: 14px;
     border: none;
+    border-radius: 8px;
+    background-color: ${({ theme }) => theme.background.dropdown};
+    tr:nth-child(2) {
+      color: rgba(243, 243, 243, 0.5);
+    }
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    .rdtPrev {
+      color: rgba(243, 243, 243, 0.5);
+    }
+  }
+
+  input {
+    display: block;
+    padding: 14px 0 14px 24px;
+    min-width: 335px;
+    min-height: 54px;
+    text-align: center;
+    font-family: "Manrope-400";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.28; /* 26.52px */
+    color: ${({ theme }) => theme.colors.mainText};
     background-color: transparent;
+    outline: transparent;
+    border-radius: 200px;
+    border: 1px solid rgba(243, 243, 243, 0.2);
+    opacity: 0.8;
+    transition: ${({ theme }) => theme.transition};
 
-    @media screen and (min-width: 768px) {
-      padding-left: 12px;
-      width: 181px;
-    }
     &:focus {
-      outline: none;
+      border: 1px solid rgba(243, 243, 243, 0.5);
     }
+
     &::placeholder {
-      background-color: transparent;
+      text-align: left;
+      color: rgba(243, 243, 243, 0.5);
+    }
+  }
+
+  table {
+    td {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      thead {
+        font-family: "Manrope-500";
+        font-size: 16px;
+        font-weight: 500;
+        letter-spacing: -0.32px;
+      }
+
+      &:hover {
+        cursor: pointer;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        color: ${({ theme }) => theme.colors.secondaryText};
+        background-color: ${({ theme }) => theme.colors.iconColor};
+      }
     }
   }
 `;

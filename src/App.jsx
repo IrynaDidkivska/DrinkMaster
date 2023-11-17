@@ -10,13 +10,12 @@ import {
   Favorites,
   HomePage,
   MyDrinks,
-  Signin,
-  Signup,
 } from "./pages";
 import { ThemeProvider } from "styled-components";
 import { useSelector } from "react-redux";
 import { darkTheme, lightTheme } from "./shared/styles/theme";
 import { Global } from "./shared/styles/Global";
+import AuthForm from "./shared/components/AuthForm/AuthForm";
 
 const Welcome = lazy(() =>
   import("./modules/welcome/components/Welcome/Welcome")
@@ -64,16 +63,15 @@ function App() {
               element={<DrinkWithID />}
             />
           </Route>
-
           <Route
             path={routes.SIGNUP}
             // element={<PublicRoute component={<Signup />} />}
-            element={<Signup />}
+            element={<AuthForm />}
           />
           <Route
             path={routes.SIGNIN}
             // element={<PublicRoute component={<Signin />} />}
-            element={<Signin />}
+            element={<AuthForm />}
           />
           <Route
             path={routes.WELCOME}

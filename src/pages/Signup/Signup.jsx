@@ -1,18 +1,32 @@
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
-import { signinThunk } from "../../redux/Auth/operations";
-import { selectUser } from "../../redux/Auth/selectors";
-import AuthLink from "../../shared/components/AuthForm/AuthLink/AuthLink";
+import { signupThunk } from "../../redux/Auth/operations";
+import { selectIsLoading, selectUser } from "../../redux/Auth/selectors";
+
 import {
   StyledCalendarSvg,
   StyledDatatimeWrapper,
   StyledDatetime,
 } from "./Signup.styled";
 import { SpriteSVG } from "../../shared/icons/SpriteSVG";
+import {
+  SignButton,
+  StyledAuthLink,
+  StyledForm,
+  Wrapper,
+} from "../Signin/Signin.styled";
+import Subtitle from "../../shared/components/Title/Subtitle";
+import { useLocation } from "react-router-dom";
+import { confirmNamePage } from "../../shared/helpers/confirmNamePage";
+import { isValidDate } from "../../shared/helpers/isValidDate";
 
 const SignUp = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
+  const namePage = confirmNamePage(location.pathname);
+  const isLoading = useSelector(selectIsLoading);
+
   const { username, password, email, birthdate } = useSelector(selectUser);
 
   const formik = useFormik({
@@ -36,7 +50,7 @@ const SignUp = () => {
       // Handle form submission logic here
       console.log(values);
       const credentials = { username, password, email, birthdate };
-      dispatch(signinThunk(credentials));
+      dispatch(signupThunk(credentials));
     },
   });
 
@@ -50,41 +64,32 @@ const SignUp = () => {
   };
 
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <div>
-        <label htmlFor="name">Name</label>
+    <StyledForm onSubmit={formik.handleSubmit}>
+      <Subtitle name={namePage}>Sign Up</Subtitle>
+      <Wrapper>
         <input
           type="text"
-          id="name"
-          name="name"
+          id="username"
+          name="username"
+          placeholder="Name"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          value={formik.values.name}
+          value={formik.values.username}
         />
-        {formik.touched.name && formik.errors.name ? (
-          <div>{formik.errors.name}</div>
+        {formik.touched.username && formik.errors.username ? (
+          <div>{formik.errors.username}</div>
         ) : null}
-      </div>
 
-      <div>
-        {/* <div>
-          <label htmlFor="birthdate">Date of Birth</label>
-          <input
-            name="birthdate"
-            placeholder="dd/mm/yyyy"
-            type="text"
-            onChange={formik.handleChange}
-          />
-        </div> */}
         <StyledDatatimeWrapper>
           <StyledDatetime
             type="date"
             id="birthdate"
             name="birthdate"
+            placeholder="dd/mm/yyyy"
             timeFormat={false}
             onChange={(value) => handleDateChange("birthdate", value)}
-            onBlur={formik.handleBlur}
             value={formik.values.birthdate}
+            isValidDate={isValidDate}
             closeOnSelect={true}
           />
           <StyledCalendarSvg>
@@ -95,14 +100,12 @@ const SignUp = () => {
         {formik.touched.birthdate && formik.errors.birthdate ? (
           <div>{formik.errors.birthdate}</div>
         ) : null}
-      </div>
 
-      <div>
-        <label htmlFor="email">Email</label>
         <input
           type="email"
           id="email"
           name="email"
+          placeholder="Email"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
@@ -110,14 +113,12 @@ const SignUp = () => {
         {formik.touched.email && formik.errors.email ? (
           <div>{formik.errors.email}</div>
         ) : null}
-      </div>
 
-      <div>
-        <label htmlFor="password">Password</label>
         <input
           type="password"
           id="password"
           name="password"
+          placeholder="Password"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.password}
@@ -125,9 +126,15 @@ const SignUp = () => {
         {formik.touched.password && formik.errors.password ? (
           <div>{formik.errors.password}</div>
         ) : null}
-      </div>
-      <AuthLink />
-    </form>
+      </Wrapper>
+
+      <Wrapper>
+        <SignButton type="submit" disabled={isLoading}>
+          Sign Up
+        </SignButton>
+        <StyledAuthLink to="/signin">Sign In</StyledAuthLink>
+      </Wrapper>
+    </StyledForm>
   );
 };
 
