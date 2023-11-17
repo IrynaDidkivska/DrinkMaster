@@ -1,10 +1,10 @@
-import { StyledLogo, StyledLogoImg, StyledLogoTitle } from './Logo.styled';
-import logo from '../../icons/logo.png';
+import { StyledLogo, StyledLogoTitle } from "./Logo.styled";
+import { SpriteSVG } from "../../icons/SpriteSVG";
 
 const Logo = () => {
   return (
     <StyledLogo>
-      <StyledLogoImg src={logo} alt="logo" />
+      <SpriteSVG name={"logo"} />
       <StyledLogoTitle>Drink Master</StyledLogoTitle>
     </StyledLogo>
   );

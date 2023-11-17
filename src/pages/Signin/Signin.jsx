@@ -1,6 +1,6 @@
-import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import AuthLink from "../../shared/components/AuthForm/AuthLink/AuthLink";
 
 const SignIn = () => {
   const formik = useFormik({
@@ -55,9 +55,7 @@ const SignIn = () => {
       </div>
 
       <div>
-        <button type="submit">Sign In</button>
-        {/* You can add a "Sign Up" link that navigates to the sign-up page */}
-        <a href="/your-signup-page">Sign Up</a>
+        <AuthLink />
       </div>
     </form>
   );
