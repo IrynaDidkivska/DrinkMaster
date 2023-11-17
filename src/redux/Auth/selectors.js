@@ -1,8 +1,8 @@
 //getUser from state
-export const getUser = (state) => state.auth.user; // об'єкт всього юзера
+export const selectUser = (state) => state.auth.user; // об'єкт всього юзера
 
-export const getIsLoading = (state) => state.auth.isLoading;
+export const selectIsLoading = (state) => state.auth.isLoading;
 
-export const getIsAuth = (state) => state.auth.isAuth;
+export const selectIsAuth = (state) => state.auth.isAuth;
 
-export const getIsAdult = (state) => state.auth.isAdult;
+export const selecctIsAdult = (state) => state.auth.isAdult;

@@ -26,7 +26,7 @@ export const lightTheme = {
     mainPage: "#0A0A11",
     mainText: "#161F37",
     secondaryText: "#F3F3F3",
-    iconColor: "#F3F3F3",
+    iconColor: "#161F37",
     error: "#DA1414",
     correct: "#3CBC81",
   },

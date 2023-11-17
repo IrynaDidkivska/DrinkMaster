@@ -1,39 +1,30 @@
 import { useFormik } from "formik";
+import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
-// import { useDispatch } from "react-redux";
-// import { useState } from "react";
-// import { signinThunk, signupThunk } from "../../../redux/Auth/operations";
-// import Datetime from "react-datetime";
-
-// const [username, setUserName] = useState("");
-// const [password, setPassword] = useState("");
-// const [email, setEmail] = useState("");
-// const [birthdate, setBirthdate] = useState("");
-
-// const dispatch = useDispatch();
-
-// const handleSubmit = (e) => {
-//   e.preventDefault();
-//   const credentials = { password, email };
-//   dispatch(signinThunk(credentials));
-// };
-// const handleDateChange = (date) => {
-//   // Format the date to ISO 8601 format before setting the state
-//   const formattedDate = date.format("YYYY-MM-DD");
-//   setBirthdate(formattedDate);
-// };
+import { signinThunk } from "../../redux/Auth/operations";
+import { selectUser } from "../../redux/Auth/selectors";
+import AuthLink from "../../shared/components/AuthForm/AuthLink/AuthLink";
+import {
+  StyledCalendarSvg,
+  StyledDatatimeWrapper,
+  StyledDatetime,
+} from "./Signup.styled";
+import { SpriteSVG } from "../../shared/icons/SpriteSVG";
 
 const SignUp = () => {
+  const dispatch = useDispatch();
+  const { username, password, email, birthdate } = useSelector(selectUser);
+
   const formik = useFormik({
     initialValues: {
-      name: "",
-      dateOfBirth: "",
+      username: "",
+      birthdate: "",
       email: "",
       password: "",
     },
     validationSchema: Yup.object({
-      name: Yup.string().required("Name is required"),
-      dateOfBirth: Yup.date().required("Date of Birth is required"),
+      username: Yup.string().required("Name is required"),
+      birthdate: Yup.date().required("Date of Birth is required"),
       email: Yup.string()
         .email("Invalid email address")
         .required("Email is required"),
@@ -44,8 +35,19 @@ const SignUp = () => {
     onSubmit: (values) => {
       // Handle form submission logic here
       console.log(values);
+      const credentials = { username, password, email, birthdate };
+      dispatch(signinThunk(credentials));
     },
   });
+
+  const handleDateChange = (name, value) => {
+    formik.handleChange({
+      target: {
+        name,
+        value: value.format("YYYY-MM-DD"),
+      },
+    });
+  };
 
   return (
     <form onSubmit={formik.handleSubmit}>
@@ -65,17 +67,33 @@ const SignUp = () => {
       </div>
 
       <div>
-        <label htmlFor="dateOfBirth">Date of Birth</label>
-        <input
-          type="date"
-          id="dateOfBirth"
-          name="dateOfBirth"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.dateOfBirth}
-        />
-        {formik.touched.dateOfBirth && formik.errors.dateOfBirth ? (
-          <div>{formik.errors.dateOfBirth}</div>
+        {/* <div>
+          <label htmlFor="birthdate">Date of Birth</label>
+          <input
+            name="birthdate"
+            placeholder="dd/mm/yyyy"
+            type="text"
+            onChange={formik.handleChange}
+          />
+        </div> */}
+        <StyledDatatimeWrapper>
+          <StyledDatetime
+            type="date"
+            id="birthdate"
+            name="birthdate"
+            timeFormat={false}
+            onChange={(value) => handleDateChange("birthdate", value)}
+            onBlur={formik.handleBlur}
+            value={formik.values.birthdate}
+            closeOnSelect={true}
+          />
+          <StyledCalendarSvg>
+            <SpriteSVG name={"calendar"} />
+          </StyledCalendarSvg>
+        </StyledDatatimeWrapper>
+
+        {formik.touched.birthdate && formik.errors.birthdate ? (
+          <div>{formik.errors.birthdate}</div>
         ) : null}
       </div>
 
@@ -108,11 +126,7 @@ const SignUp = () => {
           <div>{formik.errors.password}</div>
         ) : null}
       </div>
-
-      <div>
-        <button type="submit">Sign Up</button>
-        <button type="button">Sign In</button>
-      </div>
+      <AuthLink />
     </form>
   );
 };

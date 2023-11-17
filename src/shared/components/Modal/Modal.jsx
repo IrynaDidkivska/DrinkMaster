@@ -1,5 +1,7 @@
+import { ModalOverlay } from "./Modal.styled";
+
 const Modal = () => {
-  return <div>Modal</div>;
+  return <ModalOverlay>Modal</ModalOverlay>;
 };
 
 export default Modal;
