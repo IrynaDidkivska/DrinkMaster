@@ -21,7 +21,7 @@ export const darkTheme = {
 
   transition: "all 300ms cubic-bezier(0.53, 0.5, 0.53, 0.52)",
 };
-export const ligthTheme = {
+export const lightTheme = {
   colors: {
     mainPage: "#0A0A11",
     mainText: "#161F37",

@@ -13,6 +13,10 @@ import {
   Signin,
   Signup,
 } from "./pages";
+import { ThemeProvider } from "styled-components";
+import { useSelector } from "react-redux";
+import { darkTheme, lightTheme } from "./shared/styles/theme";
+import { Global } from "./shared/styles/Global";
 
 const Welcome = lazy(() =>
   import("./modules/welcome/components/Welcome/Welcome")
@@ -21,60 +25,65 @@ const Welcome = lazy(() =>
 // const PublickRoute = lazy(() => import("./shared/HOC/PublicRoute"));
 
 function App() {
-  return (
-    <Suspense>
-      <Routes>
-        <Route path={routes.ROOT} element={<SharedLayout />}>
-          <Route
-            path={routes.HOME}
-            // element={<PrivateRoute component={<HomePage />} />}
-            element={<HomePage />}
-          />
-          <Route
-            path={routes.DRINKSPAGE}
-            // element={<PrivateRoute component={<Drinks />} />}
-            element={<Drinks />}
-          />
-          <Route
-            path={routes.ADD}
-            // element={<PrivateRoute component={<AddDrink />} />}
-            element={<AddDrink />}
-          />
-          <Route
-            path={routes.FAVORITES}
-            // element={<PrivateRoute component={<Favorites />} />}
-            element={<Favorites />}
-          />
-          <Route
-            path={routes.MYDRINKS}
-            // element={<PrivateRoute component={<MyDrinks />} />}
-            element={<MyDrinks />}
-          />
-          <Route
-            path={routes.DRINKSPAGEWITHID}
-            // element={<PrivateRoute component={<DrinkWithID />} />}
-            element={<DrinkWithID />}
-          />
-        </Route>
+  const { theme } = useSelector((state) => state.theme);
 
-        <Route
-          path={routes.SIGNUP}
-          // element={<PublicRoute component={<Signup />} />}
-          element={<Signup />}
-        />
-        <Route
-          path={routes.SIGNIN}
-          // element={<PublicRoute component={<Signin />} />}
-          element={<Signin />}
-        />
-        <Route
-          path={routes.WELCOME}
-          element={<Welcome />}
-          // element={<PublicRoute component={<Welcome />} />}
-        />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Suspense>
+  return (
+    <ThemeProvider theme={theme === "dark" ? darkTheme : lightTheme}>
+      <Global />
+      <Suspense>
+        <Routes>
+          <Route path={routes.ROOT} element={<SharedLayout />}>
+            <Route
+              path={routes.HOME}
+              // element={<PrivateRoute component={<HomePage />} />}
+              element={<HomePage />}
+            />
+            <Route
+              path={routes.DRINKSPAGE}
+              // element={<PrivateRoute component={<Drinks />} />}
+              element={<Drinks />}
+            />
+            <Route
+              path={routes.ADD}
+              // element={<PrivateRoute component={<AddDrink />} />}
+              element={<AddDrink />}
+            />
+            <Route
+              path={routes.FAVORITES}
+              // element={<PrivateRoute component={<Favorites />} />}
+              element={<Favorites />}
+            />
+            <Route
+              path={routes.MYDRINKS}
+              // element={<PrivateRoute component={<MyDrinks />} />}
+              element={<MyDrinks />}
+            />
+            <Route
+              path={routes.DRINKSPAGEWITHID}
+              // element={<PrivateRoute component={<DrinkWithID />} />}
+              element={<DrinkWithID />}
+            />
+          </Route>
+
+          <Route
+            path={routes.SIGNUP}
+            // element={<PublicRoute component={<Signup />} />}
+            element={<Signup />}
+          />
+          <Route
+            path={routes.SIGNIN}
+            // element={<PublicRoute component={<Signin />} />}
+            element={<Signin />}
+          />
+          <Route
+            path={routes.WELCOME}
+            element={<Welcome />}
+            // element={<PublicRoute component={<Welcome />} />}
+          />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
+    </ThemeProvider>
   );
 }
 
