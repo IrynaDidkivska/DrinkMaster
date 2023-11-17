@@ -6,24 +6,23 @@ import { useState } from "react";
 import { signinThunk, signupThunk } from "../../../redux/Auth/operations";
 import Datetime from "react-datetime";
 
-const Test = () => {
-  const [username, setUserName] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const [birthdate, setBirthdate] = useState("");
+// const [username, setUserName] = useState("");
+// const [password, setPassword] = useState("");
+// const [email, setEmail] = useState("");
+// const [birthdate, setBirthdate] = useState("");
 
-  const dispatch = useDispatch();
+// const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const credentials = { password, email };
-    dispatch(signinThunk(credentials));
-  };
-  const handleDateChange = (date) => {
-    // Format the date to ISO 8601 format before setting the state
-    const formattedDate = date.format("YYYY-MM-DD");
-    setBirthdate(formattedDate);
-  };
+// const handleSubmit = (e) => {
+//   e.preventDefault();
+//   const credentials = { password, email };
+//   dispatch(signinThunk(credentials));
+// };
+// const handleDateChange = (date) => {
+//   // Format the date to ISO 8601 format before setting the state
+//   const formattedDate = date.format("YYYY-MM-DD");
+//   setBirthdate(formattedDate);
+// };
 
 const SignUp = () => {
   const formik = useFormik({
