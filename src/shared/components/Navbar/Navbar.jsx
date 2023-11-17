@@ -1,13 +1,13 @@
-import { StyledHeaderLink, StyledNavBar } from './Navbar.styled';
+import { StyledLink, StyledNavBar } from './Navbar.styled';
 
 const Navbar = () => {
   return (
     <StyledNavBar>
-      <StyledHeaderLink>Home</StyledHeaderLink>
-      <StyledHeaderLink>Drinks</StyledHeaderLink>
-      <StyledHeaderLink>Add drink</StyledHeaderLink>
-      <StyledHeaderLink>My drinks</StyledHeaderLink>
-      <StyledHeaderLink>Favorites</StyledHeaderLink>
+      <StyledLink>Home</StyledLink>
+      <StyledLink>Drinks</StyledLink>
+      <StyledLink>Add drink</StyledLink>
+      <StyledLink>My drinks</StyledLink>
+      <StyledLink>Favorites</StyledLink>
     </StyledNavBar>
   );
 };

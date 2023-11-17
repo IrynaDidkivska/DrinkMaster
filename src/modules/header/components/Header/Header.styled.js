@@ -15,7 +15,7 @@ export const SrtledHeaderInner = styled.div`
   align-items: center;
 `;
 
-export const StyledLeftWrapper = styled.div`
+export const StyledRightWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;

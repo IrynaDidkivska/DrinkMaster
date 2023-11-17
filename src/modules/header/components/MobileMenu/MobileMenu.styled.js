@@ -1,16 +1,19 @@
 import styled, { css } from 'styled-components';
+import { StyledNavBar } from '../../../../shared/components/Navbar/Navbar.styled';
 
 export const StyledMobileMenu = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   width: 100vw;
   height: 100vh;
   background-color: #0a0a11;
+  overflow: hidden;
+  transition: left 0.3s ease-in-out;
+
   position: fixed;
   top: 0;
   left: -103%;
   z-index: 10;
-  transition: left 0.3s ease-in-out;
 
   ${({ open }) =>
     open &&
@@ -20,9 +23,6 @@ export const StyledMobileMenu = styled.div`
 `;
 
 export const StyledMobileHeader = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   width: 100%;
   padding: 25px 0;
   border-bottom: 1px solid rgba(243, 243, 243, 0.2);
@@ -30,6 +30,12 @@ export const StyledMobileHeader = styled.div`
   @media screen and (min-width: 768px) {
     padding: 31px 0;
   }
+`;
+
+export const StyledMobileWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 export const StyledBtnClose = styled.button`
@@ -65,9 +71,68 @@ export const StyledMobileBody = styled.div`
   }
 `;
 
-export const StyledMobileNavBar = styled.nav`
-  display: flex;
+export const StyledMobileNavBar = styled(StyledNavBar)`
   flex-direction: column;
-  align-items: center;
-  gap: 16px;
+`;
+
+export const Ellipse222 = styled.div`
+  pointer-events: none;
+  z-index: -1;
+  width: 520px;
+  height: 550px;
+  border-radius: 550px;
+  background: rgba(64, 112, 205, 0.5);
+  filter: blur(104.8543701171875px);
+
+  position: absolute;
+  top: 20px;
+  left: -399px;
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+`;
+
+export const Ellipse223 = styled.div`
+  pointer-events: none;
+  z-index: -1;
+  width: 257px;
+  height: 247px;
+  border-radius: 257px;
+  background: rgba(188, 230, 210, 0.4);
+  filter: blur(104.8543701171875px);
+
+  position: absolute;
+  top: 84px;
+  left: 42px;
+
+  @media screen and (min-width: 768px) {
+    width: 387px;
+    height: 372.442px;
+    border-radius: 901px;
+    border-radius: 387px;
+
+    top: 116.33px;
+    left: -160px;
+  }
+`;
+
+export const Ellipse224 = styled.div`
+  pointer-events: none;
+  z-index: -1;
+  width: 549px;
+  height: 543px;
+  border-radius: 549px;
+  background: rgba(64, 112, 205, 0.5);
+  filter: blur(104.8543701171875px);
+
+  position: absolute;
+  top: 498px;
+  left: 331px;
+
+  @media screen and (min-width: 768px) {
+    border-radius: 549px;
+    top: 498px;
+    left: 651px;
+  }
 `;

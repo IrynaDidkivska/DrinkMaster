@@ -1,18 +1,18 @@
 import styled from "styled-components";
 
-const DrinkItemsList = styled.ul`
+const IngredientsList = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 40px;
   padding-bottom: 80px;
-  padding-top: 20px;
 
   @media screen and (min-width: 768px) {
     min-width: 704px;
     flex-direction: row;
     flex-wrap: wrap;
+    /* height: 100%; */
     gap: 20px;
   }
 
@@ -23,4 +23,4 @@ const DrinkItemsList = styled.ul`
   }
 `;
 
-export { DrinkItemsList };
+export { IngredientsList };

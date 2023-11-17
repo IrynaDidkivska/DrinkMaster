@@ -1,5 +1,6 @@
 //getUser from state
 export const getUser = (state) => {
+  console.log(state.user.user);
   return state.user.user;
 };
 

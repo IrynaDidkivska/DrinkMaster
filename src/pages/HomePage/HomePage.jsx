@@ -1,7 +1,12 @@
 import PageWrapper from "../../shared/HOC/PageWrapper";
+import Test from "../../shared/components/AuthForm/Test";
 
 const HomePage = () => {
-  return <PageWrapper>HomePage</PageWrapper>;
+  return (
+    <PageWrapper>
+      <Test />
+    </PageWrapper>
+  );
 };
 
 export default HomePage;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const DrinkCardItemContainer = styled.div`
+const IngredientsContainer = styled.div`
   width: 335px;
   height: 448px;
 
@@ -19,10 +19,12 @@ const DrinkCardItemContainer = styled.div`
   }
 `;
 
-const DrinkCardItemImage = styled.img`
+const IngredientsImage = styled.img`
   width: 335px;
   height: 360px;
   border-radius: 8px;
+
+  background-color: rgba(22, 31, 55, 0.5);
   /* object-fit: cover; */
 
   @media screen and (min-width: 768px) {
@@ -39,13 +41,12 @@ const DrinkCardItemImage = styled.img`
     }
   }
 `;
-const DrinkCardItemContainerDiscr = styled.div`
+const IngredientsContainerDiscr = styled.div`
   width: 335px;
   height: 18px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
-  margin-top: 14px;
+  align-items: center;
 
   @media screen and (min-width: 768px) {
     .drinkCardItem-img {
@@ -62,7 +63,7 @@ const DrinkCardItemContainerDiscr = styled.div`
   }
 `;
 
-const DrinkCardItemName = styled.h3`
+const IngredientsName = styled.h3`
   font-family: "Manpore";
   font-style: normal;
   font-weight: 500;
@@ -83,7 +84,7 @@ const DrinkCardItemName = styled.h3`
   }
 `;
 
-const DrinkCardItemSeeMore = styled.a`
+const IngredientsSeeMore = styled.a`
   font-family: "Manpore";
   font-style: normal;
   font-weight: 500;
@@ -103,9 +104,9 @@ const DrinkCardItemSeeMore = styled.a`
 `;
 
 export {
-  DrinkCardItemContainer,
-  DrinkCardItemImage,
-  DrinkCardItemName,
-  DrinkCardItemSeeMore,
-  DrinkCardItemContainerDiscr,
+  IngredientsContainer,
+  IngredientsImage,
+  IngredientsName,
+  IngredientsSeeMore,
+  IngredientsContainerDiscr,
 };

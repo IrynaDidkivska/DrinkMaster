@@ -1,7 +1,7 @@
-import { DrinkList } from "../../shared/components/DrinkList/DrinkList"; 
+import { DrinkListID } from "../../shared/components/DrinkList/DrinkListId"; 
 const MyDrinks = () => {
   return <div>MyDrinks
-    <DrinkList/>
+    <DrinkListID/>
   </div>;
 };
 

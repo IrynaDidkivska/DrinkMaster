@@ -1,4 +1,4 @@
-import MartinyImage from '../../components/DrinkCardItem/Rectangle40559.png';
+import DrinkImage from '../../components/DrinkCardItemFav/Rectangle40560.png';
 import {
   DrinkCardItemFaxContainer,
   DrinkCardItemFaxImg,
@@ -13,7 +13,7 @@ import { SpriteSVG } from "../../icons/SpriteSVG";
 const DrinkCardItemFav = () => {
   return (
     <DrinkCardItemFaxContainer>
-      <DrinkCardItemFaxImg src={MartinyImage} alt="Coctail's name" />
+      <DrinkCardItemFaxImg src={DrinkImage} alt="Coctail's name" />
       <DrinkCardItemFaxName>Ebglish Rose Cocktail</DrinkCardItemFaxName>
       <DrinkCardItemFaxStatus>Alcohol</DrinkCardItemFaxStatus>
       <DrinkCardItemFaxDescription>
