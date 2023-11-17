@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import SharedLayout from "./shared/components/SharedLayout/SharedLayout";
 import { routes } from "./shared/services/routes";
-import { lazy } from "react";
+import { Suspense, lazy } from "react";
 import NotFound from "./pages/NotFound/NotFound";
 import {
   AddDrink,
@@ -22,38 +22,40 @@ const Welcome = lazy(() =>
 
 function App() {
   return (
-    <Routes>
-      <Route path={routes.ROOT} element={<SharedLayout />}>
-        <Route
-          path={routes.HOME}
-          // element={<PrivateRoute component={<HomePage />} />}
-          element={<HomePage />}
-        />
-        <Route
-          path={routes.DRINKSPAGE}
-          // element={<PrivateRoute component={<Drinks />} />}
-          element={<Drinks />}
-        />
-        <Route
-          path={routes.ADD}
-          // element={<PrivateRoute component={<AddDrink />} />}
-          element={<AddDrink />}
-        />
-        <Route
-          path={routes.FAVORITES}
-          // element={<PrivateRoute component={<Favorites />} />}
-          element={<Favorites />}
-        />
-        <Route
-          path={routes.MYDRINKS}
-          // element={<PrivateRoute component={<MyDrinks />} />}
-          element={<MyDrinks />}
-        />
-        <Route
-          path={routes.DRINKSPAGEWITHID}
-          // element={<PrivateRoute component={<DrinkWithID />} />}
-          element={<DrinkWithID />}
-        />
+    <Suspense>
+      <Routes>
+        <Route path={routes.ROOT} element={<SharedLayout />}>
+          <Route
+            path={routes.HOME}
+            // element={<PrivateRoute component={<HomePage />} />}
+            element={<HomePage />}
+          />
+          <Route
+            path={routes.DRINKSPAGE}
+            // element={<PrivateRoute component={<Drinks />} />}
+            element={<Drinks />}
+          />
+          <Route
+            path={routes.ADD}
+            // element={<PrivateRoute component={<AddDrink />} />}
+            element={<AddDrink />}
+          />
+          <Route
+            path={routes.FAVORITES}
+            // element={<PrivateRoute component={<Favorites />} />}
+            element={<Favorites />}
+          />
+          <Route
+            path={routes.MYDRINKS}
+            // element={<PrivateRoute component={<MyDrinks />} />}
+            element={<MyDrinks />}
+          />
+          <Route
+            path={routes.DRINKSPAGEWITHID}
+            // element={<PrivateRoute component={<DrinkWithID />} />}
+            element={<DrinkWithID />}
+          />
+        </Route>
 
         <Route
           path={routes.SIGNUP}
@@ -70,10 +72,9 @@ function App() {
           element={<Welcome />}
           // element={<PublicRoute component={<Welcome />} />}
         />
-      </Route>
-
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Suspense>
   );
 }
 
