@@ -1,16 +1,12 @@
-
-import { AddForm } from '../../modules/addDrink';
-import { Container } from '../../shared/styles/Container';
-import Ingredients from "../../modules/addDrink/components/Ingredients/IngredientsItem/Ingredients";
+import { AddForm } from "../../modules/addDrink";
+import { Container } from "../../shared/styles/Container";
 
 const AddDrink = () => {
   return (
     <Container>
       <AddForm />
-    <Ingredients/>
     </Container>
   );
-
 };
 
 export default AddDrink;
