@@ -3,24 +3,22 @@ import {
   IngredientsContainer,
   IngredientsImage,
   IngredientsName,
-  IngredientsSeeMore,
+  IngredientsNumber,
   IngredientsContainerDiscr
 } from './Ingredients.styles';
 
-const Ingredients = () => {
+const Ingredient = () => {
   return (
     <IngredientsContainer>
       <IngredientsImage src={LimeIngrid} alt="Coctail's name" />
     <IngredientsContainerDiscr>
       <IngredientsName>Lime</IngredientsName>
-      <IngredientsSeeMore
-        href="E:\Julia\IT\BOOTCAMP\Node\DrinkMaster\src\pages\MyDrinks\MyDrinks.jsx"
-      >
+      <IngredientsNumber>
         1 cl
-        </IngredientsSeeMore>
+        </IngredientsNumber>
         </IngredientsContainerDiscr>
     </IngredientsContainer>
   );
 };
 
-export default Ingredients;
+export default Ingredient;
