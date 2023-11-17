@@ -12,6 +12,7 @@ import {
 import storage from "redux-persist/lib/storage";
 import { userReducer } from "./Auth/authSlice";
 import { filterReducer } from "./Filters/filtersSlice";
+import { drinkReducer } from "./Drinks/drinksSlice";
 
 const persistConfigUser = {
   key: "root",
@@ -24,6 +25,7 @@ export const store = configureStore({
   reducer: {
     auth: persistReducer(persistConfigUser, userReducer),
     filter: filterReducer,
+    drinks: drinkReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
