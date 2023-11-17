@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
-import { StyledTitle } from "./Title.styled";
+import { StyledSubitle } from "./StyledSubitle.styled";
 
 const Subtitle = ({ children, name }) => {
-  return <StyledTitle name={name}>{children}</StyledTitle>;
+  return <StyledSubitle name={name}>{children}</StyledSubitle>;
 };
 
 export default Subtitle;
