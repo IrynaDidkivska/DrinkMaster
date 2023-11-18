@@ -14,6 +14,29 @@ export const BlueGlass = styled.div`
 `;
 
 export const HomeImage = styled.img`
-  width: 335px;
+  width: 359px;
   height: 360px;
+  flex-shrink: 0;
+  margin-top: 20px;
+`;
+
+export const MainText = styled.div`
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.42;
+  padding-bottom: 32px;
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+`;
+
+export const HomeWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  @media screen and (min-width: 1400px) {
+    flex-direction: row;
+  }
 `;
