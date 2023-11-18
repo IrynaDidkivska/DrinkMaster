@@ -16,7 +16,6 @@ import { ThemeProvider } from "styled-components";
 import { useSelector } from "react-redux";
 import { darkTheme, lightTheme } from "./shared/styles/theme";
 import { Global } from "./shared/styles/Global";
-import AuthForm from "./shared/components/AuthForm/AuthForm";
 const Welcome = lazy(() =>
   import("./modules/welcome/components/Welcome/Welcome")
 );
