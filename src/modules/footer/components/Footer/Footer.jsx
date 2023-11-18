@@ -2,6 +2,7 @@ import FollowUs from '../../../../shared/components/FollowUs/FollowUs'
 // import Navbar from '../../../../shared/components/Navbar/Navbar'
 import { SpriteSVG } from '../../../../shared/icons/SpriteSVG'
 import { Container } from '../../../../shared/styles/Container'
+import FootelLink from './FootelLink/FootelLink'
 import {
 	OverlayBottom,
 	StyledFooter,
@@ -15,7 +16,7 @@ import {
 	StyledFooterSpan,
 	StyledFooterTabletBox,
 } from './Footer.styled'
-import SubscribeForm from './SubscribeForm'
+import SubscribeForm from './SubscribeForm/SubscribeForm'
 
 const Footer = () => {
 	return (
@@ -32,7 +33,7 @@ const Footer = () => {
 							</StyledFooterLogo>
 							<FollowUs />
 						</StyledFooterLogoNav>
-						<div>Links</div>
+						<FootelLink />
 					</StyledFooterFirstBox>
 					<SubscribeForm />
 				</StyledFooterTabletBox>
