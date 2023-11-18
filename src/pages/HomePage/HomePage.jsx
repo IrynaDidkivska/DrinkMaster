@@ -25,7 +25,6 @@ const HomePage = () => {
           beverages.
         </MainText>
         <LigthBtn onClick={handleAddDrinkClick}>Add drink</LigthBtn>
-        <StyledBtn onClick={handleAddDrinkClick} name="123" />
       </div>
       <HomeImage src={Image} alt="Coctail's name" />
     </HomeWrapper>
