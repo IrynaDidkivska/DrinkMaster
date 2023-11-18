@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const StyledWrapper = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -80,7 +81,7 @@ export const StyledLinkWrapp = styled.div`
 
 // Overlay
 export const OverlayCentered = styled.div`
-  position: fixed;
+  position: absolute;
   pointer-events: none;
   z-index: 1;
   width: 257px;
@@ -96,7 +97,7 @@ export const OverlayCentered = styled.div`
     height: 372.442px;
     border-radius: 387px;
     top: 46.33px;
-    left: 0;
+    left: 387px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -109,13 +110,13 @@ export const OverlayCentered = styled.div`
 `;
 
 export const OverlayLeft = styled.div`
-  position: fixed;
+  position: absolute;
   pointer-events: none;
   z-index: 1;
   width: 520px;
   height: 550px;
   top: 20px;
-  left: 375px;
+  left: 254px;
   border-radius: 550px;
   background: rgba(64, 112, 205, 0.5);
   filter: blur(104.8543701171875px);
@@ -142,7 +143,7 @@ export const OverlayRight = styled.div`
 
   @media screen and (min-width: 768px) {
     display: block;
-    position: fixed;
+    position: absolute;
     pointer-events: none;
     z-index: 1;
     width: 549px;
