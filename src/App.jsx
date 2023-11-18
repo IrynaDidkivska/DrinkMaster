@@ -65,11 +65,12 @@ function App() {
               element={<DrinkWithID />}
             />
           </Route>
+
           <Route
             path={routes.SIGNUP}
             element={
               <PublicRoute>
-                <AuthForm />
+                <Welcome />
               </PublicRoute>
             }
           />
@@ -77,7 +78,7 @@ function App() {
             path={routes.SIGNIN}
             element={
               <PublicRoute>
-                <AuthForm />
+                <Welcome />
               </PublicRoute>
             }
           />
