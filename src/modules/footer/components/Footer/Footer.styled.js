@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const StyledFooter = styled.footer`
+	position: relative;
 	padding-top: 42px;
 	@media screen and (min-width: 768px) {
 		padding-top: 83px;
@@ -79,22 +80,23 @@ export const StyledFooterPrivacyLink = styled.a`
 	}
 `
 export const OverlayBottom = styled.div`
-	position: fixed;
+	position: absolute;
 	pointer-events: none;
 	z-index: 1;
 	width: 774px;
 	height: 762px;
 	right: 100px;
-	top: 610px;
+	top: 500px;
 	border-radius: 774px;
 	background: rgba(188, 230, 210, 0.4);
 	filter: blur(104.8543701171875px);
 
 	@media screen and (min-width: 768px) {
-		top: 480px;
+		right: 160px;
+		top: 350px;
 	}
 	@media screen and (min-width: 1440px) {
-		right: 420px;
-		top: 420px;
+		right: 500px;
+		top: 280px;
 	}
 `

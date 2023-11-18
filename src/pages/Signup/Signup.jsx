@@ -8,6 +8,7 @@ import { selectIsLoading, selectUser } from "../../redux/Auth/selectors";
 import React, { useState } from "react";
 import moment from "moment";
 import "react-datetime/css/react-datetime.css";
+
 import {
   StyledCalendarSvg,
   StyledDatatimeWrapper,
@@ -22,6 +23,8 @@ import {
 } from "../Signin/Signin.styled";
 import Subtitle from "../../shared/components/Title/Subtitle";
 import { isValidDate } from "../../shared/helpers/isValidDate";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
   const navigate = useNavigate();
