@@ -1,14 +1,14 @@
 import PropTypes from "prop-types";
 import { StyledSubitle } from "./StyledSubitle.styled";
 
-const Subtitle = ({ children, name }) => {
-  return <StyledSubitle name={name}>{children}</StyledSubitle>;
+const Subtitle = ({ Subtitle, name }) => {
+  return <StyledSubitle name={name}>{Subtitle}</StyledSubitle>;
 };
 
 export default Subtitle;
 
 Subtitle.propTypes = {
-  children: PropTypes.string.isRequired,
+  Subtitle: PropTypes.string.isRequired,
   name: PropTypes.shape({
     welcome: PropTypes.bool,
     signin: PropTypes.bool,

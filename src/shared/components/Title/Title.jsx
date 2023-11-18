@@ -1,14 +1,14 @@
 import { StyledTitle } from "./Title.styled";
 import PropTypes from "prop-types";
 
-const Title = ({ children, name }) => {
-  return <StyledTitle name={name}>{children}</StyledTitle>;
+const Title = ({ Title, name }) => {
+  return <StyledTitle name={name}>{Title}</StyledTitle>;
 };
 
 export default Title;
 
 Title.propTypes = {
-  children: PropTypes.string.isRequired,
+  Title: PropTypes.string.isRequired,
   name: PropTypes.shape({
     welcome: PropTypes.bool,
     signin: PropTypes.bool,
