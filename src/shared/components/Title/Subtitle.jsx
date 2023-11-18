@@ -18,5 +18,5 @@ Subtitle.propTypes = {
     favorites: PropTypes.bool,
     home: PropTypes.bool,
     my: PropTypes.bool,
-  }).isRequired,
+  }),
 };
