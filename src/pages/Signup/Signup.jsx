@@ -6,7 +6,8 @@ import * as Yup from "yup";
 import { signupThunk } from "../../redux/Auth/operations";
 import { selectIsLoading, selectUser } from "../../redux/Auth/selectors";
 import React, { useState } from "react";
-
+import moment from "moment";
+import "react-datetime/css/react-datetime.css";
 import {
   StyledCalendarSvg,
   StyledDatatimeWrapper,
@@ -74,7 +75,7 @@ const SignUp = () => {
     formik.handleChange({
       target: {
         name,
-        value: value.format("YYYY-MM-DD"),
+        value: value instanceof moment ? value.format("YYYY-MM-DD") : value,
       },
     });
   };
@@ -85,6 +86,8 @@ const SignUp = () => {
     isValidDate: (current) => {
       return current.isBefore();
     },
+    dayOfWeekFormat: "dd", // Use "dd" to start from Monday
+    startOfWeek: 0, // 0 is Sunday, 1 is Monday
   };
 
   return (
