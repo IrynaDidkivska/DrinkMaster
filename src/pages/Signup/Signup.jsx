@@ -17,14 +17,10 @@ import {
   Wrapper,
 } from "../Signin/Signin.styled";
 import Subtitle from "../../shared/components/Title/Subtitle";
-import { useLocation } from "react-router-dom";
-import { confirmNamePage } from "../../shared/helpers/confirmNamePage";
 import { isValidDate } from "../../shared/helpers/isValidDate";
 
 const SignUp = () => {
   const dispatch = useDispatch();
-  const location = useLocation();
-  const namePage = confirmNamePage(location.pathname);
   const isLoading = useSelector(selectIsLoading);
 
   const { username, password, email, birthdate } = useSelector(selectUser);
@@ -65,7 +61,7 @@ const SignUp = () => {
 
   return (
     <StyledForm onSubmit={formik.handleSubmit}>
-      <Subtitle name={namePage}>Sign Up</Subtitle>
+      <Subtitle Subtitle=" Sign Up" />
       <Wrapper>
         <input
           type="text"

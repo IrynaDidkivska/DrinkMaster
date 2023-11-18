@@ -10,14 +10,11 @@ import {
   Wrapper,
 } from "./Signin.styled";
 import { toast } from "react-toastify";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Subtitle from "../../shared/components/Title/Subtitle";
-import { confirmNamePage } from "../../shared/helpers/confirmNamePage";
 
 const SignIn = () => {
   const dispatch = useDispatch();
-  const location = useLocation();
-  const namePage = confirmNamePage(location.pathname);
   const navigate = useNavigate();
   const isLoading = useSelector(selectIsLoading);
 
@@ -56,7 +53,7 @@ const SignIn = () => {
 
   return (
     <StyledForm onSubmit={formik.handleSubmit}>
-      <Subtitle name={namePage}>Sign In</Subtitle>
+      <Subtitle Subtitle=" Sign In" />
       <Wrapper>
         <input
           type="email"
