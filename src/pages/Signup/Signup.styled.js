@@ -20,9 +20,9 @@ export const StyledDatetime = styled(Datetime)`
     border: none;
     border-radius: 8px;
     background-color: ${({ theme }) => theme.background.dropdown};
-    tr:nth-child(2) {
+    /* tr:nth-child(2) {
       color: rgba(243, 243, 243, 0.5);
-    }
+    } */
 
     .rdtPrev {
       color: rgba(243, 243, 243, 0.5);
