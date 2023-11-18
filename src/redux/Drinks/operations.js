@@ -17,12 +17,13 @@ export const getAllDrinksThunk = createAsyncThunk(
     }
   }
 );
-
+// Done
 export const getPopularThunk = createAsyncThunk(
   "drinks/getPopular",
   async (_, thunkAPI) => {
     try {
       const { data } = await API.get("api/drinks/popular");
+      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -63,7 +64,7 @@ export const addOwnDrinkThunk = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       //TODO: змінити шлях і правильно передати дату
-      const { data } = await API.delete("api/drinks/own/add", data);
+      const { data } = await API.зщие("api/drinks/popular/own/add", data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
