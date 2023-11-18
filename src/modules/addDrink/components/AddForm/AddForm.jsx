@@ -1,4 +1,5 @@
 import { SpriteSVG } from '../../../../shared/icons/SpriteSVG';
+import { ComponentWrapperStyled } from '../../addDrink.styled';
 import AddDrinkSelect from './AddDrinkSelect/AddDrinkSelect';
 import {
   AddImgButtonStyled,
@@ -7,13 +8,14 @@ import {
   TitleStyled,
 } from './AddForm.styled';
 import Input from './Input/Input';
+import RadioBtn from './RadioBtn/RadioBtn';
 
 const AddForm = () => {
   return (
     <>
       <TitleStyled>Add drink</TitleStyled>
-      <div>
-        <ImgContainerStyled for="addImg">
+      <ComponentWrapperStyled>
+        <ImgContainerStyled htmlFor="addImg">
           <AddImgLabelStyled>
             <AddImgButtonStyled id="addImg" type="button">
               <SpriteSVG name="plus" />
@@ -25,9 +27,9 @@ const AddForm = () => {
         <Input placeholder="Enter about recipe" type="text" />
         <AddDrinkSelect label="Category" />
         <AddDrinkSelect label="Glass" />
-        <input type="radio" />
-        <input type="radio" />
-      </div>
+        <RadioBtn id="alcoholic" name="isAlcohol" label={'Alcoholic'} />
+        <RadioBtn id="un-alcoholic" name="isAlcohol" label={'Non-alcoholic'} />
+      </ComponentWrapperStyled>
     </>
   );
 };

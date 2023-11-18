@@ -7,7 +7,6 @@ export const TitleStyled = styled.h2`
   font-style: normal;
   font-weight: 600;
   line-height: 38px; /* 118.75% */
-  margin-bottom: 40px;
   @media screen and (min-width: 768px) {
   }
 
