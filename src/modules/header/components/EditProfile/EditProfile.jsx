@@ -1,4 +1,4 @@
-import { getUser } from "../../../../redux/Auth/selectors";
+import { selectUser } from "../../../../redux/Auth/selectors";
 import profileFoto from "../../images/profile-foto.png";
 import {
   StyledBtnProfile,
@@ -15,7 +15,7 @@ export const EditProfile = () => {
       return res.join(" ");
     }
   };
-  const { email } = useSelector(getUser);
+  const { email } = useSelector(selectUser);
   console.log(email);
   return (
     <StyledBtnProfile>

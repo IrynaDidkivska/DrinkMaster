@@ -1,39 +1,40 @@
 import { useFormik } from "formik";
+import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
-// import { useDispatch } from "react-redux";
-// import { useState } from "react";
-// import { signinThunk, signupThunk } from "../../../redux/Auth/operations";
-// import Datetime from "react-datetime";
+import { signupThunk } from "../../redux/Auth/operations";
+import { selectIsLoading, selectUser } from "../../redux/Auth/selectors";
 
-// const [username, setUserName] = useState("");
-// const [password, setPassword] = useState("");
-// const [email, setEmail] = useState("");
-// const [birthdate, setBirthdate] = useState("");
-
-// const dispatch = useDispatch();
-
-// const handleSubmit = (e) => {
-//   e.preventDefault();
-//   const credentials = { password, email };
-//   dispatch(signinThunk(credentials));
-// };
-// const handleDateChange = (date) => {
-//   // Format the date to ISO 8601 format before setting the state
-//   const formattedDate = date.format("YYYY-MM-DD");
-//   setBirthdate(formattedDate);
-// };
+import {
+  StyledCalendarSvg,
+  StyledDatatimeWrapper,
+  StyledDatetime,
+} from "./Signup.styled";
+import { SpriteSVG } from "../../shared/icons/SpriteSVG";
+import {
+  SignButton,
+  StyledAuthLink,
+  StyledForm,
+  Wrapper,
+} from "../Signin/Signin.styled";
+import Subtitle from "../../shared/components/Title/Subtitle";
+import { isValidDate } from "../../shared/helpers/isValidDate";
 
 const SignUp = () => {
+  const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
+
+  const { username, password, email, birthdate } = useSelector(selectUser);
+
   const formik = useFormik({
     initialValues: {
-      name: "",
-      dateOfBirth: "",
+      username: "",
+      birthdate: "",
       email: "",
       password: "",
     },
     validationSchema: Yup.object({
-      name: Yup.string().required("Name is required"),
-      dateOfBirth: Yup.date().required("Date of Birth is required"),
+      username: Yup.string().required("Name is required"),
+      birthdate: Yup.date().required("Date of Birth is required"),
       email: Yup.string()
         .email("Invalid email address")
         .required("Email is required"),
@@ -44,47 +45,63 @@ const SignUp = () => {
     onSubmit: (values) => {
       // Handle form submission logic here
       console.log(values);
+      const credentials = { username, password, email, birthdate };
+      dispatch(signupThunk(credentials));
     },
   });
 
+  const handleDateChange = (name, value) => {
+    formik.handleChange({
+      target: {
+        name,
+        value: value.format("YYYY-MM-DD"),
+      },
+    });
+  };
+
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <div>
-        <label htmlFor="name">Name</label>
+    <StyledForm onSubmit={formik.handleSubmit}>
+      <Subtitle Subtitle=" Sign Up" />
+      <Wrapper>
         <input
           type="text"
-          id="name"
-          name="name"
+          id="username"
+          name="username"
+          placeholder="Name"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          value={formik.values.name}
+          value={formik.values.username}
         />
-        {formik.touched.name && formik.errors.name ? (
-          <div>{formik.errors.name}</div>
+        {formik.touched.username && formik.errors.username ? (
+          <div>{formik.errors.username}</div>
         ) : null}
-      </div>
 
-      <div>
-        <label htmlFor="dateOfBirth">Date of Birth</label>
-        <input
-          type="date"
-          id="dateOfBirth"
-          name="dateOfBirth"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.dateOfBirth}
-        />
-        {formik.touched.dateOfBirth && formik.errors.dateOfBirth ? (
-          <div>{formik.errors.dateOfBirth}</div>
+        <StyledDatatimeWrapper>
+          <StyledDatetime
+            type="date"
+            id="birthdate"
+            name="birthdate"
+            placeholder="dd/mm/yyyy"
+            timeFormat={false}
+            onChange={(value) => handleDateChange("birthdate", value)}
+            value={formik.values.birthdate}
+            isValidDate={isValidDate}
+            closeOnSelect={true}
+          />
+          <StyledCalendarSvg>
+            <SpriteSVG name={"calendar"} />
+          </StyledCalendarSvg>
+        </StyledDatatimeWrapper>
+
+        {formik.touched.birthdate && formik.errors.birthdate ? (
+          <div>{formik.errors.birthdate}</div>
         ) : null}
-      </div>
 
-      <div>
-        <label htmlFor="email">Email</label>
         <input
           type="email"
           id="email"
           name="email"
+          placeholder="Email"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
@@ -92,14 +109,12 @@ const SignUp = () => {
         {formik.touched.email && formik.errors.email ? (
           <div>{formik.errors.email}</div>
         ) : null}
-      </div>
 
-      <div>
-        <label htmlFor="password">Password</label>
         <input
           type="password"
           id="password"
           name="password"
+          placeholder="Password"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.password}
@@ -107,13 +122,15 @@ const SignUp = () => {
         {formik.touched.password && formik.errors.password ? (
           <div>{formik.errors.password}</div>
         ) : null}
-      </div>
+      </Wrapper>
 
-      <div>
-        <button type="submit">Sign Up</button>
-        <button type="button">Sign In</button>
-      </div>
-    </form>
+      <Wrapper>
+        <SignButton type="submit" disabled={isLoading}>
+          Sign Up
+        </SignButton>
+        <StyledAuthLink to="/signin">Sign In</StyledAuthLink>
+      </Wrapper>
+    </StyledForm>
   );
 };
 

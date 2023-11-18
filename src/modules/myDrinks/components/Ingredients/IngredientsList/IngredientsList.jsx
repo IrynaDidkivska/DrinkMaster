@@ -1,11 +1,11 @@
 
 import { IngredientsList } from './IngredientsList.styled';
-import IngredientsItem from '../IngredientsItem/Ingredients';
+import Ingredient from '../IngredientsItem/Ingredients';
 
 const IngredientList = () => {
   
-  const drinkItems = Array(6).fill(null).map((_, index) => (
-    <IngredientsItem key={index} />
+  const drinkItems = Array(5).fill(null).map((_, index) => (
+    <Ingredient key={index} />
   ));
 
   return <IngredientsList>{drinkItems}</IngredientsList>;

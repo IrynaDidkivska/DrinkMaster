@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const StyledFooter = styled.footer`
+	position: relative;
 	padding-top: 42px;
 	@media screen and (min-width: 768px) {
 		padding-top: 83px;
@@ -9,23 +10,24 @@ export const StyledFooter = styled.footer`
 	}
 `
 export const StyledFooterTabletBox = styled.div`
+	justify-content: space-between;
 	@media screen and (min-width: 768px) {
 		display: flex;
-		justify-content: space-between;
 	}
-	@media screen and (min-width: 768px) {
-		justify-content: space-between;
+	@media screen and (min-width: 1440px) {
 	}
 `
 export const StyledFooterFirstBox = styled.div`
 	display: flex;
+	justify-content: space-between;
 	@media screen and (min-width: 768px) {
 		flex-direction: column;
+		justify-content: flex-start;
 	}
 	@media screen and (min-width: 1440px) {
-		justify-content: space-between;
 		flex-direction: row;
 		width: 50%;
+		justify-content: space-between;
 	}
 `
 export const StyledFooterLogoNav = styled.div`
@@ -75,5 +77,26 @@ export const StyledFooterPrivacyLink = styled.a`
 	font-size: 12px;
 	@media screen and (min-width: 768px) {
 		font-size: 14px;
+	}
+`
+export const OverlayBottom = styled.div`
+	position: absolute;
+	pointer-events: none;
+	z-index: 1;
+	width: 774px;
+	height: 762px;
+	right: 100px;
+	top: 500px;
+	border-radius: 774px;
+	background: rgba(188, 230, 210, 0.4);
+	filter: blur(104.8543701171875px);
+
+	@media screen and (min-width: 768px) {
+		right: 160px;
+		top: 350px;
+	}
+	@media screen and (min-width: 1440px) {
+		right: 500px;
+		top: 280px;
 	}
 `

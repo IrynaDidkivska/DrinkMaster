@@ -1,11 +1,11 @@
-import { SpriteSVG } from '../../../../shared/icons/SpriteSVG';
 import { ComponentWrapperStyled } from '../../addDrink.styled';
+import Title from '../../../../shared/components/Title/Title';
+import { SpriteSVG } from '../../../../shared/icons/SpriteSVG';
 import AddDrinkSelect from './AddDrinkSelect/AddDrinkSelect';
 import {
   AddImgButtonStyled,
   AddImgLabelStyled,
   ImgContainerStyled,
-  TitleStyled,
 } from './AddForm.styled';
 import Input from './Input/Input';
 import RadioBtn from './RadioBtn/RadioBtn';
@@ -13,7 +13,7 @@ import RadioBtn from './RadioBtn/RadioBtn';
 const AddForm = () => {
   return (
     <>
-      <TitleStyled>Add drink</TitleStyled>
+      <Title Title="Add drink" />
       <ComponentWrapperStyled>
         <ImgContainerStyled htmlFor="addImg">
           <AddImgLabelStyled>

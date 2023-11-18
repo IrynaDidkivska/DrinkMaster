@@ -25,7 +25,11 @@ export const SubscribeInputStyled = styled.input`
 	margin-bottom: 18px;
 	padding-left: 24px;
 	background: ${({ theme }) => theme.background.main};
+	&::placeholder {
+		color: ${({ theme }) => theme.colors.mainText};
+	}
 `
+
 export const SubscribeButtonStyled = styled.button`
 	color: ${({ theme }) => theme.colors.mainText};
 	height: 54px;
@@ -33,4 +37,10 @@ export const SubscribeButtonStyled = styled.button`
 	border: 1px solid rgba(243, 243, 243, 0.2);
 	opacity: 0.8;
 	background: ${({ theme }) => theme.background.main};
+	&:hover,
+	&:focus {
+		color: ${({ theme }) => theme.button.dark};
+		background: ${({ theme }) => theme.button.ligth};
+		transition: ${({ theme }) => theme.transition};
+	}
 `

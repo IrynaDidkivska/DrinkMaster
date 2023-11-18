@@ -1,65 +1,36 @@
 import styled from "styled-components";
 
 const IngredientsContainer = styled.div`
-  width: 335px;
-  height: 448px;
+  width: 157px;
+  height: 183px;
 
   @media screen and (min-width: 768px) {
-    .drinkCardItem-img {
-      width: 342px;
-      height: 398px;
-    }
-  }
-
-  @media screen and (min-width: 1440px) {
-    .gallary-comics-img {
-      width: 400px;
-      height: 438px;
-    }
+    width: 220px;
+    height: 258px;
   }
 `;
 
 const IngredientsImage = styled.img`
-  width: 335px;
-  height: 360px;
+  width: 157px;
+  height: 157px;
   border-radius: 8px;
-
   background-color: rgba(22, 31, 55, 0.5);
-  /* object-fit: cover; */
 
   @media screen and (min-width: 768px) {
-    .drinkCardItem-img {
-      width: 342px;
-      height: 360px;
-    }
-  }
-
-  @media screen and (min-width: 1440px) {
-    .gallary-comics-img {
-      width: 400px;
-      height: 400px;
-    }
+    width: 220px;
+    height: 220px;
   }
 `;
 const IngredientsContainerDiscr = styled.div`
-  width: 335px;
+  width: 157px;
   height: 18px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   @media screen and (min-width: 768px) {
-    .drinkCardItem-img {
-      width: 342px;
-      height: 18px;
-    }
-  }
-
-  @media screen and (min-width: 1440px) {
-    .gallary-comics-img {
-      width: 335px;
-      height: 18px;
-    }
+    width: 220px;
+    height: 24px;
   }
 `;
 
@@ -67,7 +38,7 @@ const IngredientsName = styled.h3`
   font-family: "Manpore";
   font-style: normal;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 18px;
   color: #f3f3f3;
   justify-content: left;
@@ -77,14 +48,9 @@ const IngredientsName = styled.h3`
     font-size: 18px;
     line-height: 24px;
   }
-
-  @media screen and (min-width: 1440px) {
-    font-size: 18px;
-    line-height: 24px;
-  }
 `;
 
-const IngredientsSeeMore = styled.a`
+const IngredientsNumber = styled.p`
   font-family: "Manpore";
   font-style: normal;
   font-weight: 500;
@@ -94,12 +60,7 @@ const IngredientsSeeMore = styled.a`
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
-    line-height: 18px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    font-size: 16px;
-    line-height: 18px;
+    line-height: 20px;
   }
 `;
 
@@ -107,6 +68,6 @@ export {
   IngredientsContainer,
   IngredientsImage,
   IngredientsName,
-  IngredientsSeeMore,
+  IngredientsNumber,
   IngredientsContainerDiscr,
 };
