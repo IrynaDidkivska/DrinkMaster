@@ -5,6 +5,7 @@ import Datetime from "react-datetime";
 export const StyledDatatimeWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  position: relative;
 `;
 export const StyledDatetime = styled(Datetime)`
   font-family: "Manrope-500";
@@ -89,9 +90,10 @@ export const StyledCalendarSvg = styled.div`
   pointer-events: none;
   width: 20px;
   height: 20px;
+  top: 15px;
+  right: 20px;
 
   @media screen and (min-width: 768px) {
-    right: 15%;
     transform: translateX(-15%);
   }
 `;
