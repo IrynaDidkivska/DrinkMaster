@@ -45,9 +45,8 @@ export const IngredientSelect = styled(Select)`
     &single-value {
       margin: 0;
       color: ${({ theme }) => theme.colors.mainText};
-      font-family: Manrope;
+      font-family: 'Manrope-400';
       font-size: 14px;
-      font-style: normal;
       font-weight: 400;
       line-height: 14px; /* 100% */
     }
@@ -88,6 +87,7 @@ export const IngredientSelect = styled(Select)`
       }
     }
     &menu {
+      margin-top: 0;
       width: 200px;
       background: ${({ theme }) => theme.colors.secondaryText};
       border-radius: 12px;
@@ -121,7 +121,7 @@ export const IngredientSelect = styled(Select)`
       text-overflow: ellipsis;
       cursor: pointer;
       color: rgba(243, 243, 243, 0.4);
-      font-family: Manrope;
+      font-family: 'Manrope-400';
       font-size: 12px;
       font-weight: 400;
       line-height: 1.33; /*133.333% */

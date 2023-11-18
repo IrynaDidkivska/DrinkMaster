@@ -41,9 +41,8 @@ export const SelectStyled = styled(Select)`
     &single-value {
       margin: 0;
       color: ${({ theme }) => theme.colors.mainText};
-      font-family: Manrope;
+      font-family: 'Manrope-400';
       font-size: 14px;
-      font-style: normal;
       font-weight: 400;
       line-height: 14px; /* 100% */
     }
@@ -98,7 +97,6 @@ export const SelectStyled = styled(Select)`
       padding: 8px;
     }
     &menu-list {
-      text-overflow: ellipsis;
       gap: 6px;
       display: flex;
       flex-direction: column;
@@ -111,7 +109,6 @@ export const SelectStyled = styled(Select)`
       &::-webkit-scrollbar-thumb {
         background-color: #434d67;
         border-radius: 20px;
-        border: 8px solid transparent;
       }
     }
     &option {
@@ -119,7 +116,7 @@ export const SelectStyled = styled(Select)`
       text-overflow: ellipsis;
       cursor: pointer;
       color: rgba(243, 243, 243, 0.4);
-      font-family: Manrope;
+      font-family: 'Manrope-400';
       font-size: 12px;
       font-weight: 400;
       line-height: 1.33; /*133.333% */
@@ -148,7 +145,7 @@ export const SelectWrapper = styled.div`
   justify-content: space-between;
   border-bottom: 1px solid rgba(243, 243, 243, 0.5);
   color: ${({ theme }) => theme.colors.mainText};
-  font-family: 'Manrope-400', sans-serif;
+  font-family: 'Manrope-400';
   font-size: 14px;
   font-weight: 400;
   line-height: normal;

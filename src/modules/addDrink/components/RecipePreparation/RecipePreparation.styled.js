@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Subtitle from '../../../../shared/components/Title/Subtitle';
 
 export const TextareaStyled = styled.textarea`
   width: 100%;
@@ -22,6 +23,15 @@ export const TextareaStyled = styled.textarea`
     border-radius: 20px;
     border: 8px solid transparent;
   }
+
+  @media screen and (min-width: 768px) {
+  }
+
+  @media screen and (min-width: 1440px) {
+  }
+`;
+export const SubtitleStyled = styled(Subtitle)`
+  margin: 0 0 40px 0;
 
   @media screen and (min-width: 768px) {
   }

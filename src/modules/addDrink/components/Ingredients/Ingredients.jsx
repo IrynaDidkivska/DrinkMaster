@@ -1,3 +1,4 @@
+import Subtitle from '../../../../shared/components/Title/Subtitle';
 import { ComponentWrapperStyled } from '../../addDrink.styled';
 import IngredientItem from './IngredientItem/IngredientItem';
 import { IngredientsListStyled, ListHeaderStyled } from './Ingredients.styled';
@@ -7,7 +8,7 @@ const Ingredients = () => {
   return (
     <ComponentWrapperStyled>
       <ListHeaderStyled>
-        <h3>Ingredients</h3>
+        <Subtitle Subtitle="Ingredients" />
         <IngredientsCounter />
       </ListHeaderStyled>
 

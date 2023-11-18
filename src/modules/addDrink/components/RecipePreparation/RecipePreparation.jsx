@@ -1,16 +1,16 @@
 import { ComponentWrapperStyled } from '../../addDrink.styled';
-import { TextareaStyled } from './RecipePreparation.styled';
+import { SubtitleStyled, TextareaStyled } from './RecipePreparation.styled';
 
 const RecipePreparation = () => {
   return (
     <ComponentWrapperStyled>
-      <h2>Recipe Preparation</h2>
+      <SubtitleStyled Subtitle="Recipe Preparation" />
       <TextareaStyled
         name="preparation"
         id="Preparation"
         placeholder="Enter the recipe"
-        cols="30"
-        rows="10"
+        width="335"
+        height="184"
       ></TextareaStyled>
     </ComponentWrapperStyled>
   );
