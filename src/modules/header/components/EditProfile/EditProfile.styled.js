@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { StyledBtn } from '../../../../shared/components/Buttons/LigthBtn.styled';
 
 export const StyledPopupHeader = styled.div`
   display: flex;
@@ -20,29 +21,7 @@ export const StyledBtnEditProfile = styled.button`
   background-color: transparent;
 `;
 
-export const StyledBtnLogOut = styled.button`
+export const StyledBtnLogOut = styled(StyledBtn)`
   padding: 12px 43px;
-  font-family: 'Manrope-600', sans-serif;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
   line-height: 18px;
-  text-align: center;
-  color: ${({ theme }) => theme.button.dark};
-  background-color: ${({ theme }) => theme.button.ligth};
-  border: 1px solid transparent;
-  border-radius: 42px;
-  outline: transparent;
-
-  &:hover,
-  &:focus {
-    color: ${({ theme }) => theme.button.ligth};
-    background-color: ${({ theme }) => theme.button.dark};
-    border: 1px solid rgba(243, 243, 243, 0.2);
-    transition: ${({ theme }) => theme.transition};
-  }
-
-  /* &:active {
-    border: 1 solid rgba(64, 112, 205, 0.5);
-  } */
 `;

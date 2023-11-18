@@ -7,7 +7,12 @@ export const StyledUserPopup = styled.div`
   background-color: ${({ theme }) => theme.background.dropdown};
 
   position: absolute;
-  top: 73px;
+  top: 58px;
   right: 0;
   z-index: 10;
+
+  @media screen and (min-width: 768px) {
+    top: 73px;
+    right: 0;
+  }
 `;
