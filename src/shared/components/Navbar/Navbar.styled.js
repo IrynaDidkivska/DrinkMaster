@@ -21,15 +21,13 @@ export const StyledLink = styled(Link)`
 
   color: ${({ theme }) => theme.colors.mainText};
   background: transparent;
+  transition: ${({ theme }) => theme.transition};
 
   &:hover,
-  &:focus {
-    cursor: pointer;
-    transition: ${({ theme }) => theme.transition};
-  }
-
+  &:focus,
   &:active {
     color: ${({ theme }) => theme.colors.mainText};
     background: ${({ theme }) => theme.background.dropdown};
+    border: 1px solid transparent;
   }
 `;

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { StyledBtn } from '../../../../shared/components/Buttons/LigthBtn.styled';
 
 export const StyledModal = styled.div`
   width: 335px;
@@ -79,9 +80,14 @@ export const StyledModalInput = styled.input`
   background-color: transparent;
   border: 1px solid ${({ theme }) => theme.colors.ligth};
   border-radius: 200px;
+  opacity: 0.8;
 
   @media screen and (min-width: 768px) {
     margin-bottom: 25px;
+  }
+
+  &:focus {
+    outline: 1px solid #161f37;
   }
 `;
 
@@ -97,32 +103,11 @@ export const StyledBtnEdit = styled.button`
   right: 19px;
 `;
 
-export const StyledBtnSave = styled.button`
+export const StyledBtnSave = styled(StyledBtn)`
   width: 100%;
   padding: 18px 90px;
   font-family: 'Manrope-600', sans-serif;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
   line-height: 18px;
-  text-align: center;
-  color: ${({ theme }) => theme.button.dark};
-  background-color: ${({ theme }) => theme.button.ligth};
-  border: 1px solid transparent;
-  border-radius: 42px;
-  outline: transparent;
-
-  &:hover,
-  &:focus {
-    color: ${({ theme }) => theme.button.ligth};
-    background-color: ${({ theme }) => theme.button.dark};
-    border: 1px solid rgba(243, 243, 243, 0.2);
-    transition: ${({ theme }) => theme.transition};
-  }
-
-  /* &:active {
-    border: 1 solid rgba(64, 112, 205, 0.5);
-  } */
 `;
 
 export const Ellipse222 = styled.div`
