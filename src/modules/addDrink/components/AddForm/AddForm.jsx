@@ -1,17 +1,17 @@
-import { SpriteSVG } from '../../../../shared/icons/SpriteSVG';
-import AddDrinkSelect from './AddDrinkSelect/AddDrinkSelect';
+import Title from "../../../../shared/components/Title/Title";
+import { SpriteSVG } from "../../../../shared/icons/SpriteSVG";
+import AddDrinkSelect from "./AddDrinkSelect/AddDrinkSelect";
 import {
   AddImgButtonStyled,
   AddImgLabelStyled,
   ImgContainerStyled,
-  TitleStyled,
-} from './AddForm.styled';
-import Input from './Input/Input';
+} from "./AddForm.styled";
+import Input from "./Input/Input";
 
 const AddForm = () => {
   return (
     <>
-      <TitleStyled>Add drink</TitleStyled>
+      <Title Title="Add drink" />
       <div>
         <ImgContainerStyled for="addImg">
           <AddImgLabelStyled>

@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import SharedLayout from "./shared/components/SharedLayout/SharedLayout";
 import { routes } from "./shared/services/routes";
 import { Suspense, lazy } from "react";
+import { PrivateRoute, PublicRoute } from "./shared/HOC";
 import NotFound from "./pages/NotFound/NotFound";
 import {
   AddDrink,
@@ -10,19 +11,15 @@ import {
   Favorites,
   HomePage,
   MyDrinks,
-  Signin,
-  Signup,
 } from "./pages";
 import { ThemeProvider } from "styled-components";
 import { useSelector } from "react-redux";
 import { darkTheme, lightTheme } from "./shared/styles/theme";
 import { Global } from "./shared/styles/Global";
-
+import AuthForm from "./shared/components/AuthForm/AuthForm";
 const Welcome = lazy(() =>
   import("./modules/welcome/components/Welcome/Welcome")
 );
-// const PrivateRoute = lazy(() => import("./shared/HOC/PublicRoute"));
-// const PublickRoute = lazy(() => import("./shared/HOC/PublicRoute"));
 
 function App() {
   const { theme } = useSelector((state) => state.theme);
@@ -34,51 +31,64 @@ function App() {
         <Routes>
           <Route path={routes.ROOT} element={<SharedLayout />}>
             <Route
-              path={routes.HOME}
-              // element={<PrivateRoute component={<HomePage />} />}
+              index
+              // element={<PrivateRoute><HomePage /></PrivateRoute>}
               element={<HomePage />}
             />
             <Route
               path={routes.DRINKSPAGE}
-              // element={<PrivateRoute component={<Drinks />} />}
+              // element={<PrivateRoute><Drinks /></PrivateRoute>}
               element={<Drinks />}
             />
             <Route
               path={routes.ADD}
-              // element={<PrivateRoute component={<AddDrink />} />}
+              // element={
+              //   <PrivateRoute>
+              //     <AddDrink />
+              //   </PrivateRoute>
+              // }
               element={<AddDrink />}
             />
             <Route
               path={routes.FAVORITES}
-              // element={<PrivateRoute component={<Favorites />} />}
+              // element={<PrivateRoute ><Favorites /></PrivateRoute>}
               element={<Favorites />}
             />
             <Route
               path={routes.MYDRINKS}
-              // element={<PrivateRoute component={<MyDrinks />} />}
+              // element={<PrivateRoute><MyDrinks /></PrivateRoute>}
               element={<MyDrinks />}
             />
             <Route
               path={routes.DRINKSPAGEWITHID}
-              // element={<PrivateRoute component={<DrinkWithID />} />}
+              // element={<PrivateRoute><DrinkWithID /></PrivateRoute>}
               element={<DrinkWithID />}
             />
           </Route>
 
           <Route
             path={routes.SIGNUP}
-            // element={<PublicRoute component={<Signup />} />}
-            element={<Signup />}
+            element={
+              <PublicRoute>
+                <Welcome />
+              </PublicRoute>
+            }
           />
           <Route
             path={routes.SIGNIN}
-            // element={<PublicRoute component={<Signin />} />}
-            element={<Signin />}
+            element={
+              <PublicRoute>
+                <Welcome />
+              </PublicRoute>
+            }
           />
           <Route
             path={routes.WELCOME}
-            element={<Welcome />}
-            // element={<PublicRoute component={<Welcome />} />}
+            element={
+              <PublicRoute>
+                <Welcome />
+              </PublicRoute>
+            }
           />
           <Route path="*" element={<NotFound />} />
         </Routes>
