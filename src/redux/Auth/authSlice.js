@@ -28,9 +28,10 @@ export const authSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(signupThunk.fulfilled, (state, { payload }) => {
-        state.user.username = payload.username;
         state.user.email = payload.email;
-        // isAduld
+        state.user.username = payload.username;
+        state.user.isAdult = payload.isAdult;
+        state.user.avatar = payload.avatarUrl;
         // state.token = payload.token;
         state.isAuth = true;
         state.isLoading = false;
@@ -39,7 +40,8 @@ export const authSlice = createSlice({
       .addCase(signinThunk.fulfilled, (state, { payload }) => {
         state.user.email = payload.email;
         state.user.username = payload.username;
-        // isAduld, username, avatar
+        state.user.isAdult = payload.isAdult;
+        state.user.avatar = payload.avatarUrl;
         state.token = payload.token;
         state.isLoading = false;
         state.isAuth = true;
@@ -57,8 +59,9 @@ export const authSlice = createSlice({
 
       .addCase(currentUserThunk.fulfilled, (state, { payload }) => {
         state.user.email = payload.email;
-        state.user.avatar = payload.avatar;
-        // isAduld, username
+        state.user.username = payload.username;
+        state.user.isAdult = payload.isAdult;
+        state.user.avatar = payload.avatarUrl;
         state.isAuth = true;
         state.isRefresh = false;
       })

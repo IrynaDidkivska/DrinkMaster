@@ -1,4 +1,18 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+
+// export const TitleStyled = styled.h2`
+//   color: ${({ theme }) => theme.colors.mainText};
+//   font-family: Manrope;
+//   font-size: 32px;
+//   font-style: normal;
+//   font-weight: 600;
+//   line-height: 38px; /* 118.75% */
+//   @media screen and (min-width: 768px) {
+//   }
+
+//   @media screen and (min-width: 1440px) {
+//   }
+// `;
 
 export const ImgContainerStyled = styled.div`
   display: flex;
@@ -43,7 +57,7 @@ export const AddImgLabelStyled = styled.label`
   align-items: center;
   gap: 18px;
   color: ${({ theme }) => theme.colors.mainText};
-  font-family: "Manrope-500";
+  font-family: 'Manrope-500';
   font-size: 16px;
   font-weight: 500;
   line-height: 1.25; /* 125% */
