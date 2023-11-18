@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const StyledFooter = styled.footer`
 	position: relative;
 	padding-top: 42px;
+	border-top: 1px solid rgba(243, 243, 243, 0.2);
 	@media screen and (min-width: 768px) {
 		padding-top: 83px;
 	}
