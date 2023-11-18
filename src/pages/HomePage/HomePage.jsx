@@ -1,9 +1,18 @@
 import LigthBtn from "../../shared/components/Buttons/LigthBtn";
+import { StyledBtn } from "../../shared/components/Buttons/LigthBtn.styled";
 import { StyledTitle } from "../../shared/components/Title/Title.styled";
 import { HomeImage, HomeWrapper, MainText } from "./HomePage.styled";
 import Image from "./img/Found.png";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
+  const navigate = useNavigate();
+
+  const handleAddDrinkClick = () => {
+    // Redirect the user to the add drink page
+    navigate("/add");
+  };
+
   return (
     <HomeWrapper>
       <div>
@@ -15,7 +24,8 @@ const HomePage = () => {
           destination for exploring, crafting, and mastering the world's finest
           beverages.
         </MainText>
-        <LigthBtn>Add drink</LigthBtn>
+        <LigthBtn onClick={handleAddDrinkClick}>Add drink</LigthBtn>
+        <StyledBtn onClick={handleAddDrinkClick} name="123" />
       </div>
       <HomeImage src={Image} alt="Coctail's name" />
     </HomeWrapper>
