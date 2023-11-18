@@ -1,29 +1,34 @@
-import { useState } from 'react';
-import {
-  StyledPopup,
-  StyledPopupContent,
-  StyledPopupWrapper,
-} from './UserLogoPopup.styled';
+import PropTypes from 'prop-types';
+import { EditProfile } from '../EditProfile/EditProfile';
+import { StyledUserPopup } from './UserLogoPopup.styled';
+import { useEffect } from 'react';
 
-export const UserLogoPopup = () => {
-  const [isOpen, setIsOpen] = useState(false);
+export const UserLogoPopup = ({ isOpen, togglePopup }) => {
+  useEffect(() => {
+    const handleEscape = event => {
+      if (event.code === 'Escape') {
+        togglePopup();
+      }
+    };
 
-  const togglePopup = () => {
-    setIsOpen(!isOpen);
-  };
+    window.addEventListener('keydown', handleEscape);
+    return () => {
+      window.removeEventListener('keydown', handleEscape);
+    };
+  }, [togglePopup]);
 
   return (
-    <StyledPopupWrapper>
-      <button onClick={togglePopup}>Открыть Popup</button>
-
+    <>
       {isOpen && (
-        <StyledPopup>
-          <StyledPopupContent>
-            <p>Содержимое Popup</p>
-            <button onClick={togglePopup}>Закрыть Popup</button>
-          </StyledPopupContent>
-        </StyledPopup>
+        <StyledUserPopup>
+          <EditProfile togglePopup={togglePopup} />
+        </StyledUserPopup>
       )}
-    </StyledPopupWrapper>
+    </>
   );
+};
+
+UserLogoPopup.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  togglePopup: PropTypes.func.isRequired,
 };

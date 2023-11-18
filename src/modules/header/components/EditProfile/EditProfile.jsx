@@ -1,28 +1,42 @@
-import { selectUser } from '../../../../redux/Auth/selectors';
-import profileFoto from '../../images/profile-foto.png';
-
+import PropTypes from 'prop-types';
+import { SpriteSVG } from '../../../../shared/icons/SpriteSVG';
 import {
-  StyledBtnProfile,
-  StyledImgProfile,
-  StyledProfileName,
-} from './EditProfile';
-import { useSelector } from 'react-redux';
+  StyledBtnEditProfile,
+  StyledBtnLogOut,
+  StyledPopupHeader,
+  StyledPopupTitle,
+} from './EditProfile.styled';
+import { useState } from 'react';
+import { UserInfoModal } from '../UserInfoModal/UserInfoModal';
 
-export const EditProfile = () => {
-  const editString = name => {
-    if (name) {
-      const arrFromStr = name.split(' ');
-      const res = arrFromStr.map(el => el[0].toUpperCase() + el.slice(1));
-      return res.join(' ');
-    }
+export const EditProfile = ({ togglePopup }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleEditProfileClick = () => {
+    setIsModalOpen(true);
   };
 
-  const { email } = useSelector(selectUser);
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    togglePopup();
+  };
 
   return (
-    <StyledBtnProfile>
-      <StyledImgProfile src={profileFoto} alt="profile foto" />
-      <StyledProfileName>{editString(email)}Victoria</StyledProfileName>
-    </StyledBtnProfile>
+    <>
+      <StyledPopupHeader>
+        <StyledPopupTitle>Edit profile</StyledPopupTitle>
+        <StyledBtnEditProfile onClick={handleEditProfileClick}>
+          <SpriteSVG name="edit-01" />
+        </StyledBtnEditProfile>
+      </StyledPopupHeader>
+
+      <StyledBtnLogOut onClick={togglePopup}>Log out</StyledBtnLogOut>
+
+      {isModalOpen && <UserInfoModal onClose={handleCloseModal} />}
+    </>
   );
+};
+
+EditProfile.propTypes = {
+  togglePopup: PropTypes.func.isRequired,
 };
