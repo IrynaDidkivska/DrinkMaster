@@ -4,8 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { signupThunk } from "../../redux/Auth/operations";
-import { selectIsLoading, selectUser } from "../../redux/Auth/selectors";
-import React, { useState } from "react";
+import { selectIsLoading } from "../../redux/Auth/selectors";
 import moment from "moment";
 import "react-datetime/css/react-datetime.css";
 
@@ -22,9 +21,6 @@ import {
   Wrapper,
 } from "../Signin/Signin.styled";
 import Subtitle from "../../shared/components/Title/Subtitle";
-import { isValidDate } from "../../shared/helpers/isValidDate";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -118,7 +114,6 @@ const SignUp = () => {
             timeFormat={false}
             onChange={(value) => handleDateChange("birthdate", value)}
             value={formik.values.birthdate}
-            isValidDate={isValidDate}
             closeOnSelect={true}
             {...datetimeOptions}
           />
