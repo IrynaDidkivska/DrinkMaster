@@ -18,10 +18,6 @@ export const InputStyled = styled.input`
   padding-bottom: 14px;
   margin-bottom: 31px;
   outline: none;
-
-  &::placeholder {
-    opacity: 0.5;
-  }
   @media screen and (min-width: 768px) {
   }
 

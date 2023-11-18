@@ -11,8 +11,8 @@ import {
 } from './Header.styled';
 import { MobileMenu } from '../MobileMenu/MobileMenu.jsx';
 import { useEffect, useState } from 'react';
-import { EditProfile } from '../EditProfile/EditProfile.jsx';
 import { SpriteSVG } from '../../../../shared/icons/SpriteSVG.jsx';
+import { User } from '../User/User.jsx';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,7 +42,7 @@ const Header = () => {
           <StyledRightWrapper>
             {isDesktopScreen ? <ThemeSwitcher /> : null}
 
-            <EditProfile />
+            <User />
             {isTabletScreen ? (
               <StyledMobileMenuBtn onClick={toggleMenu}>
                 <SpriteSVG name="toggle" />

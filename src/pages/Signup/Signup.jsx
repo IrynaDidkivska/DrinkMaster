@@ -1,26 +1,26 @@
-import { toast } from "react-toastify";
-import { useFormik } from "formik";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import * as Yup from "yup";
-import { signupThunk } from "../../redux/Auth/operations";
-import { selectIsLoading } from "../../redux/Auth/selectors";
-import moment from "moment";
-import "react-datetime/css/react-datetime.css";
+import { toast } from 'react-toastify';
+import { useFormik } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import * as Yup from 'yup';
+import { signupThunk } from '../../redux/Auth/operations';
+import { selectIsLoading } from '../../redux/Auth/selectors';
+import moment from 'moment';
+import 'react-datetime/css/react-datetime.css';
 
 import {
   StyledCalendarSvg,
   StyledDatatimeWrapper,
   StyledDatetime,
-} from "./Signup.styled";
-import { SpriteSVG } from "../../shared/icons/SpriteSVG";
+} from './Signup.styled';
+import { SpriteSVG } from '../../shared/icons/SpriteSVG';
 import {
   SignButton,
   StyledAuthLink,
   StyledForm,
   Wrapper,
-} from "../Signin/Signin.styled";
-import Subtitle from "../../shared/components/Title/Subtitle";
+} from '../Signin/Signin.styled';
+import Subtitle from '../../shared/components/Title/Subtitle';
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -29,23 +29,23 @@ const SignUp = () => {
 
   const formik = useFormik({
     initialValues: {
-      username: "",
-      birthdate: "",
-      email: "",
-      password: "",
+      username: '',
+      birthdate: '',
+      email: '',
+      password: '',
     },
     validationSchema: Yup.object({
-      username: Yup.string().required("Name is required"),
+      username: Yup.string().required('Name is required'),
       // birthdate: Yup.date().required("Date of Birth is required"),
       email: Yup.string()
-        .email("Invalid email address")
-        .required("Email is required"),
+        .email('Invalid email address')
+        .required('Email is required'),
       password: Yup.string()
-        .min(6, "Password must be at least 6 characters")
-        .max(20, "Password must be less then 20 characters")
-        .required("Password is required"),
+        .min(6, 'Password must be at least 6 characters')
+        .max(20, 'Password must be less then 20 characters')
+        .required('Password is required'),
     }),
-    onSubmit: (values) => {
+    onSubmit: values => {
       // Handle form submission logic here
       console.log(values);
       const credentials = {
@@ -57,14 +57,14 @@ const SignUp = () => {
       dispatch(signupThunk(credentials))
         .unwrap()
         .then(() => {
-          navigate("/"); // Redirect to /home after successful login
+          navigate('/'); // Redirect to /home after successful login
         })
-        .catch((error) => {
+        .catch(error => {
           const { message } = error.response.credentials;
           if (message.length > 5) {
             toast.error(message);
           } else {
-            message.forEach((el) => toast.error(el));
+            message.forEach(el => toast.error(el));
           }
         });
     },
@@ -74,7 +74,7 @@ const SignUp = () => {
     formik.handleChange({
       target: {
         name,
-        value: value instanceof moment ? value.format("YYYY-MM-DD") : value,
+        value: value instanceof moment ? value.format('YYYY-MM-DD') : value,
       },
     });
   };
@@ -82,11 +82,13 @@ const SignUp = () => {
   const datetimeOptions = {
     timeFormat: false,
     closeOnSelect: true,
-    isValidDate: (current) => {
+    isValidDate: current => {
       return current.isBefore();
     },
+
     dayOfWeekFormat: "dd", // Use "dd" to start from Monday
     startOfWeek: 1, // 0 is Sunday, 1 is Monday
+
   };
 
   return (
@@ -112,14 +114,14 @@ const SignUp = () => {
             name="birthdate"
             inputProps={{ placeholder: "dd/mm/yyyy" }}
             timeFormat={false}
-            onChange={(value) => handleDateChange("birthdate", value)}
+            onChange={value => handleDateChange('birthdate', value)}
             value={formik.values.birthdate}
             closeOnSelect={true}
             {...datetimeOptions}
           />
 
           <StyledCalendarSvg>
-            <SpriteSVG name={"calendar"} />
+            <SpriteSVG name={'calendar'} />
           </StyledCalendarSvg>
         </StyledDatatimeWrapper>
         {formik.touched.birthdate && formik.errors.birthdate ? (

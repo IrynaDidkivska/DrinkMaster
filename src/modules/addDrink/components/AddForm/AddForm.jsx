@@ -1,19 +1,21 @@
-import Title from "../../../../shared/components/Title/Title";
-import { SpriteSVG } from "../../../../shared/icons/SpriteSVG";
-import AddDrinkSelect from "./AddDrinkSelect/AddDrinkSelect";
+import { ComponentWrapperStyled } from '../../addDrink.styled';
+import Title from '../../../../shared/components/Title/Title';
+import { SpriteSVG } from '../../../../shared/icons/SpriteSVG';
+import AddDrinkSelect from './AddDrinkSelect/AddDrinkSelect';
 import {
   AddImgButtonStyled,
   AddImgLabelStyled,
   ImgContainerStyled,
-} from "./AddForm.styled";
-import Input from "./Input/Input";
+} from './AddForm.styled';
+import Input from './Input/Input';
+import RadioBtn from './RadioBtn/RadioBtn';
 
 const AddForm = () => {
   return (
     <>
       <Title Title="Add drink" />
-      <div>
-        <ImgContainerStyled for="addImg">
+      <ComponentWrapperStyled>
+        <ImgContainerStyled htmlFor="addImg">
           <AddImgLabelStyled>
             <AddImgButtonStyled id="addImg" type="button">
               <SpriteSVG name="plus" />
@@ -25,9 +27,9 @@ const AddForm = () => {
         <Input placeholder="Enter about recipe" type="text" />
         <AddDrinkSelect label="Category" />
         <AddDrinkSelect label="Glass" />
-        <input type="radio" />
-        <input type="radio" />
-      </div>
+        <RadioBtn id="alcoholic" name="isAlcohol" label={'Alcoholic'} />
+        <RadioBtn id="un-alcoholic" name="isAlcohol" label={'Non-alcoholic'} />
+      </ComponentWrapperStyled>
     </>
   );
 };
