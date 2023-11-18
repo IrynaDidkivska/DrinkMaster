@@ -33,6 +33,7 @@ function App() {
             <Route
               index
               // element={<PrivateRoute><HomePage /></PrivateRoute>}
+              path={routes.HOME}
               element={<HomePage />}
             />
             <Route
