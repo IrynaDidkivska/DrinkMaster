@@ -38,7 +38,7 @@ const SignIn = () => {
       dispatch(signinThunk(credentials))
         .unwrap()
         .then(() => {
-          navigate("/home"); // Redirect to /home after successful login
+          navigate("/"); // Redirect to /home after successful login
         })
         .catch((error) => {
           const { message } = error.response.credentials;

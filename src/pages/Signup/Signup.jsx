@@ -2,7 +2,7 @@ import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 import { signupThunk } from "../../redux/Auth/operations";
-import { selectIsLoading, selectUser } from "../../redux/Auth/selectors";
+import { selectIsLoading } from "../../redux/Auth/selectors";
 
 import {
   StyledCalendarSvg,
@@ -18,12 +18,13 @@ import {
 } from "../Signin/Signin.styled";
 import Subtitle from "../../shared/components/Title/Subtitle";
 import { isValidDate } from "../../shared/helpers/isValidDate";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
-
-  const { username, password, email, birthdate } = useSelector(selectUser);
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -45,8 +46,25 @@ const SignUp = () => {
     onSubmit: (values) => {
       // Handle form submission logic here
       console.log(values);
-      const credentials = { username, password, email, birthdate };
-      dispatch(signupThunk(credentials));
+      const credentials = {
+        username: values.username,
+        birthdate: values.birthdate,
+        password: values.password,
+        email: values.email,
+      };
+      dispatch(signupThunk(credentials))
+        .unwrap()
+        .then(() => {
+          navigate("/"); // Redirect to /home after successful login
+        })
+        .catch((error) => {
+          const { message } = error.response.credentials;
+          if (message.length > 5) {
+            toast.error(message);
+          } else {
+            message.forEach((el) => toast.error(el));
+          }
+        });
     },
   });
 

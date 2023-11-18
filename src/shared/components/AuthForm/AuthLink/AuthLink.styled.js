@@ -4,6 +4,9 @@ import styled from "styled-components";
 import { LinkStyled } from "../../StyledLink/StyledLink.styled";
 
 export const SignUp = styled(LinkStyled)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-family: "Manrope-600", sans-serif;
   font-size: 14px;
   font-weight: 600;
@@ -29,6 +32,9 @@ export const SignUp = styled(LinkStyled)`
 `;
 
 export const SignIn = styled(LinkStyled)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-family: "Manrope-600", sans-serif;
   font-size: 14px;
   font-weight: 600;
