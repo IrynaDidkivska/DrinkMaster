@@ -237,6 +237,7 @@ export const SpriteSVG = ({ name }) => {
           />
         </svg>
       );
+
     case 'edit-01':
       return (
         <svg
@@ -326,10 +327,12 @@ export const SpriteSVG = ({ name }) => {
             d="M14.2188 9.625V18.8125"
             stroke="#F3F3F3"
             strokeWidth="2"
+
             strokeLinecap="round"
             strokeLinejoin="round"
           />
           <path
+
             d="M9.625 14.2188H18.8125"
             stroke="#F3F3F3"
             strokeWidth="2"
