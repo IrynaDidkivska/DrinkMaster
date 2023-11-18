@@ -1,6 +1,7 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import {
   deleteFromFavoriteThunk,
+  deleteFromOwnThunk,
   getAllDrinksThunk,
   getByIDThunk,
   getPopularThunk,
@@ -31,8 +32,11 @@ const drinksSlice = createSlice({
       .addCase(getPopularThunk.fulfilled, (state, { payload }) => {
         state.popular = payload;
       })
-      .addCase(getByIDThunk.fulfilled, (state, { payload }) => {
-        state.drinkDetails = payload;
+      // .addCase(getByIDThunk.fulfilled, (state, { payload }) => {
+      //   state.drinkDetails = payload;
+      // })
+      .addCase(deleteFromOwnThunk.fulfilled, (state, { payload }) => {
+        state.own = state.favorite.filter((item) => item.id !== payload);
       })
       .addCase(deleteFromFavoriteThunk.fulfilled, (state, { payload }) => {
         state.favorite = state.favorite.filter((item) => item.id !== payload);
@@ -41,6 +45,7 @@ const drinksSlice = createSlice({
       .addMatcher(
         isAnyOf(
           deleteFromFavoriteThunk.pending,
+          deleteFromOwnThunk.pending,
           getPopularThunk.pending,
           getAllDrinksThunk.pending,
           getByIDThunk.pending
@@ -53,6 +58,7 @@ const drinksSlice = createSlice({
       .addMatcher(
         isAnyOf(
           deleteFromFavoriteThunk.fulfilled,
+          deleteFromOwnThunk.fulfilled,
           getPopularThunk.fulfilled,
           getAllDrinksThunk.fulfilled,
           getByIDThunk.fulfilled
@@ -64,6 +70,7 @@ const drinksSlice = createSlice({
       .addMatcher(
         isAnyOf(
           deleteFromFavoriteThunk.rejected,
+          deleteFromOwnThunk.rejected,
           getPopularThunk.rejected,
           getAllDrinksThunk.rejected,
           getByIDThunk.rejected
