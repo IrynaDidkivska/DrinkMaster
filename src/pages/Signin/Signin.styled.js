@@ -62,4 +62,5 @@ export const StyledAuthLink = styled(LinkStyled)`
   background: transparent;
   text-decoration-line: underline;
   border: none;
+  margin-top: 14px;
 `;
