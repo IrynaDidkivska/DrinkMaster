@@ -21,6 +21,8 @@ export const StyledRightWrapper = styled.div`
   align-items: center;
   gap: 14px;
 
+  position: relative;
+
   @media screen and (min-width: 768px) {
     gap: 24px;
   }

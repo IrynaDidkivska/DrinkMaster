@@ -237,6 +237,107 @@ export const SpriteSVG = ({ name }) => {
           />
         </svg>
       );
+    case 'edit-01':
+      return (
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 14 14"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g clipPath="url(#clip0_198_1441)">
+            <path
+              d="M1.62669 11.0323C1.67264 10.6188 1.69561 10.4121 1.75816 10.2188C1.81367 10.0474 1.89208 9.88423 1.99129 9.73379C2.10311 9.56422 2.2502 9.41713 2.54438 9.12295L9.91733 1.75001C10.5617 1.10568 11.6063 1.10568 12.2507 1.75001V1.75001C12.895 2.39434 12.895 3.43901 12.2507 4.08334L4.87771 11.4563C4.58353 11.7505 4.43644 11.8976 4.26687 12.0094C4.11643 12.1086 3.95327 12.187 3.78183 12.2425C3.58859 12.3051 3.38184 12.328 2.96835 12.374L1.45898 12.5417L1.62669 11.0323Z"
+              stroke="#F3F3F3"
+              strokeWidth="1.3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </g>
+          <defs>
+            <clipPath id="clip0_198_1441">
+              <rect width="14" height="14" fill="white" />
+            </clipPath>
+          </defs>
+        </svg>
+      );
+    case 'close-modal':
+      return (
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M18 6L6 18"
+            stroke="#F3F3F3"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M6 6L18 18"
+            stroke="#F3F3F3"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      );
+    case 'edit-02':
+      return (
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g clipPath="url(#clip0_6215_7251)">
+            <path
+              d="M11.334 2C11.5091 1.8249 11.7169 1.68601 11.9457 1.59125C12.1745 1.49649 12.4197 1.44772 12.6673 1.44772C12.9149 1.44772 13.1601 1.49649 13.3889 1.59125C13.6177 1.68601 13.8256 1.8249 14.0006 2C14.1757 2.1751 14.3146 2.38297 14.4094 2.61174C14.5042 2.84051 14.5529 3.08571 14.5529 3.33333C14.5529 3.58096 14.5042 3.82615 14.4094 4.05493C14.3146 4.2837 14.1757 4.49157 14.0006 4.66667L5.00065 13.6667L1.33398 14.6667L2.33398 11L11.334 2Z"
+              stroke="#F3F3F3"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </g>
+          <defs>
+            <clipPath id="clip0_6215_7251">
+              <rect width="16" height="16" fill="white" />
+            </clipPath>
+          </defs>
+        </svg>
+      );
+    case 'add-modal-photo':
+      return (
+        <svg
+          width="28"
+          height="28"
+          viewBox="0 0 28 28"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle cx="14" cy="14" r="14" fill="#546081" />
+          <path
+            d="M14.2188 9.625V18.8125"
+            stroke="#F3F3F3"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M9.625 14.2188H18.8125"
+            stroke="#F3F3F3"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      );
 
     default:
       return 'SVG not found';

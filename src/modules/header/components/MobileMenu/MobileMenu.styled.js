@@ -8,17 +8,17 @@ export const StyledMobileMenu = styled.div`
   height: 100vh;
   background-color: #0a0a11;
   overflow: hidden;
-  transition: left 0.3s ease-in-out;
+  transition: top 0.3s ease-in-out;
 
   position: fixed;
-  top: 0;
-  left: -103%;
+  top: -103%;
+  left: 0;
   z-index: 10;
 
   ${({ open }) =>
     open &&
     css`
-      left: 0;
+      top: 0;
     `}
 `;
 
@@ -128,11 +128,11 @@ export const Ellipse224 = styled.div`
 
   position: absolute;
   top: 498px;
-  left: 331px;
+  right: -505px;
 
   @media screen and (min-width: 768px) {
     border-radius: 549px;
     top: 498px;
-    left: 651px;
+    right: -432px;
   }
 `;
