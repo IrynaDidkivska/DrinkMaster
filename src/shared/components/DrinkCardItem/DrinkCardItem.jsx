@@ -7,13 +7,13 @@ import {
   DrinkCardItemContainerDiscr,
 } from "./DrinkCardItem.styled";
 
-const DrinkCartItem = () => {
+const DrinkCartItem = ({ _id, drinkThumb, drink }) => {
   return (
-    <DrinkCardItemContainer>
-      <DrinkCardItemImage src={DrinkFavImage} alt="Coctail's name" />
+    <DrinkCardItemContainer key={_id}>
+      <DrinkCardItemImage src={drinkThumb} alt={drink} />
       <DrinkCardItemContainerDiscr>
-        <DrinkCardItemName>A Furlong Too Late</DrinkCardItemName>
-        <DrinkCardItemSeeMore href="E:\Julia\IT\BOOTCAMP\Node\DrinkMaster\src\pages\MyDrinks\MyDrinks.jsx">
+        <DrinkCardItemName>{drink}</DrinkCardItemName>
+        <DrinkCardItemSeeMore href="редірект ту Май Дрінк">
           See more
         </DrinkCardItemSeeMore>
       </DrinkCardItemContainerDiscr>
