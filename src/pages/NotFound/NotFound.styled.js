@@ -76,7 +76,7 @@ export const StyledWrapper = styled.div`
 `;
 
 export const Glass = styled.img`
-  width: 123px;
+  width: 223px;
   height: 156px;
   @media screen and (min-width: 768px) {
     width: 158px;

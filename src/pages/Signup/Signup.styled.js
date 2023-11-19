@@ -7,6 +7,7 @@ export const StyledDatatimeWrapper = styled.div`
   justify-content: space-between;
   position: relative;
 `;
+
 export const StyledDatetime = styled(Datetime)`
   font-family: "Manrope-500";
   font-size: 16px;
@@ -20,12 +21,45 @@ export const StyledDatetime = styled(Datetime)`
     border: none;
     border-radius: 8px;
     background-color: ${({ theme }) => theme.background.dropdown};
-    /* tr:nth-child(2) {
-      color: rgba(243, 243, 243, 0.5);
-    } */
 
-    .rdtPrev {
+    .rdtPrev,
+    .rdtNext {
       color: rgba(243, 243, 243, 0.5);
+      &:hover {
+        color: black; // измените цвет стрелок листания вправо и влево
+      }
+    }
+
+    .rdtSwitch:hover {
+      color: black; // измените цвет текста при наведении на месяц и год
+    }
+
+    table {
+      td {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+
+        &.rdtDay:hover {
+          color: black; // измените цвет текста при наведении на ячейку календаря
+        }
+
+        thead {
+          font-family: "Manrope-500";
+          font-size: 16px;
+          font-weight: 500;
+          letter-spacing: -0.32px;
+        }
+
+        &:hover {
+          cursor: pointer;
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          color: ${({ theme }) => theme.colors.secondaryText};
+          background-color: ${({ theme }) => theme.colors.iconColor};
+        }
+      }
     }
   }
 
@@ -55,29 +89,6 @@ export const StyledDatetime = styled(Datetime)`
     &::placeholder {
       text-align: left;
       color: rgba(243, 243, 243, 0.5);
-    }
-  }
-
-  table {
-    td {
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      thead {
-        font-family: "Manrope-500";
-        font-size: 16px;
-        font-weight: 500;
-        letter-spacing: -0.32px;
-      }
-
-      &:hover {
-        cursor: pointer;
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        color: ${({ theme }) => theme.colors.secondaryText};
-        background-color: ${({ theme }) => theme.colors.iconColor};
-      }
     }
   }
 `;
