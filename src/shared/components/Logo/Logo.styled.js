@@ -4,7 +4,8 @@ export const StyledLogo = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-  cursor: pointer;
+  cursor: url(https://sweezy-cursors.com/wp-content/uploads/cursor/summer-cocktail-animated/summer-cocktail-animated-cursor-2-32x32.png),
+    default !important;
 
   svg {
     width: 22px;
