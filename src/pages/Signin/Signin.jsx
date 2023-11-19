@@ -38,6 +38,7 @@ const SignIn = () => {
       dispatch(signinThunk(credentials))
         .unwrap()
         .then(() => {
+          toast.success(`Welcome!`);
           navigate("/"); // Redirect to /home after successful login
         })
         .catch((error) => {

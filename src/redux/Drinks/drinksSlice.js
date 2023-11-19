@@ -27,7 +27,7 @@ const drinksSlice = createSlice({
     builder
       .addCase(getAllDrinksThunk.fulfilled, (state, { payload }) => {
         state.drinks = payload;
-        state.page = 1;
+        // state.page = 1;
       })
       .addCase(getPopularThunk.fulfilled, (state, { payload }) => {
         state.popular = payload;
