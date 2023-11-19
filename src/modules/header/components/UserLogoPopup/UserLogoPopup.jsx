@@ -1,19 +1,19 @@
-import PropTypes from 'prop-types';
-import { EditProfile } from '../EditProfile/EditProfile';
-import { StyledUserPopup } from './UserLogoPopup.styled';
-import { useEffect } from 'react';
+import PropTypes from "prop-types";
+import { EditProfile } from "../EditProfile/EditProfile";
+import { StyledUserPopup } from "./UserLogoPopup.styled";
+import { useEffect } from "react";
 
 export const UserLogoPopup = ({ isOpen, togglePopup }) => {
   useEffect(() => {
-    const handleEscape = event => {
-      if (event.code === 'Escape') {
+    const handleEscape = (event) => {
+      if (event.code === "Escape") {
         togglePopup();
       }
     };
 
-    window.addEventListener('keydown', handleEscape);
+    window.addEventListener("keydown", handleEscape);
     return () => {
-      window.removeEventListener('keydown', handleEscape);
+      window.removeEventListener("keydown", handleEscape);
     };
   }, [togglePopup]);
 
