@@ -2,7 +2,9 @@ import styled from "styled-components";
 
 export const StyledFooter = styled.footer`
   position: relative;
+  overflow: hidden;
   padding-top: 42px;
+  padding-bottom: 18px;
   background-color: ${({ theme }) => theme.footer.bacground};
   border-top: ${({ theme }) => theme.footer.borderTop};
   @media screen and (min-width: 768px) {
@@ -15,6 +17,7 @@ export const StyledFooterTabletBox = styled.div`
     display: flex;
   }
 `;
+
 export const StyledFooterFirstBox = styled.div`
   display: flex;
   justify-content: space-between;
@@ -31,13 +34,28 @@ export const StyledFooterFirstBox = styled.div`
 export const StyledFooterLogoNav = styled.div`
   display: flex;
   flex-direction: column;
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
+    margin-bottom: 40px;
+  }
 `;
 export const StyledFooterLogo = styled.div`
   display: flex;
   gap: 14px;
   margin-bottom: 22px;
+  span {
+    color: ${({ theme }) => theme.footer.color};
+    font-family: "Manrope-600", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.12; /* 112.5% */
+  }
   @media screen and (min-width: 768px) {
     margin-bottom: 30px;
+    span {
+      font-size: 18px;
+      line-height: 1.22; /* 122.222% */
+    }
   }
 `;
 export const StyledFooterIconLogo = styled.div`
@@ -46,16 +64,16 @@ export const StyledFooterIconLogo = styled.div`
   height: 22px;
 `;
 export const StyledFooterPrivacy = styled.div`
-  /* color: ${({ theme }) => theme.colors.mainPage}; */
   @media screen and (min-width: 768px) {
     display: flex;
     justify-content: space-between;
   }
 `;
-export const StyledFooterSpan = styled.div`
-  /* color: rgba(243, 243, 243, 0.5); */
+export const StyledFooterSpan = styled.p`
   font-size: 12px;
   margin-bottom: 8px;
+  color: rgba(243, 243, 243, 0.5);
+
   @media screen and (min-width: 768px) {
     font-size: 14px;
   }
@@ -63,18 +81,19 @@ export const StyledFooterSpan = styled.div`
 export const StyledFooterPrivacyBlock = styled.div`
   display: flex;
   gap: 14px;
+  a {
+    color: ${({ theme }) => theme.footer.link};
+    font-size: 12px;
+  }
   @media screen and (min-width: 768px) {
     gap: 18px;
     margin-right: 102px;
+    a {
+      font-size: 14px;
+    }
   }
 `;
-export const StyledFooterPrivacyLink = styled.a`
-  color: ${({ theme }) => theme.footer.link};
-  font-size: 12px;
-  @media screen and (min-width: 768px) {
-    font-size: 14px;
-  }
-`;
+
 export const OverlayBottom = styled.div`
   position: absolute;
   pointer-events: none;

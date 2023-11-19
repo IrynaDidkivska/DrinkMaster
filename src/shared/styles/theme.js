@@ -19,6 +19,7 @@ export const darkTheme = {
     cancel: "#434D67",
   },
   footer: {
+    mainText: "#161F37",
     color: "#F3F3F3",
     borderTop: "1px solid rgba(243, 243, 243, 0.2)",
     link: "rgba(243, 243, 243, 0.5)",
@@ -48,6 +49,7 @@ export const lightTheme = {
     cancel: "#434D67",
   },
   footer: {
+    mainText: "#161F37",
     color: "#F3F3F3",
     borderTop: "1px solid rgba(243, 243, 243, 0.2)",
     link: "rgba(243, 243, 243, 0.5)",
