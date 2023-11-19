@@ -6,7 +6,7 @@ export const StyledRecipeDrinks = styled.div`
 		display: flex;
 		align-items: center;
 		flex-direction: row-reverse;
-		justify-content: space-between;
+		gap: 60px;
 	}
 `
 export const StyledRecipeBoxText = styled.div``
@@ -23,5 +23,6 @@ export const StyledRecipeImages = styled.img`
 	@media screen and (min-width: 1440px) {
 		width: 631px;
 		height: 480px;
+		margin-bottom: 0;
 	}
 `
