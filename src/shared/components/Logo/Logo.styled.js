@@ -4,6 +4,7 @@ export const StyledLogo = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+  cursor: pointer;
 
   svg {
     width: 22px;
