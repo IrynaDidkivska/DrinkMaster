@@ -1,48 +1,76 @@
 import { useEffect } from "react";
 import LigthBtn from "../../shared/components/Buttons/LigthBtn";
-import { StyledBtn } from "../../shared/components/Buttons/LigthBtn.styled";
+import { useDispatch, useSelector } from "react-redux";
 import { StyledTitle } from "../../shared/components/Title/Title.styled";
 import { HomeImage, HomeWrapper, MainText } from "./HomePage.styled";
 import Image from "./img/Found.png";
 import { useNavigate } from "react-router-dom";
-import {
-  currentUserThunk,
-  signupAndSignInThunk,
-import { useDispatch } from "react-redux";
-import {
-  deleteFromOwnThunk,
-  getAllDrinksThunk,
-  getPopularThunk,
-} from "../../redux/Drinks/operations";
+
+import { useEffect, useState } from "react";
+import { selectMainCatalog } from "../../redux/Drinks/selectors";
+import { getAllDrinksThunk } from "../../redux/Drinks/operations";
+import { getCategoriesThunk } from "../../redux/Filters/operations";
+import { DrinkList } from "../../shared/components/DrinkList/DrinkList";
+import { DrinkItemsList } from "../../shared/components/DrinkList/DrinkList.styled";
 
 const HomePage = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const [currentPage, setCurrentPage] = useState(1);
 
   const handleAddDrinkClick = () => {
-    // Redirect the user to the add drink page
     navigate("/add");
   };
 
+  const dispatch = useDispatch();
+  const allCatalog = useSelector(selectMainCatalog);
+
   useEffect(() => {
-    dispatch(signupAndSignInThunk());
-  }, [dispatch]);
+    dispatch(getAllDrinksThunk({ page: currentPage }));
+    dispatch(getCategoriesThunk());
+  }, [dispatch, currentPage]);
+
+  const handleNextPageClick = () => {
+    setCurrentPage((prevPage) => prevPage + 1);
+  };
+
+  const handleOtherDrinks = () => {
+    navigate("/drinks");
+  };
+
 
   return (
-    <HomeWrapper>
-      <div>
-        <StyledTitle>
-          {"Craft Your Perfect Drink with Drink Master"}
-        </StyledTitle>
-        <MainText>
-          Unlock your inner mixologist with Drink Master, your one-stop
-          destination for exploring, crafting, and mastering the world's finest
-          beverages.
-        </MainText>
-        <LigthBtn onClick={handleAddDrinkClick}>Add drink</LigthBtn>
-      </div>
-      <HomeImage src={Image} alt="Coctail's name" />
-    </HomeWrapper>
+    <>
+      <HomeWrapper>
+        <div>
+          <StyledTitle>
+            {"Craft Your Perfect Drink with Drink Master"}
+          </StyledTitle>
+          <MainText>
+            Unlock your inner mixologist with Drink Master, your one-stop
+            destination for exploring, crafting, and mastering the world's
+            finest beverages.
+          </MainText>
+          <LigthBtn onClick={handleAddDrinkClick}>Add drink</LigthBtn>
+        </div>
+        <HomeImage src={Image} alt="Coctail's name" />
+      </HomeWrapper>
+      <>
+        {allCatalog.map((drink) => {
+          console.log(drink); // Move the console.log outside of the JSX expression
+          return (
+            <div key={drink._id}>
+              <img src={drink.drinkThumb} alt={drink.drink} />
+              <p>
+                {drink.drink} (Category: {drink.category})
+              </p>
+              <button>See more</button>
+            </div>
+          );
+        })}
+        <LigthBtn onClick={handleNextPageClick}>Next Page</LigthBtn>
+        <LigthBtn onClick={handleOtherDrinks}>Other drinks</LigthBtn>
+      </>
+    </>
   );
 };
 

@@ -26,8 +26,10 @@ const drinksSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getAllDrinksThunk.fulfilled, (state, { payload }) => {
-        state.drinks = payload;
-        // state.page = 1;
+        // state.drinks = [...state.drinks, ...payload];
+        state.drinks.push(...payload);
+        state.page = 1;
+
       })
       .addCase(getPopularThunk.fulfilled, (state, { payload }) => {
         state.popular = payload;
