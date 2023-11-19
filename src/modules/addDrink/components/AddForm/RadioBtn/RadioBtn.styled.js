@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const RadioWrapper = styled.div`
   position: relative;
@@ -19,7 +19,7 @@ export const InputStyled = styled.input`
   opacity: 0;
   + label {
     &:before {
-      content: '';
+      content: "";
       background: transparent;
       border-radius: 100%;
       border: 1.5px solid ${({ theme }) => theme.colors.mainText};
@@ -46,7 +46,7 @@ export const InputStyled = styled.input`
   &:focus {
     + label {
       &:before {
-        outline: none;
+        outline: transparent;
         border-color: ${({ theme }) => theme.colors.mainText};
       }
     }
@@ -81,7 +81,7 @@ export const LabelStyled = styled.label`
   text-align: center;
   transition: all 250ms ease;
   color: ${({ theme }) => theme.colors.mainText};
-  font-family: 'Manrope-400';
+  font-family: "Manrope-400";
   font-size: 14px;
   font-weight: 400;
   letter-spacing: -0.28px;

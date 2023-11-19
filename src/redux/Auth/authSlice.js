@@ -5,6 +5,7 @@ import {
   logoutThunk,
   currentUserThunk,
   updateUserThunk,
+  signupAndSignInThunk,
 } from "./operations";
 
 const initialState = {
@@ -36,6 +37,15 @@ export const authSlice = createSlice({
         state.isAuth = true;
         state.isLoading = false;
       })
+      .addCase(signupAndSignInThunk.fulfilled, (state, { payload }) => {
+        state.user.email = payload.email;
+        state.user.username = payload.username;
+        state.user.isAdult = payload.isAdult;
+        state.user.avatar = payload.avatarUrl;
+        state.token = payload.token;
+        state.isAuth = true;
+        state.isLoading = false;
+      })
 
       .addCase(signinThunk.fulfilled, (state, { payload }) => {
         state.user.email = payload.email;
@@ -49,7 +59,7 @@ export const authSlice = createSlice({
 
       .addCase(logoutThunk.fulfilled, (state) => {
         state.user = {
-          name: "",
+          username: "",
           email: "",
         };
         state.token = "";
