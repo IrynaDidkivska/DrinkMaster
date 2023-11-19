@@ -11,6 +11,7 @@ import { getAllDrinksThunk } from "../../redux/Drinks/operations";
 import { getCategoriesThunk } from "../../redux/Filters/operations";
 import { DrinkList } from "../../shared/components/DrinkList/DrinkList";
 import { DrinkItemsList } from "../../shared/components/DrinkList/DrinkList.styled";
+import DrinkCartItem from "../../shared/components/DrinkCardItem/DrinkCardItem";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -53,18 +54,10 @@ const HomePage = () => {
         <HomeImage src={Image} alt="Coctail's name" />
       </HomeWrapper>
       <>
-        {allCatalog.map((drink) => {
-          console.log(drink); // Move the console.log outside of the JSX expression
-          return (
-            <div key={drink._id}>
-              <img src={drink.drinkThumb} alt={drink.drink} />
-              <p>
-                {drink.drink} (Category: {drink.category})
-              </p>
-              <button>See more</button>
-            </div>
-          );
-        })}
+        {allCatalog.map((drink) => (
+          <DrinkCartItem key={drink._id} {...drink} />
+        ))}
+
         <LigthBtn onClick={handleNextPageClick}>Next Page</LigthBtn>
         <LigthBtn onClick={handleOtherDrinks}>Other drinks</LigthBtn>
       </>
