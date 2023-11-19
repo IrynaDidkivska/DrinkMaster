@@ -29,6 +29,7 @@ const drinksSlice = createSlice({
         // state.drinks = [...state.drinks, ...payload];
         state.drinks.push(...payload);
         state.page = 1;
+
       })
       .addCase(getPopularThunk.fulfilled, (state, { payload }) => {
         state.popular = payload;

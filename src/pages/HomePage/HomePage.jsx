@@ -1,9 +1,11 @@
+import { useEffect } from "react";
 import LigthBtn from "../../shared/components/Buttons/LigthBtn";
 import { useDispatch, useSelector } from "react-redux";
 import { StyledTitle } from "../../shared/components/Title/Title.styled";
 import { HomeImage, HomeWrapper, MainText } from "./HomePage.styled";
 import Image from "./img/Found.png";
 import { useNavigate } from "react-router-dom";
+
 import { useEffect, useState } from "react";
 import { selectMainCatalog } from "../../redux/Drinks/selectors";
 import { getAllDrinksThunk } from "../../redux/Drinks/operations";
@@ -34,6 +36,7 @@ const HomePage = () => {
   const handleOtherDrinks = () => {
     navigate("/drinks");
   };
+
 
   return (
     <>

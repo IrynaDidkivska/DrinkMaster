@@ -30,6 +30,24 @@ export const signinThunk = createAsyncThunk(
   }
 );
 
+export const signupAndSignInThunk = createAsyncThunk(
+  "auth/signup&signin",
+  async (credentials, { rejectWithValue, dispatch }) => {
+    try {
+      const signupResponse = await API.post(
+        "api/auth/users/signup",
+        credentials
+      );
+      console.log("Reg/signup&signin", signupResponse);
+      const signinResponse = await dispatch(signinThunk(credentials));
+      console.log("auth/signup&signin", signinResponse);
+      return signinResponse;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+signupAndSignInThunk();
 export const logoutThunk = createAsyncThunk(
   "auth/logout",
   async (_, thunkAPI) => {

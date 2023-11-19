@@ -76,7 +76,7 @@ export const deleteFromOwnThunk = createAsyncThunk(
   "drinks/deleteFromOwn",
   async (id, thunkAPI) => {
     try {
-      const { data } = await API.delete(`api/drinks/popular/own/remove${id}`);
+      const { data } = await API.delete(`api/drinks/favorite/remove/${id}`);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

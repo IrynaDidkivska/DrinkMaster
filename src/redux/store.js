@@ -14,6 +14,7 @@ import { userReducer } from "./Auth/authSlice";
 import { filterReducer } from "./Filters/filtersSlice";
 import { drinkReducer } from "./Drinks/drinksSlice";
 import { themeReducer } from "./theme/slice";
+import { globalReducer } from "./Global/globalSlice";
 
 const persistConfigUser = {
   key: "root",
@@ -24,6 +25,7 @@ const persistConfigUser = {
 
 export const store = configureStore({
   reducer: {
+    global: globalReducer,
     auth: persistReducer(persistConfigUser, userReducer),
     filter: filterReducer,
     drinks: drinkReducer,
