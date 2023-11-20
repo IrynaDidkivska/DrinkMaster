@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
-import Logo from '../../../../shared/components/Logo/Logo';
-import { StyledLink } from '../../../../shared/components/Navbar/Navbar.styled.js';
-import { Container } from '../../../../shared/styles/Container.js';
-import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher.jsx';
+import PropTypes from "prop-types";
+import Logo from "../../../../shared/components/Logo/Logo";
+import { StyledLink } from "../../../../shared/components/Navbar/Navbar.styled.js";
+import { Container } from "../../../../shared/styles/Container.js";
+import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher.jsx";
 
 import {
   Ellipse222,
@@ -15,8 +15,8 @@ import {
   StyledMobileMenu,
   StyledMobileNavBar,
   StyledMobileWrapper,
-} from './MobileMenu.styled';
-import { SpriteSVG } from '../../../../shared/icons/SpriteSVG.jsx';
+} from "./MobileMenu.styled";
+import { SpriteSVG } from "../../../../shared/icons/SpriteSVG.jsx";
 
 export const MobileMenu = ({ isOpen, toggleMenu }) => {
   return (
@@ -37,11 +37,41 @@ export const MobileMenu = ({ isOpen, toggleMenu }) => {
       <StyledMobileBody>
         <Container>
           <StyledMobileNavBar>
-            <StyledLink>Home</StyledLink>
-            <StyledLink>Drinks</StyledLink>
-            <StyledLink>Add drink</StyledLink>
-            <StyledLink>My drinks</StyledLink>
-            <StyledLink>Favorites</StyledLink>
+            <StyledLink
+              to={{
+                pathname: "/home",
+              }}
+            >
+              Home
+            </StyledLink>
+            <StyledLink
+              to={{
+                pathname: "/drinks",
+              }}
+            >
+              Drinks
+            </StyledLink>
+            <StyledLink
+              to={{
+                pathname: "/add",
+              }}
+            >
+              Add drink
+            </StyledLink>
+            <StyledLink
+              to={{
+                pathname: "/my",
+              }}
+            >
+              My drinks
+            </StyledLink>
+            <StyledLink
+              to={{
+                pathname: "/favorites",
+              }}
+            >
+              Favorites
+            </StyledLink>
           </StyledMobileNavBar>
         </Container>
       </StyledMobileBody>
