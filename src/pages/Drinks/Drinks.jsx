@@ -15,7 +15,7 @@ const Drinks = () => {
       <MyJustDrinks />
 			<Ingredient />
       <RecipeDrinks />
-      <PopularDrinks/>
+     
     </div>
   );
 };
