@@ -5,17 +5,13 @@ const DrinkCardItemContainer = styled.div`
   height: 448px;
 
   @media screen and (min-width: 768px) {
-    .drinkCardItem-img {
-      width: 342px;
-      height: 398px;
-    }
+    width: 342px;
+    height: 398px;
   }
 
   @media screen and (min-width: 1440px) {
-    .gallary-comics-img {
-      width: 400px;
-      height: 438px;
-    }
+    width: 400px;
+    height: 438px;
   }
 `;
 
@@ -26,17 +22,13 @@ const DrinkCardItemImage = styled.img`
   /* object-fit: cover; */
 
   @media screen and (min-width: 768px) {
-    .drinkCardItem-img {
-      width: 342px;
-      height: 360px;
-    }
+    width: 342px;
+    height: 360px;
   }
 
   @media screen and (min-width: 1440px) {
-    .gallary-comics-img {
-      width: 400px;
-      height: 400px;
-    }
+    width: 400px;
+    height: 400px;
   }
 `;
 const DrinkCardItemContainerDiscr = styled.div`
@@ -48,22 +40,18 @@ const DrinkCardItemContainerDiscr = styled.div`
   margin-top: 14px;
 
   @media screen and (min-width: 768px) {
-    .drinkCardItem-img {
-      width: 342px;
-      height: 18px;
-    }
+    width: 342px;
+    height: 18px;
   }
 
   @media screen and (min-width: 1440px) {
-    .gallary-comics-img {
-      width: 335px;
-      height: 18px;
-    }
+    width: 335px;
+    height: 18px;
   }
 `;
 
 const DrinkCardItemName = styled.h3`
-  font-family: "Manpore";
+  font-family: "Manrope-600", sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -84,7 +72,7 @@ const DrinkCardItemName = styled.h3`
 `;
 
 const DrinkCardItemSeeMore = styled.a`
-  font-family: "Manpore";
+  font-family: "Manrope-600", sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;

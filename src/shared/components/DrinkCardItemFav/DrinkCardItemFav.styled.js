@@ -38,7 +38,7 @@ const DrinkCardItemFaxImg = styled.img`
 `;
 
 const DrinkCardItemFaxName = styled.h3`
-  font-family: "Manpore";
+  font-family: "Manrope-600", sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -59,7 +59,7 @@ const DrinkCardItemFaxName = styled.h3`
 `;
 
 const DrinkCardItemFaxStatus = styled.p`
-  font-family: "Manpore";
+  font-family: "Manrope-600", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -80,7 +80,7 @@ const DrinkCardItemFaxStatus = styled.p`
 `;
 
 const DrinkCardItemFaxDescription = styled.p`
-  font-family: "Manpore";
+  font-family: "Manrope-600", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -126,7 +126,7 @@ const DrinkCardItemContainerDiscr = styled.div`
 `;
 
 const DrinkCardItemFaxBtn = styled.button`
-  font-family: "Manpore";
+  font-family: "Manrope-600", sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 14px;

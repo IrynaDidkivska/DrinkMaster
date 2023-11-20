@@ -7,7 +7,7 @@ import {
   DrinkCardItemContainerDiscr,
 } from "./DrinkCardItem.styled";
 
-const DrinkCartItem = () => {
+const DrinkCardItem = () => {
   return (
     <DrinkCardItemContainer>
       <DrinkCardItemImage src={DrinkFavImage} alt="Coctail's name" />
@@ -21,4 +21,4 @@ const DrinkCartItem = () => {
   );
 };
 
-export default DrinkCartItem;
+export default DrinkCardItem;
