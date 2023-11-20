@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { selectUser } from "../../../../redux/Auth/selectors";
 import profileFoto from "../../images/profile-foto.png";
 import {
@@ -6,14 +5,18 @@ import {
   StyledImgProfile,
   StyledProfileName,
 } from "./User.styled";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { UserLogoPopup } from "../UserLogoPopup/UserLogoPopup";
+import { setModalUserOpen } from "../../../../redux/Global/globalSlice";
+import { isModalUserOpen } from "../../../../redux/Global/selectors";
 
 export const User = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch();
+  const { username } = useSelector(selectUser);
+  const isOpen = useSelector(isModalUserOpen);
 
   const togglePopup = () => {
-    setIsOpen(!isOpen);
+    dispatch(setModalUserOpen(!isOpen));
   };
 
   const editString = (name) => {
@@ -23,8 +26,6 @@ export const User = () => {
       return res.join(" ");
     }
   };
-
-  const { username } = useSelector(selectUser);
 
   return (
     <>

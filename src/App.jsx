@@ -42,9 +42,10 @@ function App() {
             <Route
               index
               // element={<PrivateRoute><HomePage /></PrivateRoute>}
-              path={routes.HOME}
+              // path={routes.HOME}
               element={<HomePage />}
             />
+            <Route path={routes.HOME} element={<HomePage />} />
             <Route
               path={routes.DRINKSPAGE}
               // element={<PrivateRoute><Drinks /></PrivateRoute>}

@@ -1,5 +1,5 @@
-import Select from 'react-select';
-import styled from 'styled-components';
+import Select from "react-select";
+import styled from "styled-components";
 
 export const SelectStyled = styled(Select)`
   .addDrink__ {
@@ -11,7 +11,7 @@ export const SelectStyled = styled(Select)`
       gap: 8px;
       border: none !important;
       box-shadow: none !important;
-      outline: none !important;
+      outline: transparent !important;
       &:hover,
       &:focus {
         border-bottom: 1px solid rgba(243, 243, 243, 0.5);
@@ -41,7 +41,7 @@ export const SelectStyled = styled(Select)`
     &single-value {
       margin: 0;
       color: ${({ theme }) => theme.colors.mainText};
-      font-family: 'Manrope-400';
+      font-family: "Manrope-400";
       font-size: 14px;
       font-weight: 400;
       line-height: 14px; /* 100% */
@@ -65,7 +65,7 @@ export const SelectStyled = styled(Select)`
       padding: 0;
       margin: 0;
       color: #f3f3f3;
-      font-family: 'Manrope-400';
+      font-family: "Manrope-400";
       font-size: 14px;
       font-weight: 400;
       line-height: 1; /* 100% */
@@ -89,7 +89,7 @@ export const SelectStyled = styled(Select)`
       border-radius: 12px;
       color: rgba(243, 243, 243, 0.4);
       white-space: nowrap;
-      font-family: 'Manrope-400';
+      font-family: "Manrope-400";
       font-size: 12px;
       font-weight: 400;
       line-height: 1.33; /* 133.333% */
@@ -116,7 +116,7 @@ export const SelectStyled = styled(Select)`
       text-overflow: ellipsis;
       cursor: pointer;
       color: rgba(243, 243, 243, 0.4);
-      font-family: 'Manrope-400';
+      font-family: "Manrope-400";
       font-size: 12px;
       font-weight: 400;
       line-height: 1.33; /*133.333% */
@@ -145,7 +145,7 @@ export const SelectWrapper = styled.div`
   justify-content: space-between;
   border-bottom: 1px solid rgba(243, 243, 243, 0.5);
   color: ${({ theme }) => theme.colors.mainText};
-  font-family: 'Manrope-400';
+  font-family: "Manrope-400";
   font-size: 14px;
   font-weight: 400;
   line-height: normal;
@@ -160,7 +160,7 @@ export const SelectWrapper = styled.div`
 
 export const LabelStyled = styled.div`
   color: ${({ theme }) => theme.colors.mainText};
-  font-family: 'Manrope-400';
+  font-family: "Manrope-400";
   font-size: 14px;
   font-weight: 400;
   line-height: normal;
