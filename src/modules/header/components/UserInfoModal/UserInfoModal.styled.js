@@ -47,7 +47,7 @@ export const StyledUserFoto = styled.img`
   }
 `;
 
-export const StyledBtnAdd = styled.button`
+export const StyledBtnAdd = styled.input`
   width: 24px;
   height: 24px;
   padding: 0;

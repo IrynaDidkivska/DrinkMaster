@@ -67,7 +67,7 @@ export const StyledMobileBody = styled.div`
   padding: 160px 0 336px 0;
 
   @media screen and (min-width: 768px) {
-    padding: 256px 0 425px 0;
+    /* padding: 256px 0 425px 0; */
   }
 `;
 

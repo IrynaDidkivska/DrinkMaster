@@ -15,8 +15,61 @@ import {
 } from './UserInfoModal.styled';
 import { SpriteSVG } from '../../../../shared/icons/SpriteSVG';
 import userFoto from '../../images/user.png';
+import { useState } from 'react';
+import { updateUserThunk } from '../../../../redux/Auth/operations';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUser } from '../../../../redux/Auth/selectors';
 
 export const UserInfoModal = ({ onClose }) => {
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [changedName, setChangedName] = useState(null);
+  const [previewImage, setPreviewImage] = useState(null);
+  const [isEditing, setIsEditing] = useState(false); // Добавлено состояние для отслеживания режима редактирования
+  const dispatch = useDispatch();
+  const { username, avatar } = useSelector(selectUser);
+
+  const handleFileChange = file => {
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPreviewImage(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+
+    setSelectedFile(file);
+  };
+
+  const onFileChange = event => {
+    const file = event.target.files[0];
+    handleFileChange(file);
+  };
+
+  const onUpload = async event => {
+    if (event.target.type === 'file') {
+      const file = event.target.files[0];
+      handleFileChange(file);
+      return;
+    }
+
+    event.preventDefault();
+
+    const dataUser = {
+      username: changedName,
+      avatar: selectedFile,
+    };
+
+    console.log(dataUser);
+
+    dispatch(
+      updateUserThunk({
+        dataUser,
+      })
+    );
+
+    setIsEditing(false);
+  };
+
   return (
     <Modal onClose={onClose}>
       <StyledModal>
@@ -25,18 +78,39 @@ export const UserInfoModal = ({ onClose }) => {
         </StyledBtnClose>
 
         <StyledModalHeader>
-          <StyledUserFoto src={userFoto} alt="User foto" />
-          <StyledBtnAdd>
-            <SpriteSVG name="add-modal-photo" />
-          </StyledBtnAdd>
+          {previewImage ? (
+            <StyledUserFoto src={previewImage} alt="Preview" />
+          ) : avatar ? (
+            <StyledUserFoto src={avatar} alt="User foto" />
+          ) : (
+            <StyledUserFoto src={userFoto} alt="Default user foto" />
+          )}
+
+          <StyledBtnAdd
+            type="file"
+            onChange={onFileChange}
+            onClick={onUpload}
+          ></StyledBtnAdd>
+          <SpriteSVG name="add-modal-photo" />
         </StyledModalHeader>
 
         <StyledModalForm>
-          <StyledModalInput />
-          <StyledBtnEdit>
+          <StyledModalInput
+            value={changedName || username}
+            onChange={event => setChangedName(event.target.value)}
+            disabled={!isEditing}
+          />
+
+          <StyledBtnEdit
+            onClick={event => {
+              event.preventDefault();
+              setIsEditing(true);
+            }}
+          >
             <SpriteSVG name="edit-02" />
           </StyledBtnEdit>
-          <StyledBtnSave>Save changes</StyledBtnSave>
+
+          <StyledBtnSave onClick={onUpload}>Save changes</StyledBtnSave>
         </StyledModalForm>
 
         <Ellipse222 />
