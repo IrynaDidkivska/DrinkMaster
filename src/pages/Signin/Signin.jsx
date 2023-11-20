@@ -3,6 +3,7 @@ import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsLoading } from "../../redux/Auth/selectors";
 import { signinThunk } from "../../redux/Auth/operations";
+import { FaEye, FaEyeSlash, FaExclamationCircle } from "react-icons/fa";
 import {
   SignButton,
   StyledAuthLink,
@@ -12,12 +13,14 @@ import {
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Subtitle from "../../shared/components/Title/Subtitle";
+import { DivWrapper } from "../Signup/Signup.styled";
+import { useState } from "react";
 
 const SignIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isLoading = useSelector(selectIsLoading);
-
+  const [showPassword, setShowPassword] = useState(false);
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -68,15 +71,30 @@ const SignIn = () => {
         {formik.touched.email && formik.errors.email ? (
           <div>{formik.errors.email}</div>
         ) : null}
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Password"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.password}
-        />
+        <DivWrapper>
+          <input
+            type={showPassword ? "text" : "password"}
+            id="password"
+            name="password"
+            placeholder="Password"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.password}
+          />
+          {formik.values.password && ( // Check if the password field has any value
+            <div
+              style={{
+                position: "absolute",
+                right: "20px",
+                top: "15px",
+                cursor: "pointer",
+              }}
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <FaEye /> : <FaEyeSlash />}
+            </div>
+          )}
+        </DivWrapper>
         {formik.touched.password && formik.errors.password ? (
           <div>{formik.errors.password}</div>
         ) : null}
