@@ -8,12 +8,16 @@ import {
   DrinkCardItemContainerDiscr,
 } from "./DrinkCardItem.styled";
 
-const DrinkCartItem = ({ _id, drinkThumb, drink }) => {
+
+
+
+const DrinkCardItem = ({ _id, drinkThumb, drink }) => {
   const navigate = useNavigate();
 
   const handleSeeMore = (_id) => {
     navigate(`/drinks/${_id}`);
   };
+
 
   return (
     <DrinkCardItemContainer key={_id}>
@@ -28,4 +32,4 @@ const DrinkCartItem = ({ _id, drinkThumb, drink }) => {
   );
 };
 
-export default DrinkCartItem;
+export default DrinkCardItem;
