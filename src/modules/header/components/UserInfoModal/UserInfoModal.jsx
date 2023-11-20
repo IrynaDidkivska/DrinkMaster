@@ -3,14 +3,15 @@ import Modal from '../../../../shared/components/Modal/Modal';
 import {
   Ellipse222,
   Ellipse224,
-  StyledBtnAdd,
   StyledBtnClose,
   StyledBtnEdit,
   StyledBtnSave,
+  StyledInputAdd,
   StyledModal,
   StyledModalForm,
   StyledModalHeader,
   StyledModalInput,
+  StyledSvgWrapper,
   StyledUserFoto,
 } from './UserInfoModal.styled';
 import { SpriteSVG } from '../../../../shared/icons/SpriteSVG';
@@ -54,20 +55,22 @@ export const UserInfoModal = ({ onClose }) => {
 
     event.preventDefault();
 
-    const dataUser = {
-      username: changedName,
-      avatar: selectedFile,
-    };
-
-    console.log(dataUser);
-
     dispatch(
       updateUserThunk({
-        dataUser,
+        username: changedName,
+        avatar: selectedFile,
       })
-    );
-
-    setIsEditing(false);
+    )
+      .unwrap()
+      .then(() => {
+        onClose();
+      })
+      .catch(error => {
+        console.error('Ошибка при обновлении пользователя', error.message);
+      })
+      .finally(() => {
+        setIsEditing(false);
+      });
   };
 
   return (
@@ -81,17 +84,24 @@ export const UserInfoModal = ({ onClose }) => {
           {previewImage ? (
             <StyledUserFoto src={previewImage} alt="Preview" />
           ) : avatar ? (
-            <StyledUserFoto src={avatar} alt="User foto" />
+            <StyledUserFoto
+              src={`https://drink-master-project.onrender.com/${avatar}`}
+              alt="Foto"
+            />
           ) : (
-            <StyledUserFoto src={userFoto} alt="Default user foto" />
+            <StyledUserFoto src={userFoto} alt="Default foto" />
           )}
 
-          <StyledBtnAdd
+          <StyledInputAdd
             type="file"
             onChange={onFileChange}
             onClick={onUpload}
-          ></StyledBtnAdd>
-          <SpriteSVG name="add-modal-photo" />
+          ></StyledInputAdd>
+          <StyledSvgWrapper
+            onClick={() => document.querySelector('input[type=file]').click()}
+          >
+            <SpriteSVG name="add-modal-photo" />
+          </StyledSvgWrapper>
         </StyledModalHeader>
 
         <StyledModalForm>

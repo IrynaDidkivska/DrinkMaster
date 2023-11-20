@@ -87,8 +87,10 @@ export const updateUserThunk = createAsyncThunk(
       const formData = new FormData();
       formData.append('username', data.username);
       formData.append('avatar', data.avatar);
-      const { data } = await API.patch('api/auth/users/update', formData);
-      return data;
+
+      const res = await API.patch('api/auth/users/update', formData);
+
+      return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

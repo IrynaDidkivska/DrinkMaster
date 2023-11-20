@@ -41,13 +41,19 @@ export const StyledUserFoto = styled.img`
   width: 80px;
   height: 80px;
   margin-bottom: 39px;
+  text-align: center;
+  border-radius: 50%;
 
   @media screen and (min-width: 768px) {
     margin-bottom: 66px;
   }
 `;
 
-export const StyledBtnAdd = styled.input`
+export const StyledInputAdd = styled.input`
+  display: none;
+`;
+
+export const StyledSvgWrapper = styled.button`
   width: 24px;
   height: 24px;
   padding: 0;
