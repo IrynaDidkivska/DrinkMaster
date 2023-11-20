@@ -62,6 +62,7 @@ export const StyledFooterIconLogo = styled.div`
   fill: ${({ theme }) => theme.footer.color};
   width: 22px;
   height: 22px;
+  cursor: pointer;
 `;
 export const StyledFooterPrivacy = styled.div`
   @media screen and (min-width: 768px) {
