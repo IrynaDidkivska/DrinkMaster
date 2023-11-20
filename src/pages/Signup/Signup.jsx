@@ -5,10 +5,12 @@ import { signupThunk } from "../../redux/Auth/operations";
 import { selectIsLoading } from "../../redux/Auth/selectors";
 import moment from "moment";
 import "react-datetime/css/react-datetime.css";
-import React, { useState } from "react";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useState } from "react";
+import { FaEye, FaEyeSlash, FaExclamationCircle } from "react-icons/fa";
+import { AiFillCheckCircle } from "react-icons/ai";
 
 import {
+  DivWrapper,
   StyledCalendarSvg,
   StyledDatatimeWrapper,
   StyledDatetime,
@@ -36,7 +38,6 @@ const SignUp = () => {
     },
     validationSchema: Yup.object({
       username: Yup.string().required("Name is required"),
-      // birthdate: Yup.date().required("Date of Birth is required"),
       birthdate: Yup.string()
         .matches(
           /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/,
@@ -49,6 +50,10 @@ const SignUp = () => {
       password: Yup.string()
         .min(6, "Password must be at least 6 characters")
         .max(20, "Password must be less then 20 characters")
+        .matches(
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,20}$/,
+          "Password must have at least one uppercase letter, one lowercase letter, one digit, and one special character"
+        )
         .required("Password is required"),
     }),
     onSubmit: (values) => {
@@ -68,7 +73,7 @@ const SignUp = () => {
     // Перевірка, чи value є екземпляром moment
     const formattedDate =
       value instanceof moment ? value.format("DD/MM/YYYY") : value;
-
+    formik.setFieldTouched(name, true, false); // Помітити поле як торкнуте, без валідації
     formik.handleChange({
       target: {
         name,
@@ -112,11 +117,7 @@ const SignUp = () => {
             name="birthdate"
             inputProps={{ placeholder: "dd/mm/yyyy" }}
             timeFormat={false}
-            // onBlur={formik.handleBlur}
-            onBlur={(e) => {
-              formik.handleBlur(e);
-              // Додайте додаткову обробку, якщо потрібно
-            }}
+            onBlur={formik.handleBlur}
             onChange={(value) => handleDateChange("birthdate", value)}
             // onChange={formik.handleChange}
             value={formik.values.birthdate}
@@ -133,7 +134,6 @@ const SignUp = () => {
         ) : formik.touched.birthdate && !formik.errors.birthdate ? (
           <div style={{ color: "green" }}>Valid birthdate</div>
         ) : null}
-
         <input
           type="email"
           id="email"
@@ -148,34 +148,52 @@ const SignUp = () => {
         ) : formik.touched.email && !formik.errors.email ? (
           <div style={{ color: "green" }}>Valid email</div>
         ) : null}
-        <input
-          // type="password"
-          type={showPassword ? "text" : "password"}
-          id="password"
-          name="password"
-          placeholder="Password"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.password}
+        <AiFillCheckCircle
+          style={{
+            color: "black",
+            backgroundColor: "green",
+            borderRadius: "50%",
+          }}
         />
+        <FaExclamationCircle
+          style={{
+            color: "black",
+            background: "red",
+            borderRadius: "50%",
+            border: "2px",
+          }}
+        />
+        <DivWrapper>
+          <input
+            // type="password"
+            type={showPassword ? "text" : "password"}
+            id="password"
+            name="password"
+            placeholder="Password"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.password}
+          />
+          {/* Eye icon to toggle password visibility */}
+          {formik.values.password && ( // Check if the password field has any value
+            <div
+              style={{
+                position: "absolute",
+                right: "20px",
+                top: "15px",
+                cursor: "pointer",
+              }}
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <FaEye /> : <FaEyeSlash />}
+            </div>
+          )}
+        </DivWrapper>
         {formik.touched.password && formik.errors.password ? (
           <div style={{ color: "red" }}>{formik.errors.password}</div>
         ) : formik.touched.password && !formik.errors.password ? (
           <div style={{ color: "green" }}>Valid password</div>
         ) : null}
-        {/* Eye icon to toggle password visibility */}
-        <div
-          style={{
-            position: "absolute",
-            right: "20px",
-            top: "15px",
-            cursor: "pointer",
-            color: showPassword ? "yellow" : "red",
-          }}
-          onClick={() => setShowPassword(!showPassword)}
-        >
-          {showPassword ? <FaEyeSlash /> : <FaEye />}
-        </div>
       </Wrapper>
 
       <Wrapper>
