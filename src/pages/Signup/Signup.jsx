@@ -37,6 +37,12 @@ const SignUp = () => {
     validationSchema: Yup.object({
       username: Yup.string().required("Name is required"),
       // birthdate: Yup.date().required("Date of Birth is required"),
+      birthdate: Yup.string()
+        .matches(
+          /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/,
+          "Invalid date format (DD/MM/YYYY)"
+        )
+        .required("Date of Birth is required"),
       email: Yup.string()
         .email("Invalid email address")
         .required("Email is required"),
@@ -103,7 +109,9 @@ const SignUp = () => {
             name="birthdate"
             inputProps={{ placeholder: "dd/mm/yyyy" }}
             timeFormat={false}
+            onBlur={formik.handleBlur}
             onChange={(value) => handleDateChange("birthdate", value)}
+            // onChange={formik.handleChange}
             value={formik.values.birthdate}
             closeOnSelect={true}
             {...datetimeOptions}
