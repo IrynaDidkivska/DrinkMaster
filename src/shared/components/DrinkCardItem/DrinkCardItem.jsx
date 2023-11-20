@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
+
 import {
   DrinkCardItemContainer,
   DrinkCardItemImage,
@@ -7,10 +9,11 @@ import {
   DrinkCardItemContainerDiscr,
 } from "./DrinkCardItem.styled";
 
-const DrinkCartItem = ({ _id, drinkThumb, drink }) => {
+const DrinkCardItem = ({ _id, drinkThumb, drink }) => {
   const navigate = useNavigate();
 
   const handleSeeMore = (_id) => {
+    console.log(_id);
     navigate(`/drinks/${_id}`);
   };
 
@@ -27,4 +30,10 @@ const DrinkCartItem = ({ _id, drinkThumb, drink }) => {
   );
 };
 
-export default DrinkCartItem;
+export default DrinkCardItem;
+
+DrinkCardItem.propTypes = {
+  _id: PropTypes.string.isRequired,
+  drinkThumb: PropTypes.string.isRequired,
+  drink: PropTypes.string.isRequired,
+};
