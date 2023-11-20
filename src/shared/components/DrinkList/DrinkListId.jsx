@@ -1,12 +1,27 @@
-import { DrinkItemsList } from './DrinkList.styled';
-import DrinkCardItemFav from '../DrinkCardItemFav/DrinkCardItemFav';
+import { DrinkItemsList } from "./DrinkList.styled";
+import DrinkCardItemFav from "../DrinkCardItemFav/DrinkCardItemFav";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getFavoriteThunk } from "../../../redux/Drinks/operations";
+import { selectFavorites } from "../../../redux/Drinks/selectors";
 
 const DrinkListID = () => {
-  const drinkItems = Array(8).fill(null).map((_, index) => (
-    <DrinkCardItemFav key={index} />
-  ));
+  const dispatch = useDispatch();
 
-  return <DrinkItemsList>{drinkItems}</DrinkItemsList>;
+  const favorites = useSelector(selectFavorites);
+  console.log("то что с бека", favorites);
+
+  useEffect(() => {
+    dispatch(getFavoriteThunk());
+  }, [dispatch]);
+
+  return (
+    <DrinkItemsList>
+      {favorites.map((favorite) => (
+        <DrinkCardItemFav key={favorite._id} favorite={favorite} />
+      ))}
+    </DrinkItemsList>
+  );
 };
 
-export { DrinkListID };
+export default DrinkListID;

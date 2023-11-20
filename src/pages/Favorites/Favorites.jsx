@@ -1,4 +1,4 @@
-import { DrinkListID } from "../../shared/components/DrinkList/DrinkListId";
+import DrinkListID from "../../shared/components/DrinkList/DrinkListID";
 import Title from "../../shared/components/Title/Title";
 
 const DrinksListFav = () => {

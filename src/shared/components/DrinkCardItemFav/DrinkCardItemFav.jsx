@@ -1,4 +1,4 @@
-import DrinkImage from '../../components/DrinkCardItemFav/Rectangle40560.png';
+// import DrinkImage from "../../components/DrinkCardItemFav/Rectangle40560.png";
 import {
   DrinkCardItemFaxContainer,
   DrinkCardItemFaxImg,
@@ -8,21 +8,42 @@ import {
   DrinkCardItemFaxNavi,
   DrinkCardItemFaxBtn,
   DrinkCardItemFaxDel,
-} from './DrinkCardItemFav.styled';
+} from "./DrinkCardItemFav.styled";
 import { SpriteSVG } from "../../icons/SpriteSVG";
-const DrinkCardItemFav = () => {
+import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { deleteFromFavoriteThunk } from "../../../redux/Drinks/operations";
+
+const DrinkCardItemFav = ({ favorite }) => {
+  console.log("favorite", favorite);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleSeeMore = (_id) => {
+    console.log(_id);
+    navigate(`/drinks/${_id}`);
+  };
+
   return (
     <DrinkCardItemFaxContainer>
-      <DrinkCardItemFaxImg src={DrinkImage} alt="Coctail's name" />
-      <DrinkCardItemFaxName>Ebglish Rose Cocktail</DrinkCardItemFaxName>
-      <DrinkCardItemFaxStatus>Alcohol</DrinkCardItemFaxStatus>
+      <DrinkCardItemFaxImg src={favorite.drinkThumb} alt={favorite.drink} />
+      <DrinkCardItemFaxName>{favorite.drink}</DrinkCardItemFaxName>
+      <DrinkCardItemFaxStatus>{favorite.alcoholic}</DrinkCardItemFaxStatus>
       <DrinkCardItemFaxDescription>
-        This beautiful gin cocktail combines apricot brandy, dry vermouth, grenadine, lemon juice, and gin, and tastes like a much fruitier version of the classic martini. Rim and garnish with sugar and cherries for a little extra sweet cocktail goodness.
+        {favorite.shortDescription}
       </DrinkCardItemFaxDescription>
       <DrinkCardItemFaxNavi>
-        <DrinkCardItemFaxBtn>See more</DrinkCardItemFaxBtn>
-        <DrinkCardItemFaxDel>
-            <SpriteSVG name={"trash"}/>
+        <DrinkCardItemFaxBtn onClick={() => handleSeeMore(favorite._id)}>
+          See more
+        </DrinkCardItemFaxBtn>
+        <DrinkCardItemFaxDel
+          type="button"
+          onClick={() => {
+            dispatch(deleteFromFavoriteThunk(favorite._id));
+          }}
+        >
+          <SpriteSVG name={"trash"} />
         </DrinkCardItemFaxDel>
       </DrinkCardItemFaxNavi>
     </DrinkCardItemFaxContainer>
@@ -30,3 +51,13 @@ const DrinkCardItemFav = () => {
 };
 
 export default DrinkCardItemFav;
+
+DrinkCardItemFav.propTypes = {
+  favorite: PropTypes.shape({
+    drinkThumb: PropTypes.string,
+    drink: PropTypes.string,
+    alcoholic: PropTypes.string,
+    shortDescription: PropTypes.string,
+    _id: PropTypes.string,
+  }).isRequired,
+};
