@@ -5,7 +5,6 @@ import {
   logoutThunk,
   currentUserThunk,
   updateUserThunk,
-  signupAndSignInThunk,
 } from "./operations";
 
 const initialState = {
@@ -29,15 +28,6 @@ export const authSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(signupThunk.fulfilled, (state, { payload }) => {
-        state.user.email = payload.email;
-        state.user.username = payload.username;
-        state.user.isAdult = payload.isAdult;
-        state.user.avatar = payload.avatarUrl;
-        // state.token = payload.token;
-        state.isAuth = true;
-        state.isLoading = false;
-      })
-      .addCase(signupAndSignInThunk.fulfilled, (state, { payload }) => {
         state.user.email = payload.email;
         state.user.username = payload.username;
         state.user.isAdult = payload.isAdult;
