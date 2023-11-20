@@ -1,9 +1,13 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import {
+  // addFavoriteThunk,
+  addOwnDrinkThunk,
   deleteFromFavoriteThunk,
   deleteFromOwnThunk,
   getAllDrinksThunk,
   getByIDThunk,
+  getFavoriteThunk,
+  getOwnThunk,
   getPopularThunk,
 } from "./operations";
 
@@ -29,14 +33,26 @@ const drinksSlice = createSlice({
         // state.drinks = [...state.drinks, ...payload];
         state.drinks.push(...payload);
         state.page = 1;
-
       })
       .addCase(getPopularThunk.fulfilled, (state, { payload }) => {
         state.popular = payload;
       })
-      // .addCase(getByIDThunk.fulfilled, (state, { payload }) => {
-      //   state.drinkDetails = payload;
+      .addCase(getFavoriteThunk.fulfilled, (state, { payload }) => {
+        state.favorite = payload;
+      })
+      // .addCase(addFavoriteThunk.fulfilled, (state, { payload }) => {
+      //   state.favorite = [...state.favorite, ...payload];
       // })
+      .addCase(getByIDThunk.fulfilled, (state, { payload }) => {
+        state.drinkDetails = payload;
+      })
+      .addCase(getOwnThunk.fulfilled, (state, { payload }) => {
+        state.own = payload;
+      })
+      .addCase(addOwnDrinkThunk.fulfilled, (state, { payload }) => {
+        state.own = [...state.own, ...payload];
+      })
+
       .addCase(deleteFromOwnThunk.fulfilled, (state, { payload }) => {
         state.own = state.favorite.filter((item) => item.id !== payload);
       })
@@ -50,7 +66,10 @@ const drinksSlice = createSlice({
           deleteFromOwnThunk.pending,
           getPopularThunk.pending,
           getAllDrinksThunk.pending,
-          getByIDThunk.pending
+          getByIDThunk.pending,
+          getOwnThunk.pending,
+          getFavoriteThunk.pending
+          // addFavoriteThunk.pending
         ),
         (state) => {
           state.isLoading = true;
@@ -63,7 +82,10 @@ const drinksSlice = createSlice({
           deleteFromOwnThunk.fulfilled,
           getPopularThunk.fulfilled,
           getAllDrinksThunk.fulfilled,
-          getByIDThunk.fulfilled
+          getByIDThunk.fulfilled,
+          getOwnThunk.fulfilled,
+          getFavoriteThunk.fulfilled
+          // addFavoriteThunk.fulfilled
         ),
         (state) => {
           state.isLoading = false;
@@ -75,7 +97,10 @@ const drinksSlice = createSlice({
           deleteFromOwnThunk.rejected,
           getPopularThunk.rejected,
           getAllDrinksThunk.rejected,
-          getByIDThunk.rejected
+          getByIDThunk.rejected,
+          getOwnThunk.rejected,
+          getFavoriteThunk.rejected
+          // addFavoriteThunk.rejected
         ),
         (state, { payload }) => {
           state.isLoading = false;

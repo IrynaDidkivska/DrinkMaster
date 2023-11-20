@@ -1,14 +1,10 @@
-import { toast } from "react-toastify";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { signupThunk } from "../../redux/Auth/operations";
 import { selectIsLoading } from "../../redux/Auth/selectors";
 import moment from "moment";
 import "react-datetime/css/react-datetime.css";
-import React, { useState } from "react";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 import {
   StyledCalendarSvg,
@@ -25,8 +21,6 @@ import {
 import Subtitle from "../../shared/components/Title/Subtitle";
 
 const SignUp = () => {
-  const [showPassword, setShowPassword] = useState(false);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
 
@@ -57,19 +51,7 @@ const SignUp = () => {
         password: values.password,
         email: values.email,
       };
-      dispatch(signupThunk(credentials))
-        .unwrap()
-        .then(() => {
-          navigate("/"); // Redirect to /home after successful login
-        })
-        .catch((error) => {
-          const { message } = error.response.credentials;
-          if (message.length > 5) {
-            toast.error(message);
-          } else {
-            message.forEach((el) => toast.error(el));
-          }
-        });
+      dispatch(signupThunk(credentials));
     },
   });
 
@@ -107,9 +89,7 @@ const SignUp = () => {
           value={formik.values.username}
         />
         {formik.touched.username && formik.errors.username ? (
-          <div style={{ color: "DA1414" }}>{formik.errors.username}</div>
-        ) : formik.touched.username && !formik.errors.username ? (
-          <div style={{ color: "green" }}>Valid username</div>
+          <div>{formik.errors.username}</div>
         ) : null}
         <StyledDatatimeWrapper>
           <StyledDatetime
@@ -129,9 +109,7 @@ const SignUp = () => {
           </StyledCalendarSvg>
         </StyledDatatimeWrapper>
         {formik.touched.birthdate && formik.errors.birthdate ? (
-          <div style={{ color: "red" }}>{formik.errors.birthdate}</div>
-        ) : formik.touched.birthdate && !formik.errors.birthdate ? (
-          <div style={{ color: "green" }}>Valid birthdate</div>
+          <div>{formik.errors.birthdate}</div>
         ) : null}
 
         <input
@@ -144,13 +122,10 @@ const SignUp = () => {
           value={formik.values.email}
         />
         {formik.touched.email && formik.errors.email ? (
-          <div style={{ color: "red" }}>{formik.errors.email}</div>
-        ) : formik.touched.email && !formik.errors.email ? (
-          <div style={{ color: "green" }}>Valid email</div>
+          <div>{formik.errors.email}</div>
         ) : null}
         <input
-          type={showPassword ? "text" : "password"}
-          // type="password"
+          type="password"
           id="password"
           name="password"
           placeholder="Password"
@@ -159,23 +134,8 @@ const SignUp = () => {
           value={formik.values.password}
         />
         {formik.touched.password && formik.errors.password ? (
-          <div style={{ color: "red" }}>{formik.errors.password}</div>
-        ) : formik.touched.password && !formik.errors.password ? (
-          <div style={{ color: "green" }}>Valid password</div>
+          <div>{formik.errors.password}</div>
         ) : null}
-        {/* Eye icon to toggle password visibility */}
-        <div
-          style={{
-            position: "absolute",
-            right: "20px",
-            top: "15px",
-            cursor: "pointer",
-            color: showPassword ? "yellow" : "red",
-          }}
-          onClick={() => setShowPassword(!showPassword)}
-        >
-          {showPassword ? <FaEyeSlash /> : <FaEye />}
-        </div>
       </Wrapper>
 
       <Wrapper>
