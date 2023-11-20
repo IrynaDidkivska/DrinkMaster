@@ -9,20 +9,24 @@ export const StyledNavFooter = styled.nav`
 `;
 
 export const StyledLinkFooter = styled(Link)`
+  padding: 8px 16px;
+  border-radius: 40px;
   font-family: "Manrope-500", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: 22.4px;
   color: ${({ theme }) => theme.footer.color};
+  border: 1px solid transparent;
   background: transparent;
+  outline: transparent;
   transition: ${({ theme }) => theme.transition};
   cursor: pointer;
-  //TODO: Fix hover
   &:hover,
-  &:focus {
-  }
-
+  &:focus,
   &:active {
+    border: 1px solid rgba(243, 243, 243, 0.2);
+    cursor: url(https://sweezy-cursors.com/wp-content/uploads/cursor/summer-cocktail-animated/summer-cocktail-animated-cursor-2-32x32.png),
+      default !important;
   }
 `;
