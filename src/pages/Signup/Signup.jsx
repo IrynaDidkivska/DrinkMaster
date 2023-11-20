@@ -65,10 +65,14 @@ const SignUp = () => {
   });
 
   const handleDateChange = (name, value) => {
+    // Перевірка, чи value є екземпляром moment
+    const formattedDate =
+      value instanceof moment ? value.format("DD/MM/YYYY") : value;
+
     formik.handleChange({
       target: {
         name,
-        value: value instanceof moment ? value.format("YYYY-MM-DD") : value,
+        value: formattedDate,
       },
     });
   };
@@ -79,7 +83,6 @@ const SignUp = () => {
     isValidDate: (current) => {
       return current.isBefore();
     },
-
     dayOfWeekFormat: "dd", // Use "dd" to start from Monday
     startOfWeek: 1, // 0 is Sunday, 1 is Monday
   };
@@ -98,7 +101,7 @@ const SignUp = () => {
           value={formik.values.username}
         />
         {formik.touched.username && formik.errors.username ? (
-          <div style={{ color: "DA1414" }}>{formik.errors.username}</div>
+          <div style={{ color: "red" }}>{formik.errors.username}</div>
         ) : formik.touched.username && !formik.errors.username ? (
           <div style={{ color: "green" }}>Valid username</div>
         ) : null}
@@ -109,7 +112,11 @@ const SignUp = () => {
             name="birthdate"
             inputProps={{ placeholder: "dd/mm/yyyy" }}
             timeFormat={false}
-            onBlur={formik.handleBlur}
+            // onBlur={formik.handleBlur}
+            onBlur={(e) => {
+              formik.handleBlur(e);
+              // Додайте додаткову обробку, якщо потрібно
+            }}
             onChange={(value) => handleDateChange("birthdate", value)}
             // onChange={formik.handleChange}
             value={formik.values.birthdate}
