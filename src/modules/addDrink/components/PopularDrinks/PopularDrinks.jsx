@@ -5,7 +5,6 @@ import Subtitle from "../../../../shared/components/Title/Subtitle";
 import {
   PopularContainer,
   PopularItemContainer,
-  PopularItem,
   PopularImage,
   PopularName,
   PopularDiskr,
@@ -27,13 +26,11 @@ function PopularDrinks() {
       <Subtitle Subtitle={"Popular drinks"}></Subtitle>
       {populars?.map(({ description, drinkThumb, drink }) => (
         <PopularItemContainer key={drink}>
-          <PopularItem key={drink}>
             <PopularImage src={drinkThumb} alt={drink} />
             <PopularContainerDiscr>
               <PopularName>{drink}</PopularName>
               <PopularDiskr>{description}</PopularDiskr>
             </PopularContainerDiscr>
-          </PopularItem>
         </PopularItemContainer>
       ))}
     </PopularContainer>

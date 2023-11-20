@@ -4,6 +4,7 @@ import Title from "../../shared/components/Title/Title";
 import Ingredient from '../../modules/myDrinks/components/Ingredients/IngredientsItem/Ingredients'
 import MyJustDrinks from '../../modules/myDrinks/components/MyMoonmintDrinks/MyJustDrinks/MyJustDrinks'
 import RecipeDrinks from '../../modules/myDrinks/components/MyMoonmintDrinks/RecipeDrinks/RecipeDrinks'
+import PopularDrinks from "../../modules/addDrink/components/PopularDrinks/PopularDrinks";
 
 const Drinks = () => {
   return (
@@ -13,7 +14,8 @@ const Drinks = () => {
       <DrinkList />
       <MyJustDrinks />
 			<Ingredient />
-			<RecipeDrinks />
+      <RecipeDrinks />
+      <PopularDrinks/>
     </div>
   );
 };
