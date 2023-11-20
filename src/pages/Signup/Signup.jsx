@@ -71,7 +71,7 @@ const SignUp = () => {
       return current.isBefore();
     },
 
-    dayOfWeekFormat: "dd", // Use "dd" to start from Monday
+    dayOfWeekFormat: 'dd', // Use "dd" to start from Monday
     startOfWeek: 1, // 0 is Sunday, 1 is Monday
   };
 
@@ -96,7 +96,7 @@ const SignUp = () => {
             type="date"
             id="birthdate"
             name="birthdate"
-            inputProps={{ placeholder: "dd/mm/yyyy" }}
+            inputProps={{ placeholder: 'dd/mm/yyyy' }}
             timeFormat={false}
             onChange={(value) => handleDateChange("birthdate", value)}
             value={formik.values.birthdate}
