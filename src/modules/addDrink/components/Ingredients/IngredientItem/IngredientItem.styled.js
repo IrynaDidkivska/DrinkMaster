@@ -1,10 +1,13 @@
-import Select from "react-select";
-import styled from "styled-components";
+import Select from 'react-select';
+import styled from 'styled-components';
 
 export const ItemWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+  @media screen and (min-width: 768px) {
+    gap: 14px;
+  }
 `;
 
 export const IngredientSelect = styled(Select)`
@@ -27,9 +30,11 @@ export const IngredientSelect = styled(Select)`
       &--is-focused {
       }
       & svg {
+        transition: transform 200ms ease-in-out;
       }
       &--menu-is-open {
         & svg {
+          transform: rotateX(180deg);
         }
       }
       &--is-disabled {
@@ -45,10 +50,10 @@ export const IngredientSelect = styled(Select)`
     &single-value {
       margin: 0;
       color: ${({ theme }) => theme.colors.mainText};
-      font-family: "Manrope-400";
+      font-family: 'Manrope-400';
       font-size: 14px;
       font-weight: 400;
-      line-height: 14px; /* 100% */
+      line-height: 1; /* 100% */
     }
     &indicators {
       padding: 0;
@@ -69,7 +74,7 @@ export const IngredientSelect = styled(Select)`
       padding: 0;
       margin: 0;
       color: #f3f3f3;
-      font-family: "Manrope-400";
+      font-family: 'Manrope-400';
       font-size: 14px;
       font-weight: 400;
       line-height: 1; /* 100% */
@@ -88,12 +93,12 @@ export const IngredientSelect = styled(Select)`
     }
     &menu {
       margin-top: 0;
-      width: 200px;
+      width: fit-content;
       background: ${({ theme }) => theme.colors.secondaryText};
       border-radius: 12px;
       color: rgba(243, 243, 243, 0.4);
       white-space: nowrap;
-      font-family: "Manrope-400";
+      font-family: 'Manrope-400';
       font-size: 12px;
       font-weight: 400;
       line-height: 1.33; /* 133.333% */
@@ -121,7 +126,7 @@ export const IngredientSelect = styled(Select)`
       text-overflow: ellipsis;
       cursor: pointer;
       color: rgba(243, 243, 243, 0.4);
-      font-family: "Manrope-400";
+      font-family: 'Manrope-400';
       font-size: 12px;
       font-weight: 400;
       line-height: 1.33; /*133.333% */
@@ -139,6 +144,36 @@ export const IngredientSelect = styled(Select)`
   }
 
   @media screen and (min-width: 768px) {
+    .ingredientSelect__ {
+      &control {
+        width: 332px;
+        height: 56px;
+        padding: 14px 24px;
+      }
+      &placeholder {
+      }
+      &single-value {
+        font-size: 17px;
+        line-height: 1.56; /* 100% */
+      }
+      &dropdown-indicator {
+        & svg {
+          width: 20px;
+          height: 20px;
+        }
+      }
+      &menu {
+        border-radius: 20px;
+        padding: 14px;
+      }
+      &menu-list {
+        gap: 8px;
+      }
+      &option {
+        font-size: 17px;
+        line-height: 156%; /* 26.52px */
+      }
+    }
   }
 
   @media screen and (min-width: 1440px) {
@@ -157,11 +192,19 @@ export const InputStyled = styled.input`
   outline: transparent;
   color: #f3f3f3;
 
-  /* text-align: center; */
-  font-family: "Manrope-400";
+  font-family: 'Manrope-400';
   font-size: 14px;
   font-weight: 400;
   line-height: 1.28; /* 128.571% */
+
+  @media screen and (min-width: 768px) {
+    font-size: 17px;
+    line-height: 1.56; /* 26.52px */
+  }
+  @media screen and (min-width: 1440px) {
+    width: 150px;
+    height: 56px;
+  }
 `;
 
 export const RemoveBtnStyled = styled.button`
@@ -174,8 +217,18 @@ export const RemoveBtnStyled = styled.button`
   border: none;
   background-color: transparent;
   & svg {
+    display: block;
     width: 18px;
     height: 18px;
     stroke: white;
+  }
+  @media screen and (min-width: 768px) {
+    margin-left: auto;
+    width: 20px;
+    height: 20px;
+    & svg {
+      width: 20px;
+      height: 20px;
+    }
   }
 `;
