@@ -35,20 +35,20 @@ const SignIn = () => {
       // Handle form submission logic here
       console.log(values);
       const credentials = { password: values.password, email: values.email };
-      dispatch(signinThunk(credentials))
-        .unwrap()
-        .then(() => {
-          toast.success(`Welcome!`);
-          navigate("/"); // Redirect to /home after successful login
-        })
-        .catch((error) => {
-          const { message } = error.response.credentials;
-          if (message.length > 5) {
-            toast.error(message);
-          } else {
-            message.forEach((el) => toast.error(el));
-          }
-        });
+      dispatch(signinThunk(credentials));
+      // .unwrap()
+      // .then(() => {
+      //   toast.success(`Welcome!`);
+      //   navigate("/"); // Redirect to /home after successful login
+      // })
+      // .catch((error) => {
+      //   const { message } = error.response.credentials;
+      //   if (message.length > 5) {
+      //     toast.error(message);
+      //   } else {
+      //     message.forEach((el) => toast.error(el));
+      //   }
+      // });
     },
   });
 
