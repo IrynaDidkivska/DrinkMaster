@@ -6,14 +6,13 @@ export const signupThunk = createAsyncThunk(
   async (credentials, { rejectWithValue, dispatch }) => {
     try {
       const { data } = await API.post("api/auth/users/signup", credentials);
-      // setToken(res.data.token);
+
       console.log(credentials);
       const reg = { email: data.email, password: credentials.password };
 
-      dispatch(signinThunk(reg));
-
+      const loginResponse = await dispatch(signinThunk(reg)).unwrap();
+      return loginResponse;
       // toast.success(`Hello ${editString(data.user.username) || ""} !`);
-      return data;
     } catch (error) {
       return rejectWithValue(error.message);
     }

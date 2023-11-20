@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import DrinkFavImage from "../../components/DrinkCardItem/Rectangle40559.png";
 import {
   DrinkCardItemContainer,
   DrinkCardItemImage,
