@@ -16,8 +16,14 @@ import {
   StyledFooterTabletBox,
 } from "./Footer.styled";
 import SubscribeForm from "./SubscribeForm/SubscribeForm";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/home");
+  };
   return (
     <StyledFooter>
       <Container>
@@ -25,7 +31,7 @@ const Footer = () => {
           <StyledFooterFirstBox>
             <StyledFooterLogoNav>
               <StyledFooterLogo>
-                <StyledFooterIconLogo>
+                <StyledFooterIconLogo onClick={handleClick}>
                   <SpriteSVG name={"logo"} />
                 </StyledFooterIconLogo>
                 <span>Drink Master</span>
