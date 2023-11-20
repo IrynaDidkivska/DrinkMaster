@@ -134,35 +134,47 @@ const SignUp = () => {
         ) : formik.touched.birthdate && !formik.errors.birthdate ? (
           <div style={{ color: "green" }}>Valid birthdate</div>
         ) : null}
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Email"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.email}
-        />
+        {/* ================ */}
+        <DivWrapper>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Email"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.email}
+          />
+          <AiFillCheckCircle
+            style={{
+              color: "black",
+              backgroundColor: "green",
+              borderRadius: "50%",
+              position: "absolute",
+              right: "20px",
+              top: "15px",
+              cursor: "pointer",
+            }}
+          />
+          <FaExclamationCircle
+            style={{
+              color: "black",
+              background: "red",
+              borderRadius: "50%",
+              border: "2px",
+              position: "absolute",
+              right: "50px",
+              top: "15px",
+              cursor: "pointer",
+            }}
+          />
+          {/* ================ */}
+        </DivWrapper>
         {formik.touched.email && formik.errors.email ? (
           <div style={{ color: "red" }}>{formik.errors.email}</div>
         ) : formik.touched.email && !formik.errors.email ? (
           <div style={{ color: "green" }}>Valid email</div>
         ) : null}
-        <AiFillCheckCircle
-          style={{
-            color: "black",
-            backgroundColor: "green",
-            borderRadius: "50%",
-          }}
-        />
-        <FaExclamationCircle
-          style={{
-            color: "black",
-            background: "red",
-            borderRadius: "50%",
-            border: "2px",
-          }}
-        />
         <DivWrapper>
           <input
             // type="password"
