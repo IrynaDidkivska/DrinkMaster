@@ -17,7 +17,6 @@ import { selectPopulars } from "../../../../redux/Drinks/selectors";
 function PopularDrinks() {
   const dispatch = useDispatch();
   const populars = useSelector(selectPopulars);
-  console.log(populars);
 
   useEffect(() => {
     dispatch(getPopularThunk());

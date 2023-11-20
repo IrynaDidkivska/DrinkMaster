@@ -16,7 +16,6 @@ import { useDispatch } from "react-redux";
 import { deleteFromFavoriteThunk } from "../../../redux/Drinks/operations";
 
 const DrinkCardItemFav = ({ favorite }) => {
-  console.log("favorite", favorite);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 

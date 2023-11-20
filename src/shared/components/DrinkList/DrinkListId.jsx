@@ -9,7 +9,6 @@ const DrinkListID = () => {
   const dispatch = useDispatch();
 
   const favorites = useSelector(selectFavorites);
-  console.log("то что с бека", favorites);
 
   useEffect(() => {
     dispatch(getFavoriteThunk());

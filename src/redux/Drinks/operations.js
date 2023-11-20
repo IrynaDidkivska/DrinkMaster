@@ -24,7 +24,6 @@ export const getPopularThunk = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await API.get("api/drinks/popular");
-      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -90,7 +89,6 @@ export const getFavoriteThunk = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await API.get("api/drinks/favorite");
-      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
