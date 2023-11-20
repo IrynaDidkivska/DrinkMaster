@@ -7,6 +7,8 @@ import { signupThunk } from "../../redux/Auth/operations";
 import { selectIsLoading } from "../../redux/Auth/selectors";
 import moment from "moment";
 import "react-datetime/css/react-datetime.css";
+import React, { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 import {
   StyledCalendarSvg,
@@ -23,6 +25,7 @@ import {
 import Subtitle from "../../shared/components/Title/Subtitle";
 
 const SignUp = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
@@ -146,7 +149,8 @@ const SignUp = () => {
           <div style={{ color: "green" }}>Valid email</div>
         ) : null}
         <input
-          type="password"
+          type={showPassword ? "text" : "password"}
+          // type="password"
           id="password"
           name="password"
           placeholder="Password"
@@ -159,6 +163,19 @@ const SignUp = () => {
         ) : formik.touched.password && !formik.errors.password ? (
           <div style={{ color: "green" }}>Valid password</div>
         ) : null}
+        {/* Eye icon to toggle password visibility */}
+        <div
+          style={{
+            position: "absolute",
+            right: "20px",
+            top: "15px",
+            cursor: "pointer",
+            color: showPassword ? "yellow" : "red",
+          }}
+          onClick={() => setShowPassword(!showPassword)}
+        >
+          {showPassword ? <FaEyeSlash /> : <FaEye />}
+        </div>
       </Wrapper>
 
       <Wrapper>
