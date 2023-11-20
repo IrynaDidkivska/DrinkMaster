@@ -151,7 +151,7 @@ const SignUp = () => {
               backgroundColor: "green",
               borderRadius: "50%",
               position: "absolute",
-              right: "20px",
+              right: "0px",
               top: "15px",
               cursor: "pointer",
             }}
@@ -168,6 +168,12 @@ const SignUp = () => {
               cursor: "pointer",
             }}
           />
+          <StyledCalendarSvg>
+            <SpriteSVG name={"error"} />
+          </StyledCalendarSvg>
+          <StyledCalendarSvg>
+            <SpriteSVG name={"done"} />
+          </StyledCalendarSvg>
           {/* ================ */}
         </DivWrapper>
         {formik.touched.email && formik.errors.email ? (
