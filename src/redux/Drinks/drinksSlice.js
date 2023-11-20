@@ -1,6 +1,6 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import {
-  addFavoriteThunk,
+  // addFavoriteThunk,
   addOwnDrinkThunk,
   deleteFromFavoriteThunk,
   deleteFromOwnThunk,

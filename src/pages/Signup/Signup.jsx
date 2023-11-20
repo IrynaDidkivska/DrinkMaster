@@ -1,7 +1,5 @@
-import { toast } from "react-toastify";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { signupThunk } from "../../redux/Auth/operations";
 import { selectIsLoading } from "../../redux/Auth/selectors";
@@ -23,7 +21,6 @@ import {
 import Subtitle from "../../shared/components/Title/Subtitle";
 
 const SignUp = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
 
@@ -55,18 +52,6 @@ const SignUp = () => {
         email: values.email,
       };
       dispatch(signupThunk(credentials));
-      // .unwrap()
-      // .then(() => {
-      //   navigate('/signin'); // Redirect to /home after successful login
-      // })
-      // .catch(error => {
-      //   const { message } = error.response.credentials;
-      //   if (message.length > 5) {
-      //     toast.error(message);
-      //   } else {
-      //     message.forEach(el => toast.error(el));
-      //   }
-      // });
     },
   });
 
