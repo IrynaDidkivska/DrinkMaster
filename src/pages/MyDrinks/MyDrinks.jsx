@@ -1,3 +1,4 @@
+
 import { DrinkListID } from '../../shared/components/DrinkList/DrinkListId'
 import Title from '../../shared/components/Title/Title'
 const MyDrinks = () => {
@@ -8,5 +9,6 @@ const MyDrinks = () => {
 		</>
 	)
 }
+
 
 export default MyDrinks

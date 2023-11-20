@@ -3,15 +3,18 @@ import { API, clearToken, setToken } from '../../config/drinkConfig';
 
 export const signupThunk = createAsyncThunk(
   'auth/signup',
-  async (credentials, thunkAPI) => {
+  async (credentials, { rejectWithValue, dispatch }) => {
     try {
       const { data } = await API.post('api/auth/users/signup', credentials);
-      // setToken(res.data.token);
-      console.log(data);
-      // toast.success(`Hello ${editString(res.data.user.username) || ""} !`);
-      return data;
+
+      console.log(credentials);
+      const reg = { email: data.email, password: credentials.password };
+
+      const loginResponse = await dispatch(signinThunk(reg)).unwrap();
+      return loginResponse;
+      // toast.success(`Hello ${editString(data.user.username) || ""} !`);
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -20,34 +23,15 @@ export const signinThunk = createAsyncThunk(
   'auth/signin',
   async (credentials, thunkAPI) => {
     try {
-      const res = await API.post('api/auth/users/login', credentials);
-      setToken(res.data.token);
-
-      return res.data;
+      const { data } = await API.post('api/auth/users/login', credentials);
+      setToken(data.token);
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-export const signupAndSignInThunk = createAsyncThunk(
-  'auth/signup&signin',
-  async (credentials, { rejectWithValue, dispatch }) => {
-    try {
-      const signupResponse = await API.post(
-        'api/auth/users/signup',
-        credentials
-      );
-      console.log('Reg/signup&signin', signupResponse);
-      const signinResponse = await dispatch(signinThunk(credentials));
-      console.log('auth/signup&signin', signinResponse);
-      return signinResponse;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
-signupAndSignInThunk();
 export const logoutThunk = createAsyncThunk(
   'auth/logout',
   async (_, thunkAPI) => {

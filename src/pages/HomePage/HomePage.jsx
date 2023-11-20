@@ -9,9 +9,7 @@ import { useState } from "react";
 import { selectMainCatalog } from "../../redux/Drinks/selectors";
 import { getAllDrinksThunk } from "../../redux/Drinks/operations";
 import { getCategoriesThunk } from "../../redux/Filters/operations";
-import { DrinkList } from "../../shared/components/DrinkList/DrinkList";
-import { DrinkItemsList } from "../../shared/components/DrinkList/DrinkList.styled";
-import DrinkCartItem from "../../shared/components/DrinkCardItem/DrinkCardItem";
+import DrinkCardItem from "../../shared/components/DrinkCardItem/DrinkCardItem";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -55,7 +53,7 @@ const HomePage = () => {
       </HomeWrapper>
       <>
         {allCatalog.map((drink) => (
-          <DrinkCartItem key={drink._id} {...drink} />
+          <DrinkCardItem key={drink._id} {...drink} />
         ))}
 
         <LigthBtn onClick={handleNextPageClick}>Next Page</LigthBtn>
