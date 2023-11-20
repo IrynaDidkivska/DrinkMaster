@@ -5,6 +5,8 @@ import { signupThunk } from "../../redux/Auth/operations";
 import { selectIsLoading } from "../../redux/Auth/selectors";
 import moment from "moment";
 import "react-datetime/css/react-datetime.css";
+import React, { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 import {
   StyledCalendarSvg,
@@ -21,6 +23,7 @@ import {
 import Subtitle from "../../shared/components/Title/Subtitle";
 
 const SignUp = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
 
@@ -71,7 +74,7 @@ const SignUp = () => {
       return current.isBefore();
     },
 
-    dayOfWeekFormat: 'dd', // Use "dd" to start from Monday
+    dayOfWeekFormat: "dd", // Use "dd" to start from Monday
     startOfWeek: 1, // 0 is Sunday, 1 is Monday
   };
 
@@ -89,14 +92,16 @@ const SignUp = () => {
           value={formik.values.username}
         />
         {formik.touched.username && formik.errors.username ? (
-          <div>{formik.errors.username}</div>
+          <div style={{ color: "DA1414" }}>{formik.errors.username}</div>
+        ) : formik.touched.username && !formik.errors.username ? (
+          <div style={{ color: "green" }}>Valid username</div>
         ) : null}
         <StyledDatatimeWrapper>
           <StyledDatetime
             type="date"
             id="birthdate"
             name="birthdate"
-            inputProps={{ placeholder: 'dd/mm/yyyy' }}
+            inputProps={{ placeholder: "dd/mm/yyyy" }}
             timeFormat={false}
             onChange={(value) => handleDateChange("birthdate", value)}
             value={formik.values.birthdate}
@@ -109,7 +114,9 @@ const SignUp = () => {
           </StyledCalendarSvg>
         </StyledDatatimeWrapper>
         {formik.touched.birthdate && formik.errors.birthdate ? (
-          <div>{formik.errors.birthdate}</div>
+          <div style={{ color: "red" }}>{formik.errors.birthdate}</div>
+        ) : formik.touched.birthdate && !formik.errors.birthdate ? (
+          <div style={{ color: "green" }}>Valid birthdate</div>
         ) : null}
 
         <input
@@ -122,10 +129,13 @@ const SignUp = () => {
           value={formik.values.email}
         />
         {formik.touched.email && formik.errors.email ? (
-          <div>{formik.errors.email}</div>
+          <div style={{ color: "red" }}>{formik.errors.email}</div>
+        ) : formik.touched.email && !formik.errors.email ? (
+          <div style={{ color: "green" }}>Valid email</div>
         ) : null}
         <input
-          type="password"
+          // type="password"
+          type={showPassword ? "text" : "password"}
           id="password"
           name="password"
           placeholder="Password"
@@ -134,8 +144,23 @@ const SignUp = () => {
           value={formik.values.password}
         />
         {formik.touched.password && formik.errors.password ? (
-          <div>{formik.errors.password}</div>
+          <div style={{ color: "red" }}>{formik.errors.password}</div>
+        ) : formik.touched.password && !formik.errors.password ? (
+          <div style={{ color: "green" }}>Valid password</div>
         ) : null}
+        {/* Eye icon to toggle password visibility */}
+        <div
+          style={{
+            position: "absolute",
+            right: "20px",
+            top: "15px",
+            cursor: "pointer",
+            color: showPassword ? "yellow" : "red",
+          }}
+          onClick={() => setShowPassword(!showPassword)}
+        >
+          {showPassword ? <FaEyeSlash /> : <FaEye />}
+        </div>
       </Wrapper>
 
       <Wrapper>
