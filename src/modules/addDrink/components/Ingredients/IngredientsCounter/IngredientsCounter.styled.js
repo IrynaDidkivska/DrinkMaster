@@ -4,10 +4,12 @@ export const WrapperStyled = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 104px;
   height: 38px;
   border-radius: 200px;
   border: 1px solid rgba(243, 243, 243, 0.5);
+  @media screen and (min-width: 768px) {
+    height: 44px;
+  }
 `;
 
 export const IncButtonStyled = styled.button`
@@ -19,8 +21,17 @@ export const IncButtonStyled = styled.button`
   background: transparent;
   border-radius: 0 200px 200px 0;
   border: none;
+  & svg {
+    width: 16px;
+    height: 16px;
+    stroke: ${({ theme }) => theme.colors.mainText};
+  }
   &:disabled {
-    opacity: 0.5;
+    opacity: 0.3;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 14px 18px;
   }
 `;
 
@@ -34,4 +45,9 @@ export const CountViveStyled = styled.div`
   font-size: 14px;
   font-weight: 400;
   line-height: 1.28; /* 128.571% */
+
+  @media screen and (min-width: 768px) {
+    font-size: 17px;
+    line-height: 1.56; /* 26.52px */
+  }
 `;

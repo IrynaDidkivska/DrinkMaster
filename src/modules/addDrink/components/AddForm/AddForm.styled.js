@@ -1,18 +1,16 @@
 import styled from 'styled-components';
+import { ComponentWrapperStyled } from '../../addDrink.styled';
 
-// export const TitleStyled = styled.h2`
-//   color: ${({ theme }) => theme.colors.mainText};
-//   font-family: Manrope;
-//   font-size: 32px;
-//   font-style: normal;
-//   font-weight: 600;
-//   line-height: 38px; /* 118.75% */
-//   @media screen and (min-width: 768px) {
-//   }
-
-//   @media screen and (min-width: 1440px) {
-//   }
-// `;
+export const AddFormWrapperStyled = styled(ComponentWrapperStyled)`
+  @media screen and (min-width: 768px) {
+    display: flex;
+    align-items: start;
+    gap: 32px;
+  }
+  @media screen and (min-width: 1440px) {
+    gap: 40px;
+  }
+`;
 
 export const ImgContainerStyled = styled.div`
   display: flex;
@@ -25,9 +23,15 @@ export const ImgContainerStyled = styled.div`
   border-radius: 8px;
   margin-bottom: 40px;
   @media screen and (min-width: 768px) {
+    width: 320px;
+    height: 320px;
+    margin: 0;
   }
 
   @media screen and (min-width: 1440px) {
+    width: 400px;
+    height: 400px;
+    background: rgba(22, 31, 55, 0.5);
   }
 `;
 
@@ -45,11 +49,6 @@ export const AddImgButtonStyled = styled.button`
     height: 28px;
     stroke: ${({ theme }) => theme.colors.secondaryText};
   }
-  @media screen and (min-width: 768px) {
-  }
-
-  @media screen and (min-width: 1440px) {
-  }
 `;
 export const AddImgLabelStyled = styled.label`
   display: flex;
@@ -61,10 +60,17 @@ export const AddImgLabelStyled = styled.label`
   font-size: 16px;
   font-weight: 500;
   line-height: 1.25; /* 125% */
+`;
 
+export const InputWrapperStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 31px;
   @media screen and (min-width: 768px) {
+    width: 352px;
   }
-
   @media screen and (min-width: 1440px) {
+    gap: 40px;
+    width: 393px;
   }
 `;

@@ -1,12 +1,15 @@
 import Subtitle from '../../../../shared/components/Title/Subtitle';
-import { ComponentWrapperStyled } from '../../addDrink.styled';
 import IngredientItem from './IngredientItem/IngredientItem';
-import { IngredientsListStyled, ListHeaderStyled } from './Ingredients.styled';
+import {
+  IngredientsListStyled,
+  IngredientsWrapperStyled,
+  ListHeaderStyled,
+} from './Ingredients.styled';
 import IngredientsCounter from './IngredientsCounter/IngredientsCounter';
 
 const Ingredients = () => {
   return (
-    <ComponentWrapperStyled>
+    <IngredientsWrapperStyled>
       <ListHeaderStyled>
         <Subtitle Subtitle="Ingredients" />
         <IngredientsCounter />
@@ -17,7 +20,7 @@ const Ingredients = () => {
         <IngredientItem />
         <IngredientItem />
       </IngredientsListStyled>
-    </ComponentWrapperStyled>
+    </IngredientsWrapperStyled>
   );
 };
 

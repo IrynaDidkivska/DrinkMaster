@@ -3,15 +3,16 @@ import {
   Ingredients,
   RecipePreparation,
 } from '../../modules/addDrink';
-import { Container } from '../../shared/styles/Container';
+import LigthBtn from '../../shared/components/Buttons/LigthBtn';
 
 const AddDrink = () => {
   return (
-    <Container>
+    <>
       <AddForm />
       <Ingredients />
       <RecipePreparation />
-    </Container>
+      <LigthBtn onClick={() => {}}>Add</LigthBtn>
+    </>
   );
 };
 
