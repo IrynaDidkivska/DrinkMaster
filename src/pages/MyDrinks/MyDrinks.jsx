@@ -1,12 +1,14 @@
-import { DrinkList } from "../../shared/components//DrinkList/DrinkList";
-import Title from "../../shared/components/Title/Title";
-const MyDrinks = () => {
-  return (
-    <>
-      <Title Title="My drinks" />
-      <DrinkList />
-    </>
-  );
-};
 
-export default MyDrinks;
+import { DrinkListID } from '../../shared/components/DrinkList/DrinkListId'
+import Title from '../../shared/components/Title/Title'
+const MyDrinks = () => {
+	return (
+		<>
+			<Title Title='My drinks' />
+			<DrinkListID />
+		</>
+	)
+}
+
+
+export default MyDrinks

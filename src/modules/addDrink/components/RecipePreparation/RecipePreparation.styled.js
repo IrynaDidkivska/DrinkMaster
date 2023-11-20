@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import Subtitle from '../../../../shared/components/Title/Subtitle';
+import styled from "styled-components";
+import Subtitle from "../../../../shared/components/Title/Subtitle";
 
 export const TextareaStyled = styled.textarea`
   width: 100%;
@@ -8,7 +8,7 @@ export const TextareaStyled = styled.textarea`
   padding: 16px 18px;
   border: 1px solid rgba(243, 243, 243, 0.5);
   border-radius: 14px;
-  outline: none;
+  outline: transparent;
   background: transparent;
   resize: none;
   overflow-x: hidden;

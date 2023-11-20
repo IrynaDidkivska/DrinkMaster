@@ -18,6 +18,13 @@ export const darkTheme = {
     dark: "#161F37",
     cancel: "#434D67",
   },
+  footer: {
+    mainText: "#161F37",
+    color: "#F3F3F3",
+    borderTop: "1px solid rgba(243, 243, 243, 0.2)",
+    link: "rgba(243, 243, 243, 0.5)",
+    bacground: "#0A0A11",
+  },
 
   transition: "all 300ms cubic-bezier(0.53, 0.5, 0.53, 0.52)",
 };
@@ -40,6 +47,13 @@ export const lightTheme = {
     ligth: "#161F37",
     dark: "#F3F3F3",
     cancel: "#434D67",
+  },
+  footer: {
+    mainText: "#161F37",
+    color: "#F3F3F3",
+    borderTop: "1px solid rgba(243, 243, 243, 0.2)",
+    link: "rgba(243, 243, 243, 0.5)",
+    bacground: "#0A0A11",
   },
 
   transition: "all 300ms cubic-bezier(0.53, 0.5, 0.53, 0.52)",

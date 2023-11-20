@@ -32,7 +32,7 @@ export const authSlice = createSlice({
         state.user.username = payload.username;
         state.user.isAdult = payload.isAdult;
         state.user.avatar = payload.avatarUrl;
-        // state.token = payload.token;
+        state.token = payload.token;
         state.isAuth = true;
         state.isLoading = false;
       })
@@ -49,7 +49,7 @@ export const authSlice = createSlice({
 
       .addCase(logoutThunk.fulfilled, (state) => {
         state.user = {
-          name: "",
+          username: "",
           email: "",
         };
         state.token = "";

@@ -3,15 +3,19 @@ import { API, clearToken, setToken } from "../../config/drinkConfig";
 
 export const signupThunk = createAsyncThunk(
   "auth/signup",
-  async (credentials, thunkAPI) => {
+  async (credentials, { rejectWithValue, dispatch }) => {
     try {
       const { data } = await API.post("api/auth/users/signup", credentials);
       // setToken(res.data.token);
-      console.log(data);
-      // toast.success(`Hello ${editString(res.data.user.username) || ""} !`);
+      console.log(credentials);
+      const reg = { email: data.email, password: credentials.password };
+
+      dispatch(signinThunk(reg));
+
+      // toast.success(`Hello ${editString(data.user.username) || ""} !`);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -20,10 +24,9 @@ export const signinThunk = createAsyncThunk(
   "auth/signin",
   async (credentials, thunkAPI) => {
     try {
-      const res = await API.post("api/auth/users/login", credentials);
-      setToken(res.data.token);
-
-      return res.data;
+      const { data } = await API.post("api/auth/users/login", credentials);
+      setToken(data.token);
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

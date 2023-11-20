@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import DrinkFavImage from "../../components/DrinkCardItem/Rectangle40559.png";
 import {
   DrinkCardItemContainer,
@@ -7,13 +8,23 @@ import {
   DrinkCardItemContainerDiscr,
 } from "./DrinkCardItem.styled";
 
-const DrinkCardItem = () => {
+
+
+
+const DrinkCardItem = ({ _id, drinkThumb, drink }) => {
+  const navigate = useNavigate();
+
+  const handleSeeMore = (_id) => {
+    navigate(`/drinks/${_id}`);
+  };
+
+
   return (
-    <DrinkCardItemContainer>
-      <DrinkCardItemImage src={DrinkFavImage} alt="Coctail's name" />
+    <DrinkCardItemContainer key={_id}>
+      <DrinkCardItemImage src={drinkThumb} alt={drink} />
       <DrinkCardItemContainerDiscr>
-        <DrinkCardItemName>A Furlong Too Late</DrinkCardItemName>
-        <DrinkCardItemSeeMore href="E:\Julia\IT\BOOTCAMP\Node\DrinkMaster\src\pages\MyDrinks\MyDrinks.jsx">
+        <DrinkCardItemName>{drink}</DrinkCardItemName>
+        <DrinkCardItemSeeMore onClick={() => handleSeeMore(_id)}>
           See more
         </DrinkCardItemSeeMore>
       </DrinkCardItemContainerDiscr>

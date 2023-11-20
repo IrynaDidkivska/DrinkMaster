@@ -5,7 +5,7 @@ export const LinkStyled = styled(Link)`
   padding: 8px 16px;
   border-radius: 40px;
   border: 1px solid rgba(243, 243, 243, 0.2);
-  outline: none;
+  outline: transparent;
 
   font-family: "Manrope-500", sans-serif;
   font-size: 14px;

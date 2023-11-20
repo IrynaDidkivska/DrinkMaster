@@ -1,7 +1,7 @@
-import Select from 'react-select';
-import styled from 'styled-components';
+import Select from "react-select";
+import styled from "styled-components";
 
-export const FormStyled = styled('form')`
+export const FormStyled = styled("form")`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -12,7 +12,7 @@ export const FormStyled = styled('form')`
     gap: 8px;
   }
 `;
-export const InputContStyled = styled('div')`
+export const InputContStyled = styled("div")`
   width: fit-content;
   position: relative;
   width: 100%;
@@ -28,24 +28,24 @@ export const InputContStyled = styled('div')`
   }
 `;
 
-export const InputStyled = styled('input')`
+export const InputStyled = styled("input")`
   width: 100%;
   height: 54px;
   padding: 18px 24px;
   background: transparent;
   border-radius: 200px;
   border: 1px solid rgba(243, 243, 243, 0.2);
-  outline: none;
+  outline: transparent;
   opacity: 0.8;
   color: ${({ theme }) => theme.colors.mainText};
-  font-family: 'Manrope-400';
+  font-family: "Manrope-400";
   font-size: 14px;
   font-weight: 400;
   line-height: 1.28; /* 128.571% */
 
   &::placeholder {
     color: ${({ theme }) => theme.colors.mainText};
-    font-family: 'Manrope-400';
+    font-family: "Manrope-400";
     font-size: 14px;
     font-weight: 400;
     line-height: 1.28; /* 128.571% */
@@ -67,7 +67,7 @@ export const SelectStyled = styled(Select)`
   .customSelect__ {
     &control {
       color: ${({ theme }) => theme.colors.mainText}; //#F3F3F3
-      font-family: 'Manrope-400';
+      font-family: "Manrope-400";
       font-size: 14px;
       font-weight: 400;
       line-height: 1.28;
@@ -78,7 +78,7 @@ export const SelectStyled = styled(Select)`
       background-color: ${({ theme }) => theme.colors.secondaryText}; //#161F37
       border: none !important;
       box-shadow: none !important;
-      outline: none !important;
+      outline: transparent !important;
 
       &:hover,
       &:focus {
@@ -88,7 +88,7 @@ export const SelectStyled = styled(Select)`
       &--is-focused {
         background-color: none;
         border: none;
-        outline: none;
+        outline: transparent;
         outline-color: transparent;
       }
       & svg {
@@ -154,7 +154,7 @@ export const SelectStyled = styled(Select)`
       margin-top: 4px;
       border-radius: 12px;
       background-color: #161f37;
-      font-family: 'Manrope-400';
+      font-family: "Manrope-400";
       font-size: 14px;
       font-weight: 400;
       line-height: 128%;
