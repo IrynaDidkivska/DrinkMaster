@@ -25,13 +25,18 @@ export const User = () => {
   };
 
   const { username, avatar } = useSelector(selectUser);
+  console.log(avatar);
 
   return (
     <>
       <StyledBtnProfile onClick={togglePopup}>
         {avatar ? (
           <StyledImgProfile
-            src={`https://drink-master-project.onrender.com/${avatar}`}
+            src={
+              avatar.startsWith('http')
+                ? avatar
+                : `https://drink-master-project.onrender.com/${avatar}`
+            }
             alt="Foto"
           />
         ) : (
