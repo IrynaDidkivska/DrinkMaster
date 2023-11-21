@@ -24,7 +24,6 @@ export const getPopularThunk = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await API.get("api/drinks/popular");
-      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -108,12 +107,14 @@ export const addFavoriteThunk = createAsyncThunk(
     }
   }
 );
-//TODO: не працює
+//TODO: узнать у ментора как правильно делать запрос
 export const deleteFromFavoriteThunk = createAsyncThunk(
   "drinks/deleteFromFav",
   async (id, { rejectWithValue, dispatch }) => {
     try {
-      const { data } = await API.delete(`api/drinks/favorite/remove/${id}`);
+      const { data } = await API.delete(`api/drinks/favorite/remove`, {
+        data: { drinkId: id },
+      });
       dispatch(getFavoriteThunk());
       return data.id;
     } catch (error) {

@@ -1,5 +1,5 @@
-import Select from "react-select";
-import styled from "styled-components";
+import Select from 'react-select';
+import styled from 'styled-components';
 
 export const SelectStyled = styled(Select)`
   .addDrink__ {
@@ -22,9 +22,11 @@ export const SelectStyled = styled(Select)`
         outline-color: transparent;
       }
       & svg {
+        transition: transform 200ms ease-in-out;
       }
       &--menu-is-open {
         & svg {
+          transform: rotateX(180deg);
         }
       }
       &--is-disabled {
@@ -33,7 +35,6 @@ export const SelectStyled = styled(Select)`
       }
     }
     &value-container {
-      /* padding: 0 0 14px 0; */
       padding: 0;
     }
     &placeholder {
@@ -41,7 +42,7 @@ export const SelectStyled = styled(Select)`
     &single-value {
       margin: 0;
       color: ${({ theme }) => theme.colors.mainText};
-      font-family: "Manrope-400";
+      font-family: 'Manrope-400';
       font-size: 14px;
       font-weight: 400;
       line-height: 14px; /* 100% */
@@ -65,7 +66,7 @@ export const SelectStyled = styled(Select)`
       padding: 0;
       margin: 0;
       color: #f3f3f3;
-      font-family: "Manrope-400";
+      font-family: 'Manrope-400';
       font-size: 14px;
       font-weight: 400;
       line-height: 1; /* 100% */
@@ -89,7 +90,7 @@ export const SelectStyled = styled(Select)`
       border-radius: 12px;
       color: rgba(243, 243, 243, 0.4);
       white-space: nowrap;
-      font-family: "Manrope-400";
+      font-family: 'Manrope-400';
       font-size: 12px;
       font-weight: 400;
       line-height: 1.33; /* 133.333% */
@@ -116,7 +117,7 @@ export const SelectStyled = styled(Select)`
       text-overflow: ellipsis;
       cursor: pointer;
       color: rgba(243, 243, 243, 0.4);
-      font-family: "Manrope-400";
+      font-family: 'Manrope-400';
       font-size: 12px;
       font-weight: 400;
       line-height: 1.33; /*133.333% */
@@ -133,9 +134,24 @@ export const SelectStyled = styled(Select)`
     }
 
     @media screen and (min-width: 768px) {
+      .addDrink__ {
+        &menu-list {
+          gap: 8px;
+        }
+        &menu {
+          border-radius: 20px;
+          padding: 14px;
+        }
+      }
     }
 
     @media screen and (min-width: 1440px) {
+      addDrink__ {
+        &option {
+          font-size: 14px;
+          line-height: 1.28; /*133.333% */
+        }
+      }
     }
   }
 `;
@@ -145,22 +161,15 @@ export const SelectWrapper = styled.div`
   justify-content: space-between;
   border-bottom: 1px solid rgba(243, 243, 243, 0.5);
   color: ${({ theme }) => theme.colors.mainText};
-  font-family: "Manrope-400";
-  font-size: 14px;
-  font-weight: 400;
-  line-height: normal;
-  letter-spacing: -0.28px;
-  margin-bottom: 31px;
+  height: 34px;
   @media screen and (min-width: 768px) {
-  }
-
-  @media screen and (min-width: 1440px) {
+    height: 41px;
   }
 `;
 
 export const LabelStyled = styled.div`
   color: ${({ theme }) => theme.colors.mainText};
-  font-family: "Manrope-400";
+  font-family: 'Manrope-400';
   font-size: 14px;
   font-weight: 400;
   line-height: normal;
@@ -168,8 +177,7 @@ export const LabelStyled = styled.div`
   margin-bottom: 31px;
   opacity: 0.5;
   @media screen and (min-width: 768px) {
-  }
-
-  @media screen and (min-width: 1440px) {
+    letter-spacing: -0.32px;
+    font-size: 16px;
   }
 `;

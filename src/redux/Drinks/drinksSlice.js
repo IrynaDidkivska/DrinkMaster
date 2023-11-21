@@ -54,10 +54,12 @@ const drinksSlice = createSlice({
       })
 
       .addCase(deleteFromOwnThunk.fulfilled, (state, { payload }) => {
-        state.own = state.favorite.filter((item) => item.id !== payload);
+        state.own = state.favorite.filter((item) => item.drinkId !== payload);
       })
       .addCase(deleteFromFavoriteThunk.fulfilled, (state, { payload }) => {
-        state.favorite = state.favorite.filter((item) => item.id !== payload);
+        state.favorite = state.favorite.filter(
+          (item) => item.drinkId !== payload
+        );
       })
 
       .addMatcher(

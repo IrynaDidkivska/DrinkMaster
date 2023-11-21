@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const RadioWrapper = styled.div`
   position: relative;
@@ -8,6 +8,7 @@ export const RadioWrapper = styled.div`
   width: fit-content;
   margin-right: 16px;
   @media screen and (min-width: 768px) {
+    gap: 8px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -19,7 +20,7 @@ export const InputStyled = styled.input`
   opacity: 0;
   + label {
     &:before {
-      content: "";
+      content: '';
       background: transparent;
       border-radius: 100%;
       border: 1.5px solid ${({ theme }) => theme.colors.mainText};
@@ -69,6 +70,31 @@ export const InputStyled = styled.input`
     }
   }
   @media screen and (min-width: 768px) {
+    + label {
+      &:before {
+        content: '';
+        width: 20px;
+        height: 20px;
+        margin-right: 8px;
+        border: 2px solid ${({ theme }) => theme.colors.mainText};
+      }
+    }
+    &:checked {
+      + label {
+        &:before {
+          box-shadow: inset 0 0 0 3px ${({ theme }) => theme.background.main};
+          border: 2px solid ${({ theme }) => theme.colors.mainText};
+        }
+      }
+    }
+    &:disabled {
+      + label {
+        opacity: 0.5;
+        &:before {
+          box-shadow: inset 0 0 0 2px #0a0a11;
+        }
+      }
+    }
   }
 
   @media screen and (min-width: 1440px) {
@@ -81,12 +107,14 @@ export const LabelStyled = styled.label`
   text-align: center;
   transition: all 250ms ease;
   color: ${({ theme }) => theme.colors.mainText};
-  font-family: "Manrope-400";
+  font-family: 'Manrope-400';
   font-size: 14px;
   font-weight: 400;
   letter-spacing: -0.28px;
 
   @media screen and (min-width: 768px) {
+    font-size: 16px;
+    letter-spacing: -0.32px;
   }
 
   @media screen and (min-width: 1440px) {

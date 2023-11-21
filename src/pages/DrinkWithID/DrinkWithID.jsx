@@ -1,8 +1,7 @@
-import { DrinkListID } from "../../shared/components/DrinkList/DrinkListId";
-
+import DrinkListID from "../../shared/components/DrinkList/DrinkListID";
 
 const DrinkWithID = () => {
-  return <DrinkListID/>
+  return <DrinkListID />;
 };
 
 export default DrinkWithID;

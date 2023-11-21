@@ -1,3 +1,4 @@
+import { SpriteSVG } from '../../../../../shared/icons/SpriteSVG';
 import {
   CountViveStyled,
   DecButtonStyled,
@@ -8,9 +9,13 @@ import {
 const IngredientsCounter = () => {
   return (
     <WrapperStyled>
-      <DecButtonStyled type="button">-</DecButtonStyled>
-      <CountViveStyled>3</CountViveStyled>
-      <IncButtonStyled type="button">+</IncButtonStyled>
+      <DecButtonStyled type="button" disabled={false}>
+        <SpriteSVG name="minus" />
+      </DecButtonStyled>
+      <CountViveStyled>50</CountViveStyled>
+      <IncButtonStyled type="button" disabled={false}>
+        <SpriteSVG name="plus" />
+      </IncButtonStyled>
     </WrapperStyled>
   );
 };
