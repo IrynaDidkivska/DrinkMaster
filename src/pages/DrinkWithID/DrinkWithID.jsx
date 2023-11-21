@@ -1,7 +1,9 @@
-import DrinkListID from "../../shared/components/DrinkList/DrinkListID";
+import MyJustDrinks from "../../modules/myDrinks/components/MyMoonmintDrinks/MyJustDrinks/MyJustDrinks";
+
+// сторінка напою з ІД
 
 const DrinkWithID = () => {
-  return <DrinkListID />;
+  return <MyJustDrinks />;
 };
 
 export default DrinkWithID;
