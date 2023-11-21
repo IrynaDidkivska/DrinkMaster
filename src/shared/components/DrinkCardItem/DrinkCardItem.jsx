@@ -9,7 +9,7 @@ import {
   DrinkCardItemContainerDiscr,
 } from "./DrinkCardItem.styled";
 
-const DrinkCardItem = ({ _id, drinkThumb, drink }) => {
+const DrinkCardItem = ({ drink }) => {
   const navigate = useNavigate();
 
   const handleSeeMore = (_id) => {
@@ -18,11 +18,11 @@ const DrinkCardItem = ({ _id, drinkThumb, drink }) => {
   };
 
   return (
-    <DrinkCardItemContainer key={_id}>
-      <DrinkCardItemImage src={drinkThumb} alt={drink} />
+    <DrinkCardItemContainer key={drink._id}>
+      <DrinkCardItemImage src={drink.drinkThumb} alt={drink.drink} />
       <DrinkCardItemContainerDiscr>
-        <DrinkCardItemName>{drink}</DrinkCardItemName>
-        <DrinkCardItemSeeMore onClick={() => handleSeeMore(_id)}>
+        <DrinkCardItemName>{drink.drink}</DrinkCardItemName>
+        <DrinkCardItemSeeMore onClick={() => handleSeeMore(drink._id)}>
           See more
         </DrinkCardItemSeeMore>
       </DrinkCardItemContainerDiscr>
@@ -33,7 +33,9 @@ const DrinkCardItem = ({ _id, drinkThumb, drink }) => {
 export default DrinkCardItem;
 
 DrinkCardItem.propTypes = {
-  _id: PropTypes.string.isRequired,
-  drinkThumb: PropTypes.string.isRequired,
-  drink: PropTypes.string.isRequired,
+  drink: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    drinkThumb: PropTypes.string.isRequired,
+    drink: PropTypes.string.isRequired,
+  }).isRequired,
 };

@@ -1,12 +1,17 @@
-import { DrinkItemsList } from './DrinkList.styled';
-import DrinkCardItem from '../DrinkCardItem/DrinkCardItem'
+import { useSelector } from "react-redux";
+import { selectBySearch } from "../../../redux/Drinks/selectors";
+import DrinkCardItem from "../DrinkCardItem/DrinkCardItem";
+import { List } from "./DrinkList.styled";
 
 const DrinkList = () => {
-  const drinkItems = Array(8).fill(null).map((_, index) => (
-    <DrinkCardItem key={index} />
-  ));
-
-  return <DrinkItemsList>{drinkItems}</DrinkItemsList>;
+  const allDrinks = useSelector(selectBySearch);
+  return (
+    <List>
+      {allDrinks.map((drink) => (
+        <DrinkCardItem key={drink._id} drink={drink} />
+      ))}
+    </List>
+  );
 };
 
-export { DrinkList };
+export default DrinkList;

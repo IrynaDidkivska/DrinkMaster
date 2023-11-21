@@ -1,6 +1,6 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Title from "../../../../../shared/components/Title/Title";
-import Caipirinha from "../picture/Caipirinha.png";
+// import Caipirinha from "../picture/Caipirinha.png";
 import {
   OverlayJustLeft,
   OverlayJustRight,
@@ -10,31 +10,43 @@ import {
   StyledJustSpan,
   StyledJustText,
 } from "./MyJustDrinks.styled";
-import { addFavoriteThunk } from "../../../../../redux/Drinks/operations";
+import {
+  addFavoriteThunk,
+  getByIDThunk,
+} from "../../../../../redux/Drinks/operations";
+import { useEffect } from "react";
+import {
+  selectByID,
+  selectDetails,
+} from "../../../../../redux/Drinks/selectors";
 
 const MyJustDrinks = () => {
   const dispatch = useDispatch();
 
+  const drinkId = useSelector(selectByID);
+  const details = useSelector(selectDetails);
+
+  useEffect(() => {
+    dispatch(getByIDThunk());
+  }, [dispatch]);
+
   return (
     <StyledJustDrinks>
       <div>
-        <Title Title="Just a Moonmint" />
-        <StyledJustSpan>Highball glass / Non alcoholic</StyledJustSpan>
-        <StyledJustText>
-          Just a Moonmint is a refreshing and minty cocktail that combines the
-          flavors of vodka, lime juice, and mint syrup. It is made by shaking
-          vodka, lime juice, mint syrup, and ice together and straining it into
-          a glass.
-        </StyledJustText>
+        <Title Title={details.drink} />
+        <StyledJustSpan>
+          {details.glass} / {details.alcoholic}
+        </StyledJustSpan>
+        <StyledJustText>{details.description}</StyledJustText>
         <StyledJustButton
           onClick={() => {
-            console.log("hello") || dispatch(addFavoriteThunk(true));
+            console.log("hello") || dispatch(addFavoriteThunk(details.id));
           }}
         >
           Add to favorite drinks
         </StyledJustButton>
       </div>
-      <StyledJustImages src={Caipirinha} alt="Caipirinha" />
+      <StyledJustImages src={details.drinkThumb} alt={details.drink} />
       <OverlayJustLeft />
       <OverlayJustRight />
     </StyledJustDrinks>
