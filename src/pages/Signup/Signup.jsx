@@ -106,8 +106,8 @@ const SignUp = () => {
   return (
     <StyledForm
       onSubmit={formik.handleSubmit}
-      isError={formik.touched.username && formik.errors.username}
-      isSuccess={formik.touched.username && !formik.errors.username}
+      isError={formik.touched.password && formik.errors.password}
+      isSuccess={formik.touched.password && !formik.errors.password}
     >
       <Subtitle Subtitle=" Sign Up" />
       <Wrapper>
@@ -119,6 +119,8 @@ const SignUp = () => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.username}
+          // isError={formik.touched.username && formik.errors.username}
+          // isSuccess={formik.touched.username && !formik.errors.username}
         />
         {formik.touched.username && formik.errors.username ? (
           <div style={{ color: "red" }}>{formik.errors.username}</div>
@@ -200,7 +202,7 @@ const SignUp = () => {
           <div style={{ color: "green" }}>Valid email</div>
         ) : null}
         <DivWrapper>
-          <input
+          <InputWrapper
             // type="password"
             type={showPassword ? "text" : "password"}
             id="password"
@@ -209,6 +211,8 @@ const SignUp = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.password}
+            // isError={formik.touched.password && formik.errors.password}
+            // isSuccess={formik.touched.password && !formik.errors.password}
           />
           {/* Eye icon to toggle password visibility */}
           {formik.values.password && ( // Check if the password field has any value
