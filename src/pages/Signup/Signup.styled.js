@@ -93,6 +93,10 @@ export const StyledDatetime = styled(Datetime)`
   }
 `;
 
+export const DivWrapper = styled.div`
+  position: relative;
+`;
+
 export const StyledCalendarSvg = styled.div`
   position: absolute;
   right: 10%;
@@ -109,6 +113,11 @@ export const StyledCalendarSvg = styled.div`
   }
 `;
 
-export const DivWrapper = styled.div`
-  position: relative;
+export const StyleRedSvg = styled(StyledCalendarSvg)`
+  stroke: red;
+  fill: red;
+`;
+
+export const StyleGreenSvg = styled(StyledCalendarSvg)`
+  stroke: green;
 `;

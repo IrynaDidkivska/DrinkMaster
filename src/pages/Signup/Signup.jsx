@@ -14,6 +14,8 @@ import {
   StyledCalendarSvg,
   StyledDatatimeWrapper,
   StyledDatetime,
+  StyleGreenSvg,
+  StyleRedSvg,
 } from "./Signup.styled";
 import { SpriteSVG } from "../../shared/icons/SpriteSVG";
 import {
@@ -40,7 +42,7 @@ const SignUp = () => {
       username: Yup.string().required("Name is required"),
       birthdate: Yup.string()
         .matches(
-          /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/,
+          /^(19|20)\d\d-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
           "Invalid date format (DD/MM/YYYY)"
         )
         .required("Date of Birth is required"),
@@ -153,7 +155,7 @@ const SignUp = () => {
             onBlur={formik.handleBlur}
             value={formik.values.email}
           />
-          <AiFillCheckCircle
+          {/* <AiFillCheckCircle
             style={{
               color: "black",
               backgroundColor: "green",
@@ -175,13 +177,16 @@ const SignUp = () => {
               top: "15px",
               cursor: "pointer",
             }}
-          />
-          <StyledCalendarSvg>
-            <SpriteSVG name={"error"} />
-          </StyledCalendarSvg>
-          <StyledCalendarSvg>
-            <SpriteSVG name={"done"} />
-          </StyledCalendarSvg>
+          /> */}
+          {formik.touched.email && formik.errors.email ? (
+            <StyleRedSvg>
+              <SpriteSVG name={"error"} />
+            </StyleRedSvg>
+          ) : formik.touched.email && !formik.errors.email ? (
+            <StyleGreenSvg>
+              <SpriteSVG name={"done"} />
+            </StyleGreenSvg>
+          ) : null}
           {/* ================ */}
         </DivWrapper>
         {formik.touched.email && formik.errors.email ? (
