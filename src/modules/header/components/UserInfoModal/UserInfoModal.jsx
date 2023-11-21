@@ -57,7 +57,7 @@ export const UserInfoModal = ({ onClose }) => {
 
     dispatch(
       updateUserThunk({
-        username: changedName,
+        username: changedName || username,
         avatar: selectedFile,
       })
     )
