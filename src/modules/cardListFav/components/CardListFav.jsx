@@ -1,12 +1,12 @@
-import { DrinkItemsList } from "./DrinkList.styled";
-import DrinkCardItemFav from "../DrinkCardItemFav/DrinkCardItemFav";
 import { useDispatch, useSelector } from "react-redux";
+import { selectFavorites } from "../../../redux/Drinks/selectors";
 import { useEffect } from "react";
 import { getFavoriteThunk } from "../../../redux/Drinks/operations";
-import { selectFavorites } from "../../../redux/Drinks/selectors";
 import { FavNotAdd } from "../../../pages/Favorites/FavNotAdd/FavNotAdd";
+import FavoriteCard from "../../../shared/components/FavoriteCard/FavoriteCard";
+import { List } from "./CardsList.styled";
 
-const DrinkListID = () => {
+const CardListFav = () => {
   const dispatch = useDispatch();
 
   const favorites = useSelector(selectFavorites);
@@ -16,16 +16,16 @@ const DrinkListID = () => {
   }, [dispatch]);
 
   return (
-    <DrinkItemsList>
+    <List>
       {favorites.length === 0 ? (
         <FavNotAdd />
       ) : (
         favorites.map((favorite) => (
-          <DrinkCardItemFav key={favorite._id} favorite={favorite} />
+          <FavoriteCard key={favorite._id} favorite={favorite} />
         ))
       )}
-    </DrinkItemsList>
+    </List>
   );
 };
 
-export default DrinkListID;
+export default CardListFav;

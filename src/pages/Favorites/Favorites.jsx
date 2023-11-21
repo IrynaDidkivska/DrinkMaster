@@ -1,13 +1,13 @@
-import DrinkListID from "../../shared/components/DrinkList/DrinkListID";
+import CardListFav from "../../modules/cardListFav/components/CardListFav";
 import Title from "../../shared/components/Title/Title";
 
-const DrinksListFav = () => {
+const Favorites = () => {
   return (
     <>
       <Title Title="Favorites" />
-      <DrinkListID />
+      <CardListFav />
     </>
   );
 };
 
-export default DrinksListFav;
+export default Favorites;

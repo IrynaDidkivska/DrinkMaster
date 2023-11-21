@@ -1,21 +1,20 @@
-// import DrinkImage from "../../components/DrinkCardItemFav/Rectangle40560.png";
+import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
+  DrinkCardItemFaxBtn,
   DrinkCardItemFaxContainer,
+  DrinkCardItemFaxDel,
+  DrinkCardItemFaxDescription,
   DrinkCardItemFaxImg,
   DrinkCardItemFaxName,
-  DrinkCardItemFaxStatus,
-  DrinkCardItemFaxDescription,
   DrinkCardItemFaxNavi,
-  DrinkCardItemFaxBtn,
-  DrinkCardItemFaxDel,
-} from "./DrinkCardItemFav.styled";
-import { SpriteSVG } from "../../icons/SpriteSVG";
-import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+  DrinkCardItemFaxStatus,
+} from "./FavoriteCard.styled";
 import { deleteFromFavoriteThunk } from "../../../redux/Drinks/operations";
+import { SpriteSVG } from "../../icons/SpriteSVG";
 
-const DrinkCardItemFav = ({ favorite }) => {
+const FavoriteCard = ({ favorite }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -49,9 +48,9 @@ const DrinkCardItemFav = ({ favorite }) => {
   );
 };
 
-export default DrinkCardItemFav;
+export default FavoriteCard;
 
-DrinkCardItemFav.propTypes = {
+FavoriteCard.propTypes = {
   favorite: PropTypes.shape({
     drinkThumb: PropTypes.string,
     drink: PropTypes.string,
