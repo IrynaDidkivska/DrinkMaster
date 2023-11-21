@@ -8,6 +8,7 @@ export const getAllDrinksThunk = createAsyncThunk(
     try {
       const { data } = await API.get("api/drinks/mainpage", {
         params: {
+          category: "Ordinary Drink + Cocktail + Shake + Other/Unknow",
           limit: 5,
           page,
         },
@@ -60,9 +61,9 @@ export const getOwnThunk = createAsyncThunk(
 //TODO: зробити
 export const addOwnDrinkThunk = createAsyncThunk(
   "drinks/addOwnDrink",
-  async (data, thunkAPI) => {
+  async (formdata, thunkAPI) => {
     try {
-      const { data } = await API.post("api/drinks/own/add", data);
+      const { data } = await API.post("api/drinks/own/add", formdata);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
