@@ -20,7 +20,7 @@ const persistConfigUser = {
   key: "root",
   version: 1,
   storage,
-  whitelist: ["token"],
+  whitelist: ["token", "avatar", "username"],
 };
 
 export const store = configureStore({
