@@ -11,14 +11,15 @@ import { AiFillCheckCircle } from "react-icons/ai";
 
 import {
   DivWrapper,
+  StyleGreenSvg,
+  StyleRedSvg,
   StyledCalendarSvg,
   StyledDatatimeWrapper,
   StyledDatetime,
-  StyleGreenSvg,
-  StyleRedSvg,
 } from "./Signup.styled";
 import { SpriteSVG } from "../../shared/icons/SpriteSVG";
 import {
+  InputWrapper,
   SignButton,
   StyledAuthLink,
   StyledForm,
@@ -103,10 +104,14 @@ const SignUp = () => {
   };
 
   return (
-    <StyledForm onSubmit={formik.handleSubmit}>
+    <StyledForm
+      onSubmit={formik.handleSubmit}
+      isError={formik.touched.username && formik.errors.username}
+      isSuccess={formik.touched.username && !formik.errors.username}
+    >
       <Subtitle Subtitle=" Sign Up" />
       <Wrapper>
-        <input
+        <InputWrapper
           type="text"
           id="username"
           name="username"
