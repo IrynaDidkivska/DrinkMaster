@@ -108,3 +108,7 @@ export const StyledCalendarSvg = styled.div`
     transform: translateX(-15%);
   }
 `;
+
+export const DivWrapper = styled.div`
+  position: relative;
+`;

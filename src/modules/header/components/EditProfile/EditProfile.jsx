@@ -19,7 +19,7 @@ export const EditProfile = ({ togglePopup }) => {
   const { username } = useSelector(selectUser);
   const navigate = useNavigate();
 
-  const isLoading = useSelector(selectIsLoading);
+  // const isLoading = useSelector(selectIsLoading);
 
   const handleLogout = () => {
     dispatch(logoutThunk())
@@ -50,9 +50,7 @@ export const EditProfile = ({ togglePopup }) => {
         </StyledBtnEditProfile>
       </StyledPopupHeader>
 
-      <StyledBtnLogOut onClick={handleLogout} disabled={isLoading}>
-        Log out
-      </StyledBtnLogOut>
+      <StyledBtnLogOut onClick={handleLogout}>Log out</StyledBtnLogOut>
 
       {isModalOpen && <UserInfoModal onClose={handleCloseModal} />}
     </>

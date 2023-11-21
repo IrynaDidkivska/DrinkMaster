@@ -6,10 +6,7 @@ export const signupThunk = createAsyncThunk(
   async (credentials, { rejectWithValue, dispatch }) => {
     try {
       const { data } = await API.post("api/auth/users/signup", credentials);
-
-      console.log(credentials);
       const reg = { email: data.email, password: credentials.password };
-
       const loginResponse = await dispatch(signinThunk(reg)).unwrap();
       return loginResponse;
       // toast.success(`Hello ${editString(data.user.username) || ""} !`);
@@ -71,8 +68,10 @@ export const updateUserThunk = createAsyncThunk(
       const formData = new FormData();
       formData.append("username", data.username);
       formData.append("avatar", data.avatar);
-      const { data } = await API.patch("api/auth/users/update", formData);
-      return data;
+
+      const res = await API.patch("api/auth/users/update", formData);
+
+      return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

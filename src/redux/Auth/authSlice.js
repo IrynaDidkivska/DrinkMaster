@@ -1,31 +1,31 @@
-import { createSlice, isAnyOf } from "@reduxjs/toolkit";
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
   signupThunk,
   signinThunk,
   logoutThunk,
   currentUserThunk,
   updateUserThunk,
-} from "./operations";
+} from './operations';
 
 const initialState = {
   user: {
-    email: "",
-    username: "",
-    birthdate: "",
+    email: '',
+    username: '',
+    birthdate: '',
     isAdult: false,
-    avatar: "",
+    avatar: '',
   },
   isAuth: false,
   isLoading: false,
   isRefresh: false,
-  error: "",
-  token: "",
+  error: '',
+  token: '',
 };
 export const authSlice = createSlice({
-  name: "auth",
+  name: 'auth',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
       .addCase(signupThunk.fulfilled, (state, { payload }) => {
         state.user.email = payload.email;
@@ -47,12 +47,12 @@ export const authSlice = createSlice({
         state.isAuth = true;
       })
 
-      .addCase(logoutThunk.fulfilled, (state) => {
+      .addCase(logoutThunk.fulfilled, state => {
         state.user = {
-          username: "",
-          email: "",
+          username: '',
+          email: '',
         };
-        state.token = "";
+        state.token = '';
         state.isLoading = false;
         state.isAuth = false;
       })
@@ -65,7 +65,7 @@ export const authSlice = createSlice({
         state.isAuth = true;
         state.isRefresh = false;
       })
-      .addCase(currentUserThunk.pending, (state) => {
+      .addCase(currentUserThunk.pending, state => {
         state.isRefresh = true;
       })
       .addCase(currentUserThunk.rejected, (state, { payload }) => {
@@ -74,7 +74,7 @@ export const authSlice = createSlice({
       })
       .addCase(updateUserThunk.fulfilled, (state, { payload }) => {
         state.user.username = payload.username;
-        state.user.avatar = payload.avatar;
+        state.user.avatar = payload.avatarUrl;
       })
 
       .addMatcher(
@@ -85,9 +85,9 @@ export const authSlice = createSlice({
           updateUserThunk.pending,
           currentUserThunk.pending
         ),
-        (state) => {
+        state => {
           state.isLoading = true;
-          state.error = "";
+          state.error = '';
         }
       )
       .addMatcher(
