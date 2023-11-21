@@ -114,10 +114,10 @@ export const StyledCalendarSvg = styled.div`
 `;
 
 export const StyleRedSvg = styled(StyledCalendarSvg)`
-  stroke: red;
-  fill: red;
+  stroke: #da1414;
+  fill: #da1414;
 `;
 
 export const StyleGreenSvg = styled(StyledCalendarSvg)`
-  stroke: green;
+  stroke: #3cbc81;
 `;
