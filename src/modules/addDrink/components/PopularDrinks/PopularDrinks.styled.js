@@ -2,7 +2,11 @@ import styled from "styled-components";
 
 const PopularContainer = styled.div`
   width: 335px;
-  height: 484px;
+  height: 1300px;
+  /* height: 432px; */
+  gap: 24px;
+  display: flex;
+  flex-wrap: wrap;
 
   @media screen and (min-width: 768px) {
     width: 704px;
@@ -20,6 +24,8 @@ const PopularItemContainer = styled.div`
   height: 90px;
   gap: 24px;
   display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
 
   @media screen and (min-width: 768px) {
     gap: 32px;
@@ -38,7 +44,6 @@ const PopularImage = styled.img`
 `;
 const PopularContainerDiscr = styled.div`
   width: 232px;
-  max-height: 89px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -63,10 +68,6 @@ const PopularName = styled.h3`
     line-height: 22px;
   }
 `;
-const PopularItem = styled.div`
-  width: 232px;
-  height: 89px;
-`;
 
 const PopularDiskr = styled.p`
   font-family: "Manrope-600", sans-serif;
@@ -75,10 +76,13 @@ const PopularDiskr = styled.p`
   font-size: 14px;
   line-height: 18px;
   color: white;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  text-align: left;
+  /* height: 86px; */
+
   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: wrap;
+  /* white-space: nowrap; */
+  text-align: left;
 
   @media screen and (min-width: 768px) {
     font-size: 14px;
@@ -94,7 +98,6 @@ export {
   PopularContainer,
   PopularItemContainer,
   PopularImage,
-  PopularItem,
   PopularName,
   PopularDiskr,
   ButtonSeeMore,
