@@ -9,7 +9,7 @@ const Drinks = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllSearchThunk());
+    dispatch(getAllSearchThunk({}));
   }, [dispatch]);
 
   return (
