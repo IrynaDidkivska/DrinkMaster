@@ -11,12 +11,15 @@ import { AiFillCheckCircle } from "react-icons/ai";
 
 import {
   DivWrapper,
+  StyleGreenSvg,
+  StyleRedSvg,
   StyledCalendarSvg,
   StyledDatatimeWrapper,
   StyledDatetime,
 } from "./Signup.styled";
 import { SpriteSVG } from "../../shared/icons/SpriteSVG";
 import {
+  InputWrapper,
   SignButton,
   StyledAuthLink,
   StyledForm,
@@ -40,7 +43,7 @@ const SignUp = () => {
       username: Yup.string().required("Name is required"),
       birthdate: Yup.string()
         .matches(
-          /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/,
+          /^(19|20)\d\d-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
           "Invalid date format (DD/MM/YYYY)"
         )
         .required("Date of Birth is required"),
@@ -101,10 +104,14 @@ const SignUp = () => {
   };
 
   return (
-    <StyledForm onSubmit={formik.handleSubmit}>
+    <StyledForm
+      onSubmit={formik.handleSubmit}
+      isError={formik.touched.password && formik.errors.password}
+      isSuccess={formik.touched.password && !formik.errors.password}
+    >
       <Subtitle Subtitle=" Sign Up" />
       <Wrapper>
-        <input
+        <InputWrapper
           type="text"
           id="username"
           name="username"
@@ -112,6 +119,8 @@ const SignUp = () => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.username}
+          // isError={formik.touched.username && formik.errors.username}
+          // isSuccess={formik.touched.username && !formik.errors.username}
         />
         {formik.touched.username && formik.errors.username ? (
           <div style={{ color: "red" }}>{formik.errors.username}</div>
@@ -153,7 +162,7 @@ const SignUp = () => {
             onBlur={formik.handleBlur}
             value={formik.values.email}
           />
-          <AiFillCheckCircle
+          {/* <AiFillCheckCircle
             style={{
               color: "black",
               backgroundColor: "green",
@@ -175,13 +184,16 @@ const SignUp = () => {
               top: "15px",
               cursor: "pointer",
             }}
-          />
-          <StyledCalendarSvg>
-            <SpriteSVG name={"error"} />
-          </StyledCalendarSvg>
-          <StyledCalendarSvg>
-            <SpriteSVG name={"done"} />
-          </StyledCalendarSvg>
+          /> */}
+          {formik.touched.email && formik.errors.email ? (
+            <StyleRedSvg>
+              <SpriteSVG name={"error"} />
+            </StyleRedSvg>
+          ) : formik.touched.email && !formik.errors.email ? (
+            <StyleGreenSvg>
+              <SpriteSVG name={"done"} />
+            </StyleGreenSvg>
+          ) : null}
           {/* ================ */}
         </DivWrapper>
         {formik.touched.email && formik.errors.email ? (
@@ -190,7 +202,7 @@ const SignUp = () => {
           <div style={{ color: "green" }}>Valid email</div>
         ) : null}
         <DivWrapper>
-          <input
+          <InputWrapper
             // type="password"
             type={showPassword ? "text" : "password"}
             id="password"
@@ -199,6 +211,8 @@ const SignUp = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.password}
+            // isError={formik.touched.password && formik.errors.password}
+            // isSuccess={formik.touched.password && !formik.errors.password}
           />
           {/* Eye icon to toggle password visibility */}
           {formik.values.password && ( // Check if the password field has any value
