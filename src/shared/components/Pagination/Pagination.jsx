@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
-import ReactPaginate from 'react-paginate';
-import { useSelector } from 'react-redux';
-import { selectBySearch } from '../../../redux/Drinks/selectors';
-import DrinkCardItem from '../DrinkCardItem/DrinkCardItem';
-import { List } from '../DrinkList/DrinkList.styled';
-import { SpriteSVG } from '../../icons/SpriteSVG';
-import { StyledNext, StyledPrev } from './Pagination.styled';
+import { useEffect, useState } from "react";
+import ReactPaginate from "react-paginate";
+import { useSelector } from "react-redux";
+import { selectBySearch } from "../../../redux/Drinks/selectors";
+import DrinkCardItem from "../DrinkCardItem/DrinkCardItem";
+import { List } from "../DrinkList/DrinkList.styled";
+import { SpriteSVG } from "../../icons/SpriteSVG";
+import { StyledNext, StyledPrev } from "./Pagination.styled";
 
 const Pagination = () => {
   const allDrinks = useSelector(selectBySearch);
@@ -20,7 +20,7 @@ const Pagination = () => {
     setPageCount(Math.ceil(allDrinks.length / itemsPerPage));
   }, [allDrinks, itemOffset]);
 
-  const handlePageClick = event => {
+  const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % allDrinks.length;
     setItemOffset(newOffset);
   };
@@ -28,8 +28,8 @@ const Pagination = () => {
   return (
     <>
       <List>
-        {currentItems.map(drink => (
-          <DrinkCardItem key={drink._id} drink={drink} />
+        {currentItems.map((drink) => (
+          <DrinkCardItem key={drink._id} data={drink} />
         ))}
       </List>
 

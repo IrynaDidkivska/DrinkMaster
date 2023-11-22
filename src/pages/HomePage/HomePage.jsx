@@ -1,38 +1,30 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import LigthBtn from "../../shared/components/Buttons/LigthBtn";
 import { useDispatch, useSelector } from "react-redux";
 import { StyledTitle } from "../../shared/components/Title/Title.styled";
 import { HomeImage, HomeWrapper, MainText } from "./HomePage.styled";
 import Image from "./img/Found.png";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import { selectMainCatalog } from "../../redux/Drinks/selectors";
 import { getAllDrinksThunk } from "../../redux/Drinks/operations";
-import { getCategoriesThunk } from "../../redux/Filters/operations";
 import DrinkCardItem from "../../shared/components/DrinkCardItem/DrinkCardItem";
+import { List } from "../../shared/components/DrinkList/DrinkList.styled";
 
 const HomePage = () => {
   const navigate = useNavigate();
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const handleAddDrinkClick = () => {
-    navigate("/add");
-  };
-
   const dispatch = useDispatch();
+  const [currentPage, setCurrentPage] = useState(1);
   const allCatalog = useSelector(selectMainCatalog);
 
   useEffect(() => {
     dispatch(getAllDrinksThunk({ page: currentPage }));
-    dispatch(getCategoriesThunk());
-  }, [dispatch, currentPage]);
-
-  const handleNextPageClick = () => {
-    setCurrentPage((prevPage) => prevPage + 1);
-  };
+  }, [currentPage, dispatch]);
 
   const handleOtherDrinks = () => {
     navigate("/drinks");
+  };
+  const handleAddDrinkClick = () => {
+    navigate("/add");
   };
 
   return (
@@ -51,14 +43,12 @@ const HomePage = () => {
         </div>
         <HomeImage src={Image} alt="Coctail's name" />
       </HomeWrapper>
-      <>
+      <List>
         {allCatalog.map((drink) => (
-          <DrinkCardItem key={drink._id} {...drink} />
+          <DrinkCardItem key={drink._id} data={drink} />
         ))}
-
-        <LigthBtn onClick={handleNextPageClick}>Next Page</LigthBtn>
-        <LigthBtn onClick={handleOtherDrinks}>Other drinks</LigthBtn>
-      </>
+      </List>
+      <LigthBtn onClick={handleOtherDrinks}>Other drinks</LigthBtn>
     </>
   );
 };
