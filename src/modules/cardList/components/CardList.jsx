@@ -9,7 +9,7 @@ const CardList = ({ data }) => {
       {data.length === 0 ? (
         <FavNotAdd />
       ) : (
-        data.map((favorite) => <Card key={favorite._id} data={favorite} />)
+        data.map((item) => <Card key={item._id} data={item} />)
       )}
     </List>
   );
