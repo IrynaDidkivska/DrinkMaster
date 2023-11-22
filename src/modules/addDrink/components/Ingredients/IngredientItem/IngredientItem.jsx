@@ -6,12 +6,14 @@ import {
   ItemWrapper,
   RemoveBtnStyled,
 } from './IngredientItem.styled';
+
+import { selectNormalizedIngredients } from '../../../../../redux/Filters/selectors';
 import { useEffect } from 'react';
 import { getIngredientsThunk } from '../../../../../redux/Filters/operations';
-import { optionsNormalize } from '../../../helpers/optionsNormalize';
-import { selectNormalizedIngredients } from '../../../../../redux/Filters/selectors.js';
 
-const IngredientItem = () => {
+
+const IngredientItem = ({ removeIngredient, ingredientData }) => {
+  const { id, name, volume } = ingredientData;
   const dispatch = useDispatch();
   const ingredients = useSelector(selectNormalizedIngredients);
 
@@ -23,10 +25,16 @@ const IngredientItem = () => {
     <ItemWrapper>
       <IngredientSelect
         classNamePrefix="ingredientSelect"
-        options={optionsNormalize(ingredients, 'title')}
+        options={ingredients}
       />
       <InputStyled type="text" />
-      <RemoveBtnStyled type="button">
+      <RemoveBtnStyled
+        type="button"
+        onClick={() => {
+          console.log(ingredientData);
+          removeIngredient(id);
+        }}
+      >
         <SpriteSVG name="remove-ingredient" />
       </RemoveBtnStyled>
     </ItemWrapper>

@@ -27,3 +27,14 @@ export const selectNormalizedIngredients = createSelector(
     }));
   },
 );
+
+export const selectNormalizedGlasses = createSelector(
+  [selectGlasses],
+  glasses => {
+    return glasses.map(({ _id, glass }) => ({
+      label: glass,
+      value: _id,
+    }));
+  },
+
+);

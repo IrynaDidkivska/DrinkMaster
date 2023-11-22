@@ -61,7 +61,7 @@ const SignUp = () => {
     }),
     onSubmit: (values) => {
       // Handle form submission logic here
-      console.log(values);
+
       const credentials = {
         username: values.username,
         birthdate: convertDateFormat(values.birthdate),

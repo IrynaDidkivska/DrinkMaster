@@ -25,6 +25,7 @@ export const IncButtonStyled = styled.button`
     width: 16px;
     height: 16px;
     stroke: ${({ theme }) => theme.colors.mainText};
+    pointer-events: none;
   }
   &:disabled {
     opacity: 0.3;
@@ -40,6 +41,7 @@ export const DecButtonStyled = styled(IncButtonStyled)`
 `;
 export const CountViveStyled = styled.div`
   color: ${({ theme }) => theme.colors.mainText};
+  min-width: 25px;
   text-align: center;
   font-family: 'Manrope-400';
   font-size: 14px;
