@@ -13,7 +13,7 @@ import {
   DrinkCardItemFaxName,
   DrinkCardItemFaxNavi,
   DrinkCardItemFaxStatus,
-} from './FavoriteCard.styled';
+} from './Card.styled';
 
 const OwnCard = ({ ownitem }) => {
   const navigate = useNavigate();

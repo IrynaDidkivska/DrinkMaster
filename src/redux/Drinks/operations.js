@@ -6,7 +6,7 @@ export const getAllDrinksThunk = createAsyncThunk(
   "drinks/getAll",
   async ({ page }, thunkAPI) => {
     try {
-      const { data } = await API.get("api/drinks/mainpage", {
+      const { data } = await API.get("api/drinks/cocktails/main", {
         params: {
           category: "Ordinary Drink + Cocktail + Shake + Other/Unknow",
           limit: 5,
@@ -24,7 +24,7 @@ export const getAllDrinksThunk = createAsyncThunk(
 export const getAllSearchThunk = createAsyncThunk(
   "drinks/getAllSearch",
   async (
-    { ingredient = "", category = "", query = "", page = 1, limit = 10 },
+    { ingredient = "", category = "", query = "", page = 1, limit = 0 },
     thunkAPI
   ) => {
     try {
@@ -135,14 +135,11 @@ export const addFavoriteThunk = createAsyncThunk(
     }
   }
 );
-//TODO: узнать у ментора как правильно делать запрос
 export const deleteFromFavoriteThunk = createAsyncThunk(
   "drinks/deleteFromFav",
   async (id, { rejectWithValue, dispatch }) => {
     try {
-      const { data } = await API.delete(`api/drinks/favorite/remove`, {
-        data: { drinkId: id },
-      });
+      const { data } = await API.delete(`api/drinks/favorite/remove/${id}`);
       dispatch(getFavoriteThunk());
       return data.id;
     } catch (error) {

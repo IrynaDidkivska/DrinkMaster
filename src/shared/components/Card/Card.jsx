@@ -10,11 +10,11 @@ import {
   DrinkCardItemFaxName,
   DrinkCardItemFaxNavi,
   DrinkCardItemFaxStatus,
-} from './FavoriteCard.styled';
+} from './Card.styled';
 import { deleteFromFavoriteThunk } from '../../../redux/Drinks/operations';
 import { SpriteSVG } from '../../icons/SpriteSVG';
 
-const FavoriteCard = ({ favorite }) => {
+const Card = ({ data }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -24,20 +24,20 @@ const FavoriteCard = ({ favorite }) => {
 
   return (
     <DrinkCardItemFaxContainer>
-      <DrinkCardItemFaxImg src={favorite.drinkThumb} alt={favorite.drink} />
-      <DrinkCardItemFaxName>{favorite.drink}</DrinkCardItemFaxName>
-      <DrinkCardItemFaxStatus>{favorite.alcoholic}</DrinkCardItemFaxStatus>
+      <DrinkCardItemFaxImg src={data.drinkThumb} alt={data.drink} />
+      <DrinkCardItemFaxName>{data.drink}</DrinkCardItemFaxName>
+      <DrinkCardItemFaxStatus>{data.alcoholic}</DrinkCardItemFaxStatus>
       <DrinkCardItemFaxDescription>
-        {favorite.shortDescription}
+        {data.shortDescription}
       </DrinkCardItemFaxDescription>
       <DrinkCardItemFaxNavi>
-        <DrinkCardItemFaxBtn onClick={() => handleSeeMore(favorite._id)}>
+        <DrinkCardItemFaxBtn onClick={() => handleSeeMore(data._id)}>
           See more
         </DrinkCardItemFaxBtn>
         <DrinkCardItemFaxDel
           type="button"
           onClick={() => {
-            dispatch(deleteFromFavoriteThunk(favorite._id));
+            dispatch(deleteFromFavoriteThunk(data._id));
           }}
         >
           <SpriteSVG name={'trash'} />
@@ -47,10 +47,10 @@ const FavoriteCard = ({ favorite }) => {
   );
 };
 
-export default FavoriteCard;
+export default Card;
 
-FavoriteCard.propTypes = {
-  favorite: PropTypes.shape({
+Card.propTypes = {
+  data: PropTypes.shape({
     drinkThumb: PropTypes.string,
     drink: PropTypes.string,
     alcoholic: PropTypes.string,

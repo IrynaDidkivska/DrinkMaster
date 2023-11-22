@@ -104,11 +104,7 @@ const SignUp = () => {
   };
 
   return (
-    <StyledForm
-      onSubmit={formik.handleSubmit}
-      isError={formik.touched.password && formik.errors.password}
-      isSuccess={formik.touched.password && !formik.errors.password}
-    >
+    <StyledForm onSubmit={formik.handleSubmit}>
       <Subtitle Subtitle=" Sign Up" />
       <Wrapper>
         <InputWrapper
@@ -119,8 +115,8 @@ const SignUp = () => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.username}
-          // isError={formik.touched.username && formik.errors.username}
-          // isSuccess={formik.touched.username && !formik.errors.username}
+          $isError={formik.touched.username && Boolean(formik.errors.username)}
+          $isSuccess={formik.touched.username && !formik.errors.username}
         />
         {formik.touched.username && formik.errors.username ? (
           <div style={{ color: "red" }}>{formik.errors.username}</div>
@@ -153,7 +149,7 @@ const SignUp = () => {
         ) : null}
         {/* ================ */}
         <DivWrapper>
-          <input
+          <InputWrapper
             type="email"
             id="email"
             name="email"
@@ -161,6 +157,8 @@ const SignUp = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.email}
+            $isError={formik.touched.email && Boolean(formik.errors.email)}
+            $isSuccess={formik.touched.email && !formik.errors.email}
           />
           {/* <AiFillCheckCircle
             style={{
@@ -211,8 +209,10 @@ const SignUp = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.password}
-            // isError={formik.touched.password && formik.errors.password}
-            // isSuccess={formik.touched.password && !formik.errors.password}
+            $isError={
+              formik.touched.password && Boolean(formik.errors.password)
+            }
+            $isSuccess={formik.touched.password && !formik.errors.password}
           />
           {/* Eye icon to toggle password visibility */}
           {formik.values.password && ( // Check if the password field has any value
