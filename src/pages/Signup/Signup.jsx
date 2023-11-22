@@ -43,7 +43,7 @@ const SignUp = () => {
       username: Yup.string().required("Name is required"),
       birthdate: Yup.string()
         .matches(
-          /^(19|20)\d\d-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
+          /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/,
           "Invalid date format (DD/MM/YYYY)"
         )
         .required("Date of Birth is required"),
