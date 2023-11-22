@@ -25,7 +25,6 @@ export const User = () => {
   };
 
   const { username, avatar } = useSelector(selectUser);
-  console.log(avatar);
 
   return (
     <>
