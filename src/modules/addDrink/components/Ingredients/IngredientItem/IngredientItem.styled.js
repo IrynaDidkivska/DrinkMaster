@@ -1,5 +1,5 @@
-import Select from 'react-select';
-import styled from 'styled-components';
+import Select from "react-select";
+import styled from "styled-components";
 
 export const ItemWrapper = styled.div`
   display: flex;
@@ -50,7 +50,7 @@ export const IngredientSelect = styled(Select)`
     &single-value {
       margin: 0;
       color: ${({ theme }) => theme.colors.mainText};
-      font-family: 'Manrope-400';
+      font-family: "Manrope-400";
       font-size: 14px;
       font-weight: 400;
       line-height: 1; /* 100% */
@@ -74,7 +74,7 @@ export const IngredientSelect = styled(Select)`
       padding: 0;
       margin: 0;
       color: #f3f3f3;
-      font-family: 'Manrope-400';
+      font-family: "Manrope-400";
       font-size: 14px;
       font-weight: 400;
       line-height: 1; /* 100% */
@@ -98,7 +98,7 @@ export const IngredientSelect = styled(Select)`
       border-radius: 12px;
       color: rgba(243, 243, 243, 0.4);
       white-space: nowrap;
-      font-family: 'Manrope-400';
+      font-family: "Manrope-400";
       font-size: 12px;
       font-weight: 400;
       line-height: 1.33; /* 133.333% */
@@ -126,7 +126,7 @@ export const IngredientSelect = styled(Select)`
       text-overflow: ellipsis;
       cursor: pointer;
       color: rgba(243, 243, 243, 0.4);
-      font-family: 'Manrope-400';
+      font-family: "Manrope-400";
       font-size: 12px;
       font-weight: 400;
       line-height: 1.33; /*133.333% */
@@ -192,7 +192,7 @@ export const InputStyled = styled.input`
   outline: transparent;
   color: #f3f3f3;
 
-  font-family: 'Manrope-400';
+  font-family: "Manrope-400";
   font-size: 14px;
   font-weight: 400;
   line-height: 1.28; /* 128.571% */
@@ -223,7 +223,7 @@ export const RemoveBtnStyled = styled.button`
     stroke: white;
   }
   @media screen and (min-width: 768px) {
-    margin-left: auto;
+    margin-left: 0px;
     width: 20px;
     height: 20px;
     & svg {

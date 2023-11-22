@@ -5,8 +5,10 @@ import {
   RecipePreparation,
 } from "../../modules/addDrink";
 import LigthBtn from "../../shared/components/Buttons/LigthBtn";
+import FollowUs from "../../shared/components/FollowUs/FollowUs";
+import Subtitle from "../../shared/components/Title/Subtitle";
 import Title from "../../shared/components/Title/Title";
-import { AddDrinkWrapper } from "./AddDrink.styled";
+import { AddDrinkWrapper, MediaWrapper } from "./AddDrink.styled";
 
 const AddDrink = () => {
   return (
@@ -19,7 +21,13 @@ const AddDrink = () => {
           <RecipePreparation />
           <LigthBtn onClick={() => {}}>Add</LigthBtn>
         </div>
-        <PopularDrinks />
+        <div>
+          <MediaWrapper>
+            <Subtitle Subtitle="Follow us" />
+            <FollowUs />
+          </MediaWrapper>
+          <PopularDrinks />
+        </div>
       </AddDrinkWrapper>
     </>
   );
