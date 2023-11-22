@@ -6,14 +6,14 @@ import {
   ItemWrapper,
   RemoveBtnStyled,
 } from './IngredientItem.styled';
-import { selectIngredient } from '../../../../../redux/Filters/selectors';
 import { useEffect } from 'react';
 import { getIngredientsThunk } from '../../../../../redux/Filters/operations';
 import { optionsNormalize } from '../../../helpers/optionsNormalize';
+import { selectNormalizedIngredients } from '../../../../../redux/Filters/selectors.js';
 
 const IngredientItem = () => {
   const dispatch = useDispatch();
-  const ingredients = useSelector(selectIngredient);
+  const ingredients = useSelector(selectNormalizedIngredients);
 
   useEffect(() => {
     dispatch(getIngredientsThunk({ page: 0, limit: 0 }));
