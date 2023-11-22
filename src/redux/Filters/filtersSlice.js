@@ -50,7 +50,7 @@ const fitlerSlice = createSlice({
         state.glasses = payload;
       })
       .addCase(getDrinksByQueryThunk.fulfilled, (state, { payload }) => {
-        state.searchResult = payload;
+        state.searchQuery = payload;
       })
       .addMatcher(
         isAnyOf(

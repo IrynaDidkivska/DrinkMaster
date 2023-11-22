@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { LinkStyled } from "../../shared/components/StyledLink/StyledLink.styled";
 import { StyledBtn } from "../../shared/components/Buttons/LigthBtn.styled";
 
@@ -36,8 +36,22 @@ export const StyledForm = styled.form`
       text-align: left;
       color: rgba(243, 243, 243, 0.5);
     }
+    ${({ isError, isSuccess }) =>
+      (isError || isSuccess) &&
+      css`
+        border-color: ${isError ? "red" : "green"};
+      `}
   }
 `;
+
+export const InputWrapper = styled.input`
+  ${({ isError, isSuccess }) =>
+    (isError || isSuccess) &&
+    css`
+      border-color: ${isError ? "red" : "green"};
+    `}
+`;
+
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;

@@ -19,6 +19,20 @@ export const getAllDrinksThunk = createAsyncThunk(
     }
   }
 );
+
+// Отримання для page Drinks
+export const getAllSearchThunk = createAsyncThunk(
+  "drinks/getAllSearch",
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await API.get("api/drinks/search?");
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 // Отримання популярних  коктейлів
 export const getPopularThunk = createAsyncThunk(
   "drinks/getPopular",

@@ -5,6 +5,7 @@ import {
   deleteFromFavoriteThunk,
   deleteFromOwnThunk,
   getAllDrinksThunk,
+  getAllSearchThunk,
   getByIDThunk,
   getFavoriteThunk,
   getOwnThunk,
@@ -14,7 +15,8 @@ import {
 const initialState = {
   drinks: [],
   popular: [],
-  drinkDetails: {},
+  search: [],
+  drinkDetails: [],
   own: [],
   drinkId: "",
   favorite: [],
@@ -36,6 +38,9 @@ const drinksSlice = createSlice({
       })
       .addCase(getPopularThunk.fulfilled, (state, { payload }) => {
         state.popular = payload;
+      })
+      .addCase(getAllSearchThunk.fulfilled, (state, { payload }) => {
+        state.search = payload;
       })
       .addCase(getFavoriteThunk.fulfilled, (state, { payload }) => {
         state.favorite = payload;
@@ -70,7 +75,8 @@ const drinksSlice = createSlice({
           getAllDrinksThunk.pending,
           getByIDThunk.pending,
           getOwnThunk.pending,
-          getFavoriteThunk.pending
+          getFavoriteThunk.pending,
+          getAllSearchThunk.pending
           // addFavoriteThunk.pending
         ),
         (state) => {
@@ -86,7 +92,8 @@ const drinksSlice = createSlice({
           getAllDrinksThunk.fulfilled,
           getByIDThunk.fulfilled,
           getOwnThunk.fulfilled,
-          getFavoriteThunk.fulfilled
+          getFavoriteThunk.fulfilled,
+          getAllSearchThunk.fulfilled
           // addFavoriteThunk.fulfilled
         ),
         (state) => {
@@ -101,7 +108,8 @@ const drinksSlice = createSlice({
           getAllDrinksThunk.rejected,
           getByIDThunk.rejected,
           getOwnThunk.rejected,
-          getFavoriteThunk.rejected
+          getFavoriteThunk.rejected,
+          getAllSearchThunk.rejected
           // addFavoriteThunk.rejected
         ),
         (state, { payload }) => {
