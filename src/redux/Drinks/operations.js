@@ -24,7 +24,7 @@ export const getAllDrinksThunk = createAsyncThunk(
 export const getAllSearchThunk = createAsyncThunk(
   "drinks/getAllSearch",
   async (
-    { ingredient = "", category = "", query = "", page = 1, limit = 10 },
+    { ingredient = "", category = "", query = "", page = 1, limit = 0 },
     thunkAPI
   ) => {
     try {
@@ -140,9 +140,7 @@ export const deleteFromFavoriteThunk = createAsyncThunk(
   "drinks/deleteFromFav",
   async (id, { rejectWithValue, dispatch }) => {
     try {
-      const { data } = await API.delete(`api/drinks/favorite/remove`, {
-        data: { drinkId: id },
-      });
+      const { data } = await API.delete(`api/drinks/favorite/remove/${id}`);
       dispatch(getFavoriteThunk());
       return data.id;
     } catch (error) {

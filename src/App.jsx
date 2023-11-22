@@ -40,16 +40,14 @@ function App() {
         <Routes>
           <Route path={routes.ROOT} element={<SharedLayout />}>
             <Route
-              index
+              path={routes.HOME}
               element={
                 <PrivateRoute>
                   <HomePage />
                 </PrivateRoute>
               }
-              // path={routes.HOME}
-              // element={<HomePage />}
             />
-            <Route path={routes.HOME} element={<HomePage />} />
+
             <Route
               path={routes.DRINKSPAGE}
               element={
@@ -57,7 +55,6 @@ function App() {
                   <Drinks />
                 </PrivateRoute>
               }
-              // element={<Drinks />}
             />
             <Route
               path={routes.ADD}
@@ -66,7 +63,6 @@ function App() {
                   <AddDrink />
                 </PrivateRoute>
               }
-              // element={<AddDrink />}
             />
             <Route
               path={routes.FAVORITES}
@@ -75,7 +71,6 @@ function App() {
                   <Favorites />
                 </PrivateRoute>
               }
-              // element={<Favorites />}
             />
             <Route
               path={routes.MYDRINKS}
@@ -84,12 +79,14 @@ function App() {
                   <MyDrinks />
                 </PrivateRoute>
               }
-              // element={<MyDrinks />}
             />
             <Route
               path={routes.DRINKSPAGEWITHID}
-              // element={<PrivateRoute><DrinkWithID /></PrivateRoute>}
-              element={<DrinkWithID />}
+              element={
+                <PrivateRoute>
+                  <DrinkWithID />
+                </PrivateRoute>
+              }
             />
           </Route>
 

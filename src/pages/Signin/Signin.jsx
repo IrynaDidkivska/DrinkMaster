@@ -5,20 +5,19 @@ import { selectIsLoading } from "../../redux/Auth/selectors";
 import { signinThunk } from "../../redux/Auth/operations";
 import { FaEye, FaEyeSlash, FaExclamationCircle } from "react-icons/fa";
 import {
+  InputWrapper,
   SignButton,
   StyledAuthLink,
   StyledForm,
   Wrapper,
 } from "./Signin.styled";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 import Subtitle from "../../shared/components/Title/Subtitle";
 import { DivWrapper } from "../Signup/Signup.styled";
 import { useState } from "react";
 
 const SignIn = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const isLoading = useSelector(selectIsLoading);
   const [showPassword, setShowPassword] = useState(false);
   const formik = useFormik({
@@ -39,27 +38,14 @@ const SignIn = () => {
       console.log(values);
       const credentials = { password: values.password, email: values.email };
       dispatch(signinThunk(credentials));
-      // .unwrap()
-      // .then(() => {
-      //   toast.success(`Welcome!`);
-      //   navigate("/"); // Redirect to /home after successful login
-      // })
-      // .catch((error) => {
-      //   const { message } = error.response.credentials;
-      //   if (message.length > 5) {
-      //     toast.error(message);
-      //   } else {
-      //     message.forEach((el) => toast.error(el));
-      //   }
-      // });
     },
   });
 
   return (
     <StyledForm onSubmit={formik.handleSubmit}>
-      <Subtitle Subtitle=" Sign In" />
+      <Subtitle Subtitle="Sign In" />
       <Wrapper>
-        <input
+        <InputWrapper
           type="email"
           id="email"
           name="email"
@@ -72,7 +58,7 @@ const SignIn = () => {
           <div>{formik.errors.email}</div>
         ) : null}
         <DivWrapper>
-          <input
+          <InputWrapper
             type={showPassword ? "text" : "password"}
             id="password"
             name="password"
