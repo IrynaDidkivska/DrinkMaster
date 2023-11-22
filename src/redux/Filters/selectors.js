@@ -1,3 +1,4 @@
+
 import { createSelector } from "@reduxjs/toolkit";
 
 export const selectIngregient = (state) => state.filter.ingredients;
@@ -25,3 +26,7 @@ export const selectNormalizedIngredients = createSelector(
     }));
   }
 );
+
+
+export const selectGlasses = state => state.filter.glasses;
+

@@ -1,10 +1,10 @@
-import { createSlice, isAnyOf } from "@reduxjs/toolkit";
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
   getCategoriesThunk,
   // getDrinksByQueryThunk,
   getGlassesThunk,
   getIngredientsThunk,
-} from "./operations";
+} from './operations';
 
 const initialState = {
   categories: [],
@@ -13,16 +13,16 @@ const initialState = {
   searchResult: [], // вся інфа шо прийде
   page: 1,
   searchQuery: {
-    query: "",
-    category: "", // слово пошуку
-    ingredient: "",
+    query: '',
+    category: '', // слово пошуку
+    ingredient: '',
   },
-  error: "",
+  error: '',
   isLoading: false,
 };
 
 const fitlerSlice = createSlice({
-  name: "filter",
+  name: 'filter',
   initialState,
   reducers: {
     setQuery: (state, { payload }) => {
@@ -38,7 +38,7 @@ const fitlerSlice = createSlice({
       state.page = payload;
     },
   },
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
       .addCase(getCategoriesThunk.fulfilled, (state, { payload }) => {
         state.categories = payload;
@@ -58,11 +58,12 @@ const fitlerSlice = createSlice({
           getIngredientsThunk.pending,
           getGlassesThunk.pending
           // getDrinksByQueryThunk.pending
+
         ),
-        (state) => {
+        state => {
           state.isLoading = true;
-          state.error = "";
-        }
+          state.error = '';
+        },
       )
       .addMatcher(
         isAnyOf(
@@ -70,10 +71,11 @@ const fitlerSlice = createSlice({
           getIngredientsThunk.fulfilled,
           getGlassesThunk.fulfilled
           // getDrinksByQueryThunk.fulfilled
+
         ),
-        (state) => {
+        state => {
           state.isLoading = false;
-        }
+        },
       )
       .addMatcher(
         isAnyOf(
@@ -81,11 +83,12 @@ const fitlerSlice = createSlice({
           getIngredientsThunk.rejected,
           getGlassesThunk.rejected
           // getDrinksByQueryThunk.rejected
+
         ),
         (state, { payload }) => {
           state.isLoading = false;
           state.error = payload;
-        }
+        },
       );
   },
 });
