@@ -41,34 +41,50 @@ function App() {
           <Route path={routes.ROOT} element={<SharedLayout />}>
             <Route
               index
-              // element={<PrivateRoute><HomePage /></PrivateRoute>}
+              element={
+                <PrivateRoute>
+                  <HomePage />
+                </PrivateRoute>
+              }
               // path={routes.HOME}
-              element={<HomePage />}
+              // element={<HomePage />}
             />
             <Route path={routes.HOME} element={<HomePage />} />
             <Route
               path={routes.DRINKSPAGE}
-              // element={<PrivateRoute><Drinks /></PrivateRoute>}
-              element={<Drinks />}
+              element={
+                <PrivateRoute>
+                  <Drinks />
+                </PrivateRoute>
+              }
+              // element={<Drinks />}
             />
             <Route
               path={routes.ADD}
-              // element={
-              //   <PrivateRoute>
-              //     <AddDrink />
-              //   </PrivateRoute>
-              // }
-              element={<AddDrink />}
+              element={
+                <PrivateRoute>
+                  <AddDrink />
+                </PrivateRoute>
+              }
+              // element={<AddDrink />}
             />
             <Route
               path={routes.FAVORITES}
-              // element={<PrivateRoute ><Favorites /></PrivateRoute>}
-              element={<Favorites />}
+              element={
+                <PrivateRoute>
+                  <Favorites />
+                </PrivateRoute>
+              }
+              // element={<Favorites />}
             />
             <Route
               path={routes.MYDRINKS}
-              // element={<PrivateRoute><MyDrinks /></PrivateRoute>}
-              element={<MyDrinks />}
+              element={
+                <PrivateRoute>
+                  <MyDrinks />
+                </PrivateRoute>
+              }
+              // element={<MyDrinks />}
             />
             <Route
               path={routes.DRINKSPAGEWITHID}

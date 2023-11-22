@@ -1,7 +1,7 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
   getCategoriesThunk,
-  getDrinksByQueryThunk,
+  // getDrinksByQueryThunk,
   getGlassesThunk,
   getIngredientsThunk,
 } from './operations';
@@ -49,15 +49,16 @@ const fitlerSlice = createSlice({
       .addCase(getGlassesThunk.fulfilled, (state, { payload }) => {
         state.glasses = payload;
       })
-      .addCase(getDrinksByQueryThunk.fulfilled, (state, { payload }) => {
-        state.searchQuery = payload;
-      })
+      // .addCase(getDrinksByQueryThunk.fulfilled, (state, { payload }) => {
+      //   state.searchQuery = payload;
+      // })
       .addMatcher(
         isAnyOf(
           getCategoriesThunk.pending,
           getIngredientsThunk.pending,
-          getGlassesThunk.pending,
-          getDrinksByQueryThunk.pending,
+          getGlassesThunk.pending
+          // getDrinksByQueryThunk.pending
+
         ),
         state => {
           state.isLoading = true;
@@ -68,8 +69,9 @@ const fitlerSlice = createSlice({
         isAnyOf(
           getCategoriesThunk.fulfilled,
           getIngredientsThunk.fulfilled,
-          getGlassesThunk.fulfilled,
-          getDrinksByQueryThunk.fulfilled,
+          getGlassesThunk.fulfilled
+          // getDrinksByQueryThunk.fulfilled
+
         ),
         state => {
           state.isLoading = false;
@@ -79,8 +81,9 @@ const fitlerSlice = createSlice({
         isAnyOf(
           getCategoriesThunk.rejected,
           getIngredientsThunk.rejected,
-          getGlassesThunk.rejected,
-          getDrinksByQueryThunk.rejected,
+          getGlassesThunk.rejected
+          // getDrinksByQueryThunk.rejected
+
         ),
         (state, { payload }) => {
           state.isLoading = false;

@@ -23,9 +23,20 @@ export const getAllDrinksThunk = createAsyncThunk(
 // Отримання для page Drinks
 export const getAllSearchThunk = createAsyncThunk(
   "drinks/getAllSearch",
-  async (_, thunkAPI) => {
+  async (
+    { ingredient = "", category = "", query = "", page = 1, limit = 10 },
+    thunkAPI
+  ) => {
     try {
-      const { data } = await API.get("api/drinks/search?");
+      const { data } = await API.get("api/drinks/search", {
+        params: {
+          page,
+          limit,
+          keyword: query,
+          category,
+          ingredientId: ingredient,
+        },
+      });
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -113,9 +124,11 @@ export const getFavoriteThunk = createAsyncThunk(
 //TODO: змінити шлях і правильно передати дату
 export const addFavoriteThunk = createAsyncThunk(
   "drinks/getFav",
-  async (data, thunkAPI) => {
+  async (id, thunkAPI) => {
     try {
-      const { data } = await API.post("api/drinks/favorite/add", data);
+      const { data } = await API.post("api/drinks/favorite/add", {
+        drinkId: id,
+      });
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
