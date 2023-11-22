@@ -1,6 +1,7 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { LinkStyled } from "../../shared/components/StyledLink/StyledLink.styled";
 import { StyledBtn } from "../../shared/components/Buttons/LigthBtn.styled";
+import { switchBorderColor } from "../Signup/helpers/switchColor";
 
 export const StyledForm = styled.form`
   display: flex;
@@ -25,18 +26,7 @@ export const InputWrapper = styled.input`
   background-color: transparent;
   outline: transparent;
   border-radius: 200px;
-  border: 1px solid
-    ${(props) => {
-      if (props.$isError) {
-        return "red";
-      }
-      if (props.$isSuccess) {
-        return "green";
-      } else {
-        return "yellow";
-      }
-    }};
-
+  border: 1px solid ${(props) => switchBorderColor(props)};
   opacity: 0.8;
   transition: ${({ theme }) => theme.transition};
 
