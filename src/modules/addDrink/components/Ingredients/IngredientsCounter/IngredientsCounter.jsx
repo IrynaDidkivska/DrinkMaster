@@ -6,13 +6,12 @@ import {
   WrapperStyled,
 } from './IngredientsCounter.styled';
 import { nanoid } from 'nanoid';
-import { useState } from 'react';
 
 const IngredientsCounter = ({ ingredientsList = [], setIngredients }) => {
   const arr = [...ingredientsList];
 
   const addIngredient = () => {
-    arr.push({ id: nanoid(), name: '', volume: 1 });
+    arr.push({ id: nanoid(), name: '', volume: '1 cl' });
   };
   const removeIngredient = () => {
     if (arr[arr.length - 1].name) {

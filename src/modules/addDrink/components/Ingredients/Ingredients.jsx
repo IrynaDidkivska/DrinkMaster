@@ -11,19 +11,24 @@ import { nanoid } from 'nanoid';
 
 const Ingredients = () => {
   const [ingredients, setIngredients] = useState([
-    { id: nanoid(), name: '', volume: 1 },
-    { id: nanoid(), name: '', volume: 1 },
-    { id: nanoid(), name: '', volume: 1 },
+    { id: nanoid(), name: '', volume: '1 cl' },
+    { id: nanoid(), name: '', volume: '1 cl' },
+    { id: nanoid(), name: '', volume: '1 cl' },
   ]);
 
   const removeIngredient = id => {
     setIngredients(ingredients.filter(el => el.id !== id));
   };
-  const changeIngredient = id => {
-    const newArr = ingredients.map(el => {});
-    console.log();
-    setIngredients(ingredients.filter(el => el.id !== id));
+  const changeIngredient = ingredient => {
+    const newIngredients = ingredients.map(el => {
+      if (el.id === ingredient.id) {
+        return { ...el, ...ingredient };
+      }
+      return el;
+    });
+    setIngredients(newIngredients);
   };
+
   return (
     <IngredientsWrapperStyled>
       <ListHeaderStyled>
@@ -39,6 +44,7 @@ const Ingredients = () => {
           <IngredientItem
             key={ingredient.id}
             removeIngredient={removeIngredient}
+            changeIngredient={changeIngredient}
             ingredientData={ingredient}
           />
         ))}

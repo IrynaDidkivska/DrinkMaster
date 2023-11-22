@@ -11,8 +11,11 @@ import { selectNormalizedIngredients } from '../../../../../redux/Filters/select
 import { useEffect } from 'react';
 import { getIngredientsThunk } from '../../../../../redux/Filters/operations';
 
-
-const IngredientItem = ({ removeIngredient, ingredientData }) => {
+const IngredientItem = ({
+  removeIngredient,
+  ingredientData,
+  changeIngredient,
+}) => {
   const { id, name, volume } = ingredientData;
   const dispatch = useDispatch();
   const ingredients = useSelector(selectNormalizedIngredients);
@@ -26,8 +29,18 @@ const IngredientItem = ({ removeIngredient, ingredientData }) => {
       <IngredientSelect
         classNamePrefix="ingredientSelect"
         options={ingredients}
+        onChange={e => {
+          changeIngredient({ id, name: e.label });
+        }}
       />
-      <InputStyled type="text" />
+      <InputStyled
+        type="text"
+        value={volume}
+        onChange={e => {
+          const volume = e.target.value.trim();
+          changeIngredient({ id, volume });
+        }}
+      />
       <RemoveBtnStyled
         type="button"
         onClick={() => {
