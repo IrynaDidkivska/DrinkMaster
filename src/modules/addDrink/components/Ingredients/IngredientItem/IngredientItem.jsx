@@ -1,3 +1,4 @@
+import { useDispatch, useSelector } from 'react-redux';
 import { SpriteSVG } from '../../../../../shared/icons/SpriteSVG';
 import {
   IngredientSelect,
@@ -5,41 +6,24 @@ import {
   ItemWrapper,
   RemoveBtnStyled,
 } from './IngredientItem.styled';
-
-const selectCategoryOptions = [
-  {
-    label: 'Всі категорії',
-    value: '',
-  },
-  {
-    label: 'Мотоцикл',
-    value: 'A',
-  },
-  {
-    label: 'Легковий автомобіль',
-    value: 'B',
-  },
-  {
-    label: 'Вантажний автомобіль',
-    value: 'C',
-  },
-  {
-    label: 'Автобус',
-    value: 'D',
-  },
-  {
-    label: 'Причеп',
-    value: 'EF',
-  },
-];
+import { selectIngredient } from '../../../../../redux/Filters/selectors';
+import { useEffect } from 'react';
+import { getIngredientsThunk } from '../../../../../redux/Filters/operations';
+import { optionsNormalize } from '../../../helpers/optionsNormalize';
 
 const IngredientItem = () => {
+  const dispatch = useDispatch();
+  const ingredients = useSelector(selectIngredient);
+
+  useEffect(() => {
+    dispatch(getIngredientsThunk({ page: 0, limit: 0 }));
+  }, []);
+
   return (
     <ItemWrapper>
       <IngredientSelect
         classNamePrefix="ingredientSelect"
-        options={selectCategoryOptions}
-        defaultValue={selectCategoryOptions[0]}
+        options={optionsNormalize(ingredients, 'title')}
       />
       <InputStyled type="text" />
       <RemoveBtnStyled type="button">
