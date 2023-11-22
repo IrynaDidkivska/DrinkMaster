@@ -8,5 +8,5 @@ export const routes = {
   ADD: "/add",
   FAVORITES: "/favorites",
   MYDRINKS: "/my",
-  DRINKSPAGEWITHID: "/drink/:drinkId",
+  DRINKSPAGEWITHID: "/drinks/:drinkId",
 };

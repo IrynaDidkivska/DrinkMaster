@@ -20,8 +20,8 @@ export const getIngredientsThunk = createAsyncThunk(
     try {
       const { data } = await API.get("api/filters/ingredients", {
         params: {
-          page: query.page,
-          limit: query.limit,
+          page: 1,
+          limit: 325,
         },
       });
       return data;
@@ -43,24 +43,24 @@ export const getGlassesThunk = createAsyncThunk(
   }
 );
 
-export const getDrinksByQueryThunk = createAsyncThunk(
-  "filter/getDrinksByQuery",
-  async ({ searchQuery, page, limit }, thunkAPI) => {
-    try {
-      // FIXME: правильній урл на сьорч
-      const { ingridient, category, query } = searchQuery;
-      const { data } = await API.get("api/drinks/mainpage", {
-        params: {
-          page,
-          limit,
-          query,
-          category,
-          ingridient,
-        },
-      });
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
+// export const getDrinksByQueryThunk = createAsyncThunk(
+//   "filter/getDrinksByQuery",
+//   async ({ searchQuery, page, limit }, thunkAPI) => {
+//     try {
+//       // FIXME: правильній урл на сьорч
+//       const { ingridient, category, query } = searchQuery;
+//       const { data } = await API.get("api/drinks/mainpage", {
+//         params: {
+//           page,
+//           limit,
+//           query,
+//           category,
+//           ingridient,
+//         },
+//       });
+//       return data;
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );
