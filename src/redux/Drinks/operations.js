@@ -124,9 +124,11 @@ export const getFavoriteThunk = createAsyncThunk(
 //TODO: змінити шлях і правильно передати дату
 export const addFavoriteThunk = createAsyncThunk(
   "drinks/getFav",
-  async (data, thunkAPI) => {
+  async (id, thunkAPI) => {
     try {
-      const { data } = await API.post("api/drinks/favorite/add", data);
+      const { data } = await API.post("api/drinks/favorite/add", {
+        drinkId: id,
+      });
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
