@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import {
   DrinkCardItemFaxBtn,
   DrinkCardItemFaxContainer,
@@ -10,16 +10,15 @@ import {
   DrinkCardItemFaxName,
   DrinkCardItemFaxNavi,
   DrinkCardItemFaxStatus,
-} from "./FavoriteCard.styled";
-import { deleteFromFavoriteThunk } from "../../../redux/Drinks/operations";
-import { SpriteSVG } from "../../icons/SpriteSVG";
+} from './FavoriteCard.styled';
+import { deleteFromFavoriteThunk } from '../../../redux/Drinks/operations';
+import { SpriteSVG } from '../../icons/SpriteSVG';
 
 const FavoriteCard = ({ favorite }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleSeeMore = (_id) => {
-    console.log(_id);
+  const handleSeeMore = _id => {
     navigate(`/drinks/${_id}`);
   };
 
@@ -41,7 +40,7 @@ const FavoriteCard = ({ favorite }) => {
             dispatch(deleteFromFavoriteThunk(favorite._id));
           }}
         >
-          <SpriteSVG name={"trash"} />
+          <SpriteSVG name={'trash'} />
         </DrinkCardItemFaxDel>
       </DrinkCardItemFaxNavi>
     </DrinkCardItemFaxContainer>

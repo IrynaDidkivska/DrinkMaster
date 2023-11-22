@@ -17,16 +17,14 @@ import {
   getGlassesThunk,
 } from '../../../../redux/Filters/operations';
 import {
-  selectCategories,
-  selectGlasses,
+  selectNormalizedCategories,
+  selectNormalizedGlasses,
 } from '../../../../redux/Filters/selectors.js';
-import { optionsNormalize } from '../../helpers/optionsNormalize.js';
 
 const AddForm = () => {
   const dispatch = useDispatch();
-  const categories = useSelector(selectCategories);
-  const glasses = useSelector(selectGlasses);
-
+  const categories = useSelector(selectNormalizedCategories);
+  const glasses = useSelector(selectNormalizedGlasses);
   useEffect(() => {
     dispatch(getCategoriesThunk());
     dispatch(getGlassesThunk());
@@ -47,14 +45,8 @@ const AddForm = () => {
         <InputWrapperStyled>
           <Input placeholder="Enter item title" type="text" />
           <Input placeholder="Enter about recipe" type="text" />
-          <AddDrinkSelect
-            label="Category"
-            options={optionsNormalize(categories, 'category')}
-          />
-          <AddDrinkSelect
-            label="Glass"
-            options={optionsNormalize(glasses, 'glass')}
-          />
+          <AddDrinkSelect label="Category" options={categories} />
+          <AddDrinkSelect label="Glass" options={glasses} />
           <div>
             <RadioBtn id="alcoholic" name="isAlcohol" label={'Alcoholic'} />
             <RadioBtn

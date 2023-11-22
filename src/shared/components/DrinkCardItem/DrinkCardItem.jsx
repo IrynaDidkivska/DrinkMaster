@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
-import PropTypes from "prop-types";
+import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import {
   DrinkCardItemContainer,
@@ -7,13 +7,12 @@ import {
   DrinkCardItemName,
   DrinkCardItemSeeMore,
   DrinkCardItemContainerDiscr,
-} from "./DrinkCardItem.styled";
+} from './DrinkCardItem.styled';
 
 const DrinkCardItem = ({ drink }) => {
   const navigate = useNavigate();
 
-  const handleSeeMore = (_id) => {
-    console.log(_id);
+  const handleSeeMore = _id => {
     navigate(`/drinks/${_id}`);
   };
 

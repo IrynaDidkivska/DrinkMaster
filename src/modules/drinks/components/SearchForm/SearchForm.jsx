@@ -1,27 +1,27 @@
-import { useDispatch, useSelector } from "react-redux";
-import { SpriteSVG } from "../../../../shared/icons/SpriteSVG";
+import { useDispatch, useSelector } from 'react-redux';
+import { SpriteSVG } from '../../../../shared/icons/SpriteSVG';
 import {
   FormStyled,
   InputContStyled,
   InputStyled,
   SelectStyled,
-} from "./SerchForm.styled";
-import { useEffect } from "react";
+} from './SerchForm.styled';
+import { useEffect } from 'react';
 import {
   getCategoriesThunk,
   getIngredientsThunk,
-} from "../../../../redux/Filters/operations";
+} from '../../../../redux/Filters/operations';
 import {
   selectNormalizedCategories,
   selectNormalizedIngredients,
   selectSearchQuery,
-} from "../../../../redux/Filters/selectors";
+} from '../../../../redux/Filters/selectors';
 import {
   setCategory,
   setIngridient,
   setQuery,
-} from "../../../../redux/Filters/filtersSlice";
-import { getAllSearchThunk } from "../../../../redux/Drinks/operations";
+} from '../../../../redux/Filters/filtersSlice';
+import { getAllSearchThunk } from '../../../../redux/Drinks/operations';
 
 const SearchForm = () => {
   const dispatch = useDispatch();
@@ -30,13 +30,12 @@ const SearchForm = () => {
   const ingregients = useSelector(selectNormalizedIngredients);
   const { query, category, ingredient } = useSelector(selectSearchQuery);
 
-  console.log(categories);
   useEffect(() => {
     dispatch(getCategoriesThunk());
     dispatch(getIngredientsThunk());
   }, [dispatch]);
 
-  const onSubmit = (e) => {
+  const onSubmit = e => {
     e.preventDefault();
     dispatch(getAllSearchThunk({ query, category, ingredient }));
   };
@@ -48,7 +47,7 @@ const SearchForm = () => {
           <InputStyled
             type="text"
             placeholder="Enter the text"
-            onChange={(e) => dispatch(setQuery(e.target.value))}
+            onChange={e => dispatch(setQuery(e.target.value))}
           ></InputStyled>
           <button type="submit">
             <SpriteSVG name="search" />
@@ -58,12 +57,12 @@ const SearchForm = () => {
         <SelectStyled
           classNamePrefix="customSelect"
           options={categories}
-          onChange={(e) => dispatch(setCategory(e.label))}
+          onChange={e => dispatch(setCategory(e.label))}
         />
         <SelectStyled
           classNamePrefix="customSelect"
           options={ingregients}
-          onChange={(e) => dispatch(setIngridient(e.value))}
+          onChange={e => dispatch(setIngridient(e.value))}
         />
       </FormStyled>
     </>

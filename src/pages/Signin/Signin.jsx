@@ -36,7 +36,7 @@ const SignIn = () => {
     }),
     onSubmit: (values) => {
       // Handle form submission logic here
-      console.log(values);
+;
       const credentials = { password: values.password, email: values.email };
       dispatch(signinThunk(credentials));
       // .unwrap()

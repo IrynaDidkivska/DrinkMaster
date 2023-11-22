@@ -9,18 +9,38 @@ import {
 import IngredientsCounter from './IngredientsCounter/IngredientsCounter';
 
 const Ingredients = () => {
-  const [count, setCount] = useState();
+  const [ingredients, setIngredients] = useState([
+    { id: 1, name: '', volume: 1 },
+    { id: 2, name: '', volume: 1 },
+    { id: 3, name: '', volume: 1 },
+  ]);
+
+  const removeIngredient = id => {
+    setIngredients(ingredients.filter(el => el.id !== id));
+  };
+  const changeIngredient = id => {
+    const newArr = ingredients.map(el => {});
+    console.log();
+    setIngredients(ingredients.filter(el => el.id !== id));
+  };
   return (
     <IngredientsWrapperStyled>
       <ListHeaderStyled>
         <Subtitle Subtitle="Ingredients" />
-        <IngredientsCounter />
+        <IngredientsCounter
+          ingredientsList={ingredients}
+          setIngredients={setIngredients}
+        />
       </ListHeaderStyled>
 
       <IngredientsListStyled>
-        <IngredientItem />
-        <IngredientItem />
-        <IngredientItem />
+        {ingredients.map(ingredient => (
+          <IngredientItem
+            key={ingredient.id}
+            removeIngredient={removeIngredient}
+            ingredientData={ingredient}
+          />
+        ))}
       </IngredientsListStyled>
     </IngredientsWrapperStyled>
   );
