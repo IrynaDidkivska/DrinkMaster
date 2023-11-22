@@ -15,20 +15,19 @@ import {
   getByIDThunk,
 } from "../../../../../redux/Drinks/operations";
 import { useEffect } from "react";
-import {
-  selectByID,
-  selectDetails,
-} from "../../../../../redux/Drinks/selectors";
+import { selectDetails } from "../../../../../redux/Drinks/selectors";
+import { useParams } from "react-router-dom";
+import RecipeDrinks from "../RecipeDrinks/RecipeDrinks";
 
 const MyJustDrinks = () => {
   const dispatch = useDispatch();
+  const { drinkId } = useParams();
 
-  const drinkId = useSelector(selectByID);
   const details = useSelector(selectDetails);
 
   useEffect(() => {
-    dispatch(getByIDThunk());
-  }, [dispatch]);
+    dispatch(getByIDThunk(drinkId));
+  }, [dispatch, drinkId]);
 
   return (
     <StyledJustDrinks>
@@ -40,13 +39,14 @@ const MyJustDrinks = () => {
         <StyledJustText>{details.description}</StyledJustText>
         <StyledJustButton
           onClick={() => {
-            console.log("hello") || dispatch(addFavoriteThunk(details.id));
+            dispatch(addFavoriteThunk(details._id));
           }}
         >
           Add to favorite drinks
         </StyledJustButton>
       </div>
       <StyledJustImages src={details.drinkThumb} alt={details.drink} />
+      <RecipeDrinks data={details} />
       <OverlayJustLeft />
       <OverlayJustRight />
     </StyledJustDrinks>
