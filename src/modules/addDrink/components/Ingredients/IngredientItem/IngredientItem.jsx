@@ -6,9 +6,11 @@ import {
   ItemWrapper,
   RemoveBtnStyled,
 } from './IngredientItem.styled';
+
 import { selectNormalizedIngredients } from '../../../../../redux/Filters/selectors';
 import { useEffect } from 'react';
 import { getIngredientsThunk } from '../../../../../redux/Filters/operations';
+
 
 const IngredientItem = ({ removeIngredient, ingredientData }) => {
   const { id, name, volume } = ingredientData;
