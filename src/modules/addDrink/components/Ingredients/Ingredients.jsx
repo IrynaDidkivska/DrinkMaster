@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Subtitle from '../../../../shared/components/Title/Subtitle';
 import IngredientItem from './IngredientItem/IngredientItem';
 import {
@@ -8,6 +9,7 @@ import {
 import IngredientsCounter from './IngredientsCounter/IngredientsCounter';
 
 const Ingredients = () => {
+  const [count, setCount] = useState();
   return (
     <IngredientsWrapperStyled>
       <ListHeaderStyled>

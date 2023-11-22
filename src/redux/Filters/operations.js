@@ -17,6 +17,7 @@ export const getIngredientsThunk = createAsyncThunk(
   'filter/getIngredients',
   async (query, thunkAPI) => {
     // FIXME: навіщо пейдж і ліміт, якщо в нас дропдаун
+    // я не знаю)) так була написана санка)
     try {
       const { page = 0, limit = 0 } = query;
       const { data } = await API.get('api/filters/ingredients', {
