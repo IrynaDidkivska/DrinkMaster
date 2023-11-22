@@ -6,7 +6,7 @@ export const getAllDrinksThunk = createAsyncThunk(
   "drinks/getAll",
   async ({ page }, thunkAPI) => {
     try {
-      const { data } = await API.get("api/drinks/mainpage", {
+      const { data } = await API.get("api/drinks/cocktails/main", {
         params: {
           category: "Ordinary Drink + Cocktail + Shake + Other/Unknow",
           limit: 5,
@@ -135,7 +135,6 @@ export const addFavoriteThunk = createAsyncThunk(
     }
   }
 );
-//TODO: узнать у ментора как правильно делать запрос
 export const deleteFromFavoriteThunk = createAsyncThunk(
   "drinks/deleteFromFav",
   async (id, { rejectWithValue, dispatch }) => {
