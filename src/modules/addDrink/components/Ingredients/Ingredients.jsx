@@ -7,12 +7,13 @@ import {
   ListHeaderStyled,
 } from './Ingredients.styled';
 import IngredientsCounter from './IngredientsCounter/IngredientsCounter';
+import { nanoid } from 'nanoid';
 
 const Ingredients = () => {
   const [ingredients, setIngredients] = useState([
-    { id: 1, name: '', volume: 1 },
-    { id: 2, name: '', volume: 1 },
-    { id: 3, name: '', volume: 1 },
+    { id: nanoid(), name: '', volume: 1 },
+    { id: nanoid(), name: '', volume: 1 },
+    { id: nanoid(), name: '', volume: 1 },
   ]);
 
   const removeIngredient = id => {

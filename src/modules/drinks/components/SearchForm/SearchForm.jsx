@@ -32,7 +32,7 @@ const SearchForm = () => {
 
   useEffect(() => {
     dispatch(getCategoriesThunk());
-    dispatch(getIngredientsThunk());
+    dispatch(getIngredientsThunk({ page: 0, limit: 0 }));
   }, [dispatch]);
 
   const onSubmit = e => {
