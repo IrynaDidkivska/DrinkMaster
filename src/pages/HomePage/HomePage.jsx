@@ -20,6 +20,16 @@ const HomePage = () => {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
   const allCatalog = useSelector(selectMainCatalog);
+  // ==============================================
+  const screenWidth = window.innerWidth;
+  let drinksToShow = 1; // За замовчуванням для мобільних пристроїв
+  // Визначення кількості напоїв в залежності від ширини екрану
+  if (screenWidth >= 1400) {
+    drinksToShow = 3; // Для екранів шириною 1400px або більше
+  } else if (screenWidth >= 768) {
+    drinksToShow = 2; // Для екранів шириною від 768px до 1399px
+  }
+  // ===============================================
   const categ = Object.keys(allCatalog);
   useEffect(() => {
     dispatch(getAllDrinksThunk({ page: currentPage }));
@@ -51,7 +61,7 @@ const HomePage = () => {
                 <h1 key={category}>
                   <WrapperCategory>
                     {category}
-                    {foreCoctails.map((drink) => (
+                    {foreCoctails.slice(0, drinksToShow).map((drink) => (
                       <DrinkCardItem key={drink._id} data={drink} />
                     ))}
                   </WrapperCategory>
