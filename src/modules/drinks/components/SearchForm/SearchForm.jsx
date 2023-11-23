@@ -65,7 +65,7 @@ const SearchForm = () => {
           classNamePrefix="customSelect"
           placeholder="All categories"
           options={categories}
-          onChange={(e) => dispatch(setCategory(e.label))}
+          onChange={(e) => dispatch(setCategory(e.value))}
         />
         <SelectStyled
           classNamePrefix="customSelect"
