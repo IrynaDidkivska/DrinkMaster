@@ -15,7 +15,7 @@ const HomePage = () => {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
   const allCatalog = useSelector(selectMainCatalog);
-
+  console.log("123", allCatalog);
   useEffect(() => {
     dispatch(getAllDrinksThunk({ page: currentPage }));
   }, [currentPage, dispatch]);
@@ -44,9 +44,9 @@ const HomePage = () => {
         <HomeImage src={Image} alt="Coctail's name" />
       </HomeWrapper>
       <List>
-        {allCatalog.map((drink) => (
+        {/* {allCatalog.map((drink) => (
           <DrinkCardItem key={drink._id} data={drink} />
-        ))}
+        ))} */}
       </List>
       <LigthBtn onClick={handleOtherDrinks}>Other drinks</LigthBtn>
     </>
