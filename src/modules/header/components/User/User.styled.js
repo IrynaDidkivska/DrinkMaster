@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const StyledBtnProfile = styled.button`
   display: flex;
@@ -16,16 +16,18 @@ export const StyledBtnProfile = styled.button`
 
 export const StyledImgProfile = styled.img`
   width: 32px;
+  height: 32px;
   border-radius: 50%;
 
   @media screen and (min-width: 768px) {
     width: 44px;
+    height: 44px;
   }
 `;
 
 export const StyledProfileName = styled.p`
   color: ${({ theme }) => theme.button.ligth};
-  font-family: 'Manrope-500', sans-serif;
+  font-family: "Manrope-500", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
