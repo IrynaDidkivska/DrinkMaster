@@ -40,3 +40,12 @@ export const HomeWrapper = styled.div`
     flex-direction: row;
   }
 `;
+
+export const WrapperCategory = styled.div`
+  display: flex;
+  /* flex-direction: column; */
+  /* align-items: flex-start; */
+  @media screen and (min-width: 1400px) {
+    /* flex-direction: row; */
+  }
+`;
