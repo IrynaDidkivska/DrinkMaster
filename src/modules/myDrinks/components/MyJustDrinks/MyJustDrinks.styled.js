@@ -22,18 +22,15 @@ export const StyledTitleSection = styled.h1`
 `;
 
 export const StyledJustDrinks = styled.div`
-  padding-top: 80px;
   margin-bottom: 18px;
 
   @media screen and (min-width: 768px) {
-    padding-top: 140px;
     margin-bottom: 80px;
   }
 
   @media screen and (min-width: 1440px) {
     display: flex;
     gap: 249px;
-    padding-top: 158px;
     margin-bottom: 100px;
   }
 `;

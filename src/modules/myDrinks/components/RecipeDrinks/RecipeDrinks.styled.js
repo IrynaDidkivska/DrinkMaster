@@ -3,11 +3,6 @@ import styled from 'styled-components';
 export const StyledRecipeDrinks = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 80px;
-
-  @media screen and (min-width: 768px) {
-    margin-bottom: 140px;
-  }
 `;
 
 export const StyledRecipTitle = styled.h2`
