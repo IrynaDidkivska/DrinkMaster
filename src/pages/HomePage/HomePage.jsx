@@ -3,6 +3,7 @@ import LigthBtn from "../../shared/components/Buttons/LigthBtn";
 import { useDispatch, useSelector } from "react-redux";
 import { StyledTitle } from "../../shared/components/Title/Title.styled";
 import {
+  BtnWrapper,
   HomeImage,
   HomeWrapper,
   MainText,
@@ -14,6 +15,8 @@ import { selectMainCatalog } from "../../redux/Drinks/selectors";
 import { getAllDrinksThunk } from "../../redux/Drinks/operations";
 import DrinkCardItem from "../../shared/components/DrinkCardItem/DrinkCardItem";
 import { List } from "../../shared/components/DrinkList/DrinkList.styled";
+import { StyledSubitle } from "../../shared/components/Title/StyledSubitle.styled";
+import Subtitle from "../../shared/components/Title/Subtitle";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -23,6 +26,7 @@ const HomePage = () => {
   // ==============================================
   const screenWidth = window.innerWidth;
   let drinksToShow = 1; // За замовчуванням для мобільних пристроїв
+
   // Визначення кількості напоїв в залежності від ширини екрану
   if (screenWidth >= 1400) {
     drinksToShow = 3; // Для екранів шириною 1400px або більше
@@ -54,28 +58,42 @@ const HomePage = () => {
             destination for exploring, crafting, and mastering the world&apos;s
             finest beverages.
           </MainText>
-          {categ.map((category) => {
-            const foreCoctails = allCatalog[category];
-            return (
-              <>
-                <h1 key={category}>
-                  <WrapperCategory>
-                    {category}
-                    {foreCoctails.slice(0, drinksToShow).map((drink) => (
-                      <DrinkCardItem key={drink._id} data={drink} />
-                    ))}
-                  </WrapperCategory>
-                </h1>
-              </>
-            );
-          })}
-
           <LigthBtn onClick={handleAddDrinkClick}>Add drink</LigthBtn>
         </div>
+
         <HomeImage src={Image} alt="Coctail's name" />
       </HomeWrapper>
-      <List></List>
-      <LigthBtn onClick={handleOtherDrinks}>Other drinks</LigthBtn>
+      <>
+        {categ.map((category) => {
+          const foreCoctails = allCatalog[category];
+          return (
+            <>
+              <Subtitle key={category} Subtitle={category}></Subtitle>
+              <WrapperCategory>
+                {foreCoctails.slice(0, drinksToShow).map((drink) => (
+                  <DrinkCardItem key={drink._id} data={drink} />
+                ))}
+              </WrapperCategory>
+            </>
+          );
+        })}
+      </>
+      {/* {categ.map((category) => {
+        const foreCoctails = allCatalog[category];
+        return (
+          <>
+            <Subtitle Subtitle={category}></Subtitle>
+            <WrapperCategory>
+              {foreCoctails.slice(0, drinksToShow).map((drink) => (
+                <DrinkCardItem key={drink._id} data={drink} />
+              ))}
+            </WrapperCategory>
+          </>
+        );
+      })} */}
+      <BtnWrapper>
+        <LigthBtn onClick={handleOtherDrinks}>Other drinks</LigthBtn>
+      </BtnWrapper>
     </>
   );
 };
