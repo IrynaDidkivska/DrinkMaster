@@ -1,16 +1,20 @@
 import styled from "styled-components";
+import Subtitle from "../../../../shared/components/Title/Subtitle";
 
 const PopularContainer = styled.div`
   width: 335px;
-  height: 1300px;
+  /* height: 1300px; */
   /* height: 432px; */
   gap: 24px;
   display: flex;
   flex-wrap: wrap;
-
+  margin-top: 28px;
+  margin-bottom: 80px;
   @media screen and (min-width: 768px) {
     width: 704px;
     height: 284px;
+    margin-top: 40px;
+    margin-bottom: 136px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -19,21 +23,27 @@ const PopularContainer = styled.div`
   }
 `;
 
+const PopularWrapper = styled.div`
+  margin-top: 40px;
+  @media screen and (min-width: 768px) {
+    margin-top: 80px;
+  }
+  @media screen and (min-width: 1440px) {
+    margin-left: 60px;
+  }
+`;
+
 const PopularItemContainer = styled.div`
   width: 336px;
   height: 90px;
-  gap: 24px;
+  gap: 14px;
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
-
-  @media screen and (min-width: 768px) {
-    gap: 32px;
-  }
+  /* border: 1px solid red; */
 
   @media screen and (min-width: 1440px) {
     width: 313px;
-    gap: 14px;
   }
 `;
 
@@ -47,6 +57,9 @@ const PopularContainerDiscr = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 
   @media screen and (min-width: 1440px) {
     width: 209px;
@@ -62,6 +75,9 @@ const PopularName = styled.h3`
   color: #f3f3f3;
   justify-content: left;
   padding-bottom: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
@@ -69,20 +85,24 @@ const PopularName = styled.h3`
   }
 `;
 
-const PopularDiskr = styled.p`
+const PopularDiskr = styled.div`
+  /* border: 1px solid green; */
   font-family: "Manrope-600", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
   color: white;
-  /* height: 86px; */
+  height: 63px;
+  /* max-height: 86px; */
 
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: wrap;
-  /* white-space: nowrap; */
+  white-space: normal;
+  /* white-space: wrap; */
   text-align: left;
+  /* height: 63px; */
+  color: rgba(243, 243, 243, 0.5);
 
   @media screen and (min-width: 768px) {
     font-size: 14px;
@@ -102,4 +122,5 @@ export {
   PopularDiskr,
   ButtonSeeMore,
   PopularContainerDiscr,
+  PopularWrapper,
 };

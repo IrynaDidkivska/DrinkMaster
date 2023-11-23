@@ -3,7 +3,6 @@ import { SpriteSVG } from "../../../../shared/icons/SpriteSVG";
 import {
   StyledBtnEditProfile,
   StyledBtnLogOut,
-  StyledPopupHeader,
   StyledPopupTitle,
 } from "./EditProfile.styled";
 import { useState } from "react";
@@ -43,12 +42,10 @@ export const EditProfile = ({ togglePopup }) => {
 
   return (
     <>
-      <StyledPopupHeader>
+      <StyledBtnEditProfile onClick={handleEditProfileClick}>
         <StyledPopupTitle>Edit profile</StyledPopupTitle>
-        <StyledBtnEditProfile onClick={handleEditProfileClick}>
-          <SpriteSVG name="edit-01" />
-        </StyledBtnEditProfile>
-      </StyledPopupHeader>
+        <SpriteSVG name="edit-01" />
+      </StyledBtnEditProfile>
 
       <StyledBtnLogOut onClick={handleLogout}>Log out</StyledBtnLogOut>
 

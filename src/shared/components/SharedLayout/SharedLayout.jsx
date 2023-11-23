@@ -4,19 +4,26 @@ import Header from "../../../modules/header/components/Header/Header";
 import Footer from "../../../modules/footer/components/Footer/Footer";
 import { Suspense } from "react";
 import { Container } from "../../styles/Container";
+import {
+  OverlayBottom,
+  OverlayMain,
+  StyledSection,
+} from "../../styles/Section";
 
 const SharedLayout = () => {
   return (
     <>
       <Header />
       <main>
-        <section>
+        <StyledSection>
           <Container>
             <Suspense fallback={<Loader />}>
               <Outlet />
             </Suspense>
           </Container>
-        </section>
+          <OverlayMain />
+          <OverlayBottom />
+        </StyledSection>
       </main>
       <Footer />
     </>

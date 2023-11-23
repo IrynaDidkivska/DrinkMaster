@@ -1,14 +1,8 @@
-import styled from 'styled-components';
-import { StyledBtn } from '../../../../shared/components/Buttons/LigthBtn.styled';
-
-export const StyledPopupHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 38px;
-`;
+import styled from "styled-components";
+import { StyledBtn } from "../../../../shared/components/Buttons/LigthBtn.styled";
 
 export const StyledPopupTitle = styled.p`
-  font-family: 'Manrope-500', sans-serif;
+  font-family: "Manrope-500", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -17,6 +11,11 @@ export const StyledPopupTitle = styled.p`
 `;
 
 export const StyledBtnEditProfile = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 38px;
+  min-width: 141px;
   border: none;
   background-color: transparent;
 `;

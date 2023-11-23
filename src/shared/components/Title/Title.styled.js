@@ -1,20 +1,17 @@
-import { styled } from 'styled-components'
+import { styled } from "styled-components";
 
 export const StyledTitle = styled.h1`
-
-  padding: 80px 32px 14px 0px;
   font-family: "Manrope-600", sans-serif;
   font-size: 32px;
-  line-height: 38px;
+  font-weight: 600;
+  line-height: 1.1875;
   color: ${({ theme }) => theme.colors.mainText};
 
-
-	@media screen and (min-width: 768px) {
-		font-size: 56px;
-		line-height: 60px;
-	}
-	@media screen and (min-width: 1440px) {
-		font-size: 64px;
-		line-height: 68px;
-	}
-`
+  @media screen and (min-width: 768px) {
+    font-size: 56px;
+    line-height: 1.07;
+  }
+  @media screen and (min-width: 1440px) {
+    font-size: 64px;
+  }
+`;

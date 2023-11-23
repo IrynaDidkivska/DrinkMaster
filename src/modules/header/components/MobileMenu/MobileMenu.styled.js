@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { StyledNavBar } from '../../../../shared/components/Navbar/Navbar.styled';
+import styled, { css } from "styled-components";
+import { StyledNavBar } from "../../../../shared/components/Navbar/Navbar.styled";
 
 export const StyledMobileMenu = styled.div`
   display: flex;
@@ -8,7 +8,7 @@ export const StyledMobileMenu = styled.div`
   height: 100vh;
   background-color: #0a0a11;
   overflow: hidden;
-  transition: top 0.3s ease-in-out;
+  transition: ${({ theme }) => theme.transition};
 
   position: fixed;
   top: -103%;
@@ -95,7 +95,6 @@ export const Ellipse222 = styled.div`
 
 export const Ellipse223 = styled.div`
   pointer-events: none;
-  z-index: -1;
   width: 257px;
   height: 247px;
   border-radius: 257px;
@@ -105,6 +104,7 @@ export const Ellipse223 = styled.div`
   position: absolute;
   top: 84px;
   left: 42px;
+  z-index: -1;
 
   @media screen and (min-width: 768px) {
     width: 387px;
@@ -119,7 +119,7 @@ export const Ellipse223 = styled.div`
 
 export const Ellipse224 = styled.div`
   pointer-events: none;
-  z-index: -1;
+
   width: 549px;
   height: 543px;
   border-radius: 549px;
@@ -129,6 +129,7 @@ export const Ellipse224 = styled.div`
   position: absolute;
   top: 498px;
   right: -505px;
+  z-index: -1;
 
   @media screen and (min-width: 768px) {
     border-radius: 549px;

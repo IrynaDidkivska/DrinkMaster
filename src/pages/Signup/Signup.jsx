@@ -44,6 +44,7 @@ const SignUp = () => {
       birthdate: Yup.string()
         .matches(
           /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/,
+          // /^(19|20)\d\d-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
           "Invalid date format (DD/MM/YYYY)"
         )
         .required("Date of Birth is required"),
@@ -75,7 +76,7 @@ const SignUp = () => {
   const handleDateChange = (name, value) => {
     // Перевірка, чи value є екземпляром moment
     const formattedDate =
-      value instanceof moment ? value.format("YYYY-MM-DD") : value;
+      value instanceof moment ? value.format("DD/MM/YYYY") : value;
     formik.setFieldTouched(name, true, false); // Помітити поле як торкнуте, без валідації
     formik.handleChange({
       target: {
