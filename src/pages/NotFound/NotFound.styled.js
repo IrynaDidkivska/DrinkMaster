@@ -1,33 +1,5 @@
 import styled from "styled-components";
 
-export const Overlay = styled.div`
-  position: fixed;
-  pointer-events: none;
-  z-index: -1;
-  width: 520px;
-  height: 550px;
-  top: 20px;
-  left: -375px;
-  border-radius: 550px;
-  background: rgba(64, 112, 205, 0.5);
-  filter: blur(104.8543701171875px);
-
-  @media screen and (min-width: 768px) {
-    width: 784px;
-    height: 829.931px;
-    border-radius: 829.931px;
-    top: 20px;
-    left: -768px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 784px;
-    height: 849px;
-    top: 20px;
-    right: 1440px;
-  }
-`;
-
 export const StyledWrapper = styled.div`
   position: relative;
   display: flex;
@@ -37,7 +9,6 @@ export const StyledWrapper = styled.div`
   padding-top: 196px;
   padding-bottom: 285px;
   width: 241px;
-  /* background-image: url('./img/notFound.webp'), url('./img/notFound.png'); */
   background-size: 123px 156px;
   background-repeat: no-repeat;
   background-position: 61% 41%;

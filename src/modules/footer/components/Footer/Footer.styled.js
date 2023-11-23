@@ -105,18 +105,32 @@ export const OverlayBottom = styled.div`
   z-index: 1;
   width: 774px;
   height: 762px;
-  right: 100px;
-  top: 500px;
+  bottom: -670px;
+  right: 27px;
   border-radius: 774px;
   background: rgba(188, 230, 210, 0.4);
   filter: blur(104.8543701171875px);
 
   @media screen and (min-width: 768px) {
-    right: 160px;
-    top: 350px;
+    right: 57px;
+    bottom: -660px;
   }
   @media screen and (min-width: 1440px) {
-    right: 500px;
-    top: 280px;
+    right: 473px;
+    bottom: -675px;
+  }
+`;
+export const OverlayDesctop = styled.div`
+  @media screen and (min-width: 1440px) {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+    width: 784px;
+    height: 849px;
+    bottom: -764px;
+    right: 221px;
+    border-radius: 849px;
+    background: rgba(64, 112, 205, 0.5);
+    filter: blur(104.8543701171875px);
   }
 `;

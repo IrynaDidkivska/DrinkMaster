@@ -4,7 +4,11 @@ import Header from "../../../modules/header/components/Header/Header";
 import Footer from "../../../modules/footer/components/Footer/Footer";
 import { Suspense } from "react";
 import { Container } from "../../styles/Container";
-import { StyledSection } from "../../styles/Section";
+import {
+  OverlayBottom,
+  OverlayMain,
+  StyledSection,
+} from "../../styles/Section";
 
 const SharedLayout = () => {
   return (
@@ -17,6 +21,8 @@ const SharedLayout = () => {
               <Outlet />
             </Suspense>
           </Container>
+          <OverlayMain />
+          <OverlayBottom />
         </StyledSection>
       </main>
       <Footer />
