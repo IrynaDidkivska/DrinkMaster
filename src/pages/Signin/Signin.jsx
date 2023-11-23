@@ -35,7 +35,7 @@ const SignIn = () => {
     }),
     onSubmit: (values) => {
       // Handle form submission logic here
-;
+
       const credentials = { password: values.password, email: values.email };
       dispatch(signinThunk(credentials));
     },
