@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { API, clearToken, setToken } from "../../config/drinkConfig";
+import { toast } from "react-toastify";
 
 export const signupThunk = createAsyncThunk(
   "auth/signup",
@@ -9,9 +10,12 @@ export const signupThunk = createAsyncThunk(
       const reg = { email: data.email, password: credentials.password };
       const loginResponse = await dispatch(signinThunk(reg)).unwrap();
       return loginResponse;
-      // toast.success(`Hello ${editString(data.user.username) || ""} !`);
     } catch (error) {
-      return rejectWithValue(error.message);
+      if (error.response.status === 409) {
+        toast.error("User with this email is already registered");
+      } else {
+        return rejectWithValue(error.message);
+      }
     }
   }
 );
@@ -72,6 +76,20 @@ export const updateUserThunk = createAsyncThunk(
       const res = await API.patch("api/auth/users/update", formData);
 
       return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+// subscribeEmail
+
+export const subscribeEmail = createAsyncThunk(
+  "auth/subscribe",
+  async (data, thunkAPI) => {
+    try {
+      await API.post("api/auth/users/subscribe", data);
+      toast.success("Thank you for subscribing to our newsletter.");
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

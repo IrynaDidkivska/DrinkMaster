@@ -75,7 +75,7 @@ const SignUp = () => {
   const handleDateChange = (name, value) => {
     // Перевірка, чи value є екземпляром moment
     const formattedDate =
-      value instanceof moment ? value.format("YYYY-MM-DD") : value;
+      value instanceof moment ? value.format("DD/MM/YYYY") : value;
     formik.setFieldTouched(name, true, false); // Помітити поле як торкнуте, без валідації
     formik.handleChange({
       target: {

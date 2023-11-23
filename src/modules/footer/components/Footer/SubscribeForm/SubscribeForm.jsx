@@ -1,11 +1,17 @@
 import { useState } from "react";
 import { SubscribeFormStyled } from "./SubscribeForm.styled";
+import { useDispatch } from "react-redux";
+import { subscribeEmail } from "../../../../../redux/Auth/operations";
 
 const SubscribeForm = () => {
   const [email, setEmail] = useState("");
+  const dispatch = useDispatch();
 
   const subscribe = (event) => {
     event.preventDefault();
+    console.log(event.target);
+    dispatch(subscribeEmail(event));
+    // actions.resetForm();
   };
   return (
     <SubscribeFormStyled>
