@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { API, clearToken, setToken } from "../../config/drinkConfig";
+import { toast } from "react-toastify";
 
 export const signupThunk = createAsyncThunk(
   "auth/signup",
@@ -9,8 +10,8 @@ export const signupThunk = createAsyncThunk(
       const reg = { email: data.email, password: credentials.password };
       const loginResponse = await dispatch(signinThunk(reg)).unwrap();
       return loginResponse;
-      // toast.success(`Hello ${editString(data.user.username) || ""} !`);
     } catch (error) {
+      toast.error(error.response.data.message);
       return rejectWithValue(error.message);
     }
   }
@@ -24,6 +25,7 @@ export const signinThunk = createAsyncThunk(
       setToken(data.token);
       return data;
     } catch (error) {
+      toast.error(error.response.data.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -37,6 +39,7 @@ export const logoutThunk = createAsyncThunk(
       clearToken();
       return data;
     } catch (error) {
+      toast.error(error.response.data.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -55,6 +58,7 @@ export const currentUserThunk = createAsyncThunk(
 
       return data;
     } catch (error) {
+      toast.error(error.response.data.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -73,7 +77,27 @@ export const updateUserThunk = createAsyncThunk(
 
       return res.data;
     } catch (error) {
+      toast.error(error.response.data.message);
       return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+// subscribeEmail
+//TODO доробити!!!
+export const subscribeEmail = createAsyncThunk(
+  "auth/subscribe",
+  async (data, thunkAPI) => {
+    try {
+      await API.get("api/auth/users/subscribe", data);
+      toast.success("Thank you for subscribing to our newsletter.");
+    } catch (error) {
+      toast.error(error.response.data.message);
+      if (error.response.status === 409) {
+        toast.error("Your email address has already been subscribed");
+      } else {
+        return thunkAPI.rejectWithValue(error.message);
+      }
     }
   }
 );

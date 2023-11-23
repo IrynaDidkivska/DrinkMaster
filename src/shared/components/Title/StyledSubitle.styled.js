@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { StyledTitle } from "./Title.styled";
 
 export const StyledSubitle = styled(StyledTitle)`
-  padding: 0 0 0 0;
   font-size: 28px;
   letter-spacing: -0.56px;
   line-height: 1.14; /* 114.286% */

@@ -1,10 +1,10 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const StyledBtn = styled.button`
   min-width: 132px;
   padding: 14px 40px;
 
-  font-family: 'Manrope-600', sans-serif;
+  font-family: "Manrope-600", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
@@ -23,6 +23,7 @@ export const StyledBtn = styled.button`
     background: ${({ theme }) => theme.button.dark};
     border: 2px solid rgba(243, 243, 243, 0.2);
     transition: ${({ theme }) => theme.transition};
+    ${({ theme }) => theme.transition};
   }
 
   &:focus,
