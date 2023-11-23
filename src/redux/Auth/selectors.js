@@ -8,3 +8,5 @@ export const selectIsAuth = (state) => state.auth.isAuth;
 export const selecctIsAdult = (state) => state.auth.isAdult;
 
 export const selectToken = (state) => state.auth.token;
+
+export const selectSubscribe = (state) => state.auth.isSubscribed;

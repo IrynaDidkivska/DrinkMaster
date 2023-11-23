@@ -5,6 +5,7 @@ import {
   logoutThunk,
   currentUserThunk,
   updateUserThunk,
+  subscribeEmail,
 } from "./operations";
 
 const initialState = {
@@ -18,6 +19,7 @@ const initialState = {
   isAuth: false,
   isLoading: false,
   isRefresh: false,
+  isSubscribed: false,
   error: "",
   token: "",
 };
@@ -76,14 +78,17 @@ export const authSlice = createSlice({
         state.user.username = payload.username;
         state.user.avatar = payload.avatarUrl;
       })
-
+      .addCase(subscribeEmail.fulfilled, (state) => {
+        state.isSubscribed = true;
+      })
       .addMatcher(
         isAnyOf(
           signinThunk.pending,
           signupThunk.pending,
           logoutThunk.pending,
           updateUserThunk.pending,
-          currentUserThunk.pending
+          currentUserThunk.pending,
+          subscribeEmail.pending
         ),
         (state) => {
           state.isLoading = true;
@@ -96,7 +101,8 @@ export const authSlice = createSlice({
           signupThunk.rejected,
           logoutThunk.rejected,
           updateUserThunk.rejected,
-          currentUserThunk.rejected
+          currentUserThunk.rejected,
+          subscribeEmail.rejected
         ),
         (state, { payload }) => {
           state.isLoading = false;
