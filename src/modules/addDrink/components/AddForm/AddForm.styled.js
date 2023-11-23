@@ -11,11 +11,28 @@ export const AddFormWrapperStyled = styled(ComponentWrapperStyled)`
     gap: 40px;
   }
 `;
+export const HiddenInputStyled = styled.input`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+`;
 
 export const ImgContainerStyled = styled.div`
+  background-image: ${props =>
+    props.$bgImg ? `url('${props.$bgImg}')` : 'none'};
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 18px;
   width: 335px;
   height: 320px;
   margin: 0 auto;
@@ -35,7 +52,7 @@ export const ImgContainerStyled = styled.div`
   }
 `;
 
-export const AddImgButtonStyled = styled.button`
+export const AddImgLabelStyled = styled.label`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,11 +67,10 @@ export const AddImgButtonStyled = styled.button`
     stroke: ${({ theme }) => theme.colors.secondaryText};
   }
 `;
-export const AddImgLabelStyled = styled.label`
+export const AddImgContainerStyled = styled.span`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 18px;
   color: ${({ theme }) => theme.colors.mainText};
   font-family: 'Manrope-500';
   font-size: 16px;
