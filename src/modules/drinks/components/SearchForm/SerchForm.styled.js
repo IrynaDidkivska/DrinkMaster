@@ -16,15 +16,35 @@ export const InputContStyled = styled("div")`
   width: fit-content;
   position: relative;
   width: 100%;
-  & svg {
+  button {
     position: absolute;
-    display: block;
-    width: 20px;
-    height: 20px;
-    stroke: ${({ theme }) => theme.colors.mainText};
-    right: 18px;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 17px;
+    right: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    pointer-events: none;
+    background: transparent;
+    border: none;
+
+    cursor: pointer;
+
+    transition: ${({ theme }) => theme.transition};
+    &:hover,
+    &:focus {
+    }
+    svg {
+      width: 20px;
+      height: 20px;
+      transition: ${({ theme }) => theme.transition};
+      stroke: ${({ theme }) => theme.colors.mainText};
+      &:hover,
+      &:focus {
+        scale: 1.3;
+      }
+    }
   }
 `;
 
@@ -42,6 +62,7 @@ export const InputStyled = styled("input")`
   font-size: 14px;
   font-weight: 400;
   line-height: 1.28; /* 128.571% */
+  cursor: pointer;
 
   &::placeholder {
     color: ${({ theme }) => theme.colors.mainText};

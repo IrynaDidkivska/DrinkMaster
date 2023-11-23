@@ -1,12 +1,25 @@
-import { useState } from "react";
 import { SubscribeFormStyled } from "./SubscribeForm.styled";
+import { useDispatch, useSelector } from "react-redux";
+import { subscribeEmail } from "../../../../../redux/Auth/operations";
+import { selectSubscribe } from "../../../../../redux/Auth/selectors";
+import { useState } from "react";
+import { toast } from "react-toastify";
 
 const SubscribeForm = () => {
+  const sunscribe = useSelector(selectSubscribe);
   const [email, setEmail] = useState("");
+  const dispatch = useDispatch();
 
   const subscribe = (event) => {
     event.preventDefault();
+    dispatch(subscribeEmail(event));
+    if (sunscribe) {
+      toast.error(`Your email address has already been subscribed`);
+    }
+    toast.success(`Contact ${email} successfully added!`);
+    setEmail("");
   };
+
   return (
     <SubscribeFormStyled>
       <p>
