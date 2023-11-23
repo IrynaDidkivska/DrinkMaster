@@ -28,7 +28,14 @@ function PopularDrinks() {
       <PopularContainer>
         {populars?.map(({ description, drinkThumb, drink }) => (
           <PopularItemContainer key={drink}>
-            <PopularImage src={drinkThumb} alt={drink} />
+            {drinkThumb ? (
+              <PopularImage src={drinkThumb} alt={drink} />
+            ) : (
+              <img
+                src="../../../../shared/img/image.jpg"
+                alt="alternative_text"
+              />
+            )}
             <PopularContainerDiscr>
               <PopularName>{drink}</PopularName>
               <PopularDiskr>{description}</PopularDiskr>

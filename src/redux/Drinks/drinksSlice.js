@@ -13,7 +13,7 @@ import {
 } from "./operations";
 
 const initialState = {
-  drinks: [],
+  drinks: {},
   popular: [],
   search: [],
   drinkDetails: [],
@@ -32,8 +32,7 @@ const drinksSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getAllDrinksThunk.fulfilled, (state, { payload }) => {
-        // state.drinks = [...state.drinks, ...payload];
-        state.drinks.push(...payload);
+        state.drinks = payload[0];
         state.page = 1;
       })
       .addCase(getPopularThunk.fulfilled, (state, { payload }) => {

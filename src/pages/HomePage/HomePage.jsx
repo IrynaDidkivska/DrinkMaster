@@ -2,7 +2,12 @@ import { useEffect, useState } from "react";
 import LigthBtn from "../../shared/components/Buttons/LigthBtn";
 import { useDispatch, useSelector } from "react-redux";
 import { StyledTitle } from "../../shared/components/Title/Title.styled";
-import { HomeImage, HomeWrapper, MainText } from "./HomePage.styled";
+import {
+  HomeImage,
+  HomeWrapper,
+  MainText,
+  WrapperCategory,
+} from "./HomePage.styled";
 import Image from "./img/Found.png";
 import { useNavigate } from "react-router-dom";
 import { selectMainCatalog } from "../../redux/Drinks/selectors";
@@ -15,7 +20,7 @@ const HomePage = () => {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
   const allCatalog = useSelector(selectMainCatalog);
-
+  const categ = Object.keys(allCatalog);
   useEffect(() => {
     dispatch(getAllDrinksThunk({ page: currentPage }));
   }, [currentPage, dispatch]);
@@ -39,15 +44,27 @@ const HomePage = () => {
             destination for exploring, crafting, and mastering the world&apos;s
             finest beverages.
           </MainText>
+          {categ.map((category) => {
+            const foreCoctails = allCatalog[category];
+            return (
+              <>
+                <h1 key={category}>
+                  <WrapperCategory>
+                    {category}
+                    {foreCoctails.map((drink) => (
+                      <DrinkCardItem key={drink._id} data={drink} />
+                    ))}
+                  </WrapperCategory>
+                </h1>
+              </>
+            );
+          })}
+
           <LigthBtn onClick={handleAddDrinkClick}>Add drink</LigthBtn>
         </div>
         <HomeImage src={Image} alt="Coctail's name" />
       </HomeWrapper>
-      <List>
-        {allCatalog.map((drink) => (
-          <DrinkCardItem key={drink._id} data={drink} />
-        ))}
-      </List>
+      <List></List>
       <LigthBtn onClick={handleOtherDrinks}>Other drinks</LigthBtn>
     </>
   );
