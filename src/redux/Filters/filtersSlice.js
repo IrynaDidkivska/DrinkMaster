@@ -36,6 +36,11 @@ const fitlerSlice = createSlice({
     setPage: (state, { payload }) => {
       state.page = payload;
     },
+    clearFilter: (state) => {
+      state.searchQuery.query = "";
+      state.searchQuery.category = "";
+      state.searchQuery.ingredient = "";
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -85,5 +90,5 @@ const fitlerSlice = createSlice({
 
 export const filterReducer = fitlerSlice.reducer;
 
-export const { setQuery, setIngridient, setCategory, setPage } =
+export const { setQuery, setIngridient, setCategory, setPage, clearFilter } =
   fitlerSlice.actions;

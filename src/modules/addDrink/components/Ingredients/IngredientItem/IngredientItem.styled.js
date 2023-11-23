@@ -131,12 +131,12 @@ export const IngredientSelect = styled(Select)`
       font-weight: 400;
       line-height: 1.33; /*133.333% */
       &--is-focused,
-      &:active,
+      &.active,
       &--is-selected {
         background: transparent;
         background-color: none;
         color: ${({ theme }) => theme.colors.mainText};
-        &:active {
+        &.active {
           background-color: transparent;
         }
       }
