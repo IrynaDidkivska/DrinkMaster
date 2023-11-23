@@ -1,25 +1,26 @@
-import { useEffect } from 'react';
-import Title from '../../../../shared/components/Title/Title';
-import { SpriteSVG } from '../../../../shared/icons/SpriteSVG';
-import AddDrinkSelect from './AddDrinkSelect/AddDrinkSelect';
+import { useEffect } from "react";
+import Title from "../../../../shared/components/Title/Title";
+import { SpriteSVG } from "../../../../shared/icons/SpriteSVG";
+import AddDrinkSelect from "./AddDrinkSelect/AddDrinkSelect";
 import {
   AddFormWrapperStyled,
   AddImgButtonStyled,
   AddImgLabelStyled,
   ImgContainerStyled,
   InputWrapperStyled,
-} from './AddForm.styled';
-import Input from './Input/Input';
-import RadioBtn from './RadioBtn/RadioBtn';
-import { useDispatch, useSelector } from 'react-redux';
+} from "./AddForm.styled";
+import Input from "./Input/Input";
+import RadioBtn from "./RadioBtn/RadioBtn";
+import { useDispatch, useSelector } from "react-redux";
 import {
   getCategoriesThunk,
   getGlassesThunk,
-} from '../../../../redux/Filters/operations';
+} from "../../../../redux/Filters/operations";
 import {
   selectNormalizedCategories,
   selectNormalizedGlasses,
-} from '../../../../redux/Filters/selectors.js';
+} from "../../../../redux/Filters/selectors.js";
+import PopularDrinks from "../PopularDrinks/PopularDrinks.jsx";
 
 const AddForm = () => {
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ const AddForm = () => {
 
   return (
     <>
-      <Title Title="Add drink" />
+      {/* <Title Title="Add drink" /> */}
       <AddFormWrapperStyled>
         <ImgContainerStyled htmlFor="addImg">
           <AddImgLabelStyled>
@@ -48,11 +49,11 @@ const AddForm = () => {
           <AddDrinkSelect label="Category" options={categories} />
           <AddDrinkSelect label="Glass" options={glasses} />
           <div>
-            <RadioBtn id="alcoholic" name="isAlcohol" label={'Alcoholic'} />
+            <RadioBtn id="alcoholic" name="isAlcohol" label={"Alcoholic"} />
             <RadioBtn
               id="un-alcoholic"
               name="isAlcohol"
-              label={'Non-alcoholic'}
+              label={"Non-alcoholic"}
             />
           </div>
         </InputWrapperStyled>

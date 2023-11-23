@@ -9,31 +9,42 @@ import {
   PopularName,
   PopularDiskr,
   PopularContainerDiscr,
+  PopularWrapper,
 } from "./PopularDrinks.styled";
-import { getPopularThunk } from "../../../../redux/Drinks/operations";
-import { selectPopulars } from "../../../../redux/Drinks/selectors";
+import {
+  getFavoriteThunk,
+  getPopularThunk,
+} from "../../../../redux/Drinks/operations";
+import {
+  selectFavorites,
+  selectPopulars,
+} from "../../../../redux/Drinks/selectors";
 
 function PopularDrinks() {
   const dispatch = useDispatch();
   const populars = useSelector(selectPopulars);
+  const favorite = useSelector(selectFavorites);
 
   useEffect(() => {
     dispatch(getPopularThunk());
+    dispatch(getFavoriteThunk());
   }, [dispatch]);
 
   return (
-    <PopularContainer>
+    <PopularWrapper>
       <Subtitle Subtitle={"Popular drinks"}></Subtitle>
-      {populars?.map(({ description, drinkThumb, drink }) => (
-        <PopularItemContainer key={drink}>
+      <PopularContainer>
+        {favorite?.map(({ description, drinkThumb, drink }) => (
+          <PopularItemContainer key={drink}>
             <PopularImage src={drinkThumb} alt={drink} />
             <PopularContainerDiscr>
               <PopularName>{drink}</PopularName>
               <PopularDiskr>{description}</PopularDiskr>
             </PopularContainerDiscr>
-        </PopularItemContainer>
-      ))}
-    </PopularContainer>
+          </PopularItemContainer>
+        ))}
+      </PopularContainer>
+    </PopularWrapper>
   );
 }
 
