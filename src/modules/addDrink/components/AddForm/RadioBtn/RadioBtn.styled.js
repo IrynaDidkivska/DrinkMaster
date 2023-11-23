@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const RadioWrapper = styled.div`
   position: relative;
@@ -20,7 +20,7 @@ export const InputStyled = styled.input`
   opacity: 0;
   + label {
     &:before {
-      content: '';
+      content: "";
       background: transparent;
       border-radius: 100%;
       border: 1.5px solid ${({ theme }) => theme.colors.mainText};
@@ -32,7 +32,7 @@ export const InputStyled = styled.input`
       vertical-align: top;
       cursor: pointer;
       text-align: center;
-      transition: all 250ms ease;
+      transition: ${({ theme }) => theme.transition};
     }
   }
   &:checked {
@@ -72,7 +72,7 @@ export const InputStyled = styled.input`
   @media screen and (min-width: 768px) {
     + label {
       &:before {
-        content: '';
+        content: "";
         width: 20px;
         height: 20px;
         margin-right: 8px;
@@ -105,9 +105,9 @@ export const LabelStyled = styled.label`
   align-items: center;
   cursor: pointer;
   text-align: center;
-  transition: all 250ms ease;
+  transition: ${({ theme }) => theme.transition};
   color: ${({ theme }) => theme.colors.mainText};
-  font-family: 'Manrope-400';
+  font-family: "Manrope-400";
   font-size: 14px;
   font-weight: 400;
   letter-spacing: -0.28px;

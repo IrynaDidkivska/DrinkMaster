@@ -21,6 +21,7 @@ export const StyledLinkFooter = styled(Link)`
   background: transparent;
   outline: transparent;
   transition: ${({ theme }) => theme.transition};
+
   cursor: pointer;
   &:hover,
   &:focus,
