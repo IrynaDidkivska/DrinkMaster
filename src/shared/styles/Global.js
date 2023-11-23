@@ -6,8 +6,7 @@ body {
  
 color: ${({ theme }) => theme.colors.mainText};
  background: ${({ theme }) => theme.background.main};
-transition: ${({ theme }) => theme.transition};${({ theme }) =>
-  theme.transition};
+transition: ${({ theme }) => theme.transition};
 }
 
 p,

@@ -14,7 +14,7 @@ export const LinkStyled = styled(Link)`
   line-height: 1.42; /* 128.571% */
   text-align: center;
   transition: ${({ theme }) => theme.transition};
-  ${({ theme }) => theme.transition};
+
   color: ${({ theme }) => theme.colors.mainText};
   background: transparent;
 

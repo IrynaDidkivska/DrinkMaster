@@ -28,7 +28,7 @@ export const Switcher = styled.div`
     right: -1px;
     bottom: 0;
     transition: ${({ theme }) => theme.transition};
-    ${({ theme }) => theme.transition};
+
     border-radius: 20px;
     background-color: ${({ theme }) => theme.button.dark};
 
@@ -41,7 +41,7 @@ export const Switcher = styled.div`
       bottom: 1px;
       background-color: ${({ theme }) => theme.button.dark};
       transition: ${({ theme }) => theme.transition};
-      ${({ theme }) => theme.transition};
+
       border-radius: 50%;
     }
   }

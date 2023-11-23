@@ -18,11 +18,10 @@ export const StyledBtn = styled.button`
   border: 2px solid transparent;
   outline: transparent;
 
+  transition: ${({ theme }) => theme.transition};
   &:hover,
   &:focus {
     color: ${({ theme }) => theme.button.dark};
     background: ${({ theme }) => theme.button.ligth};
-    transition: ${({ theme }) => theme.transition};
-    ${({ theme }) => theme.transition};
   }
 `;

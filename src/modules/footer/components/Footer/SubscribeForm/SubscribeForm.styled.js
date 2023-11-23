@@ -25,7 +25,7 @@ export const SubscribeFormStyled = styled.div`
       background: transparent;
       outline: transparent;
       transition: ${({ theme }) => theme.transition};
-      ${({ theme }) => theme.transition};
+
       cursor: pointer;
 
       &::placeholder {
@@ -48,7 +48,7 @@ export const SubscribeFormStyled = styled.div`
       opacity: 0.8;
       background: transparent;
       transition: ${({ theme }) => theme.transition};
-      ${({ theme }) => theme.transition};
+
       cursor: pointer;
 
       &:hover,

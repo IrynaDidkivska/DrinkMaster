@@ -8,7 +8,7 @@ export const StyledMobileMenu = styled.div`
   height: 100vh;
   background-color: #0a0a11;
   overflow: hidden;
-  transition: ${({ theme }) => theme.transition};top 0.3s ease-in-out;
+  transition: ${({ theme }) => theme.transition};
 
   position: fixed;
   top: -103%;

@@ -88,6 +88,7 @@ function App() {
                 </PrivateRoute>
               }
             />
+            <Route path="*" element={<NotFound />} />
           </Route>
 
           <Route
@@ -114,7 +115,6 @@ function App() {
               </PublicRoute>
             }
           />
-          <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
     </ThemeProvider>
