@@ -136,10 +136,17 @@ export const SelectStyled = styled(Select)`
         line-height: 1.56;
       }
     }
+    &option {
+      padding: 0;
+      text-overflow: ellipsis;
+    }
+
     &value-container {
       padding: 18px 24px;
+      padding-right: 0;
       @media (min-width: 768px) {
         padding: 14px 24px;
+        padding-right: 0;
       }
     }
     &placeholder {
@@ -169,6 +176,7 @@ export const SelectStyled = styled(Select)`
     }
     &dropdown-indicator {
       padding: 0;
+      padding-right: 17px;
       & svg {
         width: 24px;
         height: 24px;
@@ -183,6 +191,8 @@ export const SelectStyled = styled(Select)`
       font-weight: 400;
       line-height: 128%;
       padding: 8px;
+      overflow: hidden;
+      text-overflow: ellipsis;
       white-space: nowrap;
       @media (min-width: 768px) {
         width: 199px;
@@ -193,7 +203,8 @@ export const SelectStyled = styled(Select)`
     }
     &menu-list {
       text-overflow: ellipsis;
-      gap: 6px;
+      overflow-x: hidden;
+      gap: 8px;
       display: flex;
       flex-direction: column;
       padding: 10px;
@@ -214,7 +225,6 @@ export const SelectStyled = styled(Select)`
     }
     &option {
       text-overflow: ellipsis;
-      height: 18px;
       cursor: pointer;
       color: rgba(243, 243, 243, 0.4);
       background: none;
