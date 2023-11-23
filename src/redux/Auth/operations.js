@@ -11,11 +11,8 @@ export const signupThunk = createAsyncThunk(
       const loginResponse = await dispatch(signinThunk(reg)).unwrap();
       return loginResponse;
     } catch (error) {
-      if (error.response.status === 409) {
-        toast.error("User with this email is already registered");
-      } else {
-        return rejectWithValue(error.message);
-      }
+      toast.error(error.response.data.message);
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -28,6 +25,7 @@ export const signinThunk = createAsyncThunk(
       setToken(data.token);
       return data;
     } catch (error) {
+      toast.error(error.response.data.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -41,6 +39,7 @@ export const logoutThunk = createAsyncThunk(
       clearToken();
       return data;
     } catch (error) {
+      toast.error(error.response.data.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -59,6 +58,7 @@ export const currentUserThunk = createAsyncThunk(
 
       return data;
     } catch (error) {
+      toast.error(error.response.data.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -77,6 +77,7 @@ export const updateUserThunk = createAsyncThunk(
 
       return res.data;
     } catch (error) {
+      toast.error(error.response.data.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -91,6 +92,7 @@ export const subscribeEmail = createAsyncThunk(
       await API.get("api/auth/users/subscribe", data);
       toast.success("Thank you for subscribing to our newsletter.");
     } catch (error) {
+      toast.error(error.response.data.message);
       if (error.response.status === 409) {
         toast.error("Your email address has already been subscribed");
       } else {
