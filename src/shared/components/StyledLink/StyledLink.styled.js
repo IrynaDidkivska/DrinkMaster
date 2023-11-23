@@ -22,7 +22,7 @@ export const LinkStyled = styled(Link)`
   &:focus {
     cursor: pointer;
   }
-  &:active {
+  &.active {
     /* border: transparent; */
     color: ${({ theme }) => theme.colors.mainText};
     background: ${({ theme }) => theme.background.dropdown};

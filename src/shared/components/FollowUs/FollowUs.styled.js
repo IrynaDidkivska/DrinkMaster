@@ -7,7 +7,7 @@ export const StyledList = styled.ul`
   li {
     &:hover,
     &:focus,
-    &:active {
+    &.active {
       scale: 1;
     }
   }
@@ -19,7 +19,7 @@ export const StyledList = styled.ul`
     background: ${({ theme }) => theme.footer.bacground};
     &:hover,
     &:focus,
-    &:active {
+    &.active {
       opacity: 0.9;
       scale: 1.3;
     }
@@ -38,7 +38,7 @@ export const StyledSocLink = styled(Link)`
   transition: ${({ theme }) => theme.transition};
   &:hover,
   &:focus,
-  &:active {
+  &.active {
     border: 1px solid rgba(243, 243, 243, 0.8);
   }
 `;
