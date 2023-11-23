@@ -29,6 +29,7 @@ export const InputWrapper = styled.input`
   border: 1px solid ${(props) => switchBorderColor(props)};
   opacity: 0.8;
   transition: ${({ theme }) => theme.transition};
+  ${({ theme }) => theme.transition};
 
   &:focus {
     border: 1px solid rgba(243, 243, 243, 0.5);

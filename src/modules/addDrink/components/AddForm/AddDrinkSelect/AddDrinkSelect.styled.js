@@ -1,5 +1,5 @@
-import Select from 'react-select';
-import styled from 'styled-components';
+import Select from "react-select";
+import styled from "styled-components";
 
 export const SelectStyled = styled(Select)`
   .addDrink__ {
@@ -22,7 +22,8 @@ export const SelectStyled = styled(Select)`
         outline-color: transparent;
       }
       & svg {
-        transition: transform 200ms ease-in-out;
+        transition: ${({ theme }) =>
+          theme.transition};transform 200ms ease-in-out;
       }
       &--menu-is-open {
         & svg {
@@ -169,7 +170,7 @@ export const SelectWrapper = styled.div`
 
 export const LabelStyled = styled.div`
   color: ${({ theme }) => theme.colors.mainText};
-  font-family: 'Manrope-400';
+  font-family: "Manrope-400";
   font-size: 14px;
   font-weight: 400;
   line-height: normal;

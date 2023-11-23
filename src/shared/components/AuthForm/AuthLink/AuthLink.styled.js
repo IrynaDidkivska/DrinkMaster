@@ -20,6 +20,7 @@ export const SignUp = styled(LinkStyled)`
     color: ${({ theme }) => theme.button.ligth};
     background: ${({ theme }) => theme.button.dark};
     transition: ${({ theme }) => theme.transition};
+    ${({ theme }) => theme.transition};
   }
 
   @media screen and (min-width: 768px) {
@@ -46,6 +47,7 @@ export const SignIn = styled(LinkStyled)`
   &:focus {
     cursor: pointer;
     transition: ${({ theme }) => theme.transition};
+    ${({ theme }) => theme.transition};
   }
   &:active {
     border: none;

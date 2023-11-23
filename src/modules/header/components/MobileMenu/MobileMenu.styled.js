@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { StyledNavBar } from '../../../../shared/components/Navbar/Navbar.styled';
+import styled, { css } from "styled-components";
+import { StyledNavBar } from "../../../../shared/components/Navbar/Navbar.styled";
 
 export const StyledMobileMenu = styled.div`
   display: flex;
@@ -8,7 +8,7 @@ export const StyledMobileMenu = styled.div`
   height: 100vh;
   background-color: #0a0a11;
   overflow: hidden;
-  transition: top 0.3s ease-in-out;
+  transition: ${({ theme }) => theme.transition};top 0.3s ease-in-out;
 
   position: fixed;
   top: -103%;

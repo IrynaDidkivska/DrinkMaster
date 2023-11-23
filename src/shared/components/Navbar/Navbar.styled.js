@@ -22,6 +22,7 @@ export const StyledLink = styled(Link)`
   color: ${({ theme }) => theme.colors.mainText};
   background: transparent;
   transition: ${({ theme }) => theme.transition};
+  ${({ theme }) => theme.transition};
 
   &:hover,
   &:focus,

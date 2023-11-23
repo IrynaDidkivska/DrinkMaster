@@ -93,6 +93,7 @@ export const SelectStyled = styled(Select)`
       }
       & svg {
         transition: ${({ theme }) => theme.transition};
+        ${({ theme }) => theme.transition};
         stroke: ${({ theme }) => theme.colors.mainText};
       }
       &--menu-is-open {

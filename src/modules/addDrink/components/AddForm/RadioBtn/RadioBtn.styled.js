@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const RadioWrapper = styled.div`
   position: relative;
@@ -32,7 +32,7 @@ export const InputStyled = styled.input`
       vertical-align: top;
       cursor: pointer;
       text-align: center;
-      transition: all 250ms ease;
+      transition: ${({ theme }) => theme.transition};all 250ms ease;
     }
   }
   &:checked {
@@ -105,7 +105,7 @@ export const LabelStyled = styled.label`
   align-items: center;
   cursor: pointer;
   text-align: center;
-  transition: all 250ms ease;
+  transition: ${({ theme }) => theme.transition};all 250ms ease;
   color: ${({ theme }) => theme.colors.mainText};
   font-family: 'Manrope-400';
   font-size: 14px;

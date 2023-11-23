@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Switcher = styled.div`
   display: flex;
@@ -28,18 +28,20 @@ export const Switcher = styled.div`
     right: -1px;
     bottom: 0;
     transition: ${({ theme }) => theme.transition};
+    ${({ theme }) => theme.transition};
     border-radius: 20px;
     background-color: ${({ theme }) => theme.button.dark};
 
     &:before {
       position: absolute;
-      content: '';
+      content: "";
       width: 18px;
       height: 18px;
       left: 1px;
       bottom: 1px;
       background-color: ${({ theme }) => theme.button.dark};
       transition: ${({ theme }) => theme.transition};
+      ${({ theme }) => theme.transition};
       border-radius: 50%;
     }
   }

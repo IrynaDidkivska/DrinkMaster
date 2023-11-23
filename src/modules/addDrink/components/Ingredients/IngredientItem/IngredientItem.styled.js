@@ -30,7 +30,8 @@ export const IngredientSelect = styled(Select)`
       &--is-focused {
       }
       & svg {
-        transition: transform 200ms ease-in-out;
+        transition: ${({ theme }) =>
+          theme.transition};transform 200ms ease-in-out;
       }
       &--menu-is-open {
         & svg {

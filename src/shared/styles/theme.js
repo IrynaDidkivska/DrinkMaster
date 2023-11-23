@@ -26,7 +26,7 @@ export const darkTheme = {
     bacground: "#0A0A11",
   },
 
-  transition: "all 300ms cubic-bezier(0.53, 0.5, 0.53, 0.52)",
+  transition: ${({ theme }) => theme.transition};"all 300ms cubic-bezier(0.53, 0.5, 0.53, 0.52)",
 };
 export const lightTheme = {
   colors: {
@@ -56,5 +56,5 @@ export const lightTheme = {
     bacground: "#0A0A11",
   },
 
-  transition: "all 300ms cubic-bezier(0.53, 0.5, 0.53, 0.52)",
+  transition: ${({ theme }) => theme.transition};"all 300ms cubic-bezier(0.53, 0.5, 0.53, 0.52)",
 };

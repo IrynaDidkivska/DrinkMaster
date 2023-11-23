@@ -81,6 +81,7 @@ export const StyledDatetime = styled(Datetime)`
     border: 1px solid rgba(243, 243, 243, 0.2);
     opacity: 0.8;
     transition: ${({ theme }) => theme.transition};
+    ${({ theme }) => theme.transition};
 
     &:focus {
       border: 1px solid rgba(243, 243, 243, 0.5);
