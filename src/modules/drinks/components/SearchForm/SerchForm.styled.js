@@ -2,20 +2,64 @@ import Select from "react-select";
 import styled from "styled-components";
 
 export const FormStyled = styled("form")`
-  width: 100%;
   display: flex;
+  align-items: center;
   flex-direction: column;
   gap: 14px;
-  @media (min-width: 768px) {
-    width: 678px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  color: ${({ theme }) => theme.colors.mainText};
+
+  input {
+    width: 100%;
+    padding: 18px 24px;
+    font-family: "Manrope-400";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.28; /* 128.571% */
+
+    background: transparent;
+    border-radius: 200px;
+    border: 1px solid rgba(243, 243, 243, 0.2);
+    outline: transparent;
+    opacity: 0.8;
+    color: ${({ theme }) => theme.colors.mainText};
+
+    &::placeholder {
+      color: ${({ theme }) => theme.colors.mainText};
+      font-family: "Manrope-400";
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.28; /* 128.571% */
+    }
+  }
+
+  @media screen and (min-width: 768px) {
     flex-direction: row;
-    gap: 8px;
+    column-gap: 8px;
+    margin-top: 60px;
+    input {
+      width: 264px;
+      padding: 14px 24px;
+      font-size: 17px;
+      line-height: 1.56;
+      &::placeholder {
+        font-size: 17px;
+        line-height: 1.56;
+      }
+    }
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 680px;
+    margin-top: 80px;
   }
 `;
+// Search button
 export const InputContStyled = styled("div")`
-  width: fit-content;
   position: relative;
   width: 100%;
+
   button {
     position: absolute;
     top: 17px;
@@ -25,7 +69,6 @@ export const InputContStyled = styled("div")`
     align-items: center;
     justify-content: center;
 
-    pointer-events: none;
     background: transparent;
     border: none;
 
@@ -48,43 +91,9 @@ export const InputContStyled = styled("div")`
   }
 `;
 
-export const InputStyled = styled("input")`
-  width: 100%;
-  height: 54px;
-  padding: 18px 24px;
-  background: transparent;
-  border-radius: 200px;
-  border: 1px solid rgba(243, 243, 243, 0.2);
-  outline: transparent;
-  opacity: 0.8;
-  color: ${({ theme }) => theme.colors.mainText};
-  font-family: "Manrope-400";
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.28; /* 128.571% */
-  cursor: pointer;
-
-  &::placeholder {
-    color: ${({ theme }) => theme.colors.mainText};
-    font-family: "Manrope-400";
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.28; /* 128.571% */
-    @media (min-width: 768px) {
-      font-size: 17px;
-      line-height: 1.56;
-    }
-  }
-  @media (min-width: 768px) {
-    width: 264px;
-    height: 56px;
-    font-size: 17px;
-    line-height: 1.56;
-    padding: 14px 24px;
-  }
-`;
-
+// Select
 export const SelectStyled = styled(Select)`
+  width: 100%;
   .customSelect__ {
     &control {
       color: ${({ theme }) => theme.colors.mainText}; //#F3F3F3
@@ -92,9 +101,6 @@ export const SelectStyled = styled(Select)`
       font-size: 14px;
       font-weight: 400;
       line-height: 1.28;
-      width: 100%;
-      padding: 18px 24px;
-      height: 54px;
       border-radius: 200px;
       background-color: ${({ theme }) => theme.colors.secondaryText}; //#161F37
       border: none !important;
@@ -114,7 +120,6 @@ export const SelectStyled = styled(Select)`
       }
       & svg {
         transition: ${({ theme }) => theme.transition};
-
         stroke: ${({ theme }) => theme.colors.mainText};
       }
       &--menu-is-open {
@@ -127,15 +132,15 @@ export const SelectStyled = styled(Select)`
       }
       @media (min-width: 768px) {
         width: 199px;
-        height: 56px;
         font-size: 17px;
         line-height: 1.56;
-        padding: 14px 24px;
       }
     }
     &value-container {
-      height: 23px;
-      padding: 0;
+      padding: 18px 24px;
+      @media (min-width: 768px) {
+        padding: 14px 24px;
+      }
     }
     &placeholder {
       color: ${({ theme }) => theme.colors.mainText};
@@ -148,8 +153,6 @@ export const SelectStyled = styled(Select)`
       padding: 0;
     }
     &indicators {
-      height: 24px;
-      padding: 0;
       & svg {
         width: 24px;
         height: 24px;
@@ -158,7 +161,6 @@ export const SelectStyled = styled(Select)`
     }
     &input-container {
       color: ${({ theme }) => theme.colors.secondaryText};
-      height: 18px;
       margin: 0;
       padding: 0;
     }
@@ -226,5 +228,24 @@ export const SelectStyled = styled(Select)`
         }
       }
     }
+  }
+`;
+
+export const StyledResetButton = styled.button`
+  font-family: "Manrope-600", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  color: rgba(243, 243, 243, 0.5);
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 18px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    font-size: 16px;
+    line-height: 18px;
   }
 `;
