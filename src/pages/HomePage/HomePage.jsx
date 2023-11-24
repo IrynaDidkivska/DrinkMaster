@@ -17,27 +17,31 @@ import DrinkCardItem from "../../shared/components/DrinkCardItem/DrinkCardItem";
 import { List } from "../../shared/components/DrinkList/DrinkList.styled";
 import { StyledSubitle } from "../../shared/components/Title/StyledSubitle.styled";
 import Subtitle from "../../shared/components/Title/Subtitle";
+import { useMediaQuery } from "react-responsive";
 
 const HomePage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
+  const [drinksToShow, setDrinksToShow] = useState(1);
   const allCatalog = useSelector(selectMainCatalog);
   // ==============================================
-  const screenWidth = window.innerWidth;
-  let drinksToShow = 1; // За замовчуванням для мобільних пристроїв
-
-  // Визначення кількості напоїв в залежності від ширини екрану
-  if (screenWidth >= 1400) {
-    drinksToShow = 3; // Для екранів шириною 1400px або більше
-  } else if (screenWidth >= 768) {
-    drinksToShow = 2; // Для екранів шириною від 768px до 1399px
-  }
+  const isLargeScreen = useMediaQuery({ query: "(min-width: 1400px)" });
+  const isMediumScreen = useMediaQuery({
+    query: "(min-width: 768px) and (max-width: 1399px)",
+  });
   // ===============================================
   const categ = Object.keys(allCatalog);
   useEffect(() => {
     dispatch(getAllDrinksThunk({ page: currentPage }));
-  }, [currentPage, dispatch]);
+    if (isLargeScreen) {
+      setDrinksToShow(3);
+    } else if (isMediumScreen) {
+      setDrinksToShow(2);
+    } else {
+      setDrinksToShow(1);
+    }
+  }, [currentPage, dispatch, isLargeScreen, isMediumScreen]);
 
   const handleOtherDrinks = () => {
     navigate("/drinks");
