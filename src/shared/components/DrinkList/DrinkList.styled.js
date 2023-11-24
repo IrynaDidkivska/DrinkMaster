@@ -20,5 +20,6 @@ export const List = styled.ul`
     min-width: 1240px;
     height: 100%;
     gap: 20px;
+    justify-content: flex-start;
   }
 `;
