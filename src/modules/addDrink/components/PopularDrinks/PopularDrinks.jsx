@@ -13,6 +13,7 @@ import {
 } from "./PopularDrinks.styled";
 import { getPopularThunk } from "../../../../redux/Drinks/operations";
 import { selectPopulars } from "../../../../redux/Drinks/selectors";
+import { Link } from "react-router-dom";
 
 function PopularDrinks() {
   const dispatch = useDispatch();
@@ -26,21 +27,23 @@ function PopularDrinks() {
     <PopularWrapper>
       <Subtitle Subtitle={"Popular drinks"}></Subtitle>
       <PopularContainer>
-        {populars?.map(({ description, drinkThumb, drink }) => (
-          <PopularItemContainer key={drink}>
-            {drinkThumb ? (
-              <PopularImage src={drinkThumb} alt={drink} />
-            ) : (
-              <img
-                src="../../../../shared/img/image.jpg"
-                alt="alternative_text"
-              />
-            )}
-            <PopularContainerDiscr>
-              <PopularName>{drink}</PopularName>
-              <PopularDiskr>{description}</PopularDiskr>
-            </PopularContainerDiscr>
-          </PopularItemContainer>
+        {populars?.map(({ description, drinkThumb, drink, _id }) => (
+          <Link to={`/drinks/${_id}`} key={_id}>
+            <PopularItemContainer key={drink}>
+              {drinkThumb ? (
+                <PopularImage src={drinkThumb} alt={drink} />
+              ) : (
+                <img
+                  src="../../../../shared/img/image.jpg"
+                  alt="alternative_text"
+                />
+              )}
+              <PopularContainerDiscr>
+                <PopularName>{drink}</PopularName>
+                <PopularDiskr>{description}</PopularDiskr>
+              </PopularContainerDiscr>
+            </PopularItemContainer>
+          </Link>
         ))}
       </PopularContainer>
     </PopularWrapper>
