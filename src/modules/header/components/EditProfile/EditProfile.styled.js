@@ -7,7 +7,7 @@ export const StyledPopupTitle = styled.p`
   font-style: normal;
   font-weight: 500;
   line-height: 18px;
-  color: ${({ theme }) => theme.colors.mainText};
+  color: ${({ theme }) => theme.popUp.main};
 `;
 
 export const StyledBtnEditProfile = styled.button`
@@ -23,4 +23,6 @@ export const StyledBtnEditProfile = styled.button`
 export const StyledBtnLogOut = styled(StyledBtn)`
   padding: 12px 43px;
   line-height: 18px;
+  color: ${({ theme }) => theme.popUp.secondary};
+  background-color: ${({ theme }) => theme.popUp.main};
 `;

@@ -14,7 +14,7 @@ export const StyledWrapper = styled.div`
   background-position: 61% 41%;
 
   span {
-    color: rgba(243, 243, 243, 0.1);
+    color: ${({ theme }) => theme.notFound};
     font-family: "Manrope-600", sans-serif;
     font-size: 120px;
     font-style: normal;

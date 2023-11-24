@@ -1,11 +1,11 @@
-import styled from 'styled-components';
-import { StyledBtn } from '../../../../shared/components/Buttons/LigthBtn.styled';
+import styled from "styled-components";
+import { StyledBtn } from "../../../../shared/components/Buttons/LigthBtn.styled";
 
 export const StyledModal = styled.div`
   width: 335px;
   padding: 50px 25px;
   border-radius: 16px;
-  background-color: ${({ theme }) => theme.background.dropdown};
+  background-color: ${({ theme }) => theme.popUp.secondary};
   overflow: hidden;
   transform: translate(-50%, -50%);
 
@@ -77,14 +77,14 @@ export const StyledModalInput = styled.input`
   width: 100%;
   margin-bottom: 18px;
   padding: 16px 24px;
-  font-family: 'Manrope-400', sans-serif;
+  font-family: "Manrope-400", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 18px;
-  color: ${({ theme }) => theme.colors.mainText};
+  color: ${({ theme }) => theme.popUp.main};
   background-color: transparent;
-  border: 1px solid ${({ theme }) => theme.colors.ligth};
+  border: 1px solid rgba(243, 243, 243, 0.5);
   border-radius: 200px;
   opacity: 0.8;
 
@@ -112,8 +112,15 @@ export const StyledBtnEdit = styled.button`
 export const StyledBtnSave = styled(StyledBtn)`
   width: 100%;
   padding: 18px 90px;
-  font-family: 'Manrope-600', sans-serif;
+  font-family: "Manrope-600", sans-serif;
   line-height: 18px;
+  color: ${({ theme }) => theme.popUp.secondary};
+  background-color: ${({ theme }) => theme.popUp.main};
+  &:hover,
+  &:focus {
+    background-color: ${({ theme }) => theme.popUp.secondary};
+    color: ${({ theme }) => theme.popUp.main};
+  }
 `;
 
 export const Ellipse222 = styled.div`

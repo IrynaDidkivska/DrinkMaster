@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
-import Logo from '../../../../shared/components/Logo/Logo';
-import { StyledLink } from '../../../../shared/components/Navbar/Navbar.styled.js';
-import { Container } from '../../../../shared/styles/Container.js';
-import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher.jsx';
+import PropTypes from "prop-types";
+import Logo from "../../../../shared/components/Logo/Logo";
+import { StyledLink } from "../../../../shared/components/Navbar/Navbar.styled.js";
+import { Container } from "../../../../shared/styles/Container.js";
+import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher.jsx";
 
 import {
   Ellipse222,
@@ -15,11 +15,11 @@ import {
   StyledMobileMenu,
   StyledMobileNavBar,
   StyledMobileWrapper,
-} from './MobileMenu.styled';
-import { SpriteSVG } from '../../../../shared/icons/SpriteSVG.jsx';
+} from "./MobileMenu.styled";
+import { SpriteSVG } from "../../../../shared/icons/SpriteSVG.jsx";
 
 export const MobileMenu = ({ isOpen, toggleMenu }) => {
-  const handleLinkClick = path => {
+  const handleLinkClick = (path) => {
     window.location.href = path;
     toggleMenu();
   };
@@ -33,7 +33,7 @@ export const MobileMenu = ({ isOpen, toggleMenu }) => {
             <StyledBtnGroup>
               <ThemeSwitcher />
               <StyledBtnClose onClick={toggleMenu}>
-                <SpriteSVG name="close-menu" />
+                <SpriteSVG name="close" />
               </StyledBtnClose>
             </StyledBtnGroup>
           </StyledMobileWrapper>
@@ -42,19 +42,19 @@ export const MobileMenu = ({ isOpen, toggleMenu }) => {
       <StyledMobileBody>
         <Container>
           <StyledMobileNavBar>
-            <StyledLink onClick={() => handleLinkClick('/home')}>
+            <StyledLink onClick={() => handleLinkClick("/home")}>
               Home
             </StyledLink>
-            <StyledLink onClick={() => handleLinkClick('/drinks')}>
+            <StyledLink onClick={() => handleLinkClick("/drinks")}>
               Drinks
             </StyledLink>
-            <StyledLink onClick={() => handleLinkClick('/add')}>
+            <StyledLink onClick={() => handleLinkClick("/add")}>
               Add drink
             </StyledLink>
-            <StyledLink onClick={() => handleLinkClick('/my')}>
+            <StyledLink onClick={() => handleLinkClick("/my")}>
               My drinks
             </StyledLink>
-            <StyledLink onClick={() => handleLinkClick('/favorites')}>
+            <StyledLink onClick={() => handleLinkClick("/favorites")}>
               Favorites
             </StyledLink>
           </StyledMobileNavBar>

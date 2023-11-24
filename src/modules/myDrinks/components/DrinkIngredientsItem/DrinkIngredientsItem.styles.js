@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const IngredientsItem = styled.li`
   width: calc((100% - 1 * 21px) / 2);
@@ -31,12 +31,12 @@ export const IngredientsContainerDiscr = styled.div`
 `;
 
 export const IngredientsName = styled.p`
-  font-family: 'Manpore-500', sans-serif;
+  font-family: "Manpore-500", sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 18px;
-  color: ${({ theme }) => theme.colors.mainText};
+  color: ${({ theme }) => theme.colors.mainPage};
 
   @media screen and (min-width: 768px) {
     font-size: 18px;
@@ -45,12 +45,12 @@ export const IngredientsName = styled.p`
 `;
 
 export const IngredientsNumber = styled.div`
-  font-family: 'Manpore-500', sans-serif;
+  font-family: "Manpore-500", sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 18px;
-  color: rgba(243, 243, 243, 0.5);
+  color: ${({ theme }) => theme.colors.link};
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
