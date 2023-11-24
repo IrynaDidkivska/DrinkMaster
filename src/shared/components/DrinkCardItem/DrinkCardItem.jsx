@@ -20,13 +20,11 @@ const DrinkCardItem = ({ data }) => {
 
   const handleImageLoad = () => {
     setImageLoaded(true);
-    console.log("loading");
   };
 
   const handleImageError = () => {
     // Handle image load error if needed
     setImageLoaded(false);
-    console.log("loadingError");
   };
 
   return (
@@ -40,7 +38,7 @@ const DrinkCardItem = ({ data }) => {
       {!imageLoaded && (
         <DrinkCardItemImage
           src={Coctail}
-          alt={data.drink}
+          // alt={data.drink}
           style={{ position: "absolute", top: 0 }}
         />
       )}
