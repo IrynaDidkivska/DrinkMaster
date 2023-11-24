@@ -13,7 +13,6 @@ import { selectDetails } from '../../../../redux/Drinks/selectors';
 const MyJustDrinks = () => {
   const dispatch = useDispatch();
   const details = useSelector(selectDetails);
-  console.log(details);
 
   return (
     <StyledJustDrinks>
