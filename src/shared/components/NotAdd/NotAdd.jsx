@@ -7,7 +7,7 @@ import {
   StyledNotAdd,
 } from "./NotAdd.styled";
 import { useLocation } from "react-router-dom";
-import { confirmNamePage } from "../../../shared/helpers/confirmNamePage";
+import { confirmNamePage } from "../../helpers/confirmNamePage";
 
 export const NotAdd = () => {
   const location = useLocation();

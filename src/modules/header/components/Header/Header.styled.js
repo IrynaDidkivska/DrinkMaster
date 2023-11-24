@@ -1,8 +1,8 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const StyledHeader = styled.header`
   padding: 25px 0;
-  border-bottom: 1px solid rgba(243, 243, 243, 0.2);
+  border-bottom: ${({ theme }) => theme.borderLink};
 
   @media screen and (min-width: 768px) {
     padding: 28px 0;

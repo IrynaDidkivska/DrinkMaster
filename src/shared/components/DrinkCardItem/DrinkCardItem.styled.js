@@ -57,7 +57,7 @@ const DrinkCardItemName = styled.h3`
   font-weight: 500;
   font-size: 16px;
   line-height: 18px;
-  color: #f3f3f3;
+  color: ${({ theme }) => theme.colors.mainPage};
   justify-content: left;
   padding-top: 14px;
 
@@ -78,7 +78,7 @@ const DrinkCardItemSeeMore = styled.a`
   font-weight: 500;
   font-size: 14px;
   line-height: 18px;
-  color: rgba(243, 243, 243, 0.5);
+  color: ${({ theme }) => theme.colors.link};
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
