@@ -3,6 +3,7 @@ import styled from "styled-components";
 const DrinkCardItemContainer = styled.div`
   /* width: 335px; */
   /* height: 448px; */
+  position: relative;
 
   @media screen and (min-width: 768px) {
     width: 342px;
