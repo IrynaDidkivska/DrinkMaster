@@ -16,7 +16,7 @@ export const StyledWrapper = styled.div`
     ),
     linear-gradient(1deg, #0a0a11 -0.56%, rgba(10, 10, 17, 0) 21.93%),
     linear-gradient(82deg, #0a0a11 11.89%, rgba(10, 10, 17, 0) 82.65%),
-    url("../../img/welcome.webp"), url("../../img/welcome.jpeg"),
+    url("../../img/welcome.webp"),
     lightgray -3px -13.319px / 100.511% 101.679% no-repeat;
   background-size: auto, auto, auto, 587px 812px;
   background-position: 80px 0;
