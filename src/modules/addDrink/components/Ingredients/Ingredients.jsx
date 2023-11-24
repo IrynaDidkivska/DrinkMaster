@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Subtitle from '../../../../shared/components/Title/Subtitle';
 import IngredientItem from './IngredientItem/IngredientItem';
 import {
@@ -8,17 +8,29 @@ import {
 } from './Ingredients.styled';
 import IngredientsCounter from './IngredientsCounter/IngredientsCounter';
 import { nanoid } from 'nanoid';
+import { useDispatch } from 'react-redux';
+import { getIngredientsThunk } from '../../../../redux/Filters/operations';
 
-const Ingredients = () => {
+const Ingredients = ({ setIngredientsGeneral }) => {
+  const dispatch = useDispatch();
   const [ingredients, setIngredients] = useState([
-    { id: nanoid(), name: '', volume: '1 cl' },
-    { id: nanoid(), name: '', volume: '1 cl' },
-    { id: nanoid(), name: '', volume: '1 cl' },
+    { id: nanoid(), title: '', ingredientId: '', volume: '1' },
+    { id: nanoid(), title: '', ingredientId: '', volume: '1' },
+    { id: nanoid(), title: '', ingredientId: '', volume: '1' },
   ]);
+
+  useEffect(() => {
+    setIngredientsGeneral(ingredients);
+  }, [ingredients]);
+
+  useEffect(() => {
+    dispatch(getIngredientsThunk({ page: 1, limit: 100 }));
+  }, []);
 
   const removeIngredient = id => {
     setIngredients(ingredients.filter(el => el.id !== id));
   };
+
   const changeIngredient = ingredient => {
     const newIngredients = ingredients.map(el => {
       if (el.id === ingredient.id) {

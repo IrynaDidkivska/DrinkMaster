@@ -11,10 +11,10 @@ const IngredientsCounter = ({ ingredientsList = [], setIngredients }) => {
   const arr = [...ingredientsList];
 
   const addIngredient = () => {
-    arr.push({ id: nanoid(), name: '', volume: '1 cl' });
+    arr.push({ id: nanoid(), title: '', ingredientId: '', volume: '1' });
   };
   const removeIngredient = () => {
-    if (arr[arr.length - 1].name) {
+    if (arr[arr.length - 1].title || arr[arr.length - 1].ingredientId) {
       return console.log('Не можна видалити не порожній інгредієнт!!!');
     }
     arr.pop();

@@ -28,6 +28,9 @@ export const HiddenInputStyled = styled.input`
 export const ImgContainerStyled = styled.div`
   background-image: ${props =>
     props.$bgImg ? `url('${props.$bgImg}')` : 'none'};
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -61,6 +64,7 @@ export const AddImgLabelStyled = styled.label`
   background-color: ${({ theme }) => theme.colors.mainText};
   border-radius: 6px;
   border: none;
+  cursor: pointer;
   & svg {
     width: 28px;
     height: 28px;
@@ -76,6 +80,7 @@ export const AddImgContainerStyled = styled.span`
   font-size: 16px;
   font-weight: 500;
   line-height: 1.25; /* 125% */
+  cursor: default;
 `;
 
 export const InputWrapperStyled = styled.div`

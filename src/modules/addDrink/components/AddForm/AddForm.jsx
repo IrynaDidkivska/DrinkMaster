@@ -21,33 +21,50 @@ import {
   selectNormalizedGlasses,
 } from '../../../../redux/Filters/selectors.js';
 
-const AddForm = () => {
+const AddForm = ({ setValues }) => {
+  const {
+    setDrinkPhoto,
+    setDrink,
+    setDescription,
+    setGlass,
+    setAlcoholic,
+    setCategory,
+  } = setValues;
   const dispatch = useDispatch();
   const categories = useSelector(selectNormalizedCategories);
   const glasses = useSelector(selectNormalizedGlasses);
-  const [img, setImg] = useState('');
+  const [previewImg, setPreviewImg] = useState(null);
 
   useEffect(() => {
     dispatch(getCategoriesThunk());
     dispatch(getGlassesThunk());
   }, []);
 
+  const filePreparation = file => {
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPreviewImg(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+
+    setDrinkPhoto(file);
+  };
+
   const handleChangeImg = e => {
-    console.log(e.target.files[0]);
-    setImg(e.target.files[0]);
+    filePreparation(e.target.files[0]);
   };
 
   return (
     <>
       <AddFormWrapperStyled>
-        <ImgContainerStyled $bgImg={img}>
+        <ImgContainerStyled $bgImg={previewImg}>
           <AddImgLabelStyled htmlFor="addImg">
             <HiddenInputStyled
               type="file"
               accept="image/png, image/jpeg"
               id="addImg"
-              style={{ visibility: 'hidden' }}
-              value={img}
               onChange={handleChangeImg}
             />
             <SpriteSVG name="plus" />
@@ -55,16 +72,36 @@ const AddForm = () => {
           <AddImgContainerStyled> Add image</AddImgContainerStyled>
         </ImgContainerStyled>
         <InputWrapperStyled>
-          <Input placeholder="Enter item title" type="text" />
-          <Input placeholder="Enter about recipe" type="text" />
-          <AddDrinkSelect label="Category" options={categories} />
-          <AddDrinkSelect label="Glass" options={glasses} />
+          <Input
+            placeholder="Enter item title"
+            type="text"
+            changeF={setDrink}
+          />
+          <Input
+            placeholder="Enter about recipe"
+            type="text"
+            changeF={setDescription}
+          />
+          <AddDrinkSelect
+            label="Category"
+            options={categories}
+            changeF={setCategory}
+          />
+          <AddDrinkSelect label="Glass" options={glasses} changeF={setGlass} />
           <div>
-            <RadioBtn id="alcoholic" name="isAlcohol" label={'Alcoholic'} />
             <RadioBtn
+              id="alcoholic"
+              name="isAlcohol"
+              label="Alcoholic"
+              value="Alcoholic"
+              changeF={setAlcoholic}
+            />
+            <RadioBtn
+              changeF={setAlcoholic}
               id="un-alcoholic"
               name="isAlcohol"
-              label={'Non-alcoholic'}
+              label="Non-alcoholic"
+              value="Non alcoholic"
             />
           </div>
         </InputWrapperStyled>
