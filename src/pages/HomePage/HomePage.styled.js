@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import LigthBtn from "../../shared/components/Buttons/LigthBtn";
 
 export const BlueGlass = styled.div`
   position: relative;
@@ -36,16 +37,39 @@ export const HomeWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-bottom: 112px;
+
   @media screen and (min-width: 1400px) {
     flex-direction: row;
+    margin-bottom: 112px;
   }
 `;
 
 export const WrapperCategory = styled.div`
   display: flex;
-  /* flex-direction: column; */
+  gap: 10px;
+  flex-direction: row;
+  margin-top: 24px;
+  margin-bottom: 40px;
   /* align-items: flex-start; */
+
+  @media screen and (min-width: 768px) {
+    /* flex-direction: row; */
+    gap: 20px;
+    margin-top: 40px;
+    margin-bottom: 80px;
+  }
+
   @media screen and (min-width: 1400px) {
     /* flex-direction: row; */
+    gap: 20px;
+    margin-top: 40px;
+    margin-bottom: 80px;
   }
+`;
+
+export const BtnWrapper = styled.div`
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 80px;
 `;
