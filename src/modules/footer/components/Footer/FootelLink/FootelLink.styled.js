@@ -29,8 +29,4 @@ export const StyledLinkFooter = styled(NavLink)`
     cursor: url(https://sweezy-cursors.com/wp-content/uploads/cursor/summer-cocktail-animated/summer-cocktail-animated-cursor-2-32x32.png),
       default !important;
   }
-  &.active {
-    border: 1px solid transparent;
-    background: ${({ theme }) => theme.background.dropdown};
-  }
 `;

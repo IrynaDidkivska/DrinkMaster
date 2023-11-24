@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import LigthBtn from "../../shared/components/Buttons/LigthBtn";
 import { useDispatch, useSelector } from "react-redux";
 import { StyledTitle } from "../../shared/components/Title/Title.styled";
@@ -14,8 +14,6 @@ import { useNavigate } from "react-router-dom";
 import { selectMainCatalog } from "../../redux/Drinks/selectors";
 import { getAllDrinksThunk } from "../../redux/Drinks/operations";
 import DrinkCardItem from "../../shared/components/DrinkCardItem/DrinkCardItem";
-import { List } from "../../shared/components/DrinkList/DrinkList.styled";
-import { StyledSubitle } from "../../shared/components/Title/StyledSubitle.styled";
 import Subtitle from "../../shared/components/Title/Subtitle";
 import { useMediaQuery } from "react-responsive";
 
@@ -71,14 +69,14 @@ const HomePage = () => {
         {categ.map((category) => {
           const foreCoctails = allCatalog[category];
           return (
-            <>
-              <Subtitle key={category} Subtitle={category}></Subtitle>
+            <React.Fragment key={category}>
+              <Subtitle Subtitle={category}></Subtitle>
               <WrapperCategory>
                 {foreCoctails.slice(0, drinksToShow).map((drink) => (
                   <DrinkCardItem key={drink._id} data={drink} />
                 ))}
               </WrapperCategory>
-            </>
+            </React.Fragment>
           );
         })}
       </>
