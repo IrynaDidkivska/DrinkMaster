@@ -40,7 +40,8 @@ function App() {
         <Routes>
           <Route path={routes.ROOT} element={<SharedLayout />}>
             <Route
-              path={routes.HOME}
+              index
+              // path={routes.HOME}
               element={
                 <PrivateRoute>
                   <HomePage />
