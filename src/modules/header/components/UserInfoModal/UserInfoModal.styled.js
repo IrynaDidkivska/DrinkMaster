@@ -29,6 +29,9 @@ export const StyledBtnClose = styled.button`
   position: fixed;
   top: 14px;
   right: 14px;
+  svg {
+    stroke: ${({ theme }) => theme.colors.active};
+  }
 `;
 
 export const StyledModalHeader = styled.div`

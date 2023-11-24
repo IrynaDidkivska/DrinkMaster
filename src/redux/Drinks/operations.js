@@ -8,7 +8,9 @@ export const getAllDrinksThunk = createAsyncThunk(
     try {
       const { data } = await API.get('api/drinks/cocktails/main', {
         params: {
-          category: 'Shake,Cocktail,Other/Unknown,Ordinary Drink',
+
+          category: "Ordinary Drink,Shake,Cocktail,Other/Unknown",
+
           // limit: 100,
 
           page,
