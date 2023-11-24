@@ -63,7 +63,6 @@ const DrinkCardItemSeeMore = styled.a`
 `;
 
 export {
-  DrinkCardItemContainer,
   DrinkCardItemImage,
   DrinkCardItemName,
   DrinkCardItemSeeMore,
