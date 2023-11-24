@@ -1,13 +1,14 @@
 export const darkTheme = {
   colors: {
-    mainPage: "#FAFAFA",
+    mainPage: "#F3F3F3",
     mainText: "#F3F3F3",
     secondaryText: "#161F37",
     active: "#F3F3F3",
     iconColor: "#F3F3F3",
     link: "rgba(243, 243, 243, 0.5)",
+    subtitle: "rgba(243, 243, 243, 0.50)",
   },
-  borderLink: "1px solid rgba(243, 243, 243, 0.2)",
+  borderLink: "rgba(243, 243, 243, 0.2)",
   borderTransparent: "1px solid transparent",
   notFound: "rgba(243, 243, 243, 0.1)",
   background: {
@@ -42,9 +43,11 @@ export const lightTheme = {
     active: "#F3F3F3",
     iconColor: "#161F37",
     link: "rgba(10, 10, 17, 0.50)",
+    subtitle: "rgba(22, 31, 55, 0.50)",
   },
   notFound: "rgba(64, 112, 205, 0.10)",
-  borderLink: "1px solid rgba(22, 31, 55, 0.20)",
+  borderLink: "rgba(22, 31, 55, 0.20)",
+
   borderTransparent: "1px solid transparent",
   switcher: { color: "#FFFFFF", background: "#161F37" },
   background: {

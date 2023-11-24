@@ -1,9 +1,9 @@
-import styled from 'styled-components';
-import { StyledBtn } from '../../../../shared/components/Buttons/LigthBtn.styled';
+import styled from "styled-components";
+import { StyledBtn } from "../../../../shared/components/Buttons/LigthBtn.styled";
 
 export const StyledTitleSection = styled.h1`
   margin-bottom: 8px;
-  font-family: 'Manrope-600', sans-serif;
+  font-family: "Manrope-600", sans-serif;
   font-size: 32px;
   font-style: normal;
   font-weight: 600;
@@ -37,12 +37,12 @@ export const StyledJustDrinks = styled.div`
 
 export const StyledJustType = styled.p`
   margin-bottom: 20px;
-  font-family: 'Manrope-400', sans-serif;
+  font-family: "Manrope-400", sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
   line-height: 14px;
-  color: rgba(243, 243, 243, 0.5);
+  color: ${({ theme }) => theme.colors.subtitle};
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
@@ -52,7 +52,7 @@ export const StyledJustType = styled.p`
 
 export const StyledJustText = styled.p`
   margin-bottom: 40px;
-  font-family: 'Manrope-400';
+  font-family: "Manrope-400";
   font-size: 14px;
   font-style: normal;
   font-weight: 400;

@@ -1,11 +1,12 @@
 import { SpriteSVG } from "../../icons/SpriteSVG";
 import { StyledList, StyledSocLink } from "./FollowUs.styled";
 
-const FollowUs = () => {
+const FollowUs = ({ isFooter }) => {
   return (
-    <StyledList>
+    <StyledList isFooter={isFooter}>
       <li>
         <StyledSocLink
+          isFooter={isFooter}
           to="https://www.facebook.com/goITclub/"
           target="_blank"
           rel="noopener noreferrer"
@@ -16,6 +17,7 @@ const FollowUs = () => {
       </li>
       <li>
         <StyledSocLink
+          isFooter={isFooter}
           to="https://www.instagram.com/goitclub/"
           target="_blank"
           rel="noopener noreferrer"
@@ -26,6 +28,7 @@ const FollowUs = () => {
       </li>
       <li>
         <StyledSocLink
+          isFooter={isFooter}
           to="https://www.youtube.com/c/GoIT"
           target="_blank"
           rel="noopener noreferrer"

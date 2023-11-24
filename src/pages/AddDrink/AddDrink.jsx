@@ -24,7 +24,7 @@ const AddDrink = () => {
         <div>
           <MediaWrapper>
             <Subtitle Subtitle="Follow us" />
-            <FollowUs />
+            <FollowUs isFooter={false} />
           </MediaWrapper>
           <PopularDrinks />
         </div>
