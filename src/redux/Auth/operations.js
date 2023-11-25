@@ -84,20 +84,20 @@ export const updateUserThunk = createAsyncThunk(
 );
 
 // subscribeEmail
-//TODO доробити!!!
 export const subscribeEmail = createAsyncThunk(
   "auth/subscribe",
-  async (data, thunkAPI) => {
+  async ({ email }, thunkAPI) => {
+    console.log("email", email);
     try {
-      await API.get("api/auth/users/subscribe", data);
+      await API.get("api/auth/users/subscribe", {
+        params: {
+          email,
+        },
+      });
       toast.success("Thank you for subscribing to our newsletter.");
     } catch (error) {
       toast.error(error.response.data.message);
-      if (error.response.status === 409) {
-        toast.error("Your email address has already been subscribed");
-      } else {
-        return thunkAPI.rejectWithValue(error.message);
-      }
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
