@@ -14,11 +14,14 @@ import {
 import { deleteFromFavoriteThunk } from "../../../redux/Drinks/operations";
 import { SpriteSVG } from "../../icons/SpriteSVG";
 import { toast } from "react-toastify";
+import Coctail from "../../../shared/img/image.png";
+import { DrinkCardItemImage } from "../DrinkCardItem/DrinkCardItem.styled";
+import { useState } from "react";
 
 const Card = ({ data }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const [imageLoaded, setImageLoaded] = useState(false);
   const handleSeeMore = (_id) => {
     navigate(`/drinks/${_id}`);
   };
@@ -28,9 +31,30 @@ const Card = ({ data }) => {
     toast.success("You removed drink from your favorite");
   };
 
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
+
+  const handleImageError = () => {
+    // Handle image load error if needed
+    setImageLoaded(false);
+  };
+
   return (
     <DrinkCardItemFaxContainer>
-      <DrinkCardItemFaxImg src={data.drinkThumb} alt={data.drink} />
+      <DrinkCardItemFaxImg
+        src={data.drinkThumb}
+        // alt={data.drink}
+        onLoad={handleImageLoad}
+        onError={handleImageError}
+      />
+      {!imageLoaded && (
+        <DrinkCardItemFaxImg
+          src={Coctail}
+          // alt={data.drink}
+          style={{ position: "absolute", top: 0 }}
+        />
+      )}
       <DrinkCardItemFaxName>{data.drink}</DrinkCardItemFaxName>
       <DrinkCardItemFaxStatus>{data.alcoholic}</DrinkCardItemFaxStatus>
       <DrinkCardItemFaxDescription>

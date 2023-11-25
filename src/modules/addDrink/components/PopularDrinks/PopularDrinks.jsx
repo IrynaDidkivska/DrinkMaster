@@ -55,7 +55,7 @@ function PopularDrinks() {
                 <PopularImage
                   src={Coctail}
                   alt={drink}
-                  style={{ position: "absolute", top: 0 }}
+                  style={{ position: "absolute", top: 0, zIndex: 1 }}
                 />
               )}
               <PopularContainerDiscr>
