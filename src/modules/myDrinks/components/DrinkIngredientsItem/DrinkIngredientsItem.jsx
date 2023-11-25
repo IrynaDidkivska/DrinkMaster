@@ -1,13 +1,12 @@
-import { useSelector } from 'react-redux';
-// import LimeIngrid from '../../images/LimeIngrid.png';
+import { useSelector } from "react-redux";
 import {
   IngredientsImage,
   IngredientsName,
   IngredientsNumber,
   IngredientsContainerDiscr,
   IngredientsItem,
-} from './DrinkIngredientsItem.styles';
-import { selectDetails } from '../../../../redux/Drinks/selectors';
+} from "./DrinkIngredientsItem.styles";
+import { selectDetails } from "../../../../redux/Drinks/selectors";
 
 const DrinkIngredientsItem = () => {
   const { ingredients } = useSelector(selectDetails);
@@ -18,10 +17,10 @@ const DrinkIngredientsItem = () => {
 
   return (
     <>
-      {ingredients.map(ingredient => (
+      {ingredients.map((ingredient) => (
         <IngredientsItem key={ingredient._id}>
           <IngredientsImage
-            src={ingredient.ingredientId['thumb-medium']}
+            src={ingredient.ingredientId["thumb-medium"]}
             alt={ingredient.title}
           />
           <IngredientsContainerDiscr>

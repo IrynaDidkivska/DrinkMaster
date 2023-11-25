@@ -1,4 +1,3 @@
-// import Title from '../../../shared/components/Title/Title'
 import Image from "./img/notFound.png";
 import { Glass, StyledNotAdd } from "./NotAdd.styled";
 import { useLocation } from "react-router-dom";

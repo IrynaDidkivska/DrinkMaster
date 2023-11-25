@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
   DrinkCardItemFaxBtn,
   DrinkCardItemFaxContainer,
@@ -10,16 +10,22 @@ import {
   DrinkCardItemFaxName,
   DrinkCardItemFaxNavi,
   DrinkCardItemFaxStatus,
-} from './Card.styled';
-import { deleteFromFavoriteThunk } from '../../../redux/Drinks/operations';
-import { SpriteSVG } from '../../icons/SpriteSVG';
+} from "./Card.styled";
+import { deleteFromFavoriteThunk } from "../../../redux/Drinks/operations";
+import { SpriteSVG } from "../../icons/SpriteSVG";
+import { toast } from "react-toastify";
 
 const Card = ({ data }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleSeeMore = _id => {
+  const handleSeeMore = (_id) => {
     navigate(`/drinks/${_id}`);
+  };
+
+  const handleRemoveFavorite = () => {
+    dispatch(deleteFromFavoriteThunk(data._id));
+    toast.success("You removed drink from your favorite");
   };
 
   return (
@@ -34,13 +40,8 @@ const Card = ({ data }) => {
         <DrinkCardItemFaxBtn onClick={() => handleSeeMore(data._id)}>
           See more
         </DrinkCardItemFaxBtn>
-        <DrinkCardItemFaxDel
-          type="button"
-          onClick={() => {
-            dispatch(deleteFromFavoriteThunk(data._id));
-          }}
-        >
-          <SpriteSVG name={'trash'} />
+        <DrinkCardItemFaxDel type="button" onClick={handleRemoveFavorite}>
+          <SpriteSVG name={"trash"} />
         </DrinkCardItemFaxDel>
       </DrinkCardItemFaxNavi>
     </DrinkCardItemFaxContainer>

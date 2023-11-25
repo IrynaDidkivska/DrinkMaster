@@ -72,6 +72,13 @@ export const StyledJustText = styled.p`
 export const StyledJustButton = styled(StyledBtn)`
   margin-bottom: 80px;
 
+  &:disabled {
+    background: #434d67;
+    color: rgba(243, 243, 243, 0.2);
+    border: transparent;
+    cursor: not-allowed;
+  }
+
   @media screen and (min-width: 1440px) {
     margin-bottom: 0;
   }
