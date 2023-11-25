@@ -6,7 +6,7 @@ import { selectIsAuth } from "../../redux/Auth/selectors";
 const PublicRoute = ({ children }) => {
   const isLoggedIn = useSelector(selectIsAuth);
 
-  return isLoggedIn ? <Navigate to="/home" /> : children;
+  return isLoggedIn ? <Navigate to="/" /> : children;
 };
 
 export default PublicRoute;

@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import Coctail from "../../img/image.png";
 import {
-  DrinkCardItemContainer,
   DrinkCardItemImage,
   DrinkCardItemName,
   DrinkCardItemSeeMore,
@@ -28,7 +27,7 @@ const DrinkCardItem = ({ data }) => {
   };
 
   return (
-    <DrinkCardItemContainer key={data._id}>
+    <li key={data._id}>
       <DrinkCardItemImage
         src={data.drinkThumb}
         alt={" "}
@@ -48,7 +47,7 @@ const DrinkCardItem = ({ data }) => {
           See more
         </DrinkCardItemSeeMore>
       </DrinkCardItemContainerDiscr>
-    </DrinkCardItemContainer>
+    </li>
   );
 };
 

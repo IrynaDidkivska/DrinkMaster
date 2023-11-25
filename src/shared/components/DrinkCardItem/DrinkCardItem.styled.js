@@ -1,21 +1,5 @@
 import styled from "styled-components";
 
-const DrinkCardItemContainer = styled.div`
-  /* width: 335px; */
-  /* height: 448px; */
-  position: relative;
-
-  @media screen and (min-width: 768px) {
-    width: 342px;
-    height: 398px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 400px;
-    height: 438px;
-  }
-`;
-
 const DrinkCardItemImage = styled.img`
   width: 335px;
   height: 360px;
@@ -24,7 +8,6 @@ const DrinkCardItemImage = styled.img`
 
   @media screen and (min-width: 768px) {
     width: 342px;
-    height: 360px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -33,22 +16,10 @@ const DrinkCardItemImage = styled.img`
   }
 `;
 const DrinkCardItemContainerDiscr = styled.div`
-  width: 335px;
-  height: 18px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   margin-top: 14px;
-
-  @media screen and (min-width: 768px) {
-    width: 342px;
-    height: 18px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 335px;
-    height: 18px;
-  }
 `;
 
 const DrinkCardItemName = styled.h3`
@@ -92,7 +63,6 @@ const DrinkCardItemSeeMore = styled.a`
 `;
 
 export {
-  DrinkCardItemContainer,
   DrinkCardItemImage,
   DrinkCardItemName,
   DrinkCardItemSeeMore,

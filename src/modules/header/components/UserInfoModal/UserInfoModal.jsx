@@ -84,10 +84,7 @@ export const UserInfoModal = ({ onClose }) => {
           {previewImage ? (
             <StyledUserFoto src={previewImage} alt="Preview" />
           ) : avatar ? (
-            <StyledUserFoto
-              src={`https://drink-master-project.onrender.com/${avatar}`}
-              alt="Foto"
-            />
+            <StyledUserFoto src={avatar} alt="Foto" />
           ) : (
             <StyledUserFoto src={userFoto} alt="Default foto" />
           )}

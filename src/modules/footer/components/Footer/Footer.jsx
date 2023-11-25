@@ -26,7 +26,7 @@ const Footer = () => {
   const [isTermsModalOpen, openTerms, closeTerms] = useModal();
 
   const handleClick = () => {
-    navigate("/home");
+    navigate("/");
   };
   return (
     <StyledFooter>
