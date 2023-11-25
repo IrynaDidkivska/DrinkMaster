@@ -40,7 +40,7 @@ const Footer = () => {
                 </StyledFooterIconLogo>
                 <span>Drink Master</span>
               </StyledFooterLogo>
-              <FollowUs isFooter={true} />
+              <FollowUs isfooter={true} />
             </StyledFooterLogoNav>
             <FootelLink />
           </StyledFooterFirstBox>
