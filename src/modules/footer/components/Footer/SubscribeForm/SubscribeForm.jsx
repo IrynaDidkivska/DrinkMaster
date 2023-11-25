@@ -6,14 +6,14 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 
 const SubscribeForm = () => {
-  const sunscribe = useSelector(selectSubscribe);
+  const isSubscribed = useSelector(selectSubscribe);
   const [email, setEmail] = useState("");
   const dispatch = useDispatch();
 
-  const subscribe = (event) => {
+  const handleSubscribe = (event) => {
     event.preventDefault();
     dispatch(subscribeEmail(event));
-    if (sunscribe) {
+    if (isSubscribed) {
       toast.error(`Your email address has already been subscribed`);
     }
     toast.success(`Contact ${email} successfully added!`);
@@ -26,7 +26,7 @@ const SubscribeForm = () => {
         Subscribe up to our newsletter. Be in touch with latest news and special
         offers, etc.
       </p>
-      <form onSubmit={subscribe}>
+      <form onSubmit={handleSubscribe}>
         <input
           type="email"
           id="email"
