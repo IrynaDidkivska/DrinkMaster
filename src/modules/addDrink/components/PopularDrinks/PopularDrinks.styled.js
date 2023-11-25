@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Subtitle from "../../../../shared/components/Title/Subtitle";
 
-const PopularContainer = styled.div`
+const PopularContainer = styled.ul`
   width: 335px;
   /* height: 1300px; */
   /* height: 432px; */
@@ -33,13 +33,14 @@ const PopularWrapper = styled.div`
   }
 `;
 
-const PopularItemContainer = styled.div`
+const PopularItemContainer = styled.li`
   width: 336px;
   height: 90px;
   gap: 14px;
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
+  cursor: pointer;
   /* border: 1px solid red; */
 
   @media screen and (min-width: 1440px) {
@@ -72,7 +73,7 @@ const PopularName = styled.h3`
   font-weight: 500;
   font-size: 16px;
   line-height: 22px;
-  color: #f3f3f3;
+  color: ${({ theme }) => theme.colors.mainText};
   justify-content: left;
   padding-bottom: 10px;
   overflow: hidden;
@@ -102,7 +103,7 @@ const PopularDiskr = styled.div`
   /* white-space: wrap; */
   text-align: left;
   /* height: 63px; */
-  color: rgba(243, 243, 243, 0.5);
+  color: ${({ theme }) => theme.colors.link};
 
   @media screen and (min-width: 768px) {
     font-size: 14px;

@@ -23,7 +23,7 @@ img {
    width:100%;
 }
 
-ul {
+ul,li {
   margin: 0;
   padding: 0;
   list-style: none;

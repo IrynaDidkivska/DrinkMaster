@@ -1,13 +1,13 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const StyledIngredientsTitle = styled.h3`
   margin-bottom: 42px;
-  font-family: 'Manrope-500';
+  font-family: "Manrope-500";
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: 20px;
-  color: rgba(243, 243, 243, 0.5);
+  color: ${({ theme }) => theme.colors.link};
 
   @media screen and (min-width: 768px) {
     margin-bottom: 24px;

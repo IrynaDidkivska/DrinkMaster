@@ -30,14 +30,7 @@ export const User = () => {
     <>
       <StyledBtnProfile onClick={togglePopup}>
         {avatar ? (
-          <StyledImgProfile
-            src={
-              avatar.startsWith('http')
-                ? avatar
-                : `https://drink-master-project.onrender.com/${avatar}`
-            }
-            alt="Foto"
-          />
+          <StyledImgProfile src={avatar} alt="Foto" />
         ) : (
           <StyledImgProfile src={userFoto} alt="Default Foto" />
         )}

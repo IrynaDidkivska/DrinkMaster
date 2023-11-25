@@ -28,9 +28,8 @@ export const Switcher = styled.div`
     right: -1px;
     bottom: 0;
     transition: ${({ theme }) => theme.transition};
-
     border-radius: 20px;
-    background-color: ${({ theme }) => theme.button.dark};
+    background-color: ${({ theme }) => theme.switcher.background};
 
     &:before {
       position: absolute;
@@ -39,7 +38,7 @@ export const Switcher = styled.div`
       height: 18px;
       left: 1px;
       bottom: 1px;
-      background-color: ${({ theme }) => theme.button.dark};
+      background-color: ${({ theme }) => theme.switcher.background};
       transition: ${({ theme }) => theme.transition};
 
       border-radius: 50%;
@@ -48,16 +47,7 @@ export const Switcher = styled.div`
 
   input + span {
     &:before {
-      background-color: ${({ theme }) => theme.button.ligth};
+      background-color: ${({ theme }) => theme.switcher.color};
     }
-  }
-
-  input:checked + span {
-    background-color: ${({ theme }) => theme.button.ligth};
-  }
-
-  input:checked + span:before {
-    transform: translateX(21px);
-    background-color: ${({ theme }) => theme.button.dark};
   }
 `;

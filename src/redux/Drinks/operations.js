@@ -1,6 +1,7 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import { API } from '../../config/drinkConfig';
-// TODO: Update thunk
+
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { API } from "../../config/drinkConfig";
+
 
 export const getAllDrinksThunk = createAsyncThunk(
   'drinks/getAll',
@@ -8,9 +9,8 @@ export const getAllDrinksThunk = createAsyncThunk(
     try {
       const { data } = await API.get('api/drinks/cocktails/main', {
         params: {
-          category: 'Shake,Cocktail,Other/Unknown,Ordinary Drink',
+          category: "Ordinary Drink,Shake,Cocktail,Other/Unknown",
           // limit: 100,
-
           page,
         },
       });
@@ -38,6 +38,8 @@ export const getAllSearchThunk = createAsyncThunk(
           ingredientId: ingredient,
         },
       });
+
+      console.log(data);
 
       return data.data;
     } catch (error) {
@@ -124,7 +126,7 @@ export const getFavoriteThunk = createAsyncThunk(
     }
   },
 );
-//TODO: змінити шлях і правильно передати дату
+
 export const addFavoriteThunk = createAsyncThunk(
   'drinks/getFav',
   async (id, thunkAPI) => {
@@ -132,6 +134,7 @@ export const addFavoriteThunk = createAsyncThunk(
       const { data } = await API.post('api/drinks/favorite/add', {
         drinkId: id,
       });
+
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

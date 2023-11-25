@@ -1,7 +1,6 @@
-import { NotAdd } from "../../../pages/Favorites/NotAdd/NotAdd";
-
 import { List } from "./CardsList.styled";
 import Card from "../../../shared/components/Card/Card";
+import { NotAdd } from "../../../shared/components/NotAdd/NotAdd";
 
 const CardList = ({ data }) => {
   return (

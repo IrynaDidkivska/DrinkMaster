@@ -1,5 +1,5 @@
-import styled, { css } from "styled-components";
-import { StyledNavBar } from "../../../../shared/components/Navbar/Navbar.styled";
+import styled, { css } from 'styled-components';
+import { StyledNavBar } from '../../../../shared/components/Navbar/Navbar.styled';
 
 export const StyledMobileMenu = styled.div`
   display: flex;
@@ -9,7 +9,7 @@ export const StyledMobileMenu = styled.div`
   background-color: #0a0a11;
   overflow: hidden;
   transition: ${({ theme }) => theme.transition};
-
+  background-color: ${({ theme }) => theme.background.main};
   position: fixed;
   top: -103%;
   left: 0;
@@ -46,7 +46,9 @@ export const StyledBtnClose = styled.button`
   padding: 1px 0 0 0;
   background-color: transparent;
   border: none;
-
+  svg {
+    stroke: ${({ theme }) => theme.colors.mainText};
+  }
   @media screen and (min-width: 768px) {
     width: 38px;
     height: 38px;
@@ -65,6 +67,7 @@ export const StyledBtnGroup = styled.div`
 
 export const StyledMobileBody = styled.div`
   padding: 160px 0 336px 0;
+  background-color: ${({ theme }) => theme.background.main};
 
   @media screen and (min-width: 768px) {
     /* padding: 256px 0 425px 0; */
@@ -77,7 +80,7 @@ export const StyledMobileNavBar = styled(StyledNavBar)`
 
 export const Ellipse222 = styled.div`
   pointer-events: none;
-  z-index: -1;
+  z-index: 1;
   width: 520px;
   height: 550px;
   border-radius: 550px;
@@ -104,7 +107,7 @@ export const Ellipse223 = styled.div`
   position: absolute;
   top: 84px;
   left: 42px;
-  z-index: -1;
+  z-index: 1;
 
   @media screen and (min-width: 768px) {
     width: 387px;
@@ -129,7 +132,7 @@ export const Ellipse224 = styled.div`
   position: absolute;
   top: 498px;
   right: -505px;
-  z-index: -1;
+  z-index: 1;
 
   @media screen and (min-width: 768px) {
     border-radius: 549px;

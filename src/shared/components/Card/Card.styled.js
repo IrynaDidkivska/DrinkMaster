@@ -43,7 +43,6 @@ const DrinkCardItemFaxName = styled.h3`
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
-  color: #f3f3f3;
   justify-content: left;
   padding-top: 18px;
 
@@ -64,7 +63,7 @@ const DrinkCardItemFaxStatus = styled.p`
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
-  color: rgba(243, 243, 243, 0.5);
+  color: ${({ theme }) => theme.colors.link};
   justify-content: left;
   padding-top: 4px;
 
@@ -85,7 +84,6 @@ const DrinkCardItemFaxDescription = styled.p`
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
-  color: #f3f3f3;
   justify-content: left;
   padding-top: 18px;
 
@@ -131,12 +129,13 @@ const DrinkCardItemFaxBtn = styled.button`
   font-weight: 600;
   font-size: 14px;
   line-height: 18px;
-  color: #f3f3f3;
-  background-color: #161f37;
+  color: ${({ theme }) => theme.popUp.main};
+  background-color: ${({ theme }) => theme.popUp.secondary};
   padding: 14px 40px;
   border-radius: 42px;
   border-color: transparent;
   margin-right: 8px;
+  cursor: pointer;
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
@@ -157,10 +156,10 @@ const DrinkCardItemFaxDel = styled.button`
   height: 46px;
   border-radius: 100px;
   border-color: transparent;
-  background-color: ${({ theme }) => theme.button.dark};
+  background-color: ${({ theme }) => theme.popUp.secondary};
 
   svg {
-    stroke: ${({ theme }) => theme.button.ligth};
+    stroke: ${({ theme }) => theme.popUp.main};
     background: transparent;
     width: 24px;
     height: 24px;

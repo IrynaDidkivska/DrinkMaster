@@ -10,7 +10,7 @@ export const StyledNavBar = styled.nav`
 export const StyledLink = styled(NavLink)`
   padding: 8px 16px;
   border-radius: 40px;
-  border: 1px solid rgba(243, 243, 243, 0.2);
+  border: 1px solid ${({ theme }) => theme.borderLink};
   outline: transparent;
 
   font-family: "Manrope-500", sans-serif;
@@ -27,12 +27,13 @@ export const StyledLink = styled(NavLink)`
   &:focus {
     color: ${({ theme }) => theme.colors.mainText};
     background: ${({ theme }) => theme.background.dropdown};
-    border: 1px solid transparent;
+    border: ${({ theme }) => theme.borderTransparent};
     cursor: url(https://sweezy-cursors.com/wp-content/uploads/cursor/summer-cocktail-animated/summer-cocktail-animated-cursor-2-32x32.png),
       default !important;
   }
   &.active {
-    border: 1px solid transparent;
+    color: ${({ theme }) => theme.colors.active};
+    border: ${({ theme }) => theme.borderTransparent};
     background: ${({ theme }) => theme.background.dropdown};
   }
 `;

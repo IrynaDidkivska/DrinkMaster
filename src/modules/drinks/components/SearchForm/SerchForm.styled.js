@@ -20,13 +20,13 @@ export const FormStyled = styled("form")`
 
     background: transparent;
     border-radius: 200px;
-    border: 1px solid rgba(243, 243, 243, 0.2);
+    border: 1px solid ${({ theme }) => theme.colors.link};
     outline: transparent;
     opacity: 0.8;
-    color: ${({ theme }) => theme.colors.mainText};
+    color: ${({ theme }) => theme.colors.mainPage};
 
     &::placeholder {
-      color: ${({ theme }) => theme.colors.mainText};
+      color: ${({ theme }) => theme.colors.mainPage};
       font-family: "Manrope-400";
       font-size: 14px;
       font-weight: 400;
@@ -83,6 +83,7 @@ export const InputContStyled = styled("div")`
       height: 20px;
       transition: ${({ theme }) => theme.transition};
       stroke: ${({ theme }) => theme.colors.mainText};
+      fill: transparent;
       &:hover,
       &:focus {
         scale: 1.3;
@@ -96,13 +97,14 @@ export const SelectStyled = styled(Select)`
   width: 100%;
   .customSelect__ {
     &control {
-      color: ${({ theme }) => theme.colors.mainText}; //#F3F3F3
+      color: ${({ theme }) => theme.popUp.main}; //#F3F3F3
       font-family: "Manrope-400";
       font-size: 14px;
       font-weight: 400;
       line-height: 1.28;
       border-radius: 200px;
-      background-color: ${({ theme }) => theme.colors.secondaryText}; //#161F37
+      /* background-color: lightblue; */
+      background-color: ${({ theme }) => theme.popUp.secondary}; //#161F37
       border: none !important;
       box-shadow: none !important;
       outline: transparent !important;
@@ -120,7 +122,7 @@ export const SelectStyled = styled(Select)`
       }
       & svg {
         transition: ${({ theme }) => theme.transition};
-        stroke: ${({ theme }) => theme.colors.mainText};
+        stroke: ${({ theme }) => theme.popUp.main};
       }
       &--menu-is-open {
         & svg {
@@ -150,7 +152,7 @@ export const SelectStyled = styled(Select)`
       }
     }
     &placeholder {
-      color: ${({ theme }) => theme.colors.mainText};
+      color: ${({ theme }) => theme.popUp.main};
       @media (min-width: 768px) {
         font-size: 17px;
       }
@@ -163,11 +165,11 @@ export const SelectStyled = styled(Select)`
       & svg {
         width: 24px;
         height: 24px;
-        fill: ${({ theme }) => theme.colors.mainText};
+        fill: ${({ theme }) => theme.popUp.main};
       }
     }
     &input-container {
-      color: ${({ theme }) => theme.colors.secondaryText};
+      color: ${({ theme }) => theme.colors.active};
       margin: 0;
       padding: 0;
     }
@@ -185,7 +187,8 @@ export const SelectStyled = styled(Select)`
     &menu {
       margin-top: 4px;
       border-radius: 12px;
-      background-color: #161f37;
+
+      background-color: ${({ theme }) => theme.switcher.color};
       font-family: "Manrope-400";
       font-size: 14px;
       font-weight: 400;
@@ -215,7 +218,7 @@ export const SelectStyled = styled(Select)`
         background: transparent;
       }
       &::-webkit-scrollbar-thumb {
-        background-color: #434d67;
+        background-color: ${({ theme }) => theme.background.scrollbar};
         border-radius: 20px;
         border: 8px solid transparent;
       }
@@ -226,17 +229,21 @@ export const SelectStyled = styled(Select)`
     &option {
       text-overflow: ellipsis;
       cursor: pointer;
-      color: rgba(243, 243, 243, 0.4);
+      color: ${({ theme }) => theme.colors.mainPage};
       background: none;
       &--is-focused,
       &:active,
       &--is-selected {
         background-color: none;
+
         color: ${({ theme }) => theme.colors.mainText};
         &:active {
           background-color: transparent;
         }
       }
+    }
+    &input {
+      color: red;
     }
   }
 `;

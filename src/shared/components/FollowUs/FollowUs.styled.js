@@ -15,8 +15,12 @@ export const StyledList = styled.ul`
     width: 28px;
     height: 28px;
     opacity: 0.8;
-    fill: ${({ theme }) => theme.footer.color};
-    background: ${({ theme }) => theme.footer.bacground};
+    fill: ${({ theme, $isfooter }) =>
+      $isfooter ? theme.footer.color : theme.colors.mainText};
+
+    background: ${({ theme, pageType }) =>
+      pageType === "add" ? "transparent" : theme.footer.background};
+
     &:hover,
     &:focus,
     &.active {
@@ -34,11 +38,16 @@ export const StyledSocLink = styled(Link)`
   width: 44px;
   height: 44px;
   border-radius: 10px;
-  border: 1px solid rgba(243, 243, 243, 0.2);
+  border: 1px solid
+    ${({ $isfooter, theme }) =>
+      $isfooter ? "rgba(243, 243, 243, 0.2)" : theme.colors.subtitle};
+
   transition: ${({ theme }) => theme.transition};
   &:hover,
   &:focus,
   &.active {
-    border: 1px solid rgba(243, 243, 243, 0.8);
+    border: 1px solid
+      ${({ $isfooter, theme }) =>
+        $isfooter ? "243, 243, 243, 0.8" : theme.colors.subtitle};
   }
 `;

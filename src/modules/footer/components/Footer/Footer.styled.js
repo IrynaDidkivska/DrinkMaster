@@ -6,7 +6,7 @@ export const StyledFooter = styled.footer`
   padding-top: 42px;
   padding-bottom: 18px;
   background-color: ${({ theme }) => theme.footer.bacground};
-  border-top: ${({ theme }) => theme.footer.borderTop};
+  border-top: ${({ theme }) => theme.footer.border};
   @media screen and (min-width: 768px) {
     padding-top: 83px;
   }

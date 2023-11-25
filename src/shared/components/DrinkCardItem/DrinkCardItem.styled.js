@@ -1,21 +1,5 @@
 import styled from "styled-components";
 
-const DrinkCardItemContainer = styled.div`
-  /* width: 335px; */
-  /* height: 448px; */
-  position: relative;
-
-  @media screen and (min-width: 768px) {
-    width: 342px;
-    height: 398px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 400px;
-    height: 438px;
-  }
-`;
-
 const DrinkCardItemImage = styled.img`
   width: 335px;
   height: 360px;
@@ -24,7 +8,6 @@ const DrinkCardItemImage = styled.img`
 
   @media screen and (min-width: 768px) {
     width: 342px;
-    height: 360px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -33,22 +16,10 @@ const DrinkCardItemImage = styled.img`
   }
 `;
 const DrinkCardItemContainerDiscr = styled.div`
-  width: 335px;
-  height: 18px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   margin-top: 14px;
-
-  @media screen and (min-width: 768px) {
-    width: 342px;
-    height: 18px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 335px;
-    height: 18px;
-  }
 `;
 
 const DrinkCardItemName = styled.h3`
@@ -57,7 +28,7 @@ const DrinkCardItemName = styled.h3`
   font-weight: 500;
   font-size: 16px;
   line-height: 18px;
-  color: #f3f3f3;
+  color: ${({ theme }) => theme.colors.mainPage};
   justify-content: left;
   padding-top: 14px;
 
@@ -78,7 +49,8 @@ const DrinkCardItemSeeMore = styled.a`
   font-weight: 500;
   font-size: 14px;
   line-height: 18px;
-  color: rgba(243, 243, 243, 0.5);
+  color: ${({ theme }) => theme.colors.link};
+  cursor: pointer;
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
@@ -92,7 +64,6 @@ const DrinkCardItemSeeMore = styled.a`
 `;
 
 export {
-  DrinkCardItemContainer,
   DrinkCardItemImage,
   DrinkCardItemName,
   DrinkCardItemSeeMore,
