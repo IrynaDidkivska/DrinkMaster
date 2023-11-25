@@ -5,12 +5,17 @@ import {
   SelectWrapper,
 } from './AddDrinkSelect.styled';
 
-const AddDrinkSelect = ({ label, options = [] }) => {
+const AddDrinkSelect = ({ label, options = [], changeF }) => {
   return (
     <>
       <SelectWrapper>
         <LabelStyled htmlFor={label}>{label}</LabelStyled>
-        <SelectStyled id={label} classNamePrefix="addDrink" options={options} />
+        <SelectStyled
+          id={label}
+          classNamePrefix="addDrink"
+          options={options}
+          onChange={e => changeF(e.label)}
+        />
       </SelectWrapper>
     </>
   );

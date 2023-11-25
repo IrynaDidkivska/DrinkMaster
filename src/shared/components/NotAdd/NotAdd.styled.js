@@ -37,31 +37,3 @@ export const Glass = styled.img`
     margin-top: 67px;
   }
 `;
-export const OverlayLeft = styled.div`
-  position: absolute;
-  pointer-events: none;
-  z-index: -1;
-  width: 520px;
-  height: 550px;
-  top: -140px;
-  left: -500px;
-  border-radius: 550px;
-  background: rgba(64, 112, 205, 0.5);
-  filter: blur(104.8543701171875px);
-  @media screen and (min-width: 768px) {
-  }
-`;
-export const OverlayRight = styled.div`
-  @media screen and (min-width: 768px) {
-    position: absolute;
-    pointer-events: none;
-    z-index: -1;
-    width: 549px;
-    height: 543px;
-    top: 70px;
-    right: -400px;
-    border-radius: 549px;
-    background: rgba(64, 112, 205, 0.5);
-    filter: blur(104.8543701171875px);
-  }
-`;

@@ -21,6 +21,10 @@ export const StyledTitleSection = styled.h1`
   }
 `;
 
+export const DivWrapper = styled.div`
+  position: relative;
+`;
+
 export const StyledJustDrinks = styled.div`
   margin-bottom: 18px;
 
@@ -68,6 +72,13 @@ export const StyledJustText = styled.p`
 export const StyledJustButton = styled(StyledBtn)`
   margin-bottom: 80px;
 
+  &:disabled {
+    background: #434d67;
+    color: rgba(243, 243, 243, 0.2);
+    border: transparent;
+    cursor: not-allowed;
+  }
+
   @media screen and (min-width: 1440px) {
     margin-bottom: 0;
   }
@@ -80,5 +91,25 @@ export const StyledJustImages = styled.img`
 
   @media screen and (min-width: 1440px) {
     max-width: 400px;
+  }
+`;
+
+export const DrinkIDImage = styled.img`
+  width: 335px;
+  height: 400px;
+  border-radius: 1%;
+  /* object-fit: cover; */
+  object-fit: contain;
+  object-position: center;
+  flex-shrink: 0;
+
+  @media screen and (min-width: 768px) {
+    width: 704px;
+    height: 400px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 400px;
+    height: 400px;
   }
 `;

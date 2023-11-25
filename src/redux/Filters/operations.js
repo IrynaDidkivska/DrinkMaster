@@ -17,7 +17,7 @@ export const getIngredientsThunk = createAsyncThunk(
   'filter/getIngredients',
   async (query, thunkAPI) => {
     try {
-      const { page = 0, limit = 0 } = query;
+      const { page = 1, limit = 10 } = query;
       const { data } = await API.get('api/filters/ingredients', {
         params: {
           page,

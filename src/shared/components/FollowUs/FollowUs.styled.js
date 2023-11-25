@@ -15,8 +15,8 @@ export const StyledList = styled.ul`
     width: 28px;
     height: 28px;
     opacity: 0.8;
-    fill: ${({ theme, isFooter }) =>
-      isFooter ? theme.footer.color : theme.colors.mainText};
+    fill: ${({ theme, $isfooter }) =>
+      $isfooter ? theme.footer.color : theme.colors.mainText};
 
     background: ${({ theme, pageType }) =>
       pageType === "add" ? "transparent" : theme.footer.background};
@@ -39,15 +39,15 @@ export const StyledSocLink = styled(Link)`
   height: 44px;
   border-radius: 10px;
   border: 1px solid
-    ${({ isFooter, theme }) =>
-      isFooter ? "rgba(243, 243, 243, 0.2)" : theme.colors.subtitle};
+    ${({ $isfooter, theme }) =>
+      $isfooter ? "rgba(243, 243, 243, 0.2)" : theme.colors.subtitle};
 
   transition: ${({ theme }) => theme.transition};
   &:hover,
   &:focus,
   &.active {
     border: 1px solid
-      ${({ isFooter, theme }) =>
-        isFooter ? "243, 243, 243, 0.8" : theme.colors.subtitle};
+      ${({ $isfooter, theme }) =>
+        $isfooter ? "243, 243, 243, 0.8" : theme.colors.subtitle};
   }
 `;

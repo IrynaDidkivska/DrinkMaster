@@ -1,5 +1,6 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
+  addNewDrinkThunk,
   // addFavoriteThunk,
   addOwnDrinkThunk,
   deleteFromFavoriteThunk,
@@ -11,6 +12,7 @@ import {
   getOwnThunk,
   getPopularThunk,
   paginationThunk,
+
 } from './operations';
 
 const initialState = {
@@ -31,6 +33,7 @@ const initialState = {
 const drinksSlice = createSlice({
   name: 'drinks',
   initialState,
+
   reducers: {
     setSearch: (state, { payload }) => {
       state.search = payload;
@@ -74,8 +77,13 @@ const drinksSlice = createSlice({
       })
       .addCase(deleteFromFavoriteThunk.fulfilled, (state, { payload }) => {
         state.favorite = state.favorite.filter(
+
           item => item.drinkId !== payload
+
         );
+      })
+      .addCase(addNewDrinkThunk.fulfilled, (state, { payload }) => {
+        console.log(payload);
       })
 
       .addMatcher(
@@ -87,13 +95,15 @@ const drinksSlice = createSlice({
           getByIDThunk.pending,
           getOwnThunk.pending,
           getFavoriteThunk.pending,
-          getAllSearchThunk.pending
+          getAllSearchThunk.pending,
+          addNewDrinkThunk.pending,
           // addFavoriteThunk.pending
         ),
         state => {
           state.isLoading = true;
           state.error = '';
         }
+
       )
       .addMatcher(
         isAnyOf(
@@ -104,12 +114,12 @@ const drinksSlice = createSlice({
           getByIDThunk.fulfilled,
           getOwnThunk.fulfilled,
           getFavoriteThunk.fulfilled,
-          getAllSearchThunk.fulfilled
+          getAllSearchThunk.fulfilled,
           // addFavoriteThunk.fulfilled
         ),
         state => {
           state.isLoading = false;
-        }
+        },
       )
       .addMatcher(
         isAnyOf(
@@ -120,13 +130,14 @@ const drinksSlice = createSlice({
           getByIDThunk.rejected,
           getOwnThunk.rejected,
           getFavoriteThunk.rejected,
-          getAllSearchThunk.rejected
+          getAllSearchThunk.rejected,
+          addNewDrinkThunk.rejected,
           // addFavoriteThunk.rejected
         ),
         (state, { payload }) => {
           state.isLoading = false;
           state.error = payload;
-        }
+        },
       );
   },
 });

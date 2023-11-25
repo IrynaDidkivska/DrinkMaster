@@ -135,6 +135,7 @@ const DrinkCardItemFaxBtn = styled.button`
   border-radius: 42px;
   border-color: transparent;
   margin-right: 8px;
+  cursor: pointer;
 
   @media screen and (min-width: 768px) {
     font-size: 16px;

@@ -26,8 +26,9 @@ const Footer = () => {
   const [isTermsModalOpen, openTerms, closeTerms] = useModal();
 
   const handleClick = () => {
-    navigate("/home");
+    navigate("/");
   };
+
   return (
     <StyledFooter>
       <Container>
@@ -40,7 +41,7 @@ const Footer = () => {
                 </StyledFooterIconLogo>
                 <span>Drink Master</span>
               </StyledFooterLogo>
-              <FollowUs isFooter={true} />
+              <FollowUs isfooter={true} />
             </StyledFooterLogoNav>
             <FootelLink />
           </StyledFooterFirstBox>

@@ -1,14 +1,11 @@
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
-import * as Yup from "yup";
 import { signupThunk } from "../../redux/Auth/operations";
 import { selectIsLoading } from "../../redux/Auth/selectors";
-import moment from "moment";
 import "react-datetime/css/react-datetime.css";
 import { useState } from "react";
-import { FaEye, FaEyeSlash, FaExclamationCircle } from "react-icons/fa";
-import { AiFillCheckCircle } from "react-icons/ai";
-
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { validationSchema } from "./helpers/validationSchema.jsx";
 import {
   DivWrapper,
   StyleGreenSvg,
@@ -26,6 +23,10 @@ import {
   Wrapper,
 } from "../Signin/Signin.styled";
 import Subtitle from "../../shared/components/Title/Subtitle";
+import {
+  convertDateFormatHelper,
+  handleDateChangeHelper,
+} from "./helpers/dataHelper.js";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -39,30 +40,8 @@ const SignUp = () => {
       email: "",
       password: "",
     },
-    validationSchema: Yup.object({
-      username: Yup.string().required("Name is required"),
-      birthdate: Yup.string()
-        .matches(
-          /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/,
-          // /^(19|20)\d\d-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
-          "Invalid date format (DD/MM/YYYY)"
-        )
-        .required("Date of Birth is required"),
-      email: Yup.string()
-        .email("Invalid email address")
-        .required("Email is required"),
-      password: Yup.string()
-        .min(6, "Password must be at least 6 characters")
-        .max(20, "Password must be less then 20 characters")
-        .matches(
-          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,20}$/,
-          "Password must have at least one uppercase letter, one lowercase letter, one digit, and one special character"
-        )
-        .required("Password is required"),
-    }),
+    validationSchema: validationSchema,
     onSubmit: (values) => {
-      // Handle form submission logic here
-
       const credentials = {
         username: values.username,
         birthdate: convertDateFormat(values.birthdate),
@@ -74,24 +53,11 @@ const SignUp = () => {
   });
 
   const handleDateChange = (name, value) => {
-    // Перевірка, чи value є екземпляром moment
-    const formattedDate =
-      value instanceof moment ? value.format("DD/MM/YYYY") : value;
-    formik.setFieldTouched(name, true, false); // Помітити поле як торкнуте, без валідації
-    formik.handleChange({
-      target: {
-        name,
-        value: formattedDate,
-      },
-    });
+    handleDateChangeHelper(formik, name, value);
   };
-  // Конвертує дату з формату фронта DD/MM/YYYY на формат беку YYYY-MM-DD
+
   const convertDateFormat = (dateStr) => {
-    const parts = dateStr.split("/");
-    if (parts.length === 3) {
-      return `${parts[2]}-${parts[1]}-${parts[0]}`; // Convert to YYYY-MM-DD
-    }
-    return dateStr; // Return the original string if it's not in expected format
+    return convertDateFormatHelper(dateStr);
   };
 
   const datetimeOptions = {
@@ -108,6 +74,7 @@ const SignUp = () => {
     <StyledForm onSubmit={formik.handleSubmit}>
       <Subtitle Subtitle=" Sign Up" />
       <Wrapper>
+        {/* ===== Name input ======= */}
         <InputWrapper
           type="text"
           id="username"
@@ -124,6 +91,7 @@ const SignUp = () => {
         ) : formik.touched.username && !formik.errors.username ? (
           <div style={{ color: "green" }}>Valid username</div>
         ) : null}
+        {/* ===== Birthday input ======= */}
         <StyledDatatimeWrapper>
           <StyledDatetime
             type="date"
@@ -133,12 +101,10 @@ const SignUp = () => {
             timeFormat={false}
             onBlur={formik.handleBlur}
             onChange={(value) => handleDateChange("birthdate", value)}
-            // onChange={formik.handleChange}
             value={formik.values.birthdate}
             closeOnSelect={true}
             {...datetimeOptions}
           />
-
           <StyledCalendarSvg>
             <SpriteSVG name={"calendar"} />
           </StyledCalendarSvg>
@@ -146,9 +112,9 @@ const SignUp = () => {
         {formik.touched.birthdate && formik.errors.birthdate ? (
           <div style={{ color: "red" }}>{formik.errors.birthdate}</div>
         ) : formik.touched.birthdate && !formik.errors.birthdate ? (
-          <div style={{ color: "green" }}>Valid birthdate</div>
+          <div style={{ color: "green" }}>Valid birthdate format</div>
         ) : null}
-        {/* ================ */}
+        {/* ===== Email input ======= */}
         <DivWrapper>
           <InputWrapper
             type="email"
@@ -161,29 +127,6 @@ const SignUp = () => {
             $isError={formik.touched.email && Boolean(formik.errors.email)}
             $isSuccess={formik.touched.email && !formik.errors.email}
           />
-          {/* <AiFillCheckCircle
-            style={{
-              color: "black",
-              backgroundColor: "green",
-              borderRadius: "50%",
-              position: "absolute",
-              right: "0px",
-              top: "15px",
-              cursor: "pointer",
-            }}
-          />
-          <FaExclamationCircle
-            style={{
-              color: "black",
-              background: "red",
-              borderRadius: "50%",
-              border: "2px",
-              position: "absolute",
-              right: "50px",
-              top: "15px",
-              cursor: "pointer",
-            }}
-          /> */}
           {formik.touched.email && formik.errors.email ? (
             <StyleRedSvg>
               <SpriteSVG name={"error"} />
@@ -193,13 +136,13 @@ const SignUp = () => {
               <SpriteSVG name={"done"} />
             </StyleGreenSvg>
           ) : null}
-          {/* ================ */}
         </DivWrapper>
         {formik.touched.email && formik.errors.email ? (
           <div style={{ color: "red" }}>{formik.errors.email}</div>
         ) : formik.touched.email && !formik.errors.email ? (
-          <div style={{ color: "green" }}>Valid email</div>
+          <div style={{ color: "green" }}>Valid email format</div>
         ) : null}
+        {/* ===== Password input ======= */}
         <DivWrapper>
           <InputWrapper
             // type="password"
@@ -215,7 +158,6 @@ const SignUp = () => {
             }
             $isSuccess={formik.touched.password && !formik.errors.password}
           />
-          {/* Eye icon to toggle password visibility */}
           {formik.values.password && ( // Check if the password field has any value
             <div
               style={{
