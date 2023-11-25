@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 const DrinkCardItemFaxContainer = styled.div`
   width: 335px;
+  position: relative;
 
   @media screen and (min-width: 768px) {
     .drinkCardItemFax-img {

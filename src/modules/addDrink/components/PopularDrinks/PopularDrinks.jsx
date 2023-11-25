@@ -19,7 +19,7 @@ import Coctail from "../../../../shared/img/image.png";
 function PopularDrinks() {
   const [imageLoaded, setImageLoaded] = useState(false);
   const dispatch = useDispatch();
-  const populars = useSelector(selectPopulars);
+  const populars = useSelector(selectPopulars).slice(0, 4);
 
   useEffect(() => {
     dispatch(getPopularThunk());
@@ -39,7 +39,11 @@ function PopularDrinks() {
       <Subtitle Subtitle={"Popular drinks"}></Subtitle>
       <PopularContainer>
         {populars?.map(({ description, drinkThumb, drink, _id }) => (
-          <Link to={`/drinks/${_id}`} key={_id}>
+          <Link
+            to={`/drinks/${_id}`}
+            key={_id}
+            style={{ position: "relative" }}
+          >
             <PopularItemContainer key={drink}>
               <PopularImage
                 src={drinkThumb}
@@ -51,7 +55,7 @@ function PopularDrinks() {
                 <PopularImage
                   src={Coctail}
                   alt={drink}
-                  style={{ position: "absolute", top: 0 }}
+                  style={{ position: "absolute", top: 0, zIndex: 1 }}
                 />
               )}
               <PopularContainerDiscr>

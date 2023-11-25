@@ -23,6 +23,7 @@ import {
 } from '../../../../redux/Filters/filtersSlice';
 import { getAllSearchThunk } from '../../../../redux/Drinks/operations';
 
+
 const SearchForm = () => {
   const dispatch = useDispatch();
 
@@ -35,8 +36,10 @@ const SearchForm = () => {
     dispatch(getIngredientsThunk());
   }, [dispatch]);
 
+
   const submitForm = () => {
     dispatch(getAllSearchThunk({ query, category, ingredient }));
+
   };
 
   const onSubmit = e => {

@@ -9,18 +9,24 @@ import {
   getFavoriteThunk,
   getOwnThunk,
   getPopularThunk,
+
   addFavoriteThunk,
+
+  paginationThunk,
+
 } from './operations';
 
 const initialState = {
   drinks: {},
   popular: [],
   search: [],
+  filteredDrinks: [],
   drinkDetails: [],
   own: [],
   drinkId: '',
   favorite: [],
   page: 1,
+  totalPages: null,
   error: '',
   isLoading: false,
 };
@@ -28,7 +34,12 @@ const initialState = {
 const drinksSlice = createSlice({
   name: 'drinks',
   initialState,
-  reducers: {},
+
+  reducers: {
+    setSearch: (state, { payload }) => {
+      state.search = payload;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(getAllDrinksThunk.fulfilled, (state, { payload }) => {
@@ -39,7 +50,12 @@ const drinksSlice = createSlice({
         state.popular = payload;
       })
       .addCase(getAllSearchThunk.fulfilled, (state, { payload }) => {
-        state.search = payload;
+        state.filteredDrinks = payload.data;
+      })
+      .addCase(paginationThunk.fulfilled, (state, { payload }) => {
+        state.search = payload.data;
+        state.totalPages = payload.totalPages;
+        state.page = 1;
       })
       .addCase(getFavoriteThunk.fulfilled, (state, { payload }) => {
         console.log('state.favorite = payload;', payload);
@@ -59,7 +75,9 @@ const drinksSlice = createSlice({
       })
       .addCase(deleteFromFavoriteThunk.fulfilled, (state, { payload }) => {
         state.favorite = state.favorite.filter(
+
           item => item.drinkId !== payload
+
         );
       })
       .addCase(addNewDrinkThunk.fulfilled, (state, { payload }) => {
@@ -83,6 +101,7 @@ const drinksSlice = createSlice({
           state.isLoading = true;
           state.error = '';
         }
+
       )
       .addMatcher(
         isAnyOf(
@@ -122,3 +141,4 @@ const drinksSlice = createSlice({
 });
 
 export const drinkReducer = drinksSlice.reducer;
+export const { setSearch } = drinksSlice.actions;
