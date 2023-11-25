@@ -10,7 +10,6 @@ import {
   DrinkCardItemFaxName,
   DrinkCardItemFaxNavi,
   DrinkCardItemFaxStatus,
-
 } from './Card.styled';
 import {
   deleteFromFavoriteThunk,
@@ -18,25 +17,20 @@ import {
 } from '../../../redux/Drinks/operations';
 import { SpriteSVG } from '../../icons/SpriteSVG';
 import { toast } from 'react-toastify';
-import { confirmNamePage } from '../../helpers/confirmNamePage'
+import { confirmNamePage } from '../../helpers/confirmNamePage';
 
-
-import Coctail from "../../../shared/img/image.png";
-import { DrinkCardItemImage } from "../DrinkCardItem/DrinkCardItem.styled";
-import { useState } from "react";
-
+import Coctail from '../../../shared/img/image.png';
+// import { DrinkCardItemImage } from '../DrinkCardItem/DrinkCardItem.styled';
+import { useState } from 'react';
 
 const Card = ({ data }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   const namePage = confirmNamePage(location.pathname);
 
   const handleSeeMore = _id => {
-
-  const [imageLoaded, setImageLoaded] = useState(false);
-  const handleSeeMore = (_id) => {
-
     navigate(`/drinks/${_id}`);
   };
 
@@ -71,7 +65,7 @@ const Card = ({ data }) => {
         <DrinkCardItemFaxImg
           src={Coctail}
           // alt={data.drink}
-          style={{ position: "absolute", top: 0 }}
+          style={{ position: 'absolute', top: 0 }}
         />
       )}
       <DrinkCardItemFaxName>{data.drink}</DrinkCardItemFaxName>
