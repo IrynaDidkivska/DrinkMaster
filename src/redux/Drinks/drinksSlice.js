@@ -1,4 +1,4 @@
-import { createSlice, isAnyOf } from "@reduxjs/toolkit";
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
   // addFavoriteThunk,
   addOwnDrinkThunk,
@@ -10,26 +10,33 @@ import {
   getFavoriteThunk,
   getOwnThunk,
   getPopularThunk,
-} from "./operations";
+  paginationThunk,
+} from './operations';
 
 const initialState = {
   drinks: {},
   popular: [],
   search: [],
+  filteredDrinks: [],
   drinkDetails: [],
   own: [],
-  drinkId: "",
+  drinkId: '',
   favorite: [],
   page: 1,
-  error: "",
+  totalPages: null,
+  error: '',
   isLoading: false,
 };
 // TODO: дописати інші Thunk
 const drinksSlice = createSlice({
-  name: "drinks",
+  name: 'drinks',
   initialState,
-  reducers: {},
-  extraReducers: (builder) => {
+  reducers: {
+    setSearch: (state, { payload }) => {
+      state.search = payload;
+    },
+  },
+  extraReducers: builder => {
     builder
       .addCase(getAllDrinksThunk.fulfilled, (state, { payload }) => {
         state.drinks = payload[0];
@@ -39,7 +46,12 @@ const drinksSlice = createSlice({
         state.popular = payload;
       })
       .addCase(getAllSearchThunk.fulfilled, (state, { payload }) => {
-        state.search = payload;
+        state.filteredDrinks = payload.data;
+      })
+      .addCase(paginationThunk.fulfilled, (state, { payload }) => {
+        state.search = payload.data;
+        state.totalPages = payload.totalPages;
+        state.page = 1;
       })
       .addCase(getFavoriteThunk.fulfilled, (state, { payload }) => {
         state.favorite = payload;
@@ -58,11 +70,11 @@ const drinksSlice = createSlice({
       })
 
       .addCase(deleteFromOwnThunk.fulfilled, (state, { payload }) => {
-        state.own = state.favorite.filter((item) => item.drinkId !== payload);
+        state.own = state.favorite.filter(item => item.drinkId !== payload);
       })
       .addCase(deleteFromFavoriteThunk.fulfilled, (state, { payload }) => {
         state.favorite = state.favorite.filter(
-          (item) => item.drinkId !== payload
+          item => item.drinkId !== payload
         );
       })
 
@@ -78,9 +90,9 @@ const drinksSlice = createSlice({
           getAllSearchThunk.pending
           // addFavoriteThunk.pending
         ),
-        (state) => {
+        state => {
           state.isLoading = true;
-          state.error = "";
+          state.error = '';
         }
       )
       .addMatcher(
@@ -95,7 +107,7 @@ const drinksSlice = createSlice({
           getAllSearchThunk.fulfilled
           // addFavoriteThunk.fulfilled
         ),
-        (state) => {
+        state => {
           state.isLoading = false;
         }
       )
@@ -120,3 +132,4 @@ const drinksSlice = createSlice({
 });
 
 export const drinkReducer = drinksSlice.reducer;
+export const { setSearch } = drinksSlice.actions;

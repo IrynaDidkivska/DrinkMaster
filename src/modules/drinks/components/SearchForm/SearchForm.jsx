@@ -1,28 +1,28 @@
-import { useDispatch, useSelector } from "react-redux";
-import { SpriteSVG } from "../../../../shared/icons/SpriteSVG";
+import { useDispatch, useSelector } from 'react-redux';
+import { SpriteSVG } from '../../../../shared/icons/SpriteSVG';
 import {
   FormStyled,
   InputContStyled,
   SelectStyled,
   // StyledResetButton,
-} from "./SerchForm.styled";
-import { useEffect } from "react";
+} from './SerchForm.styled';
+import { useEffect } from 'react';
 import {
   getCategoriesThunk,
   getIngredientsThunk,
-} from "../../../../redux/Filters/operations";
+} from '../../../../redux/Filters/operations';
 import {
   selectNormalizedCategories,
   selectNormalizedIngredients,
   selectSearchQuery,
-} from "../../../../redux/Filters/selectors";
+} from '../../../../redux/Filters/selectors';
 import {
   clearFilter,
   setCategory,
   setIngridient,
   setQuery,
-} from "../../../../redux/Filters/filtersSlice";
-import { getAllSearchThunk } from "../../../../redux/Drinks/operations";
+} from '../../../../redux/Filters/filtersSlice';
+import { getAllSearchThunk } from '../../../../redux/Drinks/operations';
 // import DarkBtn from "../../../../shared/components/Buttons/DarkBtn";
 
 const SearchForm = () => {
@@ -37,9 +37,11 @@ const SearchForm = () => {
     dispatch(getIngredientsThunk({ page: 0, limit: 0 }));
   }, [dispatch]);
 
-  const onSubmit = (e) => {
+  const onSubmit = e => {
     e.preventDefault();
-    dispatch(getAllSearchThunk({ query, category, ingredient }));
+    dispatch(
+      getAllSearchThunk({ query, category, ingredient, page: 0, limit: 0 })
+    );
     e.target.reset();
     dispatch(clearFilter());
   };
@@ -54,7 +56,7 @@ const SearchForm = () => {
           <input
             type="text"
             placeholder="Enter the text"
-            onChange={(e) => dispatch(setQuery(e.target.value))}
+            onChange={e => dispatch(setQuery(e.target.value))}
           ></input>
           <button type="submit">
             <SpriteSVG name="search" />
@@ -65,13 +67,13 @@ const SearchForm = () => {
           classNamePrefix="customSelect"
           placeholder="All categories"
           options={categories}
-          onChange={(e) => dispatch(setCategory(e.value))}
+          onChange={e => dispatch(setCategory(e.value))}
         />
         <SelectStyled
           classNamePrefix="customSelect"
           placeholder="Ingredients"
           options={ingregients}
-          onChange={(e) => dispatch(setIngridient(e.value))}
+          onChange={e => dispatch(setIngridient(e.value))}
         />
         {/* <DarkBtn type="button" onClick={handleResenForm}>
           Reset
