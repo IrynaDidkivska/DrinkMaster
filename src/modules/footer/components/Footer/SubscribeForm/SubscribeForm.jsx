@@ -10,14 +10,14 @@ const SubscribeForm = () => {
   const [email, setEmail] = useState("");
   const dispatch = useDispatch();
 
-  const handleSubscribe = (event) => {
+  const handleSubscribe = async (event) => {
     event.preventDefault();
-    dispatch(subscribeEmail(event));
-    if (isSubscribed) {
-      toast.error(`Your email address has already been subscribed`);
+    try {
+      await dispatch(subscribeEmail({ email }));
+      setEmail("");
+    } catch (error) {
+      toast.error(error.response.data.message);
     }
-    toast.success(`Contact ${email} successfully added!`);
-    setEmail("");
   };
 
   return (
