@@ -35,10 +35,20 @@ const SearchForm = () => {
     dispatch(getIngredientsThunk());
   }, [dispatch]);
 
-  const onSubmit = e => {
-    e.preventDefault();
+  const submitForm = () => {
     dispatch(getAllSearchThunk({ query, category, ingredient }));
   };
+
+  const onSubmit = e => {
+    e.preventDefault();
+    submitForm();
+  };
+
+  useEffect(() => {
+    if (ingredient || category) {
+      submitForm();
+    }
+  }, [ingredient, category]);
 
   return (
     <>
