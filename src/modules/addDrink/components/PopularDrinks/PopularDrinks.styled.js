@@ -10,6 +10,7 @@ const PopularContainer = styled.ul`
   flex-wrap: wrap;
   margin-top: 28px;
   margin-bottom: 80px;
+
   @media screen and (min-width: 768px) {
     width: 704px;
     height: 284px;

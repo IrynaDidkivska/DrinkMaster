@@ -39,7 +39,11 @@ function PopularDrinks() {
       <Subtitle Subtitle={"Popular drinks"}></Subtitle>
       <PopularContainer>
         {populars?.map(({ description, drinkThumb, drink, _id }) => (
-          <Link to={`/drinks/${_id}`} key={_id}>
+          <Link
+            to={`/drinks/${_id}`}
+            key={_id}
+            style={{ position: "relative" }}
+          >
             <PopularItemContainer key={drink}>
               <PopularImage
                 src={drinkThumb}
