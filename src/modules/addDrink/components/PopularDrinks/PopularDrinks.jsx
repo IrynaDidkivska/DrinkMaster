@@ -19,7 +19,7 @@ import Coctail from "../../../../shared/img/image.png";
 function PopularDrinks() {
   const [imageLoaded, setImageLoaded] = useState(false);
   const dispatch = useDispatch();
-  const populars = useSelector(selectPopulars);
+  const populars = useSelector(selectPopulars).slice(0, 4);
 
   useEffect(() => {
     dispatch(getPopularThunk());
