@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import {
   DrinkCardItemFaxBtn,
   DrinkCardItemFaxContainer,
@@ -10,25 +10,44 @@ import {
   DrinkCardItemFaxName,
   DrinkCardItemFaxNavi,
   DrinkCardItemFaxStatus,
-} from "./Card.styled";
-import { deleteFromFavoriteThunk } from "../../../redux/Drinks/operations";
-import { SpriteSVG } from "../../icons/SpriteSVG";
-import { toast } from "react-toastify";
+
+} from './Card.styled';
+import {
+  deleteFromFavoriteThunk,
+  deleteFromOwnThunk,
+} from '../../../redux/Drinks/operations';
+import { SpriteSVG } from '../../icons/SpriteSVG';
+import { toast } from 'react-toastify';
+import { confirmNamePage } from '../../helpers/confirmNamePage'
+
+
 import Coctail from "../../../shared/img/image.png";
 import { DrinkCardItemImage } from "../DrinkCardItem/DrinkCardItem.styled";
 import { useState } from "react";
 
+
 const Card = ({ data }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const namePage = confirmNamePage(location.pathname);
+
+  const handleSeeMore = _id => {
+
   const [imageLoaded, setImageLoaded] = useState(false);
   const handleSeeMore = (_id) => {
+
     navigate(`/drinks/${_id}`);
   };
 
-  const handleRemoveFavorite = () => {
-    dispatch(deleteFromFavoriteThunk(data._id));
-    toast.success("You removed drink from your favorite");
+  const handleRemove = () => {
+    if (namePage.favorites) {
+      dispatch(deleteFromFavoriteThunk(data._id));
+      toast.success('You removed drink from your favorite');
+    } else {
+      dispatch(deleteFromOwnThunk(data._id));
+      toast.success('You removed drink from your own');
+    }
   };
 
   const handleImageLoad = () => {
@@ -64,8 +83,8 @@ const Card = ({ data }) => {
         <DrinkCardItemFaxBtn onClick={() => handleSeeMore(data._id)}>
           See more
         </DrinkCardItemFaxBtn>
-        <DrinkCardItemFaxDel type="button" onClick={handleRemoveFavorite}>
-          <SpriteSVG name={"trash"} />
+        <DrinkCardItemFaxDel type="button" onClick={handleRemove}>
+          <SpriteSVG name={'trash'} />
         </DrinkCardItemFaxDel>
       </DrinkCardItemFaxNavi>
     </DrinkCardItemFaxContainer>

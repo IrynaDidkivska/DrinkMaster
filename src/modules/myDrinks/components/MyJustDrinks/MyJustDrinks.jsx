@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from 'react-redux';
 import {
   StyledJustButton,
   StyledJustDrinks,
@@ -6,22 +6,40 @@ import {
   StyledJustText,
   StyledJustType,
   StyledTitleSection,
-} from "./MyJustDrinks.styled";
-import { addFavoriteThunk } from "../../../../redux/Drinks/operations";
-import { selectDetails } from "../../../../redux/Drinks/selectors";
-import { useState } from "react";
-import { toast } from "react-toastify";
+} from './MyJustDrinks.styled';
+import {
+  addFavoriteThunk,
+  deleteFromFavoriteThunk,
+} from '../../../../redux/Drinks/operations';
+import {
+  selectByID,
+  selectDetails,
+  selectFavorites,
+} from '../../../../redux/Drinks/selectors';
+import { toast } from 'react-toastify';
+import { useState } from 'react';
 
 const MyJustDrinks = () => {
   const dispatch = useDispatch();
   const details = useSelector(selectDetails);
+  const isFavorite = useSelector(selectFavorites);
+  const drinkDetails = useSelector(selectDetails);
 
-  const [isFavorite, setIsFavorite] = useState(false);
+  console.log('isFavorite', isFavorite);
+  console.log('drinkDetails', drinkDetails);
+
+  const id = isFavorite.find(el => el.id === drinkDetails._id);
+
+  console.log('То что я ищу', id);
 
   const handleAddFavorite = () => {
     dispatch(addFavoriteThunk(details._id));
-    toast.success("You added drink to your favorite");
-    setIsFavorite(true);
+    toast.success('You added drink to your favorite');
+  };
+
+  const handleRemoveFavorite = () => {
+    dispatch(deleteFromFavoriteThunk(details._id));
+    toast.success('You removed drink from your favorite');
   };
 
   return (
@@ -33,8 +51,12 @@ const MyJustDrinks = () => {
         </StyledJustType>
         <StyledJustText>{details.description}</StyledJustText>
 
-        <StyledJustButton onClick={handleAddFavorite} disabled={isFavorite}>
-          {isFavorite ? "Added to favorites" : "Add to favorite drinks"}
+        <StyledJustButton onClick={handleAddFavorite}>
+          Add to favorite drinks
+        </StyledJustButton>
+
+        <StyledJustButton onClick={handleRemoveFavorite}>
+          Remove from favorites
         </StyledJustButton>
       </div>
       <StyledJustImages src={details.drinkThumb} alt={details.drink} />

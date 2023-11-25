@@ -6,10 +6,11 @@ import { Navigate, useLocation } from 'react-router-dom';
 const PrivateRoute = ({ children }) => {
   const location = useLocation();
   const isLoggedIn = useSelector(selectIsAuth);
-  if (isLoggedIn) {
-    return children;
+
+  if (!isLoggedIn) {
+    return <Navigate to="/welcome" state={{ from: location }} />;
   }
-  return <Navigate to="/signin" state={{ from: location }} />;
+  return children;
 };
 
 export default PrivateRoute;

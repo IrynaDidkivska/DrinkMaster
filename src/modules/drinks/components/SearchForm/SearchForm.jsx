@@ -17,13 +17,12 @@ import {
   selectSearchQuery,
 } from '../../../../redux/Filters/selectors';
 import {
-  clearFilter,
   setCategory,
   setIngridient,
   setQuery,
 } from '../../../../redux/Filters/filtersSlice';
 import { getAllSearchThunk } from '../../../../redux/Drinks/operations';
-// import DarkBtn from "../../../../shared/components/Buttons/DarkBtn";
+
 
 const SearchForm = () => {
   const dispatch = useDispatch();
@@ -34,20 +33,25 @@ const SearchForm = () => {
 
   useEffect(() => {
     dispatch(getCategoriesThunk());
-    dispatch(getIngredientsThunk({ page: 0, limit: 0 }));
+    dispatch(getIngredientsThunk());
   }, [dispatch]);
+
+
+  const submitForm = () => {
+    dispatch(getAllSearchThunk({ query, category, ingredient }));
+
+  };
 
   const onSubmit = e => {
     e.preventDefault();
-    dispatch(
-      getAllSearchThunk({ query, category, ingredient, page: 0, limit: 0 })
-    );
-    e.target.reset();
-    dispatch(clearFilter());
+    submitForm();
   };
-  // const handleResenForm = () => {
-  //   dispatch(getAllSearchThunk({ query, category, ingredient }));
-  // };
+
+  useEffect(() => {
+    if (ingredient || category) {
+      submitForm();
+    }
+  }, [ingredient, category]);
 
   return (
     <>
@@ -75,9 +79,6 @@ const SearchForm = () => {
           options={ingregients}
           onChange={e => dispatch(setIngridient(e.value))}
         />
-        {/* <DarkBtn type="button" onClick={handleResenForm}>
-          Reset
-        </DarkBtn> */}
       </FormStyled>
     </>
   );

@@ -1,7 +1,5 @@
-
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { API } from "../../config/drinkConfig";
-
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { API } from '../../config/drinkConfig';
 
 export const getAllDrinksThunk = createAsyncThunk(
   'drinks/getAll',
@@ -9,7 +7,7 @@ export const getAllDrinksThunk = createAsyncThunk(
     try {
       const { data } = await API.get('api/drinks/cocktails/main', {
         params: {
-          category: "Ordinary Drink,Shake,Cocktail,Other/Unknown",
+          category: 'Ordinary Drink,Shake,Cocktail,Other/Unknown',
           // limit: 100,
           page,
         },
@@ -18,7 +16,7 @@ export const getAllDrinksThunk = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-  },
+  }
 );
 
 // Отримання для page Drinks
@@ -26,8 +24,10 @@ export const getAllSearchThunk = createAsyncThunk(
   'drinks/getAllSearch',
   async (
 
+
     { ingredient = '', category = '', query = '', page = null, limit = null },
     thunkAPI
+
 
   ) => {
     try {
@@ -69,7 +69,7 @@ export const paginationThunk = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-  },
+  }
 );
 
 // Отримання популярних  коктейлів
@@ -82,7 +82,7 @@ export const getPopularThunk = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-  },
+  }
 );
 // Отримання одного коктейлю за ID
 export const getByIDThunk = createAsyncThunk(
@@ -94,7 +94,7 @@ export const getByIDThunk = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-  },
+  }
 );
 
 // OWN
@@ -109,21 +109,9 @@ export const getOwnThunk = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-  },
+  }
 );
-//TODO: зробити
-export const addOwnDrinkThunk = createAsyncThunk(
-  'drinks/addOwnDrink',
-  async (formdata, thunkAPI) => {
-    try {
-      const { data } = await API.post('api/drinks/own/add', formdata);
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  },
-);
-
+// Видалення власних коктейлів
 export const deleteFromOwnThunk = createAsyncThunk(
   'drinks/deleteFromOwn',
   async (id, thunkAPI) => {
@@ -133,7 +121,7 @@ export const deleteFromOwnThunk = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-  },
+  }
 );
 
 // Favorites
@@ -143,28 +131,27 @@ export const getFavoriteThunk = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await API.get('api/drinks/favorite');
-
       return data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-  },
+  }
 );
 
 export const addFavoriteThunk = createAsyncThunk(
-  'drinks/getFav',
+  'drinks/addFav',
   async (id, thunkAPI) => {
     try {
       const { data } = await API.post('api/drinks/favorite/add', {
         drinkId: id,
       });
-
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-  },
+  }
 );
+
 export const deleteFromFavoriteThunk = createAsyncThunk(
   'drinks/deleteFromFav',
   async (id, { rejectWithValue, dispatch }) => {
@@ -175,7 +162,7 @@ export const deleteFromFavoriteThunk = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.message);
     }
-  },
+  }
 );
 export const addNewDrinkThunk = createAsyncThunk(
   'drinks/addNewDrink',
@@ -186,5 +173,5 @@ export const addNewDrinkThunk = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-  },
+  }
 );

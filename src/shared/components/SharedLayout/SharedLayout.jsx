@@ -1,16 +1,26 @@
-import { Outlet } from "react-router-dom";
-import Loader from "../Loader/Loader";
-import Header from "../../../modules/header/components/Header/Header";
-import Footer from "../../../modules/footer/components/Footer/Footer";
-import { Suspense } from "react";
-import { Container } from "../../styles/Container";
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import Loader from '../Loader/Loader';
+import Header from '../../../modules/header/components/Header/Header';
+import Footer from '../../../modules/footer/components/Footer/Footer';
+import { Suspense, useEffect } from 'react';
+import { Container } from '../../styles/Container';
 import {
   OverlayBottom,
   OverlayMain,
   StyledSection,
-} from "../../styles/Section";
+} from '../../styles/Section';
 
 const SharedLayout = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    // Перевіряємо, чи поточна локація є кореневою
+    if (location.pathname === '/') {
+      navigate('/home');
+    }
+  }, [navigate, location]);
+
   return (
     <>
       <Header />
