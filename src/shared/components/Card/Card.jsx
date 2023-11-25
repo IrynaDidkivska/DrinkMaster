@@ -15,7 +15,6 @@ import { deleteFromFavoriteThunk } from "../../../redux/Drinks/operations";
 import { SpriteSVG } from "../../icons/SpriteSVG";
 import { toast } from "react-toastify";
 import Coctail from "../../../shared/img/image.png";
-import { DrinkCardItemImage } from "../DrinkCardItem/DrinkCardItem.styled";
 import { useState } from "react";
 
 const Card = ({ data }) => {
