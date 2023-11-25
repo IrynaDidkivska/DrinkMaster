@@ -1,14 +1,11 @@
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
-import * as Yup from "yup";
 import { signupThunk } from "../../redux/Auth/operations";
 import { selectIsLoading } from "../../redux/Auth/selectors";
-import moment from "moment";
 import "react-datetime/css/react-datetime.css";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { validationSchema } from "./helpers/validationSchema.jsx";
-
 import {
   DivWrapper,
   StyleGreenSvg,
@@ -26,6 +23,10 @@ import {
   Wrapper,
 } from "../Signin/Signin.styled";
 import Subtitle from "../../shared/components/Title/Subtitle";
+import {
+  convertDateFormatHelper,
+  handleDateChangeHelper,
+} from "./helpers/dataHelper.js";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -39,10 +40,8 @@ const SignUp = () => {
       email: "",
       password: "",
     },
-    validationSchema,
+    validationSchema: validationSchema,
     onSubmit: (values) => {
-      // Handle form submission logic here
-
       const credentials = {
         username: values.username,
         birthdate: convertDateFormat(values.birthdate),
@@ -54,25 +53,11 @@ const SignUp = () => {
   });
 
   const handleDateChange = (name, value) => {
-    // Перевірка, чи value є екземпляром moment
-    const formattedDate =
-      value instanceof moment ? value.format("DD/MM/YYYY") : value;
-    formik.setFieldTouched(name, true, false); // Помітити поле як торкнуте, без валідації
-    formik.handleChange({
-      target: {
-        name,
-        value: formattedDate,
-      },
-    });
+    handleDateChangeHelper(formik, name, value);
   };
 
-  // Конвертує дату з формату фронта DD/MM/YYYY на формат беку YYYY-MM-DD
   const convertDateFormat = (dateStr) => {
-    const parts = dateStr.split("/");
-    if (parts.length === 3) {
-      return `${parts[2]}-${parts[1]}-${parts[0]}`; // Convert to YYYY-MM-DD
-    }
-    return dateStr; // Return the original string if it's not in expected format
+    return convertDateFormatHelper(dateStr);
   };
 
   const datetimeOptions = {
@@ -89,6 +74,7 @@ const SignUp = () => {
     <StyledForm onSubmit={formik.handleSubmit}>
       <Subtitle Subtitle=" Sign Up" />
       <Wrapper>
+        {/* ===== Name input ======= */}
         <InputWrapper
           type="text"
           id="username"
@@ -105,6 +91,7 @@ const SignUp = () => {
         ) : formik.touched.username && !formik.errors.username ? (
           <div style={{ color: "green" }}>Valid username</div>
         ) : null}
+        {/* ===== Birthday input ======= */}
         <StyledDatatimeWrapper>
           <StyledDatetime
             type="date"
@@ -114,7 +101,6 @@ const SignUp = () => {
             timeFormat={false}
             onBlur={formik.handleBlur}
             onChange={(value) => handleDateChange("birthdate", value)}
-            // onChange={formik.handleChange}
             value={formik.values.birthdate}
             closeOnSelect={true}
             {...datetimeOptions}
@@ -126,9 +112,9 @@ const SignUp = () => {
         {formik.touched.birthdate && formik.errors.birthdate ? (
           <div style={{ color: "red" }}>{formik.errors.birthdate}</div>
         ) : formik.touched.birthdate && !formik.errors.birthdate ? (
-          <div style={{ color: "green" }}>Valid birthdate</div>
+          <div style={{ color: "green" }}>Valid birthdate format</div>
         ) : null}
-        {/* ================ */}
+        {/* ===== Email input ======= */}
         <DivWrapper>
           <InputWrapper
             type="email"
@@ -150,13 +136,13 @@ const SignUp = () => {
               <SpriteSVG name={"done"} />
             </StyleGreenSvg>
           ) : null}
-          {/* ================ */}
         </DivWrapper>
         {formik.touched.email && formik.errors.email ? (
           <div style={{ color: "red" }}>{formik.errors.email}</div>
         ) : formik.touched.email && !formik.errors.email ? (
           <div style={{ color: "green" }}>Valid email</div>
         ) : null}
+        {/* ===== Password input ======= */}
         <DivWrapper>
           <InputWrapper
             // type="password"
@@ -172,7 +158,6 @@ const SignUp = () => {
             }
             $isSuccess={formik.touched.password && !formik.errors.password}
           />
-          {/* Eye icon to toggle password visibility */}
           {formik.values.password && ( // Check if the password field has any value
             <div
               style={{
