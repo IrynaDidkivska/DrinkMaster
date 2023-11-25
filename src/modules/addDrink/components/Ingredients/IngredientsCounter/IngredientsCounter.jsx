@@ -6,16 +6,15 @@ import {
   WrapperStyled,
 } from './IngredientsCounter.styled';
 import { nanoid } from 'nanoid';
-import { useState } from 'react';
 
 const IngredientsCounter = ({ ingredientsList = [], setIngredients }) => {
   const arr = [...ingredientsList];
 
   const addIngredient = () => {
-    arr.push({ id: nanoid(), name: '', volume: 1 });
+    arr.push({ id: nanoid(), title: '', ingredientId: '', measure: '1' });
   };
   const removeIngredient = () => {
-    if (arr[arr.length - 1].name) {
+    if (arr[arr.length - 1].title || arr[arr.length - 1].ingredientId) {
       return console.log('Не можна видалити не порожній інгредієнт!!!');
     }
     arr.pop();

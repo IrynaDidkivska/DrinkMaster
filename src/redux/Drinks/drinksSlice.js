@@ -1,5 +1,6 @@
-import { createSlice, isAnyOf } from "@reduxjs/toolkit";
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
+  addNewDrinkThunk,
   // addFavoriteThunk,
   addOwnDrinkThunk,
   deleteFromFavoriteThunk,
@@ -10,7 +11,7 @@ import {
   getFavoriteThunk,
   getOwnThunk,
   getPopularThunk,
-} from "./operations";
+} from './operations';
 
 const initialState = {
   drinks: {},
@@ -18,18 +19,18 @@ const initialState = {
   search: [],
   drinkDetails: [],
   own: [],
-  drinkId: "",
+  drinkId: '',
   favorite: [],
   page: 1,
-  error: "",
+  error: '',
   isLoading: false,
 };
 // TODO: дописати інші Thunk
 const drinksSlice = createSlice({
-  name: "drinks",
+  name: 'drinks',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
       .addCase(getAllDrinksThunk.fulfilled, (state, { payload }) => {
         state.drinks = payload[0];
@@ -58,12 +59,15 @@ const drinksSlice = createSlice({
       })
 
       .addCase(deleteFromOwnThunk.fulfilled, (state, { payload }) => {
-        state.own = state.favorite.filter((item) => item.drinkId !== payload);
+        state.own = state.favorite.filter(item => item.drinkId !== payload);
       })
       .addCase(deleteFromFavoriteThunk.fulfilled, (state, { payload }) => {
         state.favorite = state.favorite.filter(
-          (item) => item.drinkId !== payload
+          item => item.drinkId !== payload,
         );
+      })
+      .addCase(addNewDrinkThunk.fulfilled, (state, { payload }) => {
+        console.log(payload);
       })
 
       .addMatcher(
@@ -75,13 +79,14 @@ const drinksSlice = createSlice({
           getByIDThunk.pending,
           getOwnThunk.pending,
           getFavoriteThunk.pending,
-          getAllSearchThunk.pending
+          getAllSearchThunk.pending,
+          addNewDrinkThunk.pending,
           // addFavoriteThunk.pending
         ),
-        (state) => {
+        state => {
           state.isLoading = true;
-          state.error = "";
-        }
+          state.error = '';
+        },
       )
       .addMatcher(
         isAnyOf(
@@ -92,12 +97,12 @@ const drinksSlice = createSlice({
           getByIDThunk.fulfilled,
           getOwnThunk.fulfilled,
           getFavoriteThunk.fulfilled,
-          getAllSearchThunk.fulfilled
+          getAllSearchThunk.fulfilled,
           // addFavoriteThunk.fulfilled
         ),
-        (state) => {
+        state => {
           state.isLoading = false;
-        }
+        },
       )
       .addMatcher(
         isAnyOf(
@@ -108,13 +113,14 @@ const drinksSlice = createSlice({
           getByIDThunk.rejected,
           getOwnThunk.rejected,
           getFavoriteThunk.rejected,
-          getAllSearchThunk.rejected
+          getAllSearchThunk.rejected,
+          addNewDrinkThunk.rejected,
           // addFavoriteThunk.rejected
         ),
         (state, { payload }) => {
           state.isLoading = false;
           state.error = payload;
-        }
+        },
       );
   },
 });
