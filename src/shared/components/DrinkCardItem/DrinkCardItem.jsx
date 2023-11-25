@@ -27,7 +27,7 @@ const DrinkCardItem = ({ data }) => {
   };
 
   return (
-    <li key={data._id}>
+    <li key={data._id} style={{ position: "relative" }}>
       <DrinkCardItemImage
         src={data.drinkThumb}
         alt={" "}
