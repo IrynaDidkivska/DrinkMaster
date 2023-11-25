@@ -38,56 +38,20 @@ function App() {
       <Global />
       <Suspense>
         <Routes>
-          <Route path={routes.ROOT} element={<SharedLayout />}>
-            <Route
-              path={routes.HOME}
-              element={
-                <PrivateRoute>
-                  <HomePage />
-                </PrivateRoute>
-              }
-            />
-
-            <Route
-              path={routes.DRINKSPAGE}
-              element={
-                <PrivateRoute>
-                  <Drinks />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path={routes.ADD}
-              element={
-                <PrivateRoute>
-                  <AddDrink />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path={routes.FAVORITES}
-              element={
-                <PrivateRoute>
-                  <Favorites />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path={routes.MYDRINKS}
-              element={
-                <PrivateRoute>
-                  <MyDrinks />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path={routes.DRINKSPAGEWITHID}
-              element={
-                <PrivateRoute>
-                  <DrinkWithID />
-                </PrivateRoute>
-              }
-            />
+          <Route
+            path={routes.ROOT}
+            element={
+              <PrivateRoute>
+                <SharedLayout />
+              </PrivateRoute>
+            }
+          >
+            <Route path={routes.HOME} element={<HomePage />} />
+            <Route path={routes.DRINKSPAGE} element={<Drinks />} />
+            <Route path={routes.ADD} element={<AddDrink />} />
+            <Route path={routes.FAVORITES} element={<Favorites />} />
+            <Route path={routes.MYDRINKS} element={<MyDrinks />} />
+            <Route path={routes.DRINKSPAGEWITHID} element={<DrinkWithID />} />
             <Route path="*" element={<NotFound />} />
           </Route>
 

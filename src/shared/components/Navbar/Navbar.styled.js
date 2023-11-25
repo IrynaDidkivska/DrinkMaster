@@ -10,7 +10,7 @@ export const StyledNavBar = styled.nav`
 export const StyledLink = styled(NavLink)`
   padding: 8px 16px;
   border-radius: 40px;
-  border: ${({ theme }) => theme.borderLink};
+  border: 1px solid ${({ theme }) => theme.borderLink};
   outline: transparent;
 
   font-family: "Manrope-500", sans-serif;

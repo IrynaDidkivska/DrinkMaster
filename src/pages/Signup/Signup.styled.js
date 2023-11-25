@@ -102,9 +102,11 @@ export const StyledCalendarSvg = styled.div`
   right: 10%;
   transform: translateX(-10%);
   stroke: ${({ theme }) => theme.colors.iconColor};
+  fill: transparent;
   pointer-events: none;
   width: 20px;
   height: 20px;
+  fill: transparent;
   top: 15px;
   right: 20px;
 

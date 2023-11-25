@@ -28,6 +28,7 @@ const Footer = () => {
   const handleClick = () => {
     navigate("/");
   };
+
   return (
     <StyledFooter>
       <Container>

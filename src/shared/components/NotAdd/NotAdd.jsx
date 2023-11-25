@@ -1,11 +1,6 @@
 // import Title from '../../../shared/components/Title/Title'
 import Image from "./img/notFound.png";
-import {
-  Glass,
-  OverlayLeft,
-  OverlayRight,
-  StyledNotAdd,
-} from "./NotAdd.styled";
+import { Glass, StyledNotAdd } from "./NotAdd.styled";
 import { useLocation } from "react-router-dom";
 import { confirmNamePage } from "../../helpers/confirmNamePage";
 
@@ -23,9 +18,6 @@ export const NotAdd = () => {
         {namePage.favorites && (
           <p>You haven&apos;t added any favorite cocktails yet</p>
         )}
-
-        <OverlayLeft />
-        <OverlayRight />
       </StyledNotAdd>
     </>
   );
