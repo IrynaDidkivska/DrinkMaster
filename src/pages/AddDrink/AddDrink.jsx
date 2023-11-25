@@ -24,13 +24,15 @@ const AddDrink = () => {
   const [ingredients, setIngredients] = useState();
   const [instructions, setInstructions] = useState();
 
+  // console.log('drinkPhoto===>>>', drinkPhoto);
+
   const ingredientsCheckReducer = arr => {
     return arr.reduce((acc, ingredient) => {
-      if (!ingredient.title || !ingredient.volume) {
+      if (!ingredient.title || !ingredient.measure) {
         return acc;
       }
-      const { title, ingredientId, volume } = ingredient;
-      return [...acc, { title, ingredientId, volume: volume + ' cl' }];
+      const { title, ingredientId, measure } = ingredient;
+      return [...acc, { title, ingredientId, measure: measure + ' cl' }];
     }, []);
   };
 
@@ -69,14 +71,18 @@ const AddDrink = () => {
     request.append('description', description);
     request.append('category', category);
     request.append('glass', glass);
-    request.append('alcoholic', drinkPhoto);
-    request.append('ingredients', correctIngredients);
+    request.append('alcoholic', alcoholic);
+    correctIngredients.forEach((ingredient, index) => {
+      request.append(`ingredients[${index}][title]`, ingredient.title);
+      request.append(
+        `ingredients[${index}][ingredientId]`,
+        ingredient.ingredientId,
+      );
+      request.append(`ingredients[${index}][measure]`, ingredient.measure);
+    });
     request.append('instructions', instructions);
+
     dispatch(addNewDrinkThunk(request));
-    // console.log({
-    // newDrink;
-    // });
-    console.log(request);
   };
   return (
     <>

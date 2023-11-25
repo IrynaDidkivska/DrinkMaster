@@ -11,7 +11,7 @@ const IngredientsCounter = ({ ingredientsList = [], setIngredients }) => {
   const arr = [...ingredientsList];
 
   const addIngredient = () => {
-    arr.push({ id: nanoid(), title: '', ingredientId: '', volume: '1' });
+    arr.push({ id: nanoid(), title: '', ingredientId: '', measure: '1' });
   };
   const removeIngredient = () => {
     if (arr[arr.length - 1].title || arr[arr.length - 1].ingredientId) {

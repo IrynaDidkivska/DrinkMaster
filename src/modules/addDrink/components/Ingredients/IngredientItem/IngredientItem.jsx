@@ -14,7 +14,7 @@ const IngredientItem = ({
   ingredientData,
   changeIngredient,
 }) => {
-  const { id, volume } = ingredientData;
+  const { id, measure } = ingredientData;
   const ingredients = useSelector(selectNormalizedIngredients);
 
   return (
@@ -28,10 +28,10 @@ const IngredientItem = ({
       />
       <InputStyled
         type="text"
-        value={volume + ' cl'}
+        value={measure + ' cl'}
         onChange={e => {
-          const volume = e.target.value.trim();
-          changeIngredient({ id, volume: volume.slice(0, -3) });
+          const measure = e.target.value.trim();
+          changeIngredient({ id, measure: measure.slice(0, -3) });
         }}
       />
       <RemoveBtnStyled

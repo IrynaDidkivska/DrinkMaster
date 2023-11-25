@@ -47,6 +47,8 @@ const AddForm = ({ setValues }) => {
         setPreviewImg(reader.result);
       };
       reader.readAsDataURL(file);
+    } else {
+      setPreviewImg(null);
     }
 
     setDrinkPhoto(file);

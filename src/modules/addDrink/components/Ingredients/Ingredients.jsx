@@ -14,9 +14,9 @@ import { getIngredientsThunk } from '../../../../redux/Filters/operations';
 const Ingredients = ({ setIngredientsGeneral }) => {
   const dispatch = useDispatch();
   const [ingredients, setIngredients] = useState([
-    { id: nanoid(), title: '', ingredientId: '', volume: '1' },
-    { id: nanoid(), title: '', ingredientId: '', volume: '1' },
-    { id: nanoid(), title: '', ingredientId: '', volume: '1' },
+    { id: nanoid(), title: '', ingredientId: '', measure: '1' },
+    { id: nanoid(), title: '', ingredientId: '', measure: '1' },
+    { id: nanoid(), title: '', ingredientId: '', measure: '1' },
   ]);
 
   useEffect(() => {
