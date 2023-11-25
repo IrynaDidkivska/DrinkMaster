@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { SpriteSVG } from '../../../../../shared/icons/SpriteSVG';
 import {
   IngredientSelect,
@@ -8,30 +8,35 @@ import {
 } from './IngredientItem.styled';
 
 import { selectNormalizedIngredients } from '../../../../../redux/Filters/selectors';
-import { useEffect } from 'react';
-import { getIngredientsThunk } from '../../../../../redux/Filters/operations';
 
-
-const IngredientItem = ({ removeIngredient, ingredientData }) => {
-  const { id, name, volume } = ingredientData;
-  const dispatch = useDispatch();
+const IngredientItem = ({
+  removeIngredient,
+  ingredientData,
+  changeIngredient,
+}) => {
+  const { id, measure } = ingredientData;
   const ingredients = useSelector(selectNormalizedIngredients);
-
-  useEffect(() => {
-    dispatch(getIngredientsThunk({ page: 0, limit: 0 }));
-  }, []);
 
   return (
     <ItemWrapper>
       <IngredientSelect
         classNamePrefix="ingredientSelect"
         options={ingredients}
+        onChange={e => {
+          changeIngredient({ id, title: e.label, ingredientId: e.value });
+        }}
       />
-      <InputStyled type="text" />
+      <InputStyled
+        type="text"
+        value={measure + ' cl'}
+        onChange={e => {
+          const measure = e.target.value.trim();
+          changeIngredient({ id, measure: measure.slice(0, -3) });
+        }}
+      />
       <RemoveBtnStyled
         type="button"
         onClick={() => {
-          console.log(ingredientData);
           removeIngredient(id);
         }}
       >
