@@ -140,7 +140,7 @@ const SignUp = () => {
         {formik.touched.email && formik.errors.email ? (
           <div style={{ color: "red" }}>{formik.errors.email}</div>
         ) : formik.touched.email && !formik.errors.email ? (
-          <div style={{ color: "green" }}>Valid email</div>
+          <div style={{ color: "green" }}>Valid email format</div>
         ) : null}
         {/* ===== Password input ======= */}
         <DivWrapper>
