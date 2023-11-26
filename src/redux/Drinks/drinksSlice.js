@@ -1,7 +1,6 @@
-import { createSlice, isAnyOf } from "@reduxjs/toolkit";
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
-  // addFavoriteThunk,
-  addOwnDrinkThunk,
+  addNewDrinkThunk,
   deleteFromFavoriteThunk,
   deleteFromOwnThunk,
   getAllDrinksThunk,
@@ -10,26 +9,35 @@ import {
   getFavoriteThunk,
   getOwnThunk,
   getPopularThunk,
-} from "./operations";
+  addFavoriteThunk,
+  paginationThunk,
+} from './operations';
 
 const initialState = {
   drinks: {},
   popular: [],
   search: [],
+  filteredDrinks: [],
   drinkDetails: [],
   own: [],
-  drinkId: "",
+  drinkId: '',
   favorite: [],
   page: 1,
-  error: "",
+  totalPages: null,
+  error: '',
   isLoading: false,
 };
-// TODO: дописати інші Thunk
+
 const drinksSlice = createSlice({
-  name: "drinks",
+  name: 'drinks',
   initialState,
-  reducers: {},
-  extraReducers: (builder) => {
+
+  reducers: {
+    setSearch: (state, { payload }) => {
+      state.search = payload;
+    },
+  },
+  extraReducers: builder => {
     builder
       .addCase(getAllDrinksThunk.fulfilled, (state, { payload }) => {
         state.drinks = payload[0];
@@ -39,31 +47,35 @@ const drinksSlice = createSlice({
         state.popular = payload;
       })
       .addCase(getAllSearchThunk.fulfilled, (state, { payload }) => {
-        state.search = payload;
+        state.filteredDrinks = payload.data;
+      })
+      .addCase(paginationThunk.fulfilled, (state, { payload }) => {
+        state.search = payload.data;
+        state.totalPages = payload.totalPages;
+        state.page = 1;
       })
       .addCase(getFavoriteThunk.fulfilled, (state, { payload }) => {
         state.favorite = payload;
       })
-      // .addCase(addFavoriteThunk.fulfilled, (state, { payload }) => {
-      //   state.favorite = [...state.favorite, ...payload];
-      // })
+      .addCase(addFavoriteThunk.fulfilled, (state, { payload }) => {
+        state.favorite.push(payload);
+      })
       .addCase(getByIDThunk.fulfilled, (state, { payload }) => {
         state.drinkDetails = payload;
       })
       .addCase(getOwnThunk.fulfilled, (state, { payload }) => {
         state.own = payload;
       })
-      .addCase(addOwnDrinkThunk.fulfilled, (state, { payload }) => {
-        state.own = [...state.own, ...payload];
-      })
-
       .addCase(deleteFromOwnThunk.fulfilled, (state, { payload }) => {
-        state.own = state.favorite.filter((item) => item.drinkId !== payload);
+        state.own = state.own.filter(item => item.drinkId !== payload);
       })
       .addCase(deleteFromFavoriteThunk.fulfilled, (state, { payload }) => {
         state.favorite = state.favorite.filter(
-          (item) => item.drinkId !== payload
+          item => item.drinkId !== payload
         );
+      })
+      .addCase(addNewDrinkThunk.fulfilled, (state, { payload }) => {
+        console.log(payload);
       })
 
       .addMatcher(
@@ -75,12 +87,13 @@ const drinksSlice = createSlice({
           getByIDThunk.pending,
           getOwnThunk.pending,
           getFavoriteThunk.pending,
-          getAllSearchThunk.pending
-          // addFavoriteThunk.pending
+          getAllSearchThunk.pending,
+          addNewDrinkThunk.pending,
+          addFavoriteThunk.pending
         ),
-        (state) => {
+        state => {
           state.isLoading = true;
-          state.error = "";
+          state.error = '';
         }
       )
       .addMatcher(
@@ -92,10 +105,10 @@ const drinksSlice = createSlice({
           getByIDThunk.fulfilled,
           getOwnThunk.fulfilled,
           getFavoriteThunk.fulfilled,
-          getAllSearchThunk.fulfilled
-          // addFavoriteThunk.fulfilled
+          getAllSearchThunk.fulfilled,
+          addFavoriteThunk.fulfilled
         ),
-        (state) => {
+        state => {
           state.isLoading = false;
         }
       )
@@ -108,8 +121,9 @@ const drinksSlice = createSlice({
           getByIDThunk.rejected,
           getOwnThunk.rejected,
           getFavoriteThunk.rejected,
-          getAllSearchThunk.rejected
-          // addFavoriteThunk.rejected
+          getAllSearchThunk.rejected,
+          addNewDrinkThunk.rejected,
+          addFavoriteThunk.rejected
         ),
         (state, { payload }) => {
           state.isLoading = false;
@@ -120,3 +134,4 @@ const drinksSlice = createSlice({
 });
 
 export const drinkReducer = drinksSlice.reducer;
+export const { setSearch } = drinksSlice.actions;

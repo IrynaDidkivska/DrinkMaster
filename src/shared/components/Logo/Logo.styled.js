@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledLogo = styled.div`
   display: flex;
@@ -25,12 +25,11 @@ export const StyledLogo = styled.div`
 
 export const StyledLogoTitle = styled.div`
   margin-top: 1px;
-  font-family: "Manrope-600", sans-serif;
+  font-family: 'Manrope-600', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
   line-height: 18px;
-  color: ${({ theme }) => theme.colors.mainText};
 
   @media screen and (min-width: 768px) {
     font-size: 18px;

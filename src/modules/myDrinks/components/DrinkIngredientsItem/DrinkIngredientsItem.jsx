@@ -1,5 +1,4 @@
 import { useSelector } from 'react-redux';
-// import LimeIngrid from '../../images/LimeIngrid.png';
 import {
   IngredientsImage,
   IngredientsName,
@@ -18,8 +17,10 @@ const DrinkIngredientsItem = () => {
 
   return (
     <>
-      {ingredients.map(ingredient => (
-        <IngredientsItem key={ingredient._id}>
+      {ingredients.map((ingredient, index) => (
+        <IngredientsItem
+          key={ingredient._id ? ingredient._id : `ingredient-${index}`}
+        >
           <IngredientsImage
             src={ingredient.ingredientId['thumb-medium']}
             alt={ingredient.title}

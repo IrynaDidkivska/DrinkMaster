@@ -10,25 +10,19 @@ export const getCategoriesThunk = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-  },
+  }
 );
 
 export const getIngredientsThunk = createAsyncThunk(
   'filter/getIngredients',
-  async (query, thunkAPI) => {
+  async (_, thunkAPI) => {
     try {
-      const { page = 0, limit = 0 } = query;
-      const { data } = await API.get('api/filters/ingredients', {
-        params: {
-          page,
-          limit,
-        },
-      });
+      const { data } = await API.get('api/filters/ingredients');
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-  },
+  }
 );
 
 export const getGlassesThunk = createAsyncThunk(
@@ -40,5 +34,5 @@ export const getGlassesThunk = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-  },
+  }
 );

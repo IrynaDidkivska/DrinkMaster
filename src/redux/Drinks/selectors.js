@@ -1,13 +1,17 @@
-export const selectPopulars = (state) => state.drinks.popular;
+export const selectPopulars = state => state.drinks.popular;
 
-export const selectFavorites = (state) => state.drinks.favorite;
+export const selectFavorites = state => state.drinks.favorite;
 
-export const selectOwn = (state) => state.drinks.own;
+export const selectOwn = state => state.drinks.own;
 
-export const selectByID = (state) => state.drinks.drinkId;
+export const selectByID = state => state.drinks.drinkId;
 
-export const selectBySearch = (state) => state.drinks.search;
+export const selectBySearch = state => state.drinks.search;
 
-export const selectDetails = (state) => state.drinks.drinkDetails;
+export const selectTotalPages = state => state.drinks.totalPages;
 
-export const selectMainCatalog = (state) => state.drinks.drinks;
+export const selectFilteredDrinks = state => state.drinks.filteredDrinks;
+
+export const selectDetails = state => state.drinks.drinkDetails;
+
+export const selectMainCatalog = state => state.drinks.drinks;

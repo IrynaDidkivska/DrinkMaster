@@ -69,12 +69,7 @@ export const StyledDatetime = styled(Datetime)`
     min-width: 335px;
     min-height: 54px;
     text-align: center;
-    font-family: "Manrope-400";
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
     line-height: 1.28; /* 26.52px */
-    color: ${({ theme }) => theme.colors.mainText};
     background-color: transparent;
     outline: transparent;
     border-radius: 200px;
@@ -102,9 +97,11 @@ export const StyledCalendarSvg = styled.div`
   right: 10%;
   transform: translateX(-10%);
   stroke: ${({ theme }) => theme.colors.iconColor};
+  fill: transparent;
   pointer-events: none;
   width: 20px;
   height: 20px;
+  fill: transparent;
   top: 15px;
   right: 20px;
 

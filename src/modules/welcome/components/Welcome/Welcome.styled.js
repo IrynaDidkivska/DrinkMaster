@@ -55,6 +55,7 @@ export const StyledWrapper = styled.div`
   }
 `;
 export const WelcomeWrapper = styled.div`
+  z-index: 2;
   padding: 0 28px 0 28px;
   @media screen and (min-width: 768px) {
     padding: 0 0 0 64px;

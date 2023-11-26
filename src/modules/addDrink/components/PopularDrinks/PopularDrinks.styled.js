@@ -1,15 +1,13 @@
-import styled from "styled-components";
-import Subtitle from "../../../../shared/components/Title/Subtitle";
+import styled from 'styled-components';
 
 const PopularContainer = styled.ul`
   width: 335px;
-  /* height: 1300px; */
-  /* height: 432px; */
   gap: 24px;
   display: flex;
   flex-wrap: wrap;
   margin-top: 28px;
   margin-bottom: 80px;
+
   @media screen and (min-width: 768px) {
     width: 704px;
     height: 284px;
@@ -68,7 +66,7 @@ const PopularContainerDiscr = styled.div`
 `;
 
 const PopularName = styled.h3`
-  font-family: "Manrope-600", sans-serif;
+  font-family: 'Manrope-600', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -86,23 +84,17 @@ const PopularName = styled.h3`
   }
 `;
 
-const PopularDiskr = styled.div`
-  /* border: 1px solid green; */
-  font-family: "Manrope-600", sans-serif;
+const PopularDiskr = styled.p`
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-family: 'Manrope-600', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
-  color: white;
-  height: 63px;
-  /* max-height: 86px; */
-
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: normal;
-  /* white-space: wrap; */
-  text-align: left;
-  /* height: 63px; */
   color: ${({ theme }) => theme.colors.link};
 
   @media screen and (min-width: 768px) {

@@ -1,9 +1,13 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 export const Global = createGlobalStyle`
 
 body {
  
+font-family: 'Manrope-400',  sans-serif;
+font-weight: 400;
+font-style: normal;
+font-size: 14px;
 color: ${({ theme }) => theme.colors.mainText};
  background: ${({ theme }) => theme.background.main};
 transition: ${({ theme }) => theme.transition};
@@ -23,7 +27,7 @@ img {
    width:100%;
 }
 
-ul {
+ul,li {
   margin: 0;
   padding: 0;
   list-style: none;

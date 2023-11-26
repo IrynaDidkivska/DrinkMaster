@@ -39,6 +39,7 @@ const Footer = () => {
 		navigate('/')
 	}
 
+
 	useEffect(() => {
 		const fetchData = async (thunkAction, setData) => {
 			try {

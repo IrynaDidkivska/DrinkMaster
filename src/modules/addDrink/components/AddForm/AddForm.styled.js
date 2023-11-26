@@ -11,11 +11,31 @@ export const AddFormWrapperStyled = styled(ComponentWrapperStyled)`
     gap: 40px;
   }
 `;
+export const HiddenInputStyled = styled.input`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+`;
 
 export const ImgContainerStyled = styled.div`
+  background-image: ${props =>
+    props.$bgImg ? `url('${props.$bgImg}')` : 'none'};
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 18px;
   width: 335px;
   height: 320px;
   margin: 0 auto;
@@ -31,35 +51,36 @@ export const ImgContainerStyled = styled.div`
   @media screen and (min-width: 1440px) {
     width: 400px;
     height: 400px;
-    background: rgba(22, 31, 55, 0.5);
   }
 `;
 
-export const AddImgButtonStyled = styled.button`
+export const AddImgLabelStyled = styled.label`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 50px;
   height: 50px;
-  background-color: ${({ theme }) => theme.colors.mainText};
+
+  background-color: ${({ theme }) => theme.popUp.main};
   border-radius: 6px;
   border: none;
+  cursor: pointer;
   & svg {
     width: 28px;
     height: 28px;
-    stroke: ${({ theme }) => theme.colors.secondaryText};
+    stroke: ${({ theme }) => theme.popUp.secondary};
   }
 `;
-export const AddImgLabelStyled = styled.label`
+export const AddImgContainerStyled = styled.span`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 18px;
-  color: ${({ theme }) => theme.colors.mainText};
+  color: ${({ theme }) => theme.popUp.main};
   font-family: 'Manrope-500';
   font-size: 16px;
   font-weight: 500;
   line-height: 1.25; /* 125% */
+  cursor: default;
 `;
 
 export const InputWrapperStyled = styled.div`

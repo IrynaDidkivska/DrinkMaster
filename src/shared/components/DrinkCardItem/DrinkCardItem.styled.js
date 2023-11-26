@@ -50,6 +50,7 @@ const DrinkCardItemSeeMore = styled.a`
   font-size: 14px;
   line-height: 18px;
   color: ${({ theme }) => theme.colors.link};
+  cursor: pointer;
 
   @media screen and (min-width: 768px) {
     font-size: 16px;

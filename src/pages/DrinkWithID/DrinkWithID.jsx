@@ -1,4 +1,3 @@
-// import { useDispatch, useSelector } from 'react-redux';
 import IngredientList from '../../modules/myDrinks/components/DrinkIngredientsList/DrinkIngredientsList';
 import MyJustDrinks from '../../modules/myDrinks/components/MyJustDrinks/MyJustDrinks';
 import { useParams } from 'react-router-dom';

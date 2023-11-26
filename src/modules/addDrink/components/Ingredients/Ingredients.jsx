@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Subtitle from '../../../../shared/components/Title/Subtitle';
 import IngredientItem from './IngredientItem/IngredientItem';
 import {
@@ -8,22 +8,39 @@ import {
 } from './Ingredients.styled';
 import IngredientsCounter from './IngredientsCounter/IngredientsCounter';
 import { nanoid } from 'nanoid';
+import { useDispatch } from 'react-redux';
+import { getIngredientsThunk } from '../../../../redux/Filters/operations';
 
-const Ingredients = () => {
+const Ingredients = ({ setIngredientsGeneral }) => {
+  const dispatch = useDispatch();
   const [ingredients, setIngredients] = useState([
-    { id: nanoid(), name: '', volume: 1 },
-    { id: nanoid(), name: '', volume: 1 },
-    { id: nanoid(), name: '', volume: 1 },
+    { id: nanoid(), title: '', ingredientId: '', measure: '1' },
+    { id: nanoid(), title: '', ingredientId: '', measure: '1' },
+    { id: nanoid(), title: '', ingredientId: '', measure: '1' },
   ]);
+
+  useEffect(() => {
+    setIngredientsGeneral(ingredients);
+  }, [ingredients]);
+
+  useEffect(() => {
+    dispatch(getIngredientsThunk({ page: 1, limit: 100 }));
+  }, [dispatch]);
 
   const removeIngredient = id => {
     setIngredients(ingredients.filter(el => el.id !== id));
   };
-  const changeIngredient = id => {
-    const newArr = ingredients.map(el => {});
-    console.log();
-    setIngredients(ingredients.filter(el => el.id !== id));
+
+  const changeIngredient = ingredient => {
+    const newIngredients = ingredients.map(el => {
+      if (el.id === ingredient.id) {
+        return { ...el, ...ingredient };
+      }
+      return el;
+    });
+    setIngredients(newIngredients);
   };
+
   return (
     <IngredientsWrapperStyled>
       <ListHeaderStyled>
@@ -39,6 +56,7 @@ const Ingredients = () => {
           <IngredientItem
             key={ingredient.id}
             removeIngredient={removeIngredient}
+            changeIngredient={changeIngredient}
             ingredientData={ingredient}
           />
         ))}

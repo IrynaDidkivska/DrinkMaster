@@ -1,7 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const DrinkCardItemFaxContainer = styled.div`
   width: 335px;
+  position: relative;
 
   @media screen and (min-width: 768px) {
     .drinkCardItemFax-img {
@@ -38,13 +39,16 @@ const DrinkCardItemFaxImg = styled.img`
 `;
 
 const DrinkCardItemFaxName = styled.h3`
-  font-family: "Manrope-600", sans-serif;
+  font-family: 'Manrope-600', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
   justify-content: left;
   padding-top: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
   @media screen and (min-width: 768px) {
     font-size: 24px;
@@ -58,7 +62,7 @@ const DrinkCardItemFaxName = styled.h3`
 `;
 
 const DrinkCardItemFaxStatus = styled.p`
-  font-family: "Manrope-600", sans-serif;
+  font-family: 'Manrope-600', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -79,7 +83,7 @@ const DrinkCardItemFaxStatus = styled.p`
 `;
 
 const DrinkCardItemFaxDescription = styled.p`
-  font-family: "Manrope-600", sans-serif;
+  font-family: 'Manrope-600', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -124,7 +128,7 @@ const DrinkCardItemContainerDiscr = styled.div`
 `;
 
 const DrinkCardItemFaxBtn = styled.button`
-  font-family: "Manrope-600", sans-serif;
+  font-family: 'Manrope-600', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -135,6 +139,7 @@ const DrinkCardItemFaxBtn = styled.button`
   border-radius: 42px;
   border-color: transparent;
   margin-right: 8px;
+  cursor: pointer;
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
