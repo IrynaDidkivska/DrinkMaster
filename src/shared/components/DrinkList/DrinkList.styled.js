@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const List = styled.ul`
   display: flex;
@@ -14,6 +14,7 @@ export const List = styled.ul`
     flex-direction: row;
     flex-wrap: wrap;
     gap: 20px;
+    align-items: start;
   }
 
   @media screen and (min-width: 1440px) {

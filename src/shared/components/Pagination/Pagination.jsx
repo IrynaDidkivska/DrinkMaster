@@ -15,7 +15,7 @@ import { setSearch } from '../../../redux/Drinks/drinksSlice';
 import { useMediaQuery } from 'react-responsive';
 
 const Pagination = () => {
-  const itemsPerPage = 10;
+  const itemsPerPage = 9;
 
   const allDrinks = useSelector(selectBySearch);
   const totalPages = useSelector(selectTotalPages);
