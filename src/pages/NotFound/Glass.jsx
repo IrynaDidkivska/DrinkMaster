@@ -1,6 +1,6 @@
-import coctailPNG from '../../../public/img/notFound.png';
-import coctailWEBP from '../../../public/img/notFound.webp';
-import coctail2x from '../../../public/img/notFound@2x.png';
+import coctailPNG from '/img/notFound.png';
+import coctailWEBP from '/img/notFound.webp';
+import coctail2x from '/img/notFound@2x.png';
 import { StyledImage } from './NotFound.styled';
 
 const Glass = () => {

@@ -1,18 +1,18 @@
-import { StyledLogo, StyledLogoTitle } from "./Logo.styled";
-import { SpriteSVG } from "../../icons/SpriteSVG";
-import { useNavigate } from "react-router-dom";
+import { StyledLogo, StyledLogoTitle } from './Logo.styled';
+import { SpriteSVG } from '../../icons/SpriteSVG';
+import { useNavigate } from 'react-router-dom';
 
-const Logo = () => {
+const Logo = ({ isfooter }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/");
+    navigate('/');
   };
 
   return (
     <StyledLogo onClick={handleClick}>
-      <SpriteSVG name={"logo"} />
-      <StyledLogoTitle>Drink Master</StyledLogoTitle>
+      <SpriteSVG name={'logo'} />
+      <StyledLogoTitle $isfooter={isfooter}>Drink Master</StyledLogoTitle>
     </StyledLogo>
   );
 };

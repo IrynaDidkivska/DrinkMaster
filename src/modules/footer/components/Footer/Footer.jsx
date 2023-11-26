@@ -48,7 +48,7 @@ const Footer = () => {
     };
     fetchData(getPolicyThunk, setPolicyData);
     fetchData(getPublicThunk, setTermsData);
-  }, []);
+  }, [dispatch]);
 
   return (
     <StyledFooter>
@@ -57,7 +57,7 @@ const Footer = () => {
           <StyledFooterFirstBox>
             <StyledFooterLogoNav>
               <StyledFooterLogo>
-                <Logo />
+                <Logo isfooter={true} />
               </StyledFooterLogo>
               <FollowUs isfooter={true} />
             </StyledFooterLogoNav>
