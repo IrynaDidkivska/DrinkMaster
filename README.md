@@ -12,8 +12,8 @@
 
 ### Зміст
 
-1. [Бекенд](#бекенд)
-2. [Огляд проекту](#огляд-проекту)
+1. [Огляд проекту](#огляд-проекту)
+2. [Бекенд](#бекенд)
 3. [Функціонал](#функціонал)
 4. [Як почати](#як-почати)
 5. [Технології](#технології)
@@ -79,13 +79,13 @@
 
 - **Ірина Дідківська:** Тімлід/Розробник.
   [GitHub](https://github.com/IrynaDidkivska)
-  [LinkedIn](https://drink-master-service.onrender.com/api-docs/)
+  [LinkedIn]()
 - **Олексій Берківський:** Тімлід-Бекенд/Розробник
-  [GitHub]
+  [GitHub](https://github.com/BerkovskiiAlex)
   [LinkedIn]
 - **Ігор Золотоверх:** Скрам-мастер/Розробник
-  [GitHub]
-  [LinkedIn]
+  [GitHub](https://github.com/IhorZolot)
+  [LinkedIn](www.linkedin.com/in/ihor-zolotoverkh)
 - **Олег Андрійчук:** Розробник/Консультант
   [GitHub]
   [LinkedIn]
