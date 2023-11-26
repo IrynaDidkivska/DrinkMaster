@@ -9,7 +9,6 @@ import {
   StyledBtnCloseFooter,
   StyledFooter,
   StyledFooterFirstBox,
-  StyledFooterIconLogo,
   StyledFooterLogo,
   StyledFooterLogoNav,
   StyledFooterPrivacy,
@@ -19,7 +18,6 @@ import {
   StyledModalFooteer,
 } from './Footer.styled';
 import SubscribeForm from './SubscribeForm/SubscribeForm';
-import { useNavigate } from 'react-router-dom';
 import { useModal } from '../../../../hooks/useModal';
 
 import { useEffect, useState } from 'react';
@@ -30,18 +28,14 @@ import {
 } from '../../../../redux/Drinks/operations';
 import ModalContent from './ModalContent/ModalContent';
 import { StyledContentTitle } from './ModalContent/ModalContent.styled';
+import Logo from '../../../../shared/components/Logo/Logo';
 
 const Footer = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isPrivacyModalOpen, openPrivacy, closePrivacy] = useModal();
   const [isTermsModalOpen, openTerms, closeTerms] = useModal();
   const [policyData, setPolicyData] = useState('');
   const [termsData, setTermsData] = useState('');
-
-  const handleClick = () => {
-    navigate('/');
-  };
 
   useEffect(() => {
     const fetchData = async (thunkAction, setData) => {
@@ -63,10 +57,7 @@ const Footer = () => {
           <StyledFooterFirstBox>
             <StyledFooterLogoNav>
               <StyledFooterLogo>
-                <StyledFooterIconLogo onClick={handleClick}>
-                  <SpriteSVG name={'logo'} />
-                </StyledFooterIconLogo>
-                <span>Drink Master</span>
+                <Logo />
               </StyledFooterLogo>
               <FollowUs isfooter={true} />
             </StyledFooterLogoNav>
