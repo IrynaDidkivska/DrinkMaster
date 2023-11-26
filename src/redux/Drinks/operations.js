@@ -1,4 +1,3 @@
-
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { API } from '../../config/drinkConfig';
 
@@ -38,6 +37,7 @@ export const getAllSearchThunk = createAsyncThunk(
         },
       });
 
+      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -69,25 +69,30 @@ export const paginationThunk = createAsyncThunk(
   }
 );
 
-
 // Отримання популярних  коктейлів
-export const getPopularThunk = createAsyncThunk('drinks/getPopular', async (_, thunkAPI) => {
-	try {
-		const { data } = await API.get('api/drinks/popular')
-		return data
-	} catch (error) {
-		return thunkAPI.rejectWithValue(error.message)
-	}
-})
+export const getPopularThunk = createAsyncThunk(
+  'drinks/getPopular',
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await API.get('api/drinks/popular');
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 // Отримання одного коктейлю за ID
-export const getByIDThunk = createAsyncThunk('drinks/getByID', async (id, thunkAPI) => {
-	try {
-		const { data } = await API.get(`api/drinks/${id}`)
-		return data
-	} catch (error) {
-		return thunkAPI.rejectWithValue(error.message)
-	}
-})
+export const getByIDThunk = createAsyncThunk(
+  'drinks/getByID',
+  async (id, thunkAPI) => {
+    try {
+      const { data } = await API.get(`api/drinks/${id}`);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
 // OWN
 
@@ -170,19 +175,25 @@ export const addNewDrinkThunk = createAsyncThunk(
 
 //Отримання Privacy Policy та Public offering agreement
 
-export const getPolicyThunk = createAsyncThunk('drinks/getPolicy', async (_, thunkAPI) => {
-	try {
-		const { data } = await API.get(`api/privacy/policy`)
-		return data
-	} catch (error) {
-		return thunkAPI.rejectWithValue(error.message)
-	}
-})
-export const getPublicThunk = createAsyncThunk('drinks/getPublic', async (_, thunkAPI) => {
-	try {
-		const { data } = await API.get(`api/privacy/public`)
-		return data
-	} catch (error) {
-		return thunkAPI.rejectWithValue(error.message)
-	}
-})
+export const getPolicyThunk = createAsyncThunk(
+  'drinks/getPolicy',
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await API.get(`api/privacy/policy`);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const getPublicThunk = createAsyncThunk(
+  'drinks/getPublic',
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await API.get(`api/privacy/public`);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
