@@ -22,9 +22,10 @@ const SharedLayout = () => {
     }
   }, [navigate, location]);
 
-  useEffect(() => {
-    getWakeUpServer();
-  }, []);
+  // useEffect(() => {
+  //   console.log('hello');
+  //   getWakeUpServer();
+  // }, []);
 
   return (
     <>

@@ -1,19 +1,17 @@
-import axios from "axios";
-import { API } from "../../config/drinkConfig";
-
-const BASE_URL = "https://drink-master-project.onrender.com";
+import axios from 'axios';
+import { API } from '../../config/drinkConfig';
 
 export async function addContact(formData) {
   const options = {
-    method: "POST",
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     data: formData,
   };
 
   const { data } = await axios.post(
-    `${BASE_URL}/api/application`,
+    `${API}/api/application`,
     formData,
     options
   );
@@ -22,5 +20,5 @@ export async function addContact(formData) {
 }
 
 export async function getWakeUpServer() {
-  await API.get(``);
+  await axios.get(`${API}/api/application`);
 }
