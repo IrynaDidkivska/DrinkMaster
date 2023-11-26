@@ -50,7 +50,7 @@ export const IngredientSelect = styled(Select)`
     &placeholder {
       color: ${({ theme }) => theme.colors.link};
       &:active {
-        color: ${({ theme }) => theme.colors.mainText};
+        color: ${({ theme }) => theme.colors.mainPage};
       }
       @media (min-width: 768px) {
         font-size: 17px;
