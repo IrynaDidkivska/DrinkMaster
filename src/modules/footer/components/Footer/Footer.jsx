@@ -6,6 +6,7 @@ import FootelLink from './FootelLink/FootelLink'
 import {
 	OverlayBottom,
 	OverlayDesctop,
+	StyledBtnCloseFooter,
 	StyledFooter,
 	StyledFooterFirstBox,
 	StyledFooterIconLogo,
@@ -81,12 +82,22 @@ const Footer = () => {
 			<OverlayDesctop />
 			{isPrivacyModalOpen && (
 				<Modal onClose={closePrivacy}>
-					<StyledModalFooteer>{ModalContent(policyData)}</StyledModalFooteer>
+					<StyledModalFooteer>
+						<StyledBtnCloseFooter onClick={closePrivacy}>
+							<SpriteSVG name={'close'} />
+						</StyledBtnCloseFooter>
+						{ModalContent(policyData)}
+					</StyledModalFooteer>
 				</Modal>
 			)}
 			{isTermsModalOpen && (
 				<Modal onClose={closeTerms}>
-					<StyledModalFooteer>{ModalContent(termsData)}</StyledModalFooteer>
+					<StyledModalFooteer>
+						<StyledBtnCloseFooter onClick={closeTerms}>
+							<SpriteSVG name={'close'} />
+						</StyledBtnCloseFooter>
+						{ModalContent(termsData)}
+					</StyledModalFooteer>
 				</Modal>
 			)}
 		</StyledFooter>

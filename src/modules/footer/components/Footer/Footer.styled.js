@@ -153,3 +153,17 @@ export const StyledModalFooteer = styled.div`
 		padding: 50px 50px 75px 50px;
 	}
 `
+export const StyledBtnCloseFooter = styled.button`
+	width: 24px;
+	height: 24px;
+	padding: 0;
+	background-color: transparent;
+	border: none;
+
+	position: fixed;
+	top: 14px;
+	right: 14px;
+	svg {
+		stroke: ${({ theme }) => theme.colors.active};
+	}
+`
