@@ -1,12 +1,12 @@
-import { Glass, StyledWrapper } from "./NotFound.styled";
-import Image from "./img/notFound.png";
+import Glass from './Glass';
+import { StyledWrapper } from './NotFound.styled';
 
 const NotFound = () => {
   return (
     <>
       <StyledWrapper>
         <span>4</span>
-        <Glass src={Image} alt="Coctail which introduce page not found" />
+        <Glass />
         <span>4</span>
       </StyledWrapper>
     </>

@@ -1,21 +1,20 @@
-import React, { useEffect, useState } from "react";
-import LigthBtn from "../../shared/components/Buttons/LigthBtn";
-import { useDispatch, useSelector } from "react-redux";
-import { StyledTitle } from "../../shared/components/Title/Title.styled";
+import React, { useEffect, useState } from 'react';
+import LigthBtn from '../../shared/components/Buttons/LigthBtn';
+import { useDispatch, useSelector } from 'react-redux';
+import { StyledTitle } from '../../shared/components/Title/Title.styled';
 import {
   BtnWrapper,
-  HomeImage,
   HomeWrapper,
   MainText,
   WrapperCategory,
-} from "./HomePage.styled";
-import Image from "./img/Found.png";
-import { useNavigate } from "react-router-dom";
-import { selectMainCatalog } from "../../redux/Drinks/selectors";
-import { getAllDrinksThunk } from "../../redux/Drinks/operations";
-import DrinkCardItem from "../../shared/components/DrinkCardItem/DrinkCardItem";
-import Subtitle from "../../shared/components/Title/Subtitle";
-import { useMediaQuery } from "react-responsive";
+} from './HomePage.styled';
+import { useNavigate } from 'react-router-dom';
+import { selectMainCatalog } from '../../redux/Drinks/selectors';
+import { getAllDrinksThunk } from '../../redux/Drinks/operations';
+import DrinkCardItem from '../../shared/components/DrinkCardItem/DrinkCardItem';
+import Subtitle from '../../shared/components/Title/Subtitle';
+import { useMediaQuery } from 'react-responsive';
+import Hero from '../../modules/main/components/Hero/Hero';
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -24,9 +23,9 @@ const HomePage = () => {
   const [drinksToShow, setDrinksToShow] = useState(1);
   const allCatalog = useSelector(selectMainCatalog);
   // ==============================================
-  const isLargeScreen = useMediaQuery({ query: "(min-width: 1400px)" });
+  const isLargeScreen = useMediaQuery({ query: '(min-width: 1400px)' });
   const isMediumScreen = useMediaQuery({
-    query: "(min-width: 768px) and (max-width: 1399px)",
+    query: '(min-width: 768px) and (max-width: 1399px)',
   });
   // ===============================================
   const categ = Object.keys(allCatalog);
@@ -42,10 +41,10 @@ const HomePage = () => {
   }, [currentPage, dispatch, isLargeScreen, isMediumScreen]);
 
   const handleOtherDrinks = () => {
-    navigate("/drinks");
+    navigate('/drinks');
   };
   const handleAddDrinkClick = () => {
-    navigate("/add");
+    navigate('/add');
   };
 
   return (
@@ -53,7 +52,7 @@ const HomePage = () => {
       <HomeWrapper>
         <div>
           <StyledTitle>
-            {"Craft Your Perfect Drink with Drink Master"}
+            {'Craft Your Perfect Drink with Drink Master'}
           </StyledTitle>
           <MainText>
             Unlock your inner mixologist with Drink Master, your one-stop
@@ -62,17 +61,16 @@ const HomePage = () => {
           </MainText>
           <LigthBtn onClick={handleAddDrinkClick}>Add drink</LigthBtn>
         </div>
-
-        <HomeImage src={Image} alt="Coctail's name" />
+        <Hero />
       </HomeWrapper>
       <>
-        {categ.map((category) => {
+        {categ.map(category => {
           const foreCoctails = allCatalog[category];
           return (
             <React.Fragment key={category}>
               <Subtitle Subtitle={category}></Subtitle>
               <WrapperCategory>
-                {foreCoctails.slice(0, drinksToShow).map((drink) => (
+                {foreCoctails.slice(0, drinksToShow).map(drink => (
                   <DrinkCardItem key={drink._id} data={drink} />
                 ))}
               </WrapperCategory>

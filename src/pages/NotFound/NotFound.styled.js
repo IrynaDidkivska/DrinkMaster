@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledWrapper = styled.div`
   position: relative;
@@ -15,7 +15,7 @@ export const StyledWrapper = styled.div`
 
   span {
     color: ${({ theme }) => theme.notFound};
-    font-family: "Manrope-600", sans-serif;
+    font-family: 'Manrope-600', sans-serif;
     font-size: 120px;
     font-style: normal;
     font-weight: 600;
@@ -46,16 +46,19 @@ export const StyledWrapper = styled.div`
   }
 `;
 
-export const Glass = styled.img`
-  width: 145px;
+export const StyledImage = styled.img`
+  width: 123px;
   height: 156px;
   position: absolute;
-  left: 60px;
+  left: 68px;
+  top: 190px;
 
   @media screen and (min-width: 768px) {
-    width: 198px;
+    width: 158px;
     height: 201px;
-    position: absolute;
-    left: 65px;
+    left: 80px;
+  }
+  @media screen and (min-width: 1440px) {
+    left: 130px;
   }
 `;
