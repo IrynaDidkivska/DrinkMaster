@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import LigthBtn from "../../shared/components/Buttons/LigthBtn";
+import styled from 'styled-components';
+import LigthBtn from '../../shared/components/Buttons/LigthBtn';
 
 export const BlueGlass = styled.div`
   position: relative;
@@ -10,7 +10,7 @@ export const BlueGlass = styled.div`
   padding-top: 196px;
   padding-bottom: 285px;
   width: 241px;
-  background: url("../../shared/img/Found.webp"),
+  background: url('../../shared/img/Found.webp'),
     lightgray -40.378px -23px / 133.644% 107.865% no-repeat;
 `;
 
@@ -27,6 +27,7 @@ export const MainText = styled.div`
   font-weight: 400;
   line-height: 1.42;
   padding-bottom: 32px;
+  padding-top: 28px;
   @media screen and (min-width: 768px) {
     font-size: 18px;
     line-height: 1.33;

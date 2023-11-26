@@ -14,7 +14,7 @@ import { paginationThunk } from '../../../redux/Drinks/operations';
 import { setSearch } from '../../../redux/Drinks/drinksSlice';
 
 const Pagination = () => {
-  const itemsPerPage = 10;
+  const itemsPerPage = 9;
 
   const allDrinks = useSelector(selectBySearch);
   const totalPages = useSelector(selectTotalPages);

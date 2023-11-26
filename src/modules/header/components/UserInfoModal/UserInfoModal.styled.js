@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { StyledBtn } from "../../../../shared/components/Buttons/LigthBtn.styled";
+import styled from 'styled-components';
+import { StyledBtn } from '../../../../shared/components/Buttons/LigthBtn.styled';
 
 export const StyledModal = styled.div`
   width: 335px;
@@ -80,7 +80,7 @@ export const StyledModalInput = styled.input`
   width: 100%;
   margin-bottom: 18px;
   padding: 16px 24px;
-  font-family: "Manrope-400", sans-serif;
+  font-family: 'Manrope-400', sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -114,8 +114,8 @@ export const StyledBtnEdit = styled.button`
 
 export const StyledBtnSave = styled(StyledBtn)`
   width: 100%;
-  padding: 18px 90px;
-  font-family: "Manrope-600", sans-serif;
+  padding: 18px 96px;
+  font-family: 'Manrope-600', sans-serif;
   line-height: 18px;
   color: ${({ theme }) => theme.popUp.secondary};
   background-color: ${({ theme }) => theme.popUp.main};

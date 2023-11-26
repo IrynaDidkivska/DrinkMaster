@@ -24,17 +24,13 @@ const DrinkCardItemFaxImg = styled.img`
   object-fit: cover;
 
   @media screen and (min-width: 768px) {
-    .drinkCardItemFax-img {
-      width: 342px;
-      height: 360px;
-    }
+    width: 342px;
+    height: 360px;
   }
 
   @media screen and (min-width: 1440px) {
-    .drinkCardItemFax-img {
-      width: 400px;
-      height: 400px;
-    }
+    width: 400px;
+    height: 400px;
   }
 `;
 

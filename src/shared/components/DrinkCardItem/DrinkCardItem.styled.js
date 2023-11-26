@@ -1,10 +1,9 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const DrinkCardItemImage = styled.img`
   width: 335px;
   height: 360px;
   border-radius: 8px;
-  /* object-fit: cover; */
 
   @media screen and (min-width: 768px) {
     width: 342px;
@@ -23,7 +22,7 @@ const DrinkCardItemContainerDiscr = styled.div`
 `;
 
 const DrinkCardItemName = styled.h3`
-  font-family: "Manrope-600", sans-serif;
+  font-family: 'Manrope-600', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -44,7 +43,7 @@ const DrinkCardItemName = styled.h3`
 `;
 
 const DrinkCardItemSeeMore = styled.a`
-  font-family: "Manrope-600", sans-serif;
+  font-family: 'Manrope-600', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;

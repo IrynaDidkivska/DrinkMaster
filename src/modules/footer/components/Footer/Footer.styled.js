@@ -1,9 +1,9 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledFooter = styled.footer`
   position: relative;
   overflow: hidden;
-  padding-top: 42px;
+  padding-top: 40px;
   padding-bottom: 18px;
   background-color: ${({ theme }) => theme.footer.bacground};
   border-top: ${({ theme }) => theme.footer.border};
@@ -44,7 +44,7 @@ export const StyledFooterLogo = styled.div`
   margin-bottom: 22px;
   span {
     color: ${({ theme }) => theme.footer.color};
-    font-family: "Manrope-600", sans-serif;
+    font-family: 'Manrope-600', sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 600;

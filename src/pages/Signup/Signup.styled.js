@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import Datetime from "react-datetime";
+import styled from 'styled-components';
+import Datetime from 'react-datetime';
 
 //Datetime
 export const StyledDatatimeWrapper = styled.div`
@@ -9,7 +9,7 @@ export const StyledDatatimeWrapper = styled.div`
 `;
 
 export const StyledDatetime = styled(Datetime)`
-  font-family: "Manrope-500";
+  font-family: 'Manrope-500';
   font-size: 16px;
   font-weight: 500;
   letter-spacing: -0.32px;
@@ -45,7 +45,7 @@ export const StyledDatetime = styled(Datetime)`
         }
 
         thead {
-          font-family: "Manrope-500";
+          font-family: 'Manrope-500';
           font-size: 16px;
           font-weight: 500;
           letter-spacing: -0.32px;
@@ -65,11 +65,11 @@ export const StyledDatetime = styled(Datetime)`
 
   input {
     display: block;
-    padding: 14px 0 14px 24px;
+    padding: 14px 0 15px 24px;
     min-width: 335px;
     min-height: 54px;
     text-align: center;
-    font-family: "Manrope-400";
+    font-family: 'Manrope-400';
     font-size: 14px;
     font-style: normal;
     font-weight: 400;

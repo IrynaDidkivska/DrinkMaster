@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledNotAdd = styled.div`
   position: relative;
@@ -10,12 +10,10 @@ export const StyledNotAdd = styled.div`
     width: 205px;
     font-size: 14px;
     text-align: center;
-    padding-bottom: 80px;
   }
   @media screen and (min-width: 768px) {
     p {
       width: 236px;
-      padding-bottom: 140px;
       font-size: 16px;
     }
   }
@@ -33,7 +31,7 @@ export const Glass = styled.img`
 
   @media screen and (min-width: 768px) {
     width: 261px;
-    height: 326px;
+    max-height: 326px;
     margin-top: 67px;
   }
 `;
