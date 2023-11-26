@@ -1,11 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  DrinkIDImage,
   StyledJustButton,
   StyledJustDrinks,
   StyledJustImages,
   StyledJustText,
   StyledJustType,
   StyledTitleSection,
+
 } from './MyJustDrinks.styled';
 import {
   addFavoriteThunk,
@@ -19,7 +21,9 @@ import {
 import { toast } from 'react-toastify';
 import { useState } from 'react';
 
+
 const MyJustDrinks = () => {
+  const [imageLoaded, setImageLoaded] = useState(false);
   const dispatch = useDispatch();
   const details = useSelector(selectDetails);
   const isFavorite = useSelector(selectFavorites);
@@ -42,6 +46,14 @@ const MyJustDrinks = () => {
     toast.success('You removed drink from your favorite');
   };
 
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
+
+  const handleImageError = () => {
+    setImageLoaded(false);
+  };
+
   return (
     <StyledJustDrinks>
       <div>
@@ -59,7 +71,22 @@ const MyJustDrinks = () => {
           Remove from favorites
         </StyledJustButton>
       </div>
-      <StyledJustImages src={details.drinkThumb} alt={details.drink} />
+
+      <WrapperPosition>
+        <DrinkIDImage
+          onLoad={handleImageLoad}
+          onError={handleImageError}
+          src={details.drinkThumb}
+          // alt={details.drink}
+        />
+        {!imageLoaded && (
+          <StyledJustImages
+            src={Coctail}
+            // alt={data.drink}
+            style={{ position: "absolute", top: 0 }}
+          />
+        )}
+      </WrapperPosition>
     </StyledJustDrinks>
   );
 };

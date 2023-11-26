@@ -10,6 +10,7 @@ import {
   DrinkCardItemFaxName,
   DrinkCardItemFaxNavi,
   DrinkCardItemFaxStatus,
+
 } from './Card.styled';
 import {
   deleteFromFavoriteThunk,
@@ -18,10 +19,9 @@ import {
 import { SpriteSVG } from '../../icons/SpriteSVG';
 import { toast } from 'react-toastify';
 import { confirmNamePage } from '../../helpers/confirmNamePage';
-
 import Coctail from '../../../shared/img/image.png';
-// import { DrinkCardItemImage } from '../DrinkCardItem/DrinkCardItem.styled';
 import { useState } from 'react';
+
 
 const Card = ({ data }) => {
   const navigate = useNavigate();

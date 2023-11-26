@@ -22,7 +22,7 @@ export const StyledTitleSection = styled.h1`
 `;
 
 export const DivWrapper = styled.div`
-  position: relative;
+  /* position: relative; */
 `;
 
 export const StyledJustDrinks = styled.div`
@@ -84,13 +84,18 @@ export const StyledJustButton = styled(StyledBtn)`
   }
 `;
 
+export const WrapperPosition = styled.div`
+  position: relative;
+`;
+
 export const StyledJustImages = styled.img`
   max-height: 400px;
   border-radius: 8px;
   object-fit: cover;
 
   @media screen and (min-width: 1440px) {
-    max-width: 400px;
+    width: 400px;
+    height: 400px;
   }
 `;
 
@@ -106,10 +111,12 @@ export const DrinkIDImage = styled.img`
   @media screen and (min-width: 768px) {
     width: 704px;
     height: 400px;
+    object-fit: cover;
   }
 
   @media screen and (min-width: 1440px) {
     width: 400px;
     height: 400px;
+    object-fit: contain;
   }
 `;
