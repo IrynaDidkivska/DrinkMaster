@@ -23,12 +23,11 @@ import {
 } from '../../../../redux/Filters/filtersSlice';
 import { getAllSearchThunk } from '../../../../redux/Drinks/operations';
 
-
 const SearchForm = () => {
   const dispatch = useDispatch();
 
-  const categories = useSelector(selectNormalizedCategories);
-  const ingregients = useSelector(selectNormalizedIngredients);
+  let categories = useSelector(selectNormalizedCategories);
+  let ingregients = useSelector(selectNormalizedIngredients);
   const { query, category, ingredient } = useSelector(selectSearchQuery);
 
   useEffect(() => {
@@ -36,10 +35,16 @@ const SearchForm = () => {
     dispatch(getIngredientsThunk());
   }, [dispatch]);
 
-
   const submitForm = () => {
-    dispatch(getAllSearchThunk({ query, category, ingredient }));
-
+    dispatch(
+      getAllSearchThunk({
+        query,
+        category,
+        ingredient,
+        page: 0,
+        limit: 0,
+      })
+    );
   };
 
   const onSubmit = e => {
@@ -60,6 +65,7 @@ const SearchForm = () => {
           <input
             type="text"
             placeholder="Enter the text"
+            value={query}
             onChange={e => dispatch(setQuery(e.target.value))}
           ></input>
           <button type="submit">
@@ -70,13 +76,18 @@ const SearchForm = () => {
         <SelectStyled
           classNamePrefix="customSelect"
           placeholder="All categories"
-          options={categories}
-          onChange={e => dispatch(setCategory(e.value))}
+          options={[{ label: 'All categories', value: '' }, ...categories]}
+          onChange={e => {
+            if (e.label === 'All categories') {
+              return dispatch(setCategory(e.value));
+            }
+            return dispatch(setCategory(e.label));
+          }}
         />
         <SelectStyled
           classNamePrefix="customSelect"
           placeholder="Ingredients"
-          options={ingregients}
+          options={[{ label: 'All ingregients', value: '' }, ...ingregients]}
           onChange={e => dispatch(setIngridient(e.value))}
         />
       </FormStyled>
