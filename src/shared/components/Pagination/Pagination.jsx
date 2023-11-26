@@ -67,7 +67,7 @@ const Pagination = () => {
         marginPagesDisplayed={1}
         pageCount={
           filteredDrinks.length > 0
-            ? Math.ceil(filteredDrinks.length / itemsPerPage)
+            ? Math.ceil(Math.ceil(filteredDrinks.length / itemsPerPage))
             : totalPages > 0
             ? totalPages
             : 1
