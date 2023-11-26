@@ -25,7 +25,7 @@ export const StyledLink = styled(NavLink)`
 
   &:hover,
   &:focus {
-    color: ${({ theme }) => theme.colors.mainText};
+    color: ${({ theme }) => theme.colors.active};
     background: ${({ theme }) => theme.background.dropdown};
     border: ${({ theme }) => theme.borderTransparent};
     cursor: url(https://sweezy-cursors.com/wp-content/uploads/cursor/summer-cocktail-animated/summer-cocktail-animated-cursor-2-32x32.png),

@@ -24,6 +24,7 @@ const DrinkIngredientsItem = () => {
           <IngredientsImage
             src={ingredient.ingredientId['thumb-medium']}
             alt={ingredient.title}
+            loading="lazy"
           />
           <IngredientsContainerDiscr>
             <IngredientsName>{ingredient.title}</IngredientsName>
