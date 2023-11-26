@@ -38,7 +38,7 @@ const AddForm = ({ setValues }) => {
   useEffect(() => {
     dispatch(getCategoriesThunk());
     dispatch(getGlassesThunk());
-  }, []);
+  }, [dispatch]);
 
   const filePreparation = file => {
     if (file) {

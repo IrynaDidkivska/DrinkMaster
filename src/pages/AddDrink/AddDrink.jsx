@@ -24,8 +24,6 @@ const AddDrink = () => {
   const [ingredients, setIngredients] = useState();
   const [instructions, setInstructions] = useState();
 
-  // console.log('drinkPhoto===>>>', drinkPhoto);
-
   const ingredientsCheckReducer = arr => {
     return arr.reduce((acc, ingredient) => {
       if (!ingredient.title || !ingredient.measure) {
@@ -49,7 +47,7 @@ const AddDrink = () => {
     const correctIngredients = ingredientsCheckReducer(ingredients);
     if (ingredients.length !== correctIngredients.length) {
       return console.log(
-        'Заповніть будь ласка усі поля інгредієнтів або видаліть порожні.',
+        'Заповніть будь ласка усі поля інгредієнтів або видаліть порожні.'
       );
     }
     const newDrink = {
@@ -76,7 +74,7 @@ const AddDrink = () => {
       request.append(`ingredients[${index}][title]`, ingredient.title);
       request.append(
         `ingredients[${index}][ingredientId]`,
-        ingredient.ingredientId,
+        ingredient.ingredientId
       );
       request.append(`ingredients[${index}][measure]`, ingredient.measure);
     });
@@ -106,7 +104,7 @@ const AddDrink = () => {
         <div>
           <MediaWrapper>
             <Subtitle Subtitle="Follow us" />
-            <FollowUs />
+            <FollowUs isfooter={false} />
           </MediaWrapper>
           <PopularDrinks />
         </div>

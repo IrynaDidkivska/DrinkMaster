@@ -3,19 +3,16 @@ import Subtitle from '../../../../shared/components/Title/Subtitle';
 
 export const TextareaStyled = styled.textarea`
   width: 100%;
-  color: ${({ theme }) => theme.colors.mainText};
   height: 184px;
   padding: 16px 18px;
-  border: 1px solid rgba(243, 243, 243, 0.5);
+  border: 1px solid ${({ theme }) => theme.colors.link};
   border-radius: 14px;
   outline: transparent;
   background: transparent;
   resize: none;
   overflow-x: hidden;
   margin-top: 40px;
-  font-family: 'Manrope-400';
-  font-size: 14px;
-  font-weight: 400;
+
   line-height: 1.28; /* 128.571% */
   &::-webkit-scrollbar {
     width: 8px;

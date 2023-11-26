@@ -6,15 +6,14 @@
 
 ## Project Overview
 
-This is a [веб-додаток](https://drink-master-project.vercel.app/signin),
-created by the "CyberWorld" team for those who appreciate the atmosphere of cocktail culture and the diversity of drinks. Our application allows convenient access to a wide library of beverages. Here, you can easily find, browse, and choose drinks from our variety, as well as save your favorites and even create your own.
+This is a [web-site](https://drink-master-project.vercel.app/signin), created by the "CyberWorld" team for those who appreciate the atmosphere of cocktail culture and the diversity of drinks. Our application allows convenient access to a wide library of beverages. Here, you can easily find, browse, and choose drinks from our variety, as well as save your favorites and even create your own.
 
 ---
 
 ### Contents
 
-1. [Backend](#backend)
-2. [Project Overview](#project-overview)
+1. [Project Overview](#project-overview)
+2. [Backend](#backend)
 3. [Functionality](#functionality)
 4. [Getting Started](#getting-started)
 5. [Technologies](#technologies)
@@ -75,13 +74,13 @@ This project was developed by the "CyberWorld" team:
 
 - **Iryna Didkivska:** Team Lead/Developer.
   [GitHub](https://github.com/IrynaDidkivska)
-  [LinkedIn](https://drink-master-service.onrender.com/api-docs/)
+  [LinkedIn]()
 - **Олексій Берківський:** Team Lead-Backend/Developer
-  [GitHub]
+  [GitHub](https://github.com/BerkovskiiAlex)
   [LinkedIn]
 - **Ihor Zolotoverkh:** Scrum Master/Developer
-  [GitHub]
-  [LinkedIn]
+  [GitHub](https://github.com/IhorZolot)
+  [LinkedIn](www.linkedin.com/in/ihor-zolotoverkh)
 - **Олег Андрійчук:** Developer/Consultant
   [GitHub]
   [LinkedIn]

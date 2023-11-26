@@ -6,6 +6,8 @@ import {
 } from './AddDrinkSelect.styled';
 
 const AddDrinkSelect = ({ label, options = [], changeF }) => {
+  const placeholder =
+    label === 'Category' ? 'Cocktail' : label === 'Glass' ? 'Glass' : '';
   return (
     <>
       <SelectWrapper>
@@ -13,6 +15,7 @@ const AddDrinkSelect = ({ label, options = [], changeF }) => {
         <SelectStyled
           id={label}
           classNamePrefix="addDrink"
+          placeholder={placeholder}
           options={options}
           onChange={e => changeF(e.label)}
         />

@@ -13,13 +13,9 @@ import {
   addFavoriteThunk,
   deleteFromFavoriteThunk,
 } from '../../../../redux/Drinks/operations';
-import {
-  selectByID,
-  selectDetails,
-  selectFavorites,
-} from '../../../../redux/Drinks/selectors';
+import { selectDetails } from '../../../../redux/Drinks/selectors';
 import { toast } from 'react-toastify';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Coctail from '../../../../shared/img/image.png';
 
 const MyJustDrinks = () => {
@@ -28,15 +24,23 @@ const MyJustDrinks = () => {
   const details = useSelector(selectDetails);
   const drinkDetails = useSelector(selectDetails);
 
-  console.log('drinkDetails', drinkDetails.isFavorite);
+  console.log('drinkDetails', drinkDetails);
+
+  const [isFavorite, setIsFavorite] = useState(drinkDetails.isFavorite);
+
+  useEffect(() => {
+    setIsFavorite(drinkDetails.isFavorite);
+  }, [drinkDetails.isFavorite]);
 
   const handleAddFavorite = () => {
-    if (!drinkDetails.isFavorite) {
+    if (!isFavorite) {
       dispatch(addFavoriteThunk(details._id));
       toast.success('You added drink to your favorite');
+      setIsFavorite(true);
     } else {
       dispatch(deleteFromFavoriteThunk(details._id));
-      toast.success('You removed drink from your favorite');
+      toast.warning('You removed drink from your favorite');
+      setIsFavorite(false);
     }
   };
 
@@ -56,10 +60,8 @@ const MyJustDrinks = () => {
           {details.glass} / {details.alcoholic}
         </StyledJustType>
         <StyledJustText>{details.description}</StyledJustText>
-        <StyledJustButton onClick={handleAddFavorite}>
-          {drinkDetails.isFavorite
-            ? 'Remove from favorites'
-            : 'Add to favorite drinks'}
+        <StyledJustButton onClick={handleAddFavorite} $isFavorite={isFavorite}>
+          {isFavorite ? 'Remove from favorites' : 'Add to favorite drinks'}
         </StyledJustButton>
       </div>
 

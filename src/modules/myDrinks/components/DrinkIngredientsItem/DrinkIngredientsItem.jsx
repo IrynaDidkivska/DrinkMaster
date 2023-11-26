@@ -1,12 +1,12 @@
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 import {
   IngredientsImage,
   IngredientsName,
   IngredientsNumber,
   IngredientsContainerDiscr,
   IngredientsItem,
-} from "./DrinkIngredientsItem.styles";
-import { selectDetails } from "../../../../redux/Drinks/selectors";
+} from './DrinkIngredientsItem.styles';
+import { selectDetails } from '../../../../redux/Drinks/selectors';
 
 const DrinkIngredientsItem = () => {
   const { ingredients } = useSelector(selectDetails);
@@ -17,10 +17,12 @@ const DrinkIngredientsItem = () => {
 
   return (
     <>
-      {ingredients.map((ingredient) => (
-        <IngredientsItem key={ingredient._id}>
+      {ingredients.map((ingredient, index) => (
+        <IngredientsItem
+          key={ingredient._id ? ingredient._id : `ingredient-${index}`}
+        >
           <IngredientsImage
-            src={ingredient.ingredientId["thumb-medium"]}
+            src={ingredient.ingredientId['thumb-medium']}
             alt={ingredient.title}
           />
           <IngredientsContainerDiscr>

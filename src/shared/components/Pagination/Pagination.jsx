@@ -63,7 +63,7 @@ const Pagination = () => {
         pageRangeDisplayed={5}
         pageCount={
           filteredDrinks.length
-            ? filteredDrinks.length / itemsPerPage
+            ? Math.ceil(filteredDrinks.length / itemsPerPage)
             : totalPages
         }
         previousLabel={

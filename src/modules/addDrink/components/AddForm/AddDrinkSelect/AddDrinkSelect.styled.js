@@ -12,9 +12,10 @@ export const SelectStyled = styled(Select)`
       border: none !important;
       box-shadow: none !important;
       outline: transparent !important;
+      color: ${({ theme }) => theme.popUp.main};
       &:hover,
       &:focus {
-        border-bottom: 1px solid rgba(243, 243, 243, 0.5);
+        border-bottom: 1px solid ${({ theme }) => theme.colors.link};
         cursor: pointer;
       }
       &--is-focused {
@@ -38,13 +39,16 @@ export const SelectStyled = styled(Select)`
       padding: 0;
     }
     &placeholder {
+      color: ${({ theme }) => theme.colors.link};
+      &:active {
+        color: ${({ theme }) => theme.colors.mainPage};
+      }
+      @media (min-width: 768px) {
+        font-size: 17px;
+      }
     }
     &single-value {
       margin: 0;
-      color: ${({ theme }) => theme.colors.mainText};
-      font-family: 'Manrope-400';
-      font-size: 14px;
-      font-weight: 400;
       line-height: 14px; /* 100% */
     }
     &indicators {
@@ -54,7 +58,7 @@ export const SelectStyled = styled(Select)`
       & svg {
         width: 20px;
         height: 20px;
-        fill: ${({ theme }) => theme.colors.mainText};
+        fill: ${({ theme }) => theme.colors.mainPage};
       }
     }
     &input-container {
@@ -65,10 +69,7 @@ export const SelectStyled = styled(Select)`
       flex-shrink: 1;
       padding: 0;
       margin: 0;
-      color: #f3f3f3;
-      font-family: 'Manrope-400';
-      font-size: 14px;
-      font-weight: 400;
+      color: ${({ theme }) => theme.colors.active};
       line-height: 1; /* 100% */
       width: fit-content;
     }
@@ -86,13 +87,11 @@ export const SelectStyled = styled(Select)`
     &menu {
       margin-top: -10px;
       width: fit-content;
-      background: ${({ theme }) => theme.colors.secondaryText};
+      background-color: ${({ theme }) => theme.switcher.color};
       border-radius: 12px;
       color: rgba(243, 243, 243, 0.4);
       white-space: nowrap;
-      font-family: 'Manrope-400';
       font-size: 12px;
-      font-weight: 400;
       line-height: 1.33; /* 133.333% */
       right: 0;
       padding: 8px;
@@ -108,7 +107,7 @@ export const SelectStyled = styled(Select)`
         background: transparent;
       }
       &::-webkit-scrollbar-thumb {
-        background-color: #434d67;
+        background-color: ${({ theme }) => theme.background.scrollbar};
         border-radius: 20px;
       }
     }
@@ -116,17 +115,14 @@ export const SelectStyled = styled(Select)`
       height: 18px;
       text-overflow: ellipsis;
       cursor: pointer;
-      color: rgba(243, 243, 243, 0.4);
-      font-family: 'Manrope-400';
+      color: ${({ theme }) => theme.colors.link};
       font-size: 12px;
-      font-weight: 400;
       line-height: 1.33; /*133.333% */
       &--is-focused,
       &:active,
       &--is-selected {
         background: transparent;
         background-color: none;
-        color: ${({ theme }) => theme.colors.mainText};
         &:active {
           background-color: transparent;
         }
@@ -159,8 +155,7 @@ export const SelectStyled = styled(Select)`
 export const SelectWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(243, 243, 243, 0.5);
-  color: ${({ theme }) => theme.colors.mainText};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.link};
   height: 34px;
   @media screen and (min-width: 768px) {
     height: 41px;
@@ -168,10 +163,6 @@ export const SelectWrapper = styled.div`
 `;
 
 export const LabelStyled = styled.div`
-  color: ${({ theme }) => theme.colors.mainText};
-  font-family: 'Manrope-400';
-  font-size: 14px;
-  font-weight: 400;
   line-height: normal;
   letter-spacing: -0.28px;
   margin-bottom: 31px;

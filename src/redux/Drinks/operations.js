@@ -23,12 +23,8 @@ export const getAllDrinksThunk = createAsyncThunk(
 export const getAllSearchThunk = createAsyncThunk(
   'drinks/getAllSearch',
   async (
-
-
     { ingredient = '', category = '', query = '', page = null, limit = null },
     thunkAPI
-
-
   ) => {
     try {
       const { data } = await API.get('api/drinks/search', {
@@ -41,6 +37,7 @@ export const getAllSearchThunk = createAsyncThunk(
         },
       });
 
+      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -169,6 +166,31 @@ export const addNewDrinkThunk = createAsyncThunk(
   async (body, thunkAPI) => {
     try {
       const { data } = await API.post(`api/drinks/own/add`, body);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+//Отримання Privacy Policy та Public offering agreement
+
+export const getPolicyThunk = createAsyncThunk(
+  'drinks/getPolicy',
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await API.get(`api/privacy/policy`);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const getPublicThunk = createAsyncThunk(
+  'drinks/getPublic',
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await API.get(`api/privacy/public`);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
