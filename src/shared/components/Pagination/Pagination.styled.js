@@ -5,6 +5,11 @@ export const StyledNext = styled.div`
   justify-content: center;
   align-items: center;
   padding-left: 16px;
+  svg {
+    path {
+      fill: ${({ theme }) => theme.colors.mainPage};
+    }
+  }
 `;
 
 export const StyledPrev = styled.div`
@@ -12,4 +17,9 @@ export const StyledPrev = styled.div`
   justify-content: center;
   align-items: center;
   padding-right: 16px;
+  svg {
+    path {
+      fill: ${({ theme }) => theme.colors.mainPage};
+    }
+  }
 `;

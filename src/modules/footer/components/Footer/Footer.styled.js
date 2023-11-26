@@ -134,3 +134,31 @@ export const OverlayDesctop = styled.div`
     filter: blur(104.8543701171875px);
   }
 `;
+
+export const StyledModalFooteer = styled.div`
+  width: 335px;
+  padding: 20px 30px;
+  border-radius: 16px;
+  background-color: ${({ theme }) => theme.popUp.secondary};
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @media screen and (min-width: 768px) {
+    width: 600px;
+  }
+`;
+export const StyledBtnCloseFooter = styled.button`
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  position: fixed;
+  top: 14px;
+  right: 14px;
+  svg {
+    stroke: ${({ theme }) => theme.colors.active};
+  }
+`;
+

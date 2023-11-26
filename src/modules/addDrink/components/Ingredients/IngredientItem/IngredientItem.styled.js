@@ -78,7 +78,7 @@ export const IngredientSelect = styled(Select)`
       flex-shrink: 1;
       padding: 0;
       margin: 0;
-      color: ${({ theme }) => theme.colors.active};
+      color: ${({ theme }) => theme.colors.mainText};
       line-height: 1; /* 100% */
       width: fit-content;
     }
@@ -134,6 +134,7 @@ export const IngredientSelect = styled(Select)`
       &--is-focused,
       &.active,
       &--is-selected {
+        color: ${({ theme }) => theme.colors.mainText};
         background: transparent;
         background-color: none;
 
@@ -186,6 +187,7 @@ export const InputStyled = styled.input`
   width: 101px;
   height: 50px;
   border-radius: 200px;
+  color: ${({ theme }) => theme.colors.mainText};
   border: 1px solid ${({ theme }) => theme.colors.link};
   opacity: 0.8;
   outline: transparent;

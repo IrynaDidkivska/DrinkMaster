@@ -121,6 +121,7 @@ export const SelectStyled = styled(Select)`
       &--is-focused,
       &:active,
       &--is-selected {
+        color: ${({ theme }) => theme.colors.mainText};
         background: transparent;
         background-color: none;
         &:active {

@@ -24,8 +24,6 @@ const MyJustDrinks = () => {
   const details = useSelector(selectDetails);
   const drinkDetails = useSelector(selectDetails);
 
-  console.log('drinkDetails', drinkDetails);
-
   const [isFavorite, setIsFavorite] = useState(drinkDetails.isFavorite);
 
   useEffect(() => {
@@ -71,6 +69,7 @@ const MyJustDrinks = () => {
           onError={handleImageError}
           src={details.drinkThumb}
           alt={details.drink}
+          loading="lazy"
         />
         {!imageLoaded && (
           <StyledJustImages

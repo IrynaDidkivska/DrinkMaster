@@ -23,7 +23,7 @@ export const StyledNotAdd = styled.div`
     }
   }
 `;
-export const Glass = styled.img`
+export const StyledImage = styled.img`
   width: 198px;
   height: 247px;
   margin-top: 91px;
@@ -31,7 +31,11 @@ export const Glass = styled.img`
 
   @media screen and (min-width: 768px) {
     width: 261px;
-    max-height: 326px;
+    height: 326px;
+    margin-top: 100px;
+  }
+
+  @media screen and (min-width: 1440px) {
     margin-top: 67px;
   }
 `;

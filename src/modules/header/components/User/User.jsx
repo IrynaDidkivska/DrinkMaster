@@ -12,6 +12,8 @@ import { UserLogoPopup } from '../UserLogoPopup/UserLogoPopup';
 export const User = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const { username, avatar } = useSelector(selectUser);
+
   const togglePopup = () => {
     setIsOpen(!isOpen);
   };
@@ -23,8 +25,6 @@ export const User = () => {
       return res.join(' ');
     }
   };
-
-  const { username, avatar } = useSelector(selectUser);
 
   return (
     <>
