@@ -6,8 +6,7 @@
 
 ## Project Overview
 
-This is a [веб-додаток](https://drink-master-project.vercel.app/signin),
-created by the "CyberWorld" team for those who appreciate the atmosphere of cocktail culture and the diversity of drinks. Our application allows convenient access to a wide library of beverages. Here, you can easily find, browse, and choose drinks from our variety, as well as save your favorites and even create your own.
+This is a [web-site](https://drink-master-project.vercel.app/signin), created by the "CyberWorld" team for those who appreciate the atmosphere of cocktail culture and the diversity of drinks. Our application allows convenient access to a wide library of beverages. Here, you can easily find, browse, and choose drinks from our variety, as well as save your favorites and even create your own.
 
 ---
 
