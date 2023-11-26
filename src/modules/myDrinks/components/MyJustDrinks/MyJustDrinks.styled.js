@@ -1,14 +1,13 @@
-import styled from "styled-components";
-import { StyledBtn } from "../../../../shared/components/Buttons/LigthBtn.styled";
+import styled from 'styled-components';
+import { StyledBtn } from '../../../../shared/components/Buttons/LigthBtn.styled';
 
 export const StyledTitleSection = styled.h1`
   margin-bottom: 8px;
-  font-family: "Manrope-600", sans-serif;
+  font-family: 'Manrope-600', sans-serif;
   font-size: 32px;
   font-style: normal;
   font-weight: 600;
   line-height: 38px;
-  color: ${({ theme }) => theme.colors.mainText};
 
   @media screen and (min-width: 768px) {
     font-size: 56px;
@@ -41,10 +40,7 @@ export const StyledJustDrinks = styled.div`
 
 export const StyledJustType = styled.p`
   margin-bottom: 20px;
-  font-family: "Manrope-400", sans-serif;
   font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
   line-height: 14px;
   color: ${({ theme }) => theme.colors.subtitle};
 
@@ -56,12 +52,7 @@ export const StyledJustType = styled.p`
 
 export const StyledJustText = styled.p`
   margin-bottom: 40px;
-  font-family: "Manrope-400";
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
   line-height: 18px;
-  color: ${({ theme }) => theme.colors.mainText};
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
@@ -72,12 +63,21 @@ export const StyledJustText = styled.p`
 export const StyledJustButton = styled(StyledBtn)`
   margin-bottom: 80px;
 
-  &:disabled {
+  &:hover {
+    border: 2px solid transparent;
+  }
+  &:focus,
+  &:active {
+    color: ${({ theme }) => theme.button.ligth};
+    background: ${({ theme }) => theme.button.dark};
+    border: 2px solid transparent;
+  }
+  /* &:disabled {
     background: #434d67;
     color: rgba(243, 243, 243, 0.2);
     border: transparent;
     cursor: not-allowed;
-  }
+  } */
 
   @media screen and (min-width: 1440px) {
     margin-bottom: 0;

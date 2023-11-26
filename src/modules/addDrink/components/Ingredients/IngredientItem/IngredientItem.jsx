@@ -22,6 +22,7 @@ const IngredientItem = ({
       <IngredientSelect
         classNamePrefix="ingredientSelect"
         options={ingredients}
+        placeholder="Select ingredient"
         onChange={e => {
           changeIngredient({ id, title: e.label, ingredientId: e.value });
         }}

@@ -1,21 +1,18 @@
-import Select from "react-select";
-import styled from "styled-components";
+import Select from 'react-select';
+import styled from 'styled-components';
 
-export const FormStyled = styled("form")`
+export const FormStyled = styled('form')`
   display: flex;
   align-items: center;
   flex-direction: column;
   gap: 14px;
   margin-top: 40px;
   margin-bottom: 40px;
-  color: ${({ theme }) => theme.colors.mainText};
 
   input {
     width: 100%;
     padding: 18px 24px;
-    font-family: "Manrope-400";
-    font-size: 14px;
-    font-weight: 400;
+
     line-height: 1.28; /* 128.571% */
 
     background: transparent;
@@ -27,9 +24,7 @@ export const FormStyled = styled("form")`
 
     &::placeholder {
       color: ${({ theme }) => theme.colors.mainPage};
-      font-family: "Manrope-400";
-      font-size: 14px;
-      font-weight: 400;
+
       line-height: 1.28; /* 128.571% */
     }
   }
@@ -56,7 +51,7 @@ export const FormStyled = styled("form")`
   }
 `;
 // Search button
-export const InputContStyled = styled("div")`
+export const InputContStyled = styled('div')`
   position: relative;
   width: 100%;
 
@@ -98,12 +93,8 @@ export const SelectStyled = styled(Select)`
   .customSelect__ {
     &control {
       color: ${({ theme }) => theme.popUp.main}; //#F3F3F3
-      font-family: "Manrope-400";
-      font-size: 14px;
-      font-weight: 400;
       line-height: 1.28;
       border-radius: 200px;
-      /* background-color: lightblue; */
       background-color: ${({ theme }) => theme.popUp.secondary}; //#161F37
       border: none !important;
       box-shadow: none !important;
@@ -153,6 +144,7 @@ export const SelectStyled = styled(Select)`
     }
     &placeholder {
       color: ${({ theme }) => theme.popUp.main};
+
       @media (min-width: 768px) {
         font-size: 17px;
       }
@@ -189,9 +181,6 @@ export const SelectStyled = styled(Select)`
       border-radius: 12px;
 
       background-color: ${({ theme }) => theme.switcher.color};
-      font-family: "Manrope-400";
-      font-size: 14px;
-      font-weight: 400;
       line-height: 128%;
       padding: 8px;
       overflow: hidden;
@@ -249,7 +238,7 @@ export const SelectStyled = styled(Select)`
 `;
 
 export const StyledResetButton = styled.button`
-  font-family: "Manrope-600", sans-serif;
+  font-family: 'Manrope-600', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
