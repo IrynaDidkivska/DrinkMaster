@@ -12,6 +12,7 @@ import { SpriteSVG } from '../../icons/SpriteSVG';
 import { StyledNext, StyledPrev } from './Pagination.styled';
 import { paginationThunk } from '../../../redux/Drinks/operations';
 import { setSearch } from '../../../redux/Drinks/drinksSlice';
+import { useMediaQuery } from 'react-responsive';
 
 const Pagination = () => {
   const itemsPerPage = 10;
@@ -42,6 +43,8 @@ const Pagination = () => {
     dispatch(setSearch(pageCurrentItems));
   };
 
+  const isTabletScreen = useMediaQuery({ query: '(min-width: 768px)' });
+
   return (
     <>
       <List>
@@ -60,11 +63,14 @@ const Pagination = () => {
         onPageChange={
           filteredDrinks.length ? handleBigArrClick : handlePageClick
         }
-        pageRangeDisplayed={5}
+        pageRangeDisplayed={(isTabletScreen && 7) || 3}
+        marginPagesDisplayed={1}
         pageCount={
-          filteredDrinks.length
-            ? Math.ceil(filteredDrinks.length / itemsPerPage)
-            : totalPages
+          filteredDrinks.length > 0
+            ? Math.ceil(Math.ceil(filteredDrinks.length / itemsPerPage))
+            : totalPages > 0
+            ? totalPages
+            : 1
         }
         previousLabel={
           <StyledPrev>
