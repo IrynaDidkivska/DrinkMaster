@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const StyledFooter = styled.footer`
   position: relative;
   overflow: hidden;
-  padding-top: 42px;
+  padding-top: 40px;
   padding-bottom: 18px;
   background-color: ${({ theme }) => theme.footer.bacground};
   border-top: ${({ theme }) => theme.footer.border};
@@ -161,3 +161,4 @@ export const StyledBtnCloseFooter = styled.button`
     stroke: ${({ theme }) => theme.colors.active};
   }
 `;
+

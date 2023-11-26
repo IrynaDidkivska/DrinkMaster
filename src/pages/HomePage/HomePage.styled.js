@@ -6,6 +6,7 @@ export const MainText = styled.div`
   font-weight: 400;
   line-height: 1.42;
   padding-bottom: 32px;
+  padding-top: 28px;
   @media screen and (min-width: 768px) {
     font-size: 18px;
     line-height: 1.33;
