@@ -51,7 +51,6 @@ export const ImgContainerStyled = styled.div`
   @media screen and (min-width: 1440px) {
     width: 400px;
     height: 400px;
-    background: rgba(22, 31, 55, 0.5);
   }
 `;
 
@@ -61,21 +60,22 @@ export const AddImgLabelStyled = styled.label`
   align-items: center;
   width: 50px;
   height: 50px;
-  background-color: ${({ theme }) => theme.colors.mainText};
+
+  background-color: ${({ theme }) => theme.popUp.main};
   border-radius: 6px;
   border: none;
   cursor: pointer;
   & svg {
     width: 28px;
     height: 28px;
-    stroke: ${({ theme }) => theme.colors.secondaryText};
+    stroke: ${({ theme }) => theme.popUp.secondary};
   }
 `;
 export const AddImgContainerStyled = styled.span`
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: ${({ theme }) => theme.colors.mainText};
+  color: ${({ theme }) => theme.popUp.main};
   font-family: 'Manrope-500';
   font-size: 16px;
   font-weight: 500;

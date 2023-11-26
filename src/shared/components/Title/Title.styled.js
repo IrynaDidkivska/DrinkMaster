@@ -1,11 +1,10 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components';
 
 export const StyledTitle = styled.h1`
-  font-family: "Manrope-600", sans-serif;
+  font-family: 'Manrope-600', sans-serif;
   font-size: 32px;
   font-weight: 600;
   line-height: 1.1875;
-  color: ${({ theme }) => theme.colors.mainText};
 
   @media screen and (min-width: 768px) {
     font-size: 56px;

@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { InputStyled, LabelStyled, RadioWrapper } from './RadioBtn.styled';
 
 const RadioBtn = ({ id, name, label, isDisabled = false, changeF, value }) => {

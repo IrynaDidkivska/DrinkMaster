@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 export const LinkStyled = styled(Link)`
   padding: 8px 16px;
@@ -7,7 +7,7 @@ export const LinkStyled = styled(Link)`
   border: 1px solid rgba(243, 243, 243, 0.2);
   outline: transparent;
 
-  font-family: "Manrope-500", sans-serif;
+  font-family: 'Manrope-500', sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;

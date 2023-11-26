@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const StyledNavBar = styled.nav`
   display: flex;
@@ -13,7 +13,7 @@ export const StyledLink = styled(NavLink)`
   border: 1px solid ${({ theme }) => theme.borderLink};
   outline: transparent;
 
-  font-family: "Manrope-500", sans-serif;
+  font-family: 'Manrope-500', sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;

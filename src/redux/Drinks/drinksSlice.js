@@ -9,11 +9,8 @@ import {
   getFavoriteThunk,
   getOwnThunk,
   getPopularThunk,
-
   addFavoriteThunk,
-
   paginationThunk,
-
 } from './operations';
 
 const initialState = {
@@ -30,7 +27,7 @@ const initialState = {
   error: '',
   isLoading: false,
 };
-// TODO: дописати інші Thunk
+
 const drinksSlice = createSlice({
   name: 'drinks',
   initialState,
@@ -58,7 +55,6 @@ const drinksSlice = createSlice({
         state.page = 1;
       })
       .addCase(getFavoriteThunk.fulfilled, (state, { payload }) => {
-        console.log('state.favorite = payload;', payload);
         state.favorite = payload;
       })
       .addCase(addFavoriteThunk.fulfilled, (state, { payload }) => {
@@ -75,9 +71,7 @@ const drinksSlice = createSlice({
       })
       .addCase(deleteFromFavoriteThunk.fulfilled, (state, { payload }) => {
         state.favorite = state.favorite.filter(
-
           item => item.drinkId !== payload
-
         );
       })
       .addCase(addNewDrinkThunk.fulfilled, (state, { payload }) => {
@@ -101,7 +95,6 @@ const drinksSlice = createSlice({
           state.isLoading = true;
           state.error = '';
         }
-
       )
       .addMatcher(
         isAnyOf(

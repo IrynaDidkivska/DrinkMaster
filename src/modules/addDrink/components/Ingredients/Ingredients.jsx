@@ -25,7 +25,7 @@ const Ingredients = ({ setIngredientsGeneral }) => {
 
   useEffect(() => {
     dispatch(getIngredientsThunk({ page: 1, limit: 100 }));
-  }, []);
+  }, [dispatch]);
 
   const removeIngredient = id => {
     setIngredients(ingredients.filter(el => el.id !== id));
