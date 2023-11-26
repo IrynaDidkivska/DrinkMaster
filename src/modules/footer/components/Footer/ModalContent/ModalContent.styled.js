@@ -1,10 +1,16 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-export const StyledModalContent = styled.div``
+export const StyledModalContent = styled.div`
+  max-height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+`;
+export const StyledContentTitle = styled.h3`
+  margin-bottom: 16px;
+`;
 export const StyledContent = styled.p`
-	font-size: 8px;
-	margin-bottom: 8px;
-	@media screen and (min-width: 768px) {
-		font-size: 12px;
-	}
-`
+  text-align: justify;
+  margin-bottom: 12px;
+  @media screen and (min-width: 768px) {
+  }
+`;
