@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import {
   DrinkCardItemFaxBtn,
   DrinkCardItemFaxContainer,
@@ -10,24 +10,38 @@ import {
   DrinkCardItemFaxName,
   DrinkCardItemFaxNavi,
   DrinkCardItemFaxStatus,
-} from "./Card.styled";
-import { deleteFromFavoriteThunk } from "../../../redux/Drinks/operations";
-import { SpriteSVG } from "../../icons/SpriteSVG";
-import { toast } from "react-toastify";
-import Coctail from "../../../shared/img/image.png";
-import { useState } from "react";
+
+} from './Card.styled';
+import {
+  deleteFromFavoriteThunk,
+  deleteFromOwnThunk,
+} from '../../../redux/Drinks/operations';
+import { SpriteSVG } from '../../icons/SpriteSVG';
+import { toast } from 'react-toastify';
+import { confirmNamePage } from '../../helpers/confirmNamePage';
+import Coctail from '../../../shared/img/image.png';
+import { useState } from 'react';
+
 
 const Card = ({ data }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [imageLoaded, setImageLoaded] = useState(false);
-  const handleSeeMore = (_id) => {
+
+  const namePage = confirmNamePage(location.pathname);
+
+  const handleSeeMore = _id => {
     navigate(`/drinks/${_id}`);
   };
 
-  const handleRemoveFavorite = () => {
-    dispatch(deleteFromFavoriteThunk(data._id));
-    toast.success("You removed drink from your favorite");
+  const handleRemove = () => {
+    if (namePage.favorites) {
+      dispatch(deleteFromFavoriteThunk(data._id));
+      toast.success('You removed drink from your favorite');
+    } else {
+      dispatch(deleteFromOwnThunk(data._id));
+      toast.success('You removed drink from your own');
+    }
   };
 
   const handleImageLoad = () => {
@@ -51,7 +65,7 @@ const Card = ({ data }) => {
         <DrinkCardItemFaxImg
           src={Coctail}
           // alt={data.drink}
-          style={{ position: "absolute", top: 0 }}
+          style={{ position: 'absolute', top: 0 }}
         />
       )}
       <DrinkCardItemFaxName>{data.drink}</DrinkCardItemFaxName>
@@ -63,8 +77,8 @@ const Card = ({ data }) => {
         <DrinkCardItemFaxBtn onClick={() => handleSeeMore(data._id)}>
           See more
         </DrinkCardItemFaxBtn>
-        <DrinkCardItemFaxDel type="button" onClick={handleRemoveFavorite}>
-          <SpriteSVG name={"trash"} />
+        <DrinkCardItemFaxDel type="button" onClick={handleRemove}>
+          <SpriteSVG name={'trash'} />
         </DrinkCardItemFaxDel>
       </DrinkCardItemFaxNavi>
     </DrinkCardItemFaxContainer>

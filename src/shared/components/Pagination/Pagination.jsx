@@ -1,36 +1,51 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import ReactPaginate from 'react-paginate';
-import { useSelector } from 'react-redux';
-import { selectBySearch } from '../../../redux/Drinks/selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  selectBySearch,
+  selectFilteredDrinks,
+  selectTotalPages,
+} from '../../../redux/Drinks/selectors';
 import DrinkCardItem from '../DrinkCardItem/DrinkCardItem';
 import { List } from '../DrinkList/DrinkList.styled';
 import { SpriteSVG } from '../../icons/SpriteSVG';
 import { StyledNext, StyledPrev } from './Pagination.styled';
+import { paginationThunk } from '../../../redux/Drinks/operations';
+import { setSearch } from '../../../redux/Drinks/drinksSlice';
 
 const Pagination = () => {
-  const allDrinks = useSelector(selectBySearch);
-  const [currentItems, setCurrentItems] = useState([]);
-  const [pageCount, setPageCount] = useState(0);
-  const [itemOffset, setItemOffset] = useState(0);
   const itemsPerPage = 10;
 
-  console.log(allDrinks);
+  const allDrinks = useSelector(selectBySearch);
+  const totalPages = useSelector(selectTotalPages);
+  const filteredDrinks = useSelector(selectFilteredDrinks);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const endOffset = itemOffset + itemsPerPage;
-    setCurrentItems(allDrinks.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(allDrinks.length / itemsPerPage));
-  }, [allDrinks, itemOffset]);
+    if (!allDrinks.length) {
+      dispatch(paginationThunk({}));
+    }
+  }, [allDrinks, dispatch]);
 
   const handlePageClick = event => {
-    const newOffset = (event.selected * itemsPerPage) % allDrinks.length;
-    setItemOffset(newOffset);
+    const newPage = event.selected + 1;
+    dispatch(paginationThunk({ limit: itemsPerPage, page: newPage }));
+  };
+
+  const handleBigArrClick = event => {
+    const newPage = event.selected || 0;
+    const pageCurrentItems = filteredDrinks.slice(
+      newPage * itemsPerPage,
+      (newPage + 1) * itemsPerPage
+    );
+    dispatch(setSearch(pageCurrentItems));
   };
 
   return (
     <>
       <List>
-        {currentItems.map(drink => (
+        {allDrinks.map(drink => (
           <DrinkCardItem key={drink._id} data={drink} />
         ))}
       </List>
@@ -42,9 +57,15 @@ const Pagination = () => {
             <SpriteSVG name="rigth-padding" />
           </StyledNext>
         }
-        onPageChange={handlePageClick}
+        onPageChange={
+          filteredDrinks.length ? handleBigArrClick : handlePageClick
+        }
         pageRangeDisplayed={5}
-        pageCount={pageCount}
+        pageCount={
+          filteredDrinks.length
+            ? filteredDrinks.length / itemsPerPage
+            : totalPages
+        }
         previousLabel={
           <StyledPrev>
             <SpriteSVG name="left-padding" />

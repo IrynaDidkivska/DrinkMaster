@@ -1,9 +1,9 @@
-import { Route, Routes } from "react-router-dom";
-import SharedLayout from "./shared/components/SharedLayout/SharedLayout";
-import { routes } from "./shared/services/routes";
-import { Suspense, lazy, useEffect } from "react";
-import { PrivateRoute, PublicRoute } from "./shared/HOC";
-import NotFound from "./pages/NotFound/NotFound";
+import { Route, Routes } from 'react-router-dom';
+import SharedLayout from './shared/components/SharedLayout/SharedLayout';
+import { routes } from './shared/services/routes';
+import { Suspense, lazy, useEffect } from 'react';
+import { PrivateRoute, PublicRoute } from './shared/HOC';
+import NotFound from './pages/NotFound/NotFound';
 import {
   AddDrink,
   Drinks,
@@ -11,20 +11,20 @@ import {
   Favorites,
   HomePage,
   MyDrinks,
-} from "./pages";
-import { ThemeProvider } from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
-import { darkTheme, lightTheme } from "./shared/styles/theme";
-import { Global } from "./shared/styles/Global";
-import { currentUserThunk } from "./redux/Auth/operations";
-import Loader from "./shared/components/Loader/Loader";
+} from './pages';
+import { ThemeProvider } from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
+import { darkTheme, lightTheme } from './shared/styles/theme';
+import { Global } from './shared/styles/Global';
+import { currentUserThunk } from './redux/Auth/operations';
+import Loader from './shared/components/Loader/Loader';
 const Welcome = lazy(() =>
-  import("./modules/welcome/components/Welcome/Welcome")
+  import('./modules/welcome/components/Welcome/Welcome')
 );
 
 function App() {
-  const { theme } = useSelector((state) => state.theme);
-  const isRefresh = useSelector((state) => state.auth.isRefresh);
+  const { theme } = useSelector(state => state.theme);
+  const isRefresh = useSelector(state => state.auth.isRefresh);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -34,7 +34,7 @@ function App() {
   return isRefresh ? (
     <Loader />
   ) : (
-    <ThemeProvider theme={theme === "dark" ? darkTheme : lightTheme}>
+    <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
       <Global />
       <Suspense>
         <Routes>

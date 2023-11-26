@@ -1,29 +1,28 @@
-import { useDispatch, useSelector } from "react-redux";
-import { SpriteSVG } from "../../../../shared/icons/SpriteSVG";
+import { useDispatch, useSelector } from 'react-redux';
+import { SpriteSVG } from '../../../../shared/icons/SpriteSVG';
 import {
   FormStyled,
   InputContStyled,
   SelectStyled,
   // StyledResetButton,
-} from "./SerchForm.styled";
-import { useEffect } from "react";
+} from './SerchForm.styled';
+import { useEffect } from 'react';
 import {
   getCategoriesThunk,
   getIngredientsThunk,
-} from "../../../../redux/Filters/operations";
+} from '../../../../redux/Filters/operations';
 import {
   selectNormalizedCategories,
   selectNormalizedIngredients,
   selectSearchQuery,
-} from "../../../../redux/Filters/selectors";
+} from '../../../../redux/Filters/selectors';
 import {
-  clearFilter,
   setCategory,
   setIngridient,
   setQuery,
-} from "../../../../redux/Filters/filtersSlice";
-import { getAllSearchThunk } from "../../../../redux/Drinks/operations";
-// import DarkBtn from "../../../../shared/components/Buttons/DarkBtn";
+} from '../../../../redux/Filters/filtersSlice';
+import { getAllSearchThunk } from '../../../../redux/Drinks/operations';
+
 
 const SearchForm = () => {
   const dispatch = useDispatch();
@@ -34,18 +33,25 @@ const SearchForm = () => {
 
   useEffect(() => {
     dispatch(getCategoriesThunk());
-    dispatch(getIngredientsThunk({ page: 0, limit: 0 }));
+    dispatch(getIngredientsThunk());
   }, [dispatch]);
 
-  const onSubmit = (e) => {
-    e.preventDefault();
+
+  const submitForm = () => {
     dispatch(getAllSearchThunk({ query, category, ingredient }));
-    e.target.reset();
-    dispatch(clearFilter());
+
   };
-  // const handleResenForm = () => {
-  //   dispatch(getAllSearchThunk({ query, category, ingredient }));
-  // };
+
+  const onSubmit = e => {
+    e.preventDefault();
+    submitForm();
+  };
+
+  useEffect(() => {
+    if (ingredient || category) {
+      submitForm();
+    }
+  }, [ingredient, category]);
 
   return (
     <>
@@ -54,7 +60,7 @@ const SearchForm = () => {
           <input
             type="text"
             placeholder="Enter the text"
-            onChange={(e) => dispatch(setQuery(e.target.value))}
+            onChange={e => dispatch(setQuery(e.target.value))}
           ></input>
           <button type="submit">
             <SpriteSVG name="search" />
@@ -65,17 +71,14 @@ const SearchForm = () => {
           classNamePrefix="customSelect"
           placeholder="All categories"
           options={categories}
-          onChange={(e) => dispatch(setCategory(e.value))}
+          onChange={e => dispatch(setCategory(e.value))}
         />
         <SelectStyled
           classNamePrefix="customSelect"
           placeholder="Ingredients"
           options={ingregients}
-          onChange={(e) => dispatch(setIngridient(e.value))}
+          onChange={e => dispatch(setIngridient(e.value))}
         />
-        {/* <DarkBtn type="button" onClick={handleResenForm}>
-          Reset
-        </DarkBtn> */}
       </FormStyled>
     </>
   );
