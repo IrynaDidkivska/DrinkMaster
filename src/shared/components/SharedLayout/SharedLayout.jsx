@@ -9,6 +9,7 @@ import {
   OverlayMain,
   StyledSection,
 } from '../../styles/Section';
+import { getWakeUpServer } from '../../services/api-service';
 
 const SharedLayout = () => {
   const navigate = useNavigate();
@@ -20,6 +21,10 @@ const SharedLayout = () => {
       navigate('/home');
     }
   }, [navigate, location]);
+
+  useEffect(() => {
+    getWakeUpServer();
+  }, []);
 
   return (
     <>

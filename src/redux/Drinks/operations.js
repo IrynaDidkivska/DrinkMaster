@@ -23,12 +23,8 @@ export const getAllDrinksThunk = createAsyncThunk(
 export const getAllSearchThunk = createAsyncThunk(
   'drinks/getAllSearch',
   async (
-
-
     { ingredient = '', category = '', query = '', page = null, limit = null },
     thunkAPI
-
-
   ) => {
     try {
       const { data } = await API.get('api/drinks/search', {
