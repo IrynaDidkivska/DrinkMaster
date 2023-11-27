@@ -1,5 +1,5 @@
-import { Route, Routes, useLocation } from 'react-router-dom';
 import { Suspense, lazy, useEffect } from 'react';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { routes } from './shared/services/routes';
 import { useDispatch, useSelector } from 'react-redux';
@@ -21,6 +21,7 @@ const Welcome = lazy(() =>
   import('./modules/welcome/components/Welcome/Welcome')
 );
 import { getWakeUpServer } from './shared/services/api-service';
+import Theme from './shared/components/Theme/Theme';
 
 import { Global } from './shared/styles/Global';
 import { darkTheme, lightTheme } from './shared/styles/theme';
@@ -47,6 +48,7 @@ function App() {
     <Loader />
   ) : (
     <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
+      <Theme />
       <Global />
       <Suspense>
         <Routes>
