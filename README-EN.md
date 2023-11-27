@@ -66,42 +66,72 @@ This project was created with the help of [Vite](https://vitejs.dev/) +
 [React](https://reactjs.org/). The project utilizes the following technologies
 and tools:
 
-- [MongoDB](https://www.mongodb.com/)
-- [Figma](https://www.figma.com/)
-- [NodeJS](https://nodejs.org/)
-- [React](https://reactjs.org/)
-- [Swagger](https://swagger.io/)
-- [Redux](https://redux.js.org/)
-- [HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
-- [CSS3](https://developer.mozilla.org/en-US/docs/Archive/CSS3)
-- [Styled Components](https://styled-components.com/)
-- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-- [GitHub](https://github.com/)
-- [Trello](https://trello.com/)
-- [Google](https://www.google.com/)
-- [Slack](https://slack.com/)
-- [Zoom](https://zoom.us/)
+##### Frontend:
+
+- [React](https://reactjs.org/) - JavaScript library for building user
+  interfaces.
+- [Redux](https://redux.js.org/) - State container for JavaScript applications.
+- [HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5) -
+  Latest version of the markup language for creating web pages.
+- [CSS3](https://developer.mozilla.org/en-US/docs/Archive/CSS3) - Latest version
+  of the style sheet language for styling web pages.
+- [Styled Components](https://styled-components.com/) - Library for writing CSS
+  in JavaScript for React components.
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) -
+  Programming language for implementing dynamic behavior on web pages.
+- [GitHub](https://github.com/) - Web platform for storing and collaborating on
+  code.
+
+##### Backend:
+
+- [NodeJS](https://nodejs.org/) - JavaScript runtime environment on the server
+  side.
+- [MongoDB](https://www.mongodb.com/) - NoSQL database.
+- [Swagger](https://swagger.io/) - Tool for API documentation.
+- [GitHub](https://github.com/) - Web platform for storing and collaborating on
+  code.
+
+##### Design and Collaboration:
+
+- [Figma](https://www.figma.com/) - Design and prototyping tool for web pages.
+- [Trello](https://trello.com/) - Tool for project and task management.
+
+##### Communication and Meetings:
+
+- [Discord](https://discord.com/) - Platform for real-time text and voice
+  communication.
+- [Slack](https://slack.com/) - Platform for team communication.
+- [Zoom](https://zoom.us/) - Platform for video conferences and online meetings
 
 ## Team
 
 This project was developed by the "CyberWorld" team:
 
 - **Iryna Didkivska:** Team Lead/Developer.
-  [GitHub](https://github.com/IrynaDidkivska)
-  [LinkedIn](https://www.linkedin.com/in/iryna-didkivska/)
+  - [GitHub](https://github.com/IrynaDidkivska)
+  - [LinkedIn](https://www.linkedin.com/in/iryna-didkivska/)
 - **Alexey Berkovskii:** Team Lead-Backend/Developer
-  [GitHub](https://github.com/BerkovskiiAlex) [LinkedIn]
+  - [GitHub](https://github.com/BerkovskiiAlex)
 - **Ihor Zolotoverkh:** Scrum Master/Developer
-  [GitHub](https://github.com/IhorZolot)
-  [LinkedIn](www.linkedin.com/in/ihor-zolotoverkh)
+  - [GitHub](https://github.com/IhorZolot)
+  - [LinkedIn](www.linkedin.com/in/ihor-zolotoverkh)
 - **Oleh Andrijchuk:** Developer/Mainstay of the team
-  [GitHub](https://github.com/OAndrijchuk)
-  [LinkedIn](https://www.linkedin.com/in/oleh-andrijchuk/)
-- **Ольга Лазаренко:** Developer [GitHub] [LinkedIn]
-- **Тарас Ковалик:** Developer [GitHub] [LinkedIn]
-- **Слєпченко Юлія:** Developer [GitHub] [LinkedIn]
-- **Ілля Чечельницький:** Developer [GitHub] [LinkedIn]
+  - [GitHub](https://github.com/OAndrijchuk)
+  - [LinkedIn](https://www.linkedin.com/in/oleh-andrijchuk/)
+- **Olga Lazarenko:** Developer
+  - [GitHub](https://github.com/Olga-Olga)
+  - [LinkedIn](https://www.linkedin.com/in/)
+- **Taras Kovalyk:** Developer
+  - [GitHub](https://github.com/tarik2454)
+  - [LinkedIn](https://www.linkedin.com/in/taras-kovalyk/)
+- **Слєпченко Юлія:** Developer
+  - [GitHub]
+  - [LinkedIn]
+- **Ілля Чечельницький:** Developer
+
+  - [GitHub]
+  - [LinkedIn]
 
   ***
 
-## [DrinkMaster](https://drink-master-project.vercel.app/signin)
+## [<img src="./public/logo.png" width="20" alt="React"> <span style="color: black;">DrinkMaster</span>](https://drink-master-project.vercel.app/signin)
