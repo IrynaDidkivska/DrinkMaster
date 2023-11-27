@@ -21,10 +21,9 @@ export const UserLogoPopup = ({ isOpen, togglePopup }) => {
   }, [isOpen, togglePopup]);
 
   const handleClickOutside = useCallback(event => {
-    if (popupRef.current && !popupRef.current.contains(event.currenTarget)) {
-      console.log(popupRef.current);
-      console.log(popupRef.current.contains(event.target));
-      // togglePopup();
+    if (popupRef.current === !popupRef.current.contains(event.target)) {
+      // console.log(popupRef.current);
+      // console.log(popupRef.current.contains(event.target));
     }
   }, []);
 

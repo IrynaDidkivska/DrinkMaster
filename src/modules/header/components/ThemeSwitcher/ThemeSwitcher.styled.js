@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Switcher = styled.div`
   display: flex;
@@ -33,21 +33,22 @@ export const Switcher = styled.div`
 
     &:before {
       position: absolute;
-      content: "";
+      content: '';
       width: 18px;
       height: 18px;
       left: 1px;
       bottom: 1px;
-      background-color: ${({ theme }) => theme.switcher.background};
+      background-color: ${({ theme }) => theme.switcher.color};
       transition: ${({ theme }) => theme.transition};
-
+      transform: translateX(0);
       border-radius: 50%;
     }
   }
 
-  input + span {
+  input:checked + span {
     &:before {
       background-color: ${({ theme }) => theme.switcher.color};
+      transform: translateX(21px);
     }
   }
 `;
