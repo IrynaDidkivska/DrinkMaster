@@ -1,6 +1,17 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
+import {
+  deleteFromFavoriteThunk,
+  deleteFromOwnThunk,
+} from '@/redux/Drinks/operations';
+import Coctail from '../../../shared/img/image.png';
+import { SpriteSVG } from '@/shared/icons/SpriteSVG';
+import { confirmNamePage } from '@/shared/helpers/confirmNamePage';
+
 import {
   DrinkCardItemFaxBtn,
   DrinkCardItemFaxContainer,
@@ -10,18 +21,7 @@ import {
   DrinkCardItemFaxName,
   DrinkCardItemFaxNavi,
   DrinkCardItemFaxStatus,
-
 } from './Card.styled';
-import {
-  deleteFromFavoriteThunk,
-  deleteFromOwnThunk,
-} from '../../../redux/Drinks/operations';
-import { SpriteSVG } from '../../icons/SpriteSVG';
-import { toast } from 'react-toastify';
-import { confirmNamePage } from '../../helpers/confirmNamePage';
-import Coctail from '../../../shared/img/image.png';
-import { useState } from 'react';
-
 
 const Card = ({ data }) => {
   const navigate = useNavigate();
@@ -49,7 +49,6 @@ const Card = ({ data }) => {
   };
 
   const handleImageError = () => {
-    // Handle image load error if needed
     setImageLoaded(false);
   };
 
@@ -57,14 +56,14 @@ const Card = ({ data }) => {
     <DrinkCardItemFaxContainer>
       <DrinkCardItemFaxImg
         src={data.drinkThumb}
-        // alt={data.drink}
+        alt={data.drink}
         onLoad={handleImageLoad}
         onError={handleImageError}
       />
       {!imageLoaded && (
         <DrinkCardItemFaxImg
           src={Coctail}
-          // alt={data.drink}
+          alt={data.drink}
           style={{ position: 'absolute', top: 0 }}
         />
       )}
