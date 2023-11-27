@@ -9,10 +9,16 @@ export const StyledUserPopup = styled.div`
   position: absolute;
   top: 58px;
   right: 0;
-  z-index: 10;
+  z-index: 11;
 
   @media screen and (min-width: 768px) {
     top: 73px;
     right: 0;
   }
+`;
+
+export const PopUpWrapper = styled.div`
+  position: fixed;
+  inset: 0;
+  z-index: 10;
 `;

@@ -13,7 +13,7 @@ import { selectUser } from '../../../../redux/Auth/selectors';
 import { toast } from 'react-toastify';
 import { logoutThunk } from '../../../../redux/Auth/operations';
 
-export const EditProfile = ({ togglePopup }) => {
+export const EditProfile = () => {
   const dispatch = useDispatch();
   const { username } = useSelector(selectUser);
   const navigate = useNavigate();
@@ -35,7 +35,6 @@ export const EditProfile = ({ togglePopup }) => {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    togglePopup();
   };
 
   return (

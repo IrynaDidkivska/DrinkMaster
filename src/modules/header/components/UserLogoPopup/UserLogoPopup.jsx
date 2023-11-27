@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { EditProfile } from '../EditProfile/EditProfile';
-import { StyledUserPopup } from './UserLogoPopup.styled';
+import { PopUpWrapper, StyledUserPopup } from './UserLogoPopup.styled';
 import { useEffect, useRef, useCallback } from 'react';
 
 export const UserLogoPopup = ({ isOpen, togglePopup }) => {
@@ -20,31 +20,24 @@ export const UserLogoPopup = ({ isOpen, togglePopup }) => {
     };
   }, [isOpen, togglePopup]);
 
-  const handleClickOutside = useCallback(event => {
-    if (popupRef.current === !popupRef.current.contains(event.target)) {
-      // console.log(popupRef.current);
-      // console.log(popupRef.current.contains(event.target));
-    }
-  }, []);
-
-  useEffect(() => {
-    if (isOpen) {
-      window.addEventListener('click', handleClickOutside);
-    } else {
-      document.removeEventListener('click', handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, [isOpen, handleClickOutside]);
+  const handleClickOutside = useCallback(
+    event => {
+      if (event.target === event.currentTarget) {
+        togglePopup();
+      }
+    },
+    [togglePopup]
+  );
 
   return (
     <>
       {isOpen && (
-        <StyledUserPopup ref={popupRef} data-testid="user-popup">
-          <EditProfile togglePopup={togglePopup} />
-        </StyledUserPopup>
+        <>
+          <PopUpWrapper onClick={handleClickOutside} />
+          <StyledUserPopup ref={popupRef} data-testid="user-popup">
+            <EditProfile togglePopup={togglePopup} />
+          </StyledUserPopup>
+        </>
       )}
     </>
   );
