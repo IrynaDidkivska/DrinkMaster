@@ -20,6 +20,7 @@ import Loader from './shared/components/Loader/Loader';
 const Welcome = lazy(() =>
   import('./modules/welcome/components/Welcome/Welcome')
 );
+import Theme from './shared/components/Theme/Theme';
 import { getWakeUpServer } from './shared/services/api-service';
 
 import { Global } from './shared/styles/Global';
@@ -47,6 +48,7 @@ function App() {
     <Loader />
   ) : (
     <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
+      <Theme />
       <Global />
       <Suspense>
         <Routes>
