@@ -1,6 +1,6 @@
-import { useDispatch } from "react-redux";
-import { Switcher } from "./ThemeSwitcher.styled";
-import { toggleTheme } from "../../../../redux/theme/slice";
+import { useDispatch } from 'react-redux';
+import { Switcher } from './ThemeSwitcher.styled';
+import { toggleTheme } from '../../../../redux/theme/slice';
 
 const ThemeSwitcher = () => {
   const dispatch = useDispatch();
