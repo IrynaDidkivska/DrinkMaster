@@ -1,62 +1,38 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { SpriteSVG } from '../../../../shared/icons/SpriteSVG';
-import {
-  FormStyled,
-  InputContStyled,
-  SelectStyled,
-  // StyledResetButton,
-} from './SerchForm.styled';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
 import {
   getCategoriesThunk,
   getIngredientsThunk,
-} from '../../../../redux/Filters/operations';
-import {
-  selectNormalizedCategories,
-  selectNormalizedIngredients,
-  selectSearchQuery,
-} from '../../../../redux/Filters/selectors';
+} from '@/redux/Filters/operations';
 import {
   setCategory,
   setIngridient,
   setQuery,
-} from '../../../../redux/Filters/filtersSlice';
-import { getAllSearchThunk } from '../../../../redux/Drinks/operations';
+} from '@/redux/Filters/filtersSlice';
+import {
+  selectNormalizedCategories,
+  selectNormalizedIngredients,
+} from '@/redux/Filters/selectors';
+import { SpriteSVG } from '@/shared/icons/SpriteSVG';
+
+import { FormStyled, InputContStyled, SelectStyled } from './SerchForm.styled';
 
 const SearchForm = () => {
   const dispatch = useDispatch();
-
+  const [queryStr, setQueryStr] = useState('');
   let categories = useSelector(selectNormalizedCategories);
   let ingregients = useSelector(selectNormalizedIngredients);
-  const { query, category, ingredient } = useSelector(selectSearchQuery);
 
   useEffect(() => {
     dispatch(getCategoriesThunk());
     dispatch(getIngredientsThunk());
   }, [dispatch]);
 
-  const submitForm = () => {
-    dispatch(
-      getAllSearchThunk({
-        query,
-        category,
-        ingredient,
-        page: 0,
-        limit: 0,
-      })
-    );
-  };
-
   const onSubmit = e => {
     e.preventDefault();
-    submitForm();
+    dispatch(setQuery(queryStr));
   };
-
-  useEffect(() => {
-    if (ingredient || category) {
-      submitForm();
-    }
-  }, [ingredient, category]);
 
   return (
     <>
@@ -65,8 +41,8 @@ const SearchForm = () => {
           <input
             type="text"
             placeholder="Enter the text"
-            value={query}
-            onChange={e => dispatch(setQuery(e.target.value))}
+            value={queryStr}
+            onChange={e => setQueryStr(e.target.value)}
           ></input>
           <button type="submit">
             <SpriteSVG name="search" />

@@ -1,31 +1,32 @@
-import { createSlice, isAnyOf } from "@reduxjs/toolkit";
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
   getCategoriesThunk,
   getGlassesThunk,
   getIngredientsThunk,
-} from "./operations";
+} from './operations';
 
 const initialState = {
   categories: [],
   glasses: [],
   ingredients: [],
-  searchResult: [], // вся інфа шо прийде
+  searchResult: [],
   page: 1,
   searchQuery: {
-    query: "",
-    category: "", // слово пошуку
-    ingredient: "",
+    query: '',
+    category: '',
+    ingredient: '',
   },
-  error: "",
+  error: '',
   isLoading: false,
 };
 
 const fitlerSlice = createSlice({
-  name: "filter",
+  name: 'filter',
   initialState,
   reducers: {
     setQuery: (state, { payload }) => {
       state.searchQuery.query = payload;
+      state.page = 1;
     },
     setIngridient: (state, { payload }) => {
       state.searchQuery.ingredient = payload;
@@ -36,13 +37,13 @@ const fitlerSlice = createSlice({
     setPage: (state, { payload }) => {
       state.page = payload;
     },
-    clearFilter: (state) => {
-      state.searchQuery.query = "";
-      state.searchQuery.category = "";
-      state.searchQuery.ingredient = "";
+    clearFilter: state => {
+      state.searchQuery.query = '';
+      state.searchQuery.category = '';
+      state.searchQuery.ingredient = '';
     },
   },
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
       .addCase(getCategoriesThunk.fulfilled, (state, { payload }) => {
         state.categories = payload;
@@ -59,9 +60,9 @@ const fitlerSlice = createSlice({
           getIngredientsThunk.pending,
           getGlassesThunk.pending
         ),
-        (state) => {
+        state => {
           state.isLoading = true;
-          state.error = "";
+          state.error = '';
         }
       )
       .addMatcher(
@@ -70,7 +71,7 @@ const fitlerSlice = createSlice({
           getIngredientsThunk.fulfilled,
           getGlassesThunk.fulfilled
         ),
-        (state) => {
+        state => {
           state.isLoading = false;
         }
       )
