@@ -142,4 +142,4 @@
 
 ---
 
-## [DrinkMaster](https://drink-master-project.vercel.app/signin)
+## [<img src="./public/logo.png" width="20" alt="React"> <span style="color: black;">DrinkMaster</span>](https://drink-master-project.vercel.app/signin)
