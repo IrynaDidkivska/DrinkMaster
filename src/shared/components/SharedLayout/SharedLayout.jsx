@@ -9,22 +9,16 @@ import {
   OverlayMain,
   StyledSection,
 } from '../../styles/Section';
-import { getWakeUpServer } from '../../services/api-service';
 
 const SharedLayout = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
-    // Перевіряємо, чи поточна локація є кореневою
     if (location.pathname === '/') {
       navigate('/home');
     }
   }, [navigate, location]);
-
-  useEffect(() => {
-    getWakeUpServer();
-  }, []);
 
   return (
     <>
