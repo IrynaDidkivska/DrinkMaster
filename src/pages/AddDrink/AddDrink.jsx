@@ -1,17 +1,23 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 import {
   AddForm,
   Ingredients,
   PopularDrinks,
   RecipePreparation,
 } from '../../modules/addDrink';
-import LigthBtn from '../../shared/components/Buttons/LigthBtn';
-import FollowUs from '../../shared/components/FollowUs/FollowUs';
-import Subtitle from '../../shared/components/Title/Subtitle';
-import Title from '../../shared/components/Title/Title';
+import {
+  ingredientsCheckReducer,
+  requestNormalize,
+  validateDrink,
+} from '@/shared/helpers/addDrink';
+import { addNewDrinkThunk } from '@/redux/Drinks/operations';
+import Title from '@/shared/components/Title/Title';
+import LigthBtn from '@/shared/components/Buttons/LigthBtn';
+import Subtitle from '@/shared/components/Title/Subtitle';
+import FollowUs from '@/shared/components/FollowUs/FollowUs';
 import { AddDrinkWrapper, MediaWrapper } from './AddDrink.styled';
-import { useDispatch } from 'react-redux';
-import { addNewDrinkThunk } from '../../redux/Drinks/operations';
 
 const AddDrink = () => {
   const dispatch = useDispatch();
@@ -24,30 +30,11 @@ const AddDrink = () => {
   const [ingredients, setIngredients] = useState();
   const [instructions, setInstructions] = useState();
 
-  const ingredientsCheckReducer = arr => {
-    return arr.reduce((acc, ingredient) => {
-      if (!ingredient.title || !ingredient.measure) {
-        return acc;
-      }
-      const { title, ingredientId, measure } = ingredient;
-      return [...acc, { title, ingredientId, measure: measure + ' cl' }];
-    }, []);
-  };
-
-  const validateDrink = obj => {
-    for (let key in obj) {
-      if (!obj[key]) {
-        return true;
-      }
-    }
-    return false;
-  };
-
   const handleCreateDrink = () => {
     const correctIngredients = ingredientsCheckReducer(ingredients);
     if (ingredients.length !== correctIngredients.length) {
-      return console.log(
-        'Заповніть будь ласка усі поля інгредієнтів або видаліть порожні.'
+      return toast.error(
+        'Please fill in all ingredient fields or delete blank ones.'
       );
     }
     const newDrink = {
@@ -61,25 +48,9 @@ const AddDrink = () => {
       instructions,
     };
     if (validateDrink(newDrink)) {
-      return console.log('Заповніть будь ласка усі поля');
+      return toast.error('Please fill in all fields');
     }
-    const request = new FormData();
-    request.append('drinkPhoto', drinkPhoto);
-    request.append('drink', drink);
-    request.append('description', description);
-    request.append('category', category);
-    request.append('glass', glass);
-    request.append('alcoholic', alcoholic);
-    correctIngredients.forEach((ingredient, index) => {
-      request.append(`ingredients[${index}][title]`, ingredient.title);
-      request.append(
-        `ingredients[${index}][ingredientId]`,
-        ingredient.ingredientId
-      );
-      request.append(`ingredients[${index}][measure]`, ingredient.measure);
-    });
-    request.append('instructions', instructions);
-
+    const request = requestNormalize(newDrink);
     dispatch(addNewDrinkThunk(request));
   };
   return (

@@ -12,6 +12,7 @@ import {
   addFavoriteThunk,
   paginationThunk,
 } from './operations';
+import { toast } from 'react-toastify';
 
 const initialState = {
   drinks: {},
@@ -75,7 +76,7 @@ const drinksSlice = createSlice({
         );
       })
       .addCase(addNewDrinkThunk.fulfilled, (state, { payload }) => {
-        console.log(payload);
+        toast.success('Super! You have successfully created a new drink.');
       })
 
       .addMatcher(

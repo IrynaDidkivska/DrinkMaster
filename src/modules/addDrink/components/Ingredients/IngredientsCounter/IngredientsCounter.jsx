@@ -1,21 +1,22 @@
-import { SpriteSVG } from '../../../../../shared/icons/SpriteSVG';
+import { toast } from 'react-toastify';
+import { nanoid } from 'nanoid';
 import {
   CountViveStyled,
   DecButtonStyled,
   IncButtonStyled,
   WrapperStyled,
 } from './IngredientsCounter.styled';
-import { nanoid } from 'nanoid';
+import { SpriteSVG } from '@/shared/icons/SpriteSVG';
 
 const IngredientsCounter = ({ ingredientsList = [], setIngredients }) => {
   const arr = [...ingredientsList];
 
   const addIngredient = () => {
-    arr.push({ id: nanoid(), title: '', ingredientId: '', measure: '1' });
+    arr.push({ id: nanoid(), title: '', ingredientId: '', measure: '1 cl' });
   };
   const removeIngredient = () => {
     if (arr[arr.length - 1].title || arr[arr.length - 1].ingredientId) {
-      return console.log('Не можна видалити не порожній інгредієнт!!!');
+      return toast.error('Whoah whoah! This ingredient is not empty!');
     }
     arr.pop();
   };

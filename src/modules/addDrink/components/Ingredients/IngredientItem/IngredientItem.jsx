@@ -1,13 +1,12 @@
 import { useSelector } from 'react-redux';
-import { SpriteSVG } from '../../../../../shared/icons/SpriteSVG';
+import { selectNormalizedIngredients } from '@/redux/Filters/selectors';
+import { SpriteSVG } from '@/shared/icons/SpriteSVG';
 import {
   IngredientSelect,
   InputStyled,
   ItemWrapper,
   RemoveBtnStyled,
 } from './IngredientItem.styled';
-
-import { selectNormalizedIngredients } from '../../../../../redux/Filters/selectors';
 
 const IngredientItem = ({
   removeIngredient,
@@ -29,10 +28,10 @@ const IngredientItem = ({
       />
       <InputStyled
         type="text"
-        value={measure + ' cl'}
+        value={measure}
         onChange={e => {
           const measure = e.target.value.trim();
-          changeIngredient({ id, measure: measure.slice(0, -3) });
+          changeIngredient({ id, measure });
         }}
       />
       <RemoveBtnStyled
