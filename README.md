@@ -120,7 +120,7 @@
   - [GitHub](https://github.com/IrynaDidkivska)
   - [LinkedIn](https://www.linkedin.com/in/iryna-didkivska/)
 - **Олексій Берківський:** Тімлід-Бекенд/Розробник
-  - [GitHub](https://github.com/BerkovskiiAlex) [LinkedIn]
+  - [GitHub](https://github.com/BerkovskiiAlex)
 - **Ігор Золотоверх:** Скрам-мастер/Розробник
   - [GitHub](https://github.com/IhorZolot)
   - [LinkedIn](www.linkedin.com/in/ihor-zolotoverkh)

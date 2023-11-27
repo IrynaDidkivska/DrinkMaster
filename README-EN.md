@@ -79,6 +79,8 @@ and tools:
   in JavaScript for React components.
 - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) -
   Programming language for implementing dynamic behavior on web pages.
+- [GitHub](https://github.com/) - Web platform for storing and collaborating on
+  code.
 
 ##### Backend:
 
@@ -109,7 +111,7 @@ This project was developed by the "CyberWorld" team:
   - [GitHub](https://github.com/IrynaDidkivska)
   - [LinkedIn](https://www.linkedin.com/in/iryna-didkivska/)
 - **Alexey Berkovskii:** Team Lead-Backend/Developer
-  - [GitHub](https://github.com/BerkovskiiAlex) [LinkedIn]
+  - [GitHub](https://github.com/BerkovskiiAlex)
 - **Ihor Zolotoverkh:** Scrum Master/Developer
   - [GitHub](https://github.com/IhorZolot)
   - [LinkedIn](www.linkedin.com/in/ihor-zolotoverkh)
