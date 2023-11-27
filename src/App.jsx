@@ -1,9 +1,9 @@
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { Suspense, lazy, useEffect } from 'react';
-import { ThemeProvider } from 'styled-components';
-import { routes } from './shared/services/routes';
 import { useDispatch, useSelector } from 'react-redux';
+import { ThemeProvider } from 'styled-components';
 
+import { routes } from './shared/services/routes';
 import { PrivateRoute, PublicRoute } from './shared/HOC';
 import SharedLayout from './shared/components/SharedLayout/SharedLayout';
 import NotFound from './pages/NotFound/NotFound';

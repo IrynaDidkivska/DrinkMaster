@@ -1,8 +1,9 @@
-import { toggleThemeDark } from '@/redux/theme/slice';
-import { confirmNamePage } from '@/shared/helpers/confirmNamePage';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
+
+import { toggleThemeDark } from '@/redux/theme/slice';
+import { confirmNamePage } from '@/shared/helpers/confirmNamePage';
 
 const Theme = () => {
   const { pathname } = useLocation();
