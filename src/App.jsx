@@ -1,4 +1,4 @@
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { Suspense, lazy, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
@@ -93,6 +93,7 @@ function App() {
               </PublicRoute>
             }
           />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Suspense>
     </ThemeProvider>
