@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useMediaQuery } from 'react-responsive';
 
 import LigthBtn from '@/shared/components/Buttons/LigthBtn';
 import { StyledTitle } from '@/shared/components/Title/Title.styled';
@@ -18,6 +17,7 @@ import {
   MainText,
   WrapperCategory,
 } from './HomePage.styled';
+import useResponsive from '@/hooks/useResponsive';
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -26,11 +26,7 @@ const HomePage = () => {
   const [drinksToShow, setDrinksToShow] = useState(1);
   const allCatalog = useSelector(selectMainCatalog);
 
-  const isLargeScreen = useMediaQuery({ query: '(min-width: 1400px)' });
-  const isMediumScreen = useMediaQuery({
-    query: '(min-width: 768px) and (max-width: 1399px)',
-  });
-
+  const { isLargeScreen, isMediumScreen } = useResponsive();
   const categ = Object.keys(allCatalog);
   useEffect(() => {
     dispatch(getAllDrinksThunk({ page: currentPage }));
