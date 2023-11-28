@@ -1,10 +1,10 @@
-import { useMediaQuery } from 'react-responsive';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { isModalMobileMenuOpen } from '@/redux/Global/selectors.js';
 import { setModalMobileMenuOpen } from '@/redux/Global/globalSlice.js';
 
+import useResponsive from '@/hooks/useResponsive.jsx';
 import { MobileMenu } from '../MobileMenu/MobileMenu.jsx';
 import { SpriteSVG } from '@/shared/icons/SpriteSVG.jsx';
 import { User } from '../User/User.jsx';
@@ -21,6 +21,8 @@ import {
 import Navbar from '@/shared/components/Navbar/Navbar.jsx';
 
 const Header = () => {
+  const { isLargeScreen, isMediumScreen } = useResponsive();
+
   const dispatch = useDispatch();
 
   const isOpen = useSelector(isModalMobileMenuOpen);
@@ -37,31 +39,26 @@ const Header = () => {
     }
   }, [isOpen]);
 
-  const isTabletScreen = useMediaQuery({ query: '(max-width: 1439px)' });
-  const isDesktopScreen = useMediaQuery({ query: '(min-width: 1440px)' });
-
   return (
     <StyledHeader>
       <Container>
         <SrtledHeaderInner>
           <Logo />
-          {isDesktopScreen ? <Navbar /> : null}
+          {isLargeScreen && <Navbar />}
 
           <StyledRightWrapper>
-            {isDesktopScreen ? <ThemeSwitcher /> : null}
+            {isLargeScreen && <ThemeSwitcher />}
 
             <User />
-            {isTabletScreen ? (
+            {isMediumScreen && (
               <StyledMobileMenuBtn onClick={toggleMenu}>
                 <SpriteSVG name="toggle" />
               </StyledMobileMenuBtn>
-            ) : null}
+            )}
           </StyledRightWrapper>
         </SrtledHeaderInner>
       </Container>
-      {isTabletScreen ? (
-        <MobileMenu isOpen={isOpen} toggleMenu={toggleMenu} />
-      ) : null}
+      {isMediumScreen && <MobileMenu isOpen={isOpen} toggleMenu={toggleMenu} />}
     </StyledHeader>
   );
 };
