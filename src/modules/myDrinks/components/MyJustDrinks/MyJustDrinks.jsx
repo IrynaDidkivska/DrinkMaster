@@ -61,7 +61,11 @@ const MyJustDrinks = () => {
           {details.glass} / {details.alcoholic}
         </StyledJustType>
         <StyledJustText>{details.description}</StyledJustText>
-        <StyledJustButton onClick={handleAddFavorite} $isFavorite={isFavorite}>
+        <StyledJustButton
+          onClick={handleAddFavorite}
+          $isFavorite={isFavorite}
+          type="button"
+        >
           {isFavorite ? 'Remove from favorites' : 'Add to favorite drinks'}
         </StyledJustButton>
       </div>
@@ -73,12 +77,15 @@ const MyJustDrinks = () => {
           src={details.drinkThumb}
           alt={details.drink}
           loading="lazy"
+          width="335"
+          height="400"
         />
         {!imageLoaded && (
           <StyledJustImages
             src={Coctail}
             alt="Picture of general drink"
             style={{ position: 'absolute', top: 0 }}
+            loading="lazy"
           />
         )}
       </WrapperPosition>

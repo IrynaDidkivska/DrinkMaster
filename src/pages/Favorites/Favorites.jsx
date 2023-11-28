@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import { getFavoriteThunk } from '@/redux/Drinks/operations';
 import { selectFavorites } from '@/redux/Drinks/selectors';
 import Title from '@/shared/components/Title/Title';
+
+import { NotAdd } from '@/shared/components/NotAdd/NotAdd';
 import CardList from '@/modules/cardList/components/CardList';
 
 const Favorites = () => {
@@ -15,7 +17,7 @@ const Favorites = () => {
   return (
     <>
       <Title Title="Favorites" />
-      <CardList data={favorites} />
+      {favorites.length > 0 ? <CardList data={favorites} /> : <NotAdd />}
     </>
   );
 };

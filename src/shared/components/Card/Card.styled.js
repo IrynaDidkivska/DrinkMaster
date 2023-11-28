@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const DrinkCardItemFaxContainer = styled.div`
+const DrinkCardItemFaxContainer = styled.li`
   width: 335px;
   position: relative;
 
@@ -34,7 +34,7 @@ const DrinkCardItemFaxImg = styled.img`
   }
 `;
 
-const DrinkCardItemFaxName = styled.h3`
+const DrinkCardItemFaxName = styled.p`
   font-family: 'Manrope-600', sans-serif;
   font-style: normal;
   font-weight: 500;

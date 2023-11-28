@@ -70,7 +70,9 @@ const AddDrink = () => {
           />
           <Ingredients setIngredientsGeneral={setIngredients} />
           <RecipePreparation setInstructions={setInstructions} />
-          <LigthBtn onClick={handleCreateDrink}>Add</LigthBtn>
+          <LigthBtn onClick={handleCreateDrink} type="button">
+            Add
+          </LigthBtn>
         </div>
         <div>
           <MediaWrapper>

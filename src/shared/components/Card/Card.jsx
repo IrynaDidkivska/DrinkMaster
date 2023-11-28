@@ -59,12 +59,16 @@ const Card = ({ data }) => {
         alt={data.drink}
         onLoad={handleImageLoad}
         onError={handleImageError}
+        loading="lazy"
+        width={335}
+        height={360}
       />
       {!imageLoaded && (
         <DrinkCardItemFaxImg
           src={Coctail}
           alt={data.drink}
           style={{ position: 'absolute', top: 0 }}
+          loading="lazy"
         />
       )}
       <DrinkCardItemFaxName>{data.drink}</DrinkCardItemFaxName>
@@ -73,7 +77,10 @@ const Card = ({ data }) => {
         {data.shortDescription}
       </DrinkCardItemFaxDescription>
       <DrinkCardItemFaxNavi>
-        <DrinkCardItemFaxBtn onClick={() => handleSeeMore(data._id)}>
+        <DrinkCardItemFaxBtn
+          onClick={() => handleSeeMore(data._id)}
+          type="button"
+        >
           See more
         </DrinkCardItemFaxBtn>
         <DrinkCardItemFaxDel type="button" onClick={handleRemove}>

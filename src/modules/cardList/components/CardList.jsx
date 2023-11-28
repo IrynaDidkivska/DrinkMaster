@@ -1,4 +1,3 @@
-import { NotAdd } from '@/shared/components/NotAdd/NotAdd';
 import Card from '@/shared/components/Card/Card';
 
 import { List } from './CardsList.styled';
@@ -6,13 +5,9 @@ import { List } from './CardsList.styled';
 const CardList = ({ data }) => {
   return (
     <List>
-      {!data.length ? (
-        <NotAdd />
-      ) : (
-        data.map((item, index) => (
-          <Card key={item._id ? item._id : `card-${index}`} data={item} />
-        ))
-      )}
+      {data.map((item, index) => (
+        <Card key={item._id ? item._id : `card-${index}`} data={item} />
+      ))}
     </List>
   );
 };

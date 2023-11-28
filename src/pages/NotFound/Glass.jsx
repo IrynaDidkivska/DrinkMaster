@@ -8,7 +8,13 @@ const Glass = () => {
     <picture>
       <source srcSet={`${coctailWEBP} 1x, ${coctail2x} 2x`} type="image/webp" />
       <source srcSet={`${coctailPNG}`} type="image/jpeg" />
-      <StyledImage src={coctailPNG} alt="Coctail" width="123" height="156" />
+      <StyledImage
+        src={coctailPNG}
+        alt="Coctail"
+        width="123"
+        height="156"
+        loading="lazy"
+      />
     </picture>
   );
 };

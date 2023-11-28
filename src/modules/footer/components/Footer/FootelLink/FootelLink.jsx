@@ -1,33 +1,37 @@
-import { StyledLinkFooter, StyledNavFooter } from "./FootelLink.styled";
+import { StyledLinkFooter, StyledNavFooter } from './FootelLink.styled';
 
 const FootelLink = () => {
   return (
     <StyledNavFooter>
       <StyledLinkFooter
         to={{
-          pathname: "/drinks",
+          pathname: '/drinks',
         }}
+        rel="prefetch"
       >
         Drinks
       </StyledLinkFooter>
       <StyledLinkFooter
         to={{
-          pathname: "/add",
+          pathname: '/add',
         }}
+        rel="prefetch"
       >
         Add drink
       </StyledLinkFooter>
       <StyledLinkFooter
         to={{
-          pathname: "/my",
+          pathname: '/my',
         }}
+        rel="prefetch"
       >
         My drinks
       </StyledLinkFooter>
       <StyledLinkFooter
         to={{
-          pathname: "/favorites",
+          pathname: '/favorites',
         }}
+        rel="prefetch"
       >
         Favorites drinks
       </StyledLinkFooter>

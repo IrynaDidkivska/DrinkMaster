@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import Coctail from '../../img/image.png';
@@ -11,18 +10,11 @@ import {
 
 const DrinkCardItem = ({ data }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
-  const navigate = useNavigate();
-
-  const handleSeeMore = _id => {
-    navigate(`/drinks/${_id}`);
-  };
-
   const handleImageLoad = () => {
     setImageLoaded(true);
   };
 
   const handleImageError = () => {
-    // Handle image load error if needed
     setImageLoaded(false);
   };
 
@@ -30,20 +22,26 @@ const DrinkCardItem = ({ data }) => {
     <li key={data._id} style={{ position: 'relative' }}>
       <DrinkCardItemImage
         src={data.drinkThumb}
-        alt={' '}
+        alt={data.drink}
         onLoad={handleImageLoad}
         onError={handleImageError}
+        loading="lazy"
+        width="335"
+        height="360"
       />
       {!imageLoaded && (
         <DrinkCardItemImage
           src={Coctail}
-          // alt={data.drink}
+          alt={data.drink}
           style={{ position: 'absolute', top: 0 }}
+          loading="lazy"
+          width="335"
+          height="360"
         />
       )}
       <DrinkCardItemContainerDiscr>
         <DrinkCardItemName>{data.drink}</DrinkCardItemName>
-        <DrinkCardItemSeeMore onClick={() => handleSeeMore(data._id)}>
+        <DrinkCardItemSeeMore to={`/drinks/${data._id}`} rel="prefetch">
           See more
         </DrinkCardItemSeeMore>
       </DrinkCardItemContainerDiscr>
