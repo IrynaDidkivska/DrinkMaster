@@ -1,14 +1,14 @@
+import { Suspense, useEffect } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import Loader from '../Loader/Loader';
-import Header from '../../../modules/header/components/Header/Header';
-import Footer from '../../../modules/footer/components/Footer/Footer';
-import { Suspense, useEffect } from 'react';
-import { Container } from '../../styles/Container';
+import Header from '@/modules/header/components/Header/Header';
+import Footer from '@/modules/footer/components/Footer/Footer';
 import {
   OverlayBottom,
   OverlayMain,
   StyledSection,
-} from '../../styles/Section';
+} from '@/shared/styles/Section';
+import { Container } from '@/shared/styles/Container';
 
 const SharedLayout = () => {
   const navigate = useNavigate();

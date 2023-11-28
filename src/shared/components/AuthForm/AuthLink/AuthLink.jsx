@@ -1,5 +1,5 @@
-import { StyledLinkWrapp } from "../../../../modules/welcome/components/Welcome/Welcome.styled";
-import { SignIn, SignUp } from "./AuthLink.styled";
+import { StyledLinkWrapp } from '@/modules/welcome/components/Welcome/Welcome.styled';
+import { SignIn, SignUp } from './AuthLink.styled';
 
 const AuthLink = () => {
   return (

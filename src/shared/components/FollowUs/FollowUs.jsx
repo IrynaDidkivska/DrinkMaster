@@ -1,5 +1,5 @@
-import { SpriteSVG } from "../../icons/SpriteSVG";
-import { StyledList, StyledSocLink } from "./FollowUs.styled";
+import { SpriteSVG } from '../../icons/SpriteSVG';
+import { StyledList, StyledSocLink } from './FollowUs.styled';
 
 const FollowUs = ({ isfooter }) => {
   return (
@@ -12,7 +12,7 @@ const FollowUs = ({ isfooter }) => {
           rel="noopener noreferrer"
           aria-label="Go to GoIT Facebook page"
         >
-          <SpriteSVG name={"facebook"} />
+          <SpriteSVG name={'facebook'} />
         </StyledSocLink>
       </li>
       <li>
@@ -23,7 +23,7 @@ const FollowUs = ({ isfooter }) => {
           rel="noopener noreferrer"
           aria-label="Go to GoIT Instagram page"
         >
-          <SpriteSVG name={"instagram"} />
+          <SpriteSVG name={'instagram'} />
         </StyledSocLink>
       </li>
       <li>
@@ -34,7 +34,7 @@ const FollowUs = ({ isfooter }) => {
           rel="noopener noreferrer"
           aria-label="Go to GoIT Youtube channel"
         >
-          <SpriteSVG name={"youtube"} />
+          <SpriteSVG name={'youtube'} />
         </StyledSocLink>
       </li>
     </StyledList>

@@ -5,6 +5,7 @@ export const InputStyled = styled.input`
   height: 34px;
   width: 100%;
   background: transparent;
+  color: ${({ theme }) => theme.colors.mainText};
   border-bottom: 1px solid ${({ theme }) => theme.colors.link};
   border-top: none;
   border-left: none;

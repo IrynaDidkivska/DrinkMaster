@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
+import { Navigate, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectIsAuth } from '../../redux/Auth/selectors';
-import { Navigate, useLocation } from 'react-router-dom';
 
 const PublicRoute = ({ children }) => {
   const isLoggedIn = useSelector(selectIsAuth);
