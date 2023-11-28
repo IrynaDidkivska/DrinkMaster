@@ -11,6 +11,7 @@ const slice = createSlice({
     toggleTheme: state => {
       state.theme = state.theme === 'dark' ? 'light' : 'dark';
     },
+
     toggleThemeDark: state => {
       state.theme = 'dark';
     },

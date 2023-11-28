@@ -5,6 +5,7 @@ export const TextareaStyled = styled.textarea`
   width: 100%;
   height: 184px;
   padding: 16px 18px;
+  color: ${({ theme }) => theme.colors.mainText};
   border: 1px solid ${({ theme }) => theme.colors.link};
   border-radius: 14px;
   outline: transparent;

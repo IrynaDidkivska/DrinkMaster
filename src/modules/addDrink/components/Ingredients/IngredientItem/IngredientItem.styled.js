@@ -57,6 +57,7 @@ export const IngredientSelect = styled(Select)`
       }
     }
     &single-value {
+      color: ${({ theme }) => theme.colors.mainText};
       margin: 0;
       line-height: 1; /* 100% */
     }
@@ -132,7 +133,7 @@ export const IngredientSelect = styled(Select)`
 
       line-height: 1.33; /*133.333% */
       &--is-focused,
-      &.active,
+      &:active,
       &--is-selected {
         color: ${({ theme }) => theme.colors.mainText};
         background: transparent;
