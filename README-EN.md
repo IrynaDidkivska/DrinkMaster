@@ -1,4 +1,4 @@
-# <img src="./public/logo.png" width="32" alt="React"> DrinkMaster
+# <img src="./public/logo.png" width="26" alt="React"> DrinkMaster
 
 ## <img src="./public/DrinkMaster.png" alt="React">
 
