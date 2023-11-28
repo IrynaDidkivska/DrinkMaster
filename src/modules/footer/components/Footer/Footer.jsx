@@ -1,8 +1,20 @@
-import FollowUs from '../../../../shared/components/FollowUs/FollowUs';
-import Modal from '../../../../shared/components/Modal/Modal';
-import { SpriteSVG } from '../../../../shared/icons/SpriteSVG';
-import { Container } from '../../../../shared/styles/Container';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+import FollowUs from '@/shared/components/FollowUs/FollowUs';
+import Modal from '@/shared/components/Modal/Modal';
+import Logo from '@/shared/components/Logo/Logo';
+
+import { SpriteSVG } from '@/shared/icons/SpriteSVG';
+import { Container } from '@/shared/styles/Container';
+import { useModal } from '@/hooks/useModal';
+import { getPolicyThunk, getPublicThunk } from '@/redux/Drinks/operations';
+
 import FootelLink from './FootelLink/FootelLink';
+import SubscribeForm from './SubscribeForm/SubscribeForm';
+import ModalContent from './ModalContent/ModalContent';
+
+import { StyledContentTitle } from './ModalContent/ModalContent.styled';
 import {
   OverlayBottom,
   OverlayDesctop,
@@ -17,25 +29,13 @@ import {
   StyledFooterTabletBox,
   StyledModalFooteer,
 } from './Footer.styled';
-import SubscribeForm from './SubscribeForm/SubscribeForm';
-import { useModal } from '../../../../hooks/useModal';
-
-import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import {
-  getPolicyThunk,
-  getPublicThunk,
-} from '../../../../redux/Drinks/operations';
-import ModalContent from './ModalContent/ModalContent';
-import { StyledContentTitle } from './ModalContent/ModalContent.styled';
-import Logo from '../../../../shared/components/Logo/Logo';
 
 const Footer = () => {
   const dispatch = useDispatch();
+  const [termsData, setTermsData] = useState('');
+  const [policyData, setPolicyData] = useState('');
   const [isPrivacyModalOpen, openPrivacy, closePrivacy] = useModal();
   const [isTermsModalOpen, openTerms, closeTerms] = useModal();
-  const [policyData, setPolicyData] = useState('');
-  const [termsData, setTermsData] = useState('');
 
   useEffect(() => {
     const fetchData = async (thunkAction, setData) => {

@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
-import Modal from "../../../../shared/components/Modal/Modal";
+import PropTypes from 'prop-types';
+import Modal from '../../../../shared/components/Modal/Modal';
 import {
   Ellipse222,
   Ellipse224,
@@ -13,13 +13,13 @@ import {
   StyledModalInput,
   StyledSvgWrapper,
   StyledUserFoto,
-} from "./UserInfoModal.styled";
-import { SpriteSVG } from "../../../../shared/icons/SpriteSVG";
-import userFoto from "../../images/user.png";
-import { useState } from "react";
-import { updateUserThunk } from "../../../../redux/Auth/operations";
-import { useDispatch, useSelector } from "react-redux";
-import { selectUser } from "../../../../redux/Auth/selectors";
+} from './UserInfoModal.styled';
+import { SpriteSVG } from '../../../../shared/icons/SpriteSVG';
+import userFoto from '../../images/user.png';
+import { useState } from 'react';
+import { updateUserThunk } from '../../../../redux/Auth/operations';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUser } from '../../../../redux/Auth/selectors';
 
 export const UserInfoModal = ({ onClose }) => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -29,7 +29,7 @@ export const UserInfoModal = ({ onClose }) => {
   const dispatch = useDispatch();
   const { username, avatar } = useSelector(selectUser);
 
-  const handleFileChange = (file) => {
+  const handleFileChange = file => {
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -41,13 +41,13 @@ export const UserInfoModal = ({ onClose }) => {
     setSelectedFile(file);
   };
 
-  const onFileChange = (event) => {
+  const onFileChange = event => {
     const file = event.target.files[0];
     handleFileChange(file);
   };
 
-  const onUpload = async (event) => {
-    if (event.target.type === "file") {
+  const onUpload = async event => {
+    if (event.target.type === 'file') {
       const file = event.target.files[0];
       handleFileChange(file);
       return;
@@ -55,18 +55,17 @@ export const UserInfoModal = ({ onClose }) => {
 
     event.preventDefault();
 
-    dispatch(
-      updateUserThunk({
-        username: changedName || username,
-        avatar: selectedFile,
-      })
-    )
+    const formData = new FormData();
+    formData.append('username', changedName || username);
+    formData.append('avatar', selectedFile);
+
+    dispatch(updateUserThunk(formData))
       .unwrap()
       .then(() => {
         onClose();
       })
-      .catch((error) => {
-        console.error("Ошибка при обновлении пользователя", error.message);
+      .catch(error => {
+        console.error('Ошибка при обновлении пользователя', error.message);
       })
       .finally(() => {
         setIsEditing(false);
@@ -95,7 +94,7 @@ export const UserInfoModal = ({ onClose }) => {
             onClick={onUpload}
           ></StyledInputAdd>
           <StyledSvgWrapper
-            onClick={() => document.querySelector("input[type=file]").click()}
+            onClick={() => document.querySelector('input[type=file]').click()}
           >
             <SpriteSVG name="add-modal-photo" />
           </StyledSvgWrapper>
@@ -104,12 +103,12 @@ export const UserInfoModal = ({ onClose }) => {
         <StyledModalForm>
           <StyledModalInput
             value={changedName || username}
-            onChange={(event) => setChangedName(event.target.value)}
+            onChange={event => setChangedName(event.target.value)}
             disabled={!isEditing}
           />
 
           <StyledBtnEdit
-            onClick={(event) => {
+            onClick={event => {
               event.preventDefault();
               setIsEditing(true);
             }}

@@ -1,20 +1,18 @@
-import { SubscribeFormStyled } from "./SubscribeForm.styled";
-import { useDispatch, useSelector } from "react-redux";
-import { subscribeEmail } from "../../../../../redux/Auth/operations";
-import { selectSubscribe } from "../../../../../redux/Auth/selectors";
-import { useState } from "react";
-import { toast } from "react-toastify";
+import { SubscribeFormStyled } from './SubscribeForm.styled';
+import { useDispatch } from 'react-redux';
+import { subscribeEmail } from '../../../../../redux/Auth/operations';
+import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 const SubscribeForm = () => {
-  const isSubscribed = useSelector(selectSubscribe);
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
   const dispatch = useDispatch();
 
-  const handleSubscribe = async (event) => {
+  const handleSubscribe = async event => {
     event.preventDefault();
     try {
       await dispatch(subscribeEmail({ email }));
-      setEmail("");
+      setEmail('');
     } catch (error) {
       toast.error(error.response.data.message);
     }
@@ -33,7 +31,7 @@ const SubscribeForm = () => {
           name="email"
           placeholder="Enter the email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={e => setEmail(e.target.value)}
         />
         <button type="submit">Subscribe</button>
       </form>

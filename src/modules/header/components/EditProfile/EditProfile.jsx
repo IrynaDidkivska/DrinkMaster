@@ -1,17 +1,20 @@
 import PropTypes from 'prop-types';
-import { SpriteSVG } from '../../../../shared/icons/SpriteSVG';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { useState } from 'react';
+
+import { selectUser } from '@/redux/Auth/selectors';
+import { logoutThunk } from '@/redux/Auth/operations';
+
+import { SpriteSVG } from '@/shared/icons/SpriteSVG';
+import { UserInfoModal } from '../UserInfoModal/UserInfoModal';
+
 import {
   StyledBtnEditProfile,
   StyledBtnLogOut,
   StyledPopupTitle,
 } from './EditProfile.styled';
-import { useState } from 'react';
-import { UserInfoModal } from '../UserInfoModal/UserInfoModal';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { selectUser } from '../../../../redux/Auth/selectors';
-import { toast } from 'react-toastify';
-import { logoutThunk } from '../../../../redux/Auth/operations';
 
 export const EditProfile = () => {
   const dispatch = useDispatch();
