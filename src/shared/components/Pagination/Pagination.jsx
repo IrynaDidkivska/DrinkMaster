@@ -20,7 +20,7 @@ import { List } from '../DrinkList/DrinkList.styled';
 
 const Pagination = () => {
   const isTabletScreen = useMediaQuery({ query: '(min-width: 768px)' });
-  const isSmallScreen = useMediaQuery({ query: '(max-width: 1439px)' });
+  const isSmallScreen = useMediaQuery({ query: '(max-width: 1439.98px)' });
 
   const itemsPerPage = useMemo(() => {
     return isSmallScreen ? 10 : 9;

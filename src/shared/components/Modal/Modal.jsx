@@ -1,6 +1,10 @@
 import PropTypes from 'prop-types';
-import { ModalOverlay } from './Modal.styled';
 import { useEffect } from 'react';
+
+import { ModalOverlay } from './Modal.styled';
+import { createPortal } from 'react-dom';
+
+const modalRoot = document.querySelector('#modal-root');
 
 const Modal = ({ children, onClose }) => {
   useEffect(() => {
@@ -16,11 +20,7 @@ const Modal = ({ children, onClose }) => {
     };
   }, [onClose]);
 
-  if (!onClose) {
-    return null;
-  }
-
-  return (
+  return createPortal(
     <ModalOverlay
       onClick={event => {
         if (event.target === event.currentTarget) {
@@ -29,7 +29,8 @@ const Modal = ({ children, onClose }) => {
       }}
     >
       {children}
-    </ModalOverlay>
+    </ModalOverlay>,
+    modalRoot
   );
 };
 
