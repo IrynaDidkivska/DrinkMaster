@@ -50,7 +50,13 @@ const PopularImage = styled.img`
   width: 90px;
   height: 90px;
   border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.04);
+  }
 `;
+
 const PopularContainerDiscr = styled.div`
   width: 232px;
   display: flex;
