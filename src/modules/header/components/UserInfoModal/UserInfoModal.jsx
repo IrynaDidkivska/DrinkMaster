@@ -85,13 +85,10 @@ export const UserInfoModal = ({ onClose }) => {
         </StyledBtnClose>
 
         <StyledModalHeader>
-          {previewImage && <StyledUserFoto src={previewImage} alt="Preview" />}
-
-          {avatar && <StyledUserFoto src={avatar} alt="Foto" />}
-
-          {!previewImage && !avatar && (
-            <StyledUserFoto src={userFoto} alt="Default foto" />
-          )}
+          <StyledUserFoto
+            src={previewImage || avatar || userFoto}
+            alt={previewImage ? 'Preview' : avatar ? 'Foto' : 'Default foto'}
+          />
 
           <StyledInputAdd
             type="file"
