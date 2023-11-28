@@ -1,13 +1,14 @@
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import Coctail from '../../img/image.png';
 import {
   DrinkCardItemImage,
   DrinkCardItemName,
   DrinkCardItemSeeMore,
   DrinkCardItemContainerDiscr,
 } from './DrinkCardItem.styled';
+
+import { DefaultCardImage } from '@/shared/helpers/defaultImgHelper';
 
 const DrinkCardItem = ({ data }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -17,30 +18,15 @@ const DrinkCardItem = ({ data }) => {
     navigate(`/drinks/${_id}`);
   };
 
-  const handleImageLoad = () => {
-    setImageLoaded(true);
-  };
-
-  const handleImageError = () => {
-    // Handle image load error if needed
-    setImageLoaded(false);
-  };
-
   return (
     <li key={data._id} style={{ position: 'relative' }}>
       <DrinkCardItemImage
         src={data.drinkThumb}
         alt={' '}
-        onLoad={handleImageLoad}
-        onError={handleImageError}
+        onLoad={() => setImageLoaded(true)}
+        onError={() => setImageLoaded(false)}
       />
-      {!imageLoaded && (
-        <DrinkCardItemImage
-          src={Coctail}
-          // alt={data.drink}
-          style={{ position: 'absolute', top: 0 }}
-        />
-      )}
+      {!imageLoaded && <DefaultCardImage />}
       <DrinkCardItemContainerDiscr>
         <DrinkCardItemName>{data.drink}</DrinkCardItemName>
         <DrinkCardItemSeeMore onClick={() => handleSeeMore(data._id)}>
