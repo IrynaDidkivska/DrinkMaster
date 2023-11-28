@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '@/redux/Auth/selectors';
 
 import { SpriteSVG } from '@/shared/icons/SpriteSVG';
-import userFoto from '@/images/user.png';
+import userFoto from '../../images/user.png';
 
 import Modal from '@/shared/components/Modal/Modal';
 import {
