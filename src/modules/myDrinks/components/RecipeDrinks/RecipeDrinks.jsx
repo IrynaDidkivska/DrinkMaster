@@ -1,13 +1,15 @@
 import { useSelector } from 'react-redux';
 
+import { selectDetails } from '../../../../redux/Drinks/selectors';
+
+import RecipeImage from '../RecipeImg/RecipeImg';
+
 import {
   StyledRecipTitle,
   StyledRecipeDrinks,
   StyledRecipeText,
   StyledWrapperContent,
 } from './RecipeDrinks.styled';
-import { selectDetails } from '../../../../redux/Drinks/selectors';
-import RecipeImage from '../RecipeImg/RecipeImg';
 
 const RecipeDrinks = () => {
   const details = useSelector(selectDetails);

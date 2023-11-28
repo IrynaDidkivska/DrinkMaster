@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types';
-import { EditProfile } from '../EditProfile/EditProfile';
-import { PopUpWrapper, StyledUserPopup } from './UserLogoPopup.styled';
 import { useEffect, useRef, useCallback } from 'react';
+
+import { EditProfile } from '../EditProfile/EditProfile';
+
+import { PopUpWrapper, StyledUserPopup } from './UserLogoPopup.styled';
 
 export const UserLogoPopup = ({ isOpen, togglePopup }) => {
   const popupRef = useRef(null);

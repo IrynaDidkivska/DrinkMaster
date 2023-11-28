@@ -1,5 +1,14 @@
 import PropTypes from 'prop-types';
-import Modal from '../../../../shared/components/Modal/Modal';
+import { useState } from 'react';
+
+import { updateUserThunk } from '@/redux/Auth/operations';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUser } from '@/redux/Auth/selectors';
+
+import { SpriteSVG } from '@/shared/icons/SpriteSVG';
+import userFoto from '@/images/user.png';
+
+import Modal from '@/shared/components/Modal/Modal';
 import {
   Ellipse222,
   Ellipse224,
@@ -14,19 +23,15 @@ import {
   StyledSvgWrapper,
   StyledUserFoto,
 } from './UserInfoModal.styled';
-import { SpriteSVG } from '../../../../shared/icons/SpriteSVG';
-import userFoto from '../../images/user.png';
-import { useState } from 'react';
-import { updateUserThunk } from '../../../../redux/Auth/operations';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectUser } from '../../../../redux/Auth/selectors';
 
 export const UserInfoModal = ({ onClose }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [changedName, setChangedName] = useState(null);
   const [previewImage, setPreviewImage] = useState(null);
-  const [isEditing, setIsEditing] = useState(false); // Добавлено состояние для отслеживания режима редактирования
+  const [isEditing, setIsEditing] = useState(false);
+
   const dispatch = useDispatch();
+
   const { username, avatar } = useSelector(selectUser);
 
   const handleFileChange = file => {
@@ -65,7 +70,7 @@ export const UserInfoModal = ({ onClose }) => {
         onClose();
       })
       .catch(error => {
-        console.error('Ошибка при обновлении пользователя', error.message);
+        console.error('Error updating user', error.message);
       })
       .finally(() => {
         setIsEditing(false);
@@ -80,11 +85,11 @@ export const UserInfoModal = ({ onClose }) => {
         </StyledBtnClose>
 
         <StyledModalHeader>
-          {previewImage ? (
-            <StyledUserFoto src={previewImage} alt="Preview" />
-          ) : avatar ? (
-            <StyledUserFoto src={avatar} alt="Foto" />
-          ) : (
+          {previewImage && <StyledUserFoto src={previewImage} alt="Preview" />}
+
+          {avatar && <StyledUserFoto src={avatar} alt="Foto" />}
+
+          {!previewImage && !avatar && (
             <StyledUserFoto src={userFoto} alt="Default foto" />
           )}
 
