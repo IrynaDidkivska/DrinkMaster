@@ -23,8 +23,6 @@ const RecipeDrinks = () => {
     },
   };
 
-  console.log(details.video);
-
   return (
     <StyledRecipeDrinks>
       <StyledRecipTitle>Recipe Preparation</StyledRecipTitle>
