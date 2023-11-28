@@ -20,6 +20,7 @@ import {
   StyledTitleSection,
   WrapperPosition,
 } from './MyJustDrinks.styled';
+import { DefaultStyledJustImages } from '@/shared/helpers/defaultImgHelper';
 
 const MyJustDrinks = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -45,14 +46,6 @@ const MyJustDrinks = () => {
     }
   };
 
-  const handleImageLoad = () => {
-    setImageLoaded(true);
-  };
-
-  const handleImageError = () => {
-    setImageLoaded(false);
-  };
-
   return (
     <StyledJustDrinks>
       <div>
@@ -68,19 +61,13 @@ const MyJustDrinks = () => {
 
       <WrapperPosition>
         <DrinkIDImage
-          onLoad={handleImageLoad}
-          onError={handleImageError}
+          onLoad={() => setImageLoaded(true)}
+          onError={() => setImageLoaded(false)}
           src={details.drinkThumb}
           alt={details.drink}
           loading="lazy"
         />
-        {!imageLoaded && (
-          <StyledJustImages
-            src={Coctail}
-            alt="Picture of general drink"
-            style={{ position: 'absolute', top: 0 }}
-          />
-        )}
+        {!imageLoaded && <DefaultStyledJustImages />}
       </WrapperPosition>
     </StyledJustDrinks>
   );

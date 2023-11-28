@@ -2,6 +2,7 @@ import { PopularImage } from '@/modules/addDrink/components/PopularDrinks/Popula
 import Coctail from '../../shared/img/image.png';
 import { DrinkCardItemImage } from '../components/DrinkCardItem/DrinkCardItem.styled';
 import { DrinkCardItemFaxImg } from '../components/Card/Card.styled';
+import { StyledJustImages } from '@/modules/myDrinks/components/MyJustDrinks/MyJustDrinks.styled';
 
 export const DefaultCardImage = () => {
   return (
@@ -10,6 +11,7 @@ export const DefaultCardImage = () => {
         src={Coctail}
         alt="Picture of general drink"
         style={{ position: 'absolute', top: 0 }}
+        loading="lazy"
       />
     </div>
   );
@@ -22,6 +24,7 @@ export const DefaultPopularImage = () => {
         src={Coctail}
         alt="Picture of general drink"
         style={{ position: 'absolute', top: 0 }}
+        loading="lazy"
       />
     </div>
   );
@@ -34,6 +37,20 @@ export const DefaultDrinkCardItemFaxImg = () => {
         src={Coctail}
         alt="Picture of general drink"
         style={{ position: 'absolute', top: 0 }}
+        loading="lazy"
+      />
+    </div>
+  );
+};
+
+export const DefaultStyledJustImages = () => {
+  return (
+    <div>
+      <StyledJustImages
+        src={Coctail}
+        alt="Picture of general drink"
+        style={{ position: 'absolute', top: 0 }}
+        loading="lazy"
       />
     </div>
   );
