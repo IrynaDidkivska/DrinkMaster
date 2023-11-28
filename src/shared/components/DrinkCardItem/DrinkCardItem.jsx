@@ -1,19 +1,19 @@
-import { useNavigate } from "react-router-dom";
-import PropTypes from "prop-types";
-import Coctail from "../../img/image.png";
+import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { useState } from 'react';
+import Coctail from '../../img/image.png';
 import {
   DrinkCardItemImage,
   DrinkCardItemName,
   DrinkCardItemSeeMore,
   DrinkCardItemContainerDiscr,
-} from "./DrinkCardItem.styled";
-import { useState } from "react";
+} from './DrinkCardItem.styled';
 
 const DrinkCardItem = ({ data }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const navigate = useNavigate();
 
-  const handleSeeMore = (_id) => {
+  const handleSeeMore = _id => {
     navigate(`/drinks/${_id}`);
   };
 
@@ -27,10 +27,10 @@ const DrinkCardItem = ({ data }) => {
   };
 
   return (
-    <li key={data._id} style={{ position: "relative" }}>
+    <li key={data._id} style={{ position: 'relative' }}>
       <DrinkCardItemImage
         src={data.drinkThumb}
-        alt={" "}
+        alt={' '}
         onLoad={handleImageLoad}
         onError={handleImageError}
       />
@@ -38,7 +38,7 @@ const DrinkCardItem = ({ data }) => {
         <DrinkCardItemImage
           src={Coctail}
           // alt={data.drink}
-          style={{ position: "absolute", top: 0 }}
+          style={{ position: 'absolute', top: 0 }}
         />
       )}
       <DrinkCardItemContainerDiscr>

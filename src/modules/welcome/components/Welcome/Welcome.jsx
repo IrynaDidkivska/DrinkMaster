@@ -1,21 +1,21 @@
-import { useLocation } from "react-router-dom";
-import AuthForm from "../../../../shared/components/AuthForm/AuthForm";
-import AuthLink from "../../../../shared/components/AuthForm/AuthLink/AuthLink";
+import { useLocation } from 'react-router-dom';
+import AuthForm from '@/shared/components/AuthForm/AuthForm';
+import AuthLink from '@/shared/components/AuthForm/AuthLink/AuthLink';
+import Subtitle from '@/shared/components/Title/Subtitle';
 import {
   OverlayCentered,
   OverlayLeft,
   OverlayRight,
   StyledWrapper,
   WelcomeWrapper,
-} from "./Welcome.styled";
-import Subtitle from "../../../../shared/components/Title/Subtitle";
+} from './Welcome.styled';
 
 const Welcome = () => {
   const location = useLocation();
   return (
     <StyledWrapper>
       <>
-        {location.pathname === "/welcome" ? (
+        {location.pathname === '/welcome' ? (
           <WelcomeWrapper>
             <Subtitle Subtitle="Welcome to the app!" />
             <p>
