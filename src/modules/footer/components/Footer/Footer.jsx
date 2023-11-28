@@ -70,8 +70,12 @@ const Footer = () => {
             ©2023 Drink Master. All rights reserved.
           </StyledFooterSpan>
           <StyledFooterPrivacyBlock>
-            <button onClick={openPrivacy}>Privacy Policy</button>
-            <button onClick={openTerms}>Terms of Service</button>
+            <button onClick={openPrivacy} type="button">
+              Privacy Policy
+            </button>
+            <button onClick={openTerms} type="button">
+              Terms of Service
+            </button>
           </StyledFooterPrivacyBlock>
         </StyledFooterPrivacy>
       </Container>
@@ -92,7 +96,7 @@ const Footer = () => {
         <Modal onClose={closeTerms}>
           <StyledModalFooteer>
             <StyledContentTitle>Public offering agreement</StyledContentTitle>
-            <StyledBtnCloseFooter onClick={closeTerms}>
+            <StyledBtnCloseFooter onClick={closeTerms} type="button">
               <SpriteSVG name={'close'} />
             </StyledBtnCloseFooter>
             {ModalContent(termsData)}

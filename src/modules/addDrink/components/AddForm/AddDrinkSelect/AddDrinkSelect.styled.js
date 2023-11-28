@@ -50,6 +50,7 @@ export const SelectStyled = styled(Select)`
     &single-value {
       margin: 0;
       line-height: 14px; /* 100% */
+      color: ${({ theme }) => theme.colors.mainText};
     }
     &indicators {
       padding: 0;
@@ -62,6 +63,7 @@ export const SelectStyled = styled(Select)`
       }
     }
     &input-container {
+      color: ${({ theme }) => theme.colors.mainText};
       & input {
         width: 100px;
       }
@@ -69,7 +71,6 @@ export const SelectStyled = styled(Select)`
       flex-shrink: 1;
       padding: 0;
       margin: 0;
-      color: ${({ theme }) => theme.colors.active};
       line-height: 1; /* 100% */
       width: fit-content;
     }

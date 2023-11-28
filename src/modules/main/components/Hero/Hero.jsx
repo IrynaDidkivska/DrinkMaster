@@ -10,7 +10,13 @@ const Hero = () => {
 
       <source srcSet={`${coctailPNG}`} type="image/jpeg" />
 
-      <HomeImage src={coctailPNG} alt="Coctail" width="252" height="313" />
+      <HomeImage
+        src={coctailPNG}
+        alt="Coctail"
+        width="252"
+        height="313"
+        loading="lazy"
+      />
     </picture>
   );
 };

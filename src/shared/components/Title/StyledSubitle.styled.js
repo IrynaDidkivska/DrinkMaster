@@ -1,7 +1,6 @@
-import styled from "styled-components";
-import { StyledTitle } from "./Title.styled";
+import styled from 'styled-components';
 
-export const StyledSubitle = styled(StyledTitle)`
+export const StyledSubitle = styled.h2`
   font-size: 28px;
   letter-spacing: -0.56px;
   line-height: 1.14; /* 114.286% */
