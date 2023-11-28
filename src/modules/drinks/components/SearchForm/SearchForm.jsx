@@ -21,6 +21,7 @@ import { FormStyled, InputContStyled, SelectStyled } from './SerchForm.styled';
 const SearchForm = () => {
   const dispatch = useDispatch();
   const [queryStr, setQueryStr] = useState('');
+  console.log(queryStr);
   let categories = useSelector(selectNormalizedCategories);
   let ingregients = useSelector(selectNormalizedIngredients);
 
