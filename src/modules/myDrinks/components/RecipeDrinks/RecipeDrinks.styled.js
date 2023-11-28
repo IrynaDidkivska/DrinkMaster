@@ -44,16 +44,6 @@ export const StyledRecipeText = styled.p`
   }
 `;
 
-export const StyledLink = styled.a`
-  color: #007bff;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-    color: #0056b3;
-  }
-
-  &:active {
-    color: #004080;
-  }
+export const StyledLink = styled.div`
+  margin: 20px;
 `;

@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-
+import YouTube from 'react-youtube';
 import { selectDetails } from '../../../../redux/Drinks/selectors';
 
 import RecipeImage from '../RecipeImg/RecipeImg';
@@ -15,24 +15,38 @@ import {
 const RecipeDrinks = () => {
   const details = useSelector(selectDetails);
 
+  const opts = {
+    height: '315',
+    width: '560',
+    playerVars: {
+      autoplay: 0, // set to 1 for autoplay
+    },
+  };
+
   return (
     <StyledRecipeDrinks>
       <StyledRecipTitle>Recipe Preparation</StyledRecipTitle>
       <StyledWrapperContent>
         <StyledRecipeText>
           {details.instructions}{' '}
-          <StyledLink
-            href={details.video}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Watch on YouTube
+          <StyledLink>
+            {details.video ? (
+              <YouTube videoId={extractVideoId(details.video)} opts={opts} />
+            ) : (
+              <p>No video available</p>
+            )}
           </StyledLink>
         </StyledRecipeText>
         <RecipeImage />
       </StyledWrapperContent>
     </StyledRecipeDrinks>
   );
+};
+
+// Helper function to extract the video ID from the YouTube URL
+const extractVideoId = url => {
+  const match = url.match(/[?&]v=([^?&]+)/);
+  return match ? match[1] : null;
 };
 
 export default RecipeDrinks;
