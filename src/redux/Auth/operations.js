@@ -1,13 +1,12 @@
-
 import { toast } from 'react-toastify';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { API, clearToken, setToken } from '@/config/drinkConfig';
+import { loginRequest } from '@/shared/helpers/login';
 
 export const signupThunk = createAsyncThunk(
   'auth/signup',
-  async (credentials, { rejectWithValue, dispatch }) => {
-
+  async (credentials, { rejectWithValue }) => {
     try {
       const { data } = await API.post('api/auth/users/signup', credentials);
       const reg = { email: data.email, password: credentials.password };
@@ -55,7 +54,6 @@ export const currentUserThunk = createAsyncThunk(
 
       return data;
     } catch (error) {
-      toast.error(error.response.data.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   },
@@ -77,7 +75,7 @@ export const updateUserThunk = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const res = await API.patch('api/auth/users/update', data);
-  return res.data;
+      return res.data;
     } catch (error) {
       toast.error(error.response.data.message);
       return thunkAPI.rejectWithValue(error.message);
