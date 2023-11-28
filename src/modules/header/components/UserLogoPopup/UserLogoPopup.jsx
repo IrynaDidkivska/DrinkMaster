@@ -1,13 +1,11 @@
 import PropTypes from 'prop-types';
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useCallback } from 'react';
 
 import { EditProfile } from '../EditProfile/EditProfile';
 
 import { PopUpWrapper, StyledUserPopup } from './UserLogoPopup.styled';
 
 export const UserLogoPopup = ({ isOpen, togglePopup }) => {
-  const popupRef = useRef(null);
-
   useEffect(() => {
     const handleEscape = event => {
       if (event.code === 'Escape') {
@@ -36,7 +34,7 @@ export const UserLogoPopup = ({ isOpen, togglePopup }) => {
       {isOpen && (
         <>
           <PopUpWrapper onClick={handleClickOutside} />
-          <StyledUserPopup ref={popupRef} data-testid="user-popup">
+          <StyledUserPopup>
             <EditProfile togglePopup={togglePopup} />
           </StyledUserPopup>
         </>
