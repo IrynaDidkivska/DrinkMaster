@@ -23,6 +23,8 @@ const RecipeDrinks = () => {
     },
   };
 
+  console.log(details.video);
+
   return (
     <StyledRecipeDrinks>
       <StyledRecipTitle>Recipe Preparation</StyledRecipTitle>
@@ -30,10 +32,10 @@ const RecipeDrinks = () => {
         <StyledRecipeText>
           {details.instructions}{' '}
           <StyledLink>
-            {details.video ? (
-              <YouTube videoId={extractVideoId(details.video)} opts={opts} />
-            ) : (
-              <p>No video available</p>
+            {details.video && details.video !== 'Sorry, not specified' && (
+              <StyledLink>
+                <YouTube videoId={extractVideoId(details.video)} opts={opts} />
+              </StyledLink>
             )}
           </StyledLink>
         </StyledRecipeText>
