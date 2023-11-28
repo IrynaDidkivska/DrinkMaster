@@ -1,13 +1,16 @@
 import { useState } from 'react';
+
 import { selectUser } from '../../../../redux/Auth/selectors';
+import { useSelector } from 'react-redux';
+
+import { UserLogoPopup } from '../UserLogoPopup/UserLogoPopup';
 import userFoto from '../../images/user.png';
+
 import {
   StyledBtnProfile,
   StyledImgProfile,
   StyledProfileName,
 } from './User.styled';
-import { useSelector } from 'react-redux';
-import { UserLogoPopup } from '../UserLogoPopup/UserLogoPopup';
 
 export const User = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,11 +32,10 @@ export const User = () => {
   return (
     <>
       <StyledBtnProfile onClick={togglePopup}>
-        {avatar ? (
-          <StyledImgProfile src={avatar} alt="Foto" />
-        ) : (
+        {(avatar && <StyledImgProfile src={avatar} alt="Foto" />) || (
           <StyledImgProfile src={userFoto} alt="Default Foto" />
         )}
+
         <StyledProfileName>{editString(username)}</StyledProfileName>
       </StyledBtnProfile>
       <UserLogoPopup isOpen={isOpen} togglePopup={togglePopup} />

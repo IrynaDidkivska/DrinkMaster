@@ -1,6 +1,7 @@
 import coctailJPEG from '/img/coctails.jpeg';
 import coctailWEBP from '/img/coctails.webp';
 import coctail2x from '/img/coctail@2x.jpeg';
+
 import { StyledRecipeImages } from './RecipeImg.styled';
 
 const RecipeImage = () => {

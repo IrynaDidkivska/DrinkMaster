@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { selectDetails } from '@/redux/Drinks/selectors';
 import {
   IngredientsImage,
   IngredientsName,
@@ -6,7 +7,6 @@ import {
   IngredientsContainerDiscr,
   IngredientsItem,
 } from './DrinkIngredientsItem.styles';
-import { selectDetails } from '../../../../redux/Drinks/selectors';
 
 const DrinkIngredientsItem = () => {
   const { ingredients } = useSelector(selectDetails);

@@ -1,4 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import { useEffect, useState } from 'react';
+
+import { selectDetails } from '@/redux/Drinks/selectors';
+import {
+  addFavoriteThunk,
+  deleteFromFavoriteThunk,
+} from '@/redux/Drinks/operations';
+
+import Coctail from '@/shared/img/image.png';
+
 import {
   DrinkIDImage,
   StyledJustButton,
@@ -9,14 +20,6 @@ import {
   StyledTitleSection,
   WrapperPosition,
 } from './MyJustDrinks.styled';
-import {
-  addFavoriteThunk,
-  deleteFromFavoriteThunk,
-} from '../../../../redux/Drinks/operations';
-import { selectDetails } from '../../../../redux/Drinks/selectors';
-import { toast } from 'react-toastify';
-import { useEffect, useState } from 'react';
-import Coctail from '../../../../shared/img/image.png';
 
 const MyJustDrinks = () => {
   const [imageLoaded, setImageLoaded] = useState(false);

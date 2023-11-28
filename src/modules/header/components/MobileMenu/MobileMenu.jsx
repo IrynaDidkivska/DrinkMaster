@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux';
 
 import { isModalMobileMenuOpen } from '@/redux/Global/selectors.js';
 
+import mobileMenuData from '../../data/mobile-menu-data.js';
+
 import { SpriteSVG } from '@/shared/icons/SpriteSVG.jsx';
 import Logo from '@/shared/components/Logo/Logo';
 import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher.jsx';
@@ -47,46 +49,15 @@ export const MobileMenu = ({ toggleMenu }) => {
       <StyledMobileBody>
         <Container>
           <StyledMobileNavBar>
-            <StyledLink
-              to={{
-                pathname: '/home',
-              }}
-              onClick={() => handleLinkClick()}
-            >
-              Home
-            </StyledLink>
-            <StyledLink
-              to={{
-                pathname: '/drinks',
-              }}
-              onClick={() => handleLinkClick()}
-            >
-              Drinks
-            </StyledLink>
-            <StyledLink
-              to={{
-                pathname: '/add',
-              }}
-              onClick={() => handleLinkClick()}
-            >
-              Add drink
-            </StyledLink>
-            <StyledLink
-              to={{
-                pathname: '/my',
-              }}
-              onClick={() => handleLinkClick()}
-            >
-              My drinks
-            </StyledLink>
-            <StyledLink
-              to={{
-                pathname: '/favorites',
-              }}
-              onClick={() => handleLinkClick()}
-            >
-              Favorites
-            </StyledLink>
+            {mobileMenuData.map((menuItem, index) => (
+              <StyledLink
+                key={index}
+                to={{ pathname: menuItem.path }}
+                onClick={() => handleLinkClick()}
+              >
+                {menuItem.label}
+              </StyledLink>
+            ))}
           </StyledMobileNavBar>
         </Container>
       </StyledMobileBody>
