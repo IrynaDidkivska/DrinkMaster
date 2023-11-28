@@ -124,9 +124,9 @@ This project was developed by the "CyberWorld" team:
 - **Taras Kovalyk:** Developer
   - [GitHub](https://github.com/tarik2454)
   - [LinkedIn](https://www.linkedin.com/in/taras-kovalyk/)
-- **Слєпченко Юлія:** Developer
-  - [GitHub]
-  - [LinkedIn]
+- **Yuliia Platonova:** Developer
+  - [GitHub](https://github.com/YuliiaSliepchenko)
+  - [LinkedIn](www.linkedin.com/in/yuliia-platonova-7189b8273)
 - **Ілля Чечельницький:** Developer
 
   - [GitHub]

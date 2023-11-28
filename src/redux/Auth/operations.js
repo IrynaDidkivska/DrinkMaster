@@ -1,12 +1,13 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { API, clearToken, setToken } from "../../config/drinkConfig";
-import { toast } from "react-toastify";
+import { toast } from 'react-toastify';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+
+import { API, clearToken, setToken } from '@/config/drinkConfig';
 
 export const signupThunk = createAsyncThunk(
-  "auth/signup",
+  'auth/signup',
   async (credentials, { rejectWithValue, dispatch }) => {
     try {
-      const { data } = await API.post("api/auth/users/signup", credentials);
+      const { data } = await API.post('api/auth/users/signup', credentials);
       const reg = { email: data.email, password: credentials.password };
       const loginResponse = await dispatch(signinThunk(reg)).unwrap();
       return loginResponse;
@@ -18,10 +19,10 @@ export const signupThunk = createAsyncThunk(
 );
 
 export const signinThunk = createAsyncThunk(
-  "auth/signin",
+  'auth/signin',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await API.post("api/auth/users/login", credentials);
+      const { data } = await API.post('api/auth/users/login', credentials);
       setToken(data.token);
       return data;
     } catch (error) {
@@ -32,10 +33,10 @@ export const signinThunk = createAsyncThunk(
 );
 
 export const logoutThunk = createAsyncThunk(
-  "auth/logout",
+  'auth/logout',
   async (_, thunkAPI) => {
     try {
-      const { data } = await API.post("api/auth/users/logout");
+      const { data } = await API.post('api/auth/users/logout');
       clearToken();
       return data;
     } catch (error) {
@@ -45,16 +46,16 @@ export const logoutThunk = createAsyncThunk(
   }
 );
 export const currentUserThunk = createAsyncThunk(
-  "auth/currentUser",
+  'auth/currentUser',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const savedToken = state.auth.token;
     if (!savedToken) {
-      return thunkAPI.rejectWithValue("NO autorization!!!");
+      return thunkAPI.rejectWithValue('NO autorization!!!');
     }
     setToken(savedToken);
     try {
-      const { data } = await API.get("api/auth/users/current");
+      const { data } = await API.get('api/auth/users/current');
 
       return data;
     } catch (error) {
@@ -66,14 +67,14 @@ export const currentUserThunk = createAsyncThunk(
 
 // Update
 export const updateUserThunk = createAsyncThunk(
-  "auth/updateUser",
+  'auth/updateUser',
   async (data, thunkAPI) => {
     try {
       const formData = new FormData();
-      formData.append("username", data.username);
-      formData.append("avatar", data.avatar);
+      formData.append('username', data.username);
+      formData.append('avatar', data.avatar);
 
-      const res = await API.patch("api/auth/users/update", formData);
+      const res = await API.patch('api/auth/users/update', formData);
 
       return res.data;
     } catch (error) {
@@ -85,16 +86,16 @@ export const updateUserThunk = createAsyncThunk(
 
 // subscribeEmail
 export const subscribeEmail = createAsyncThunk(
-  "auth/subscribe",
+  'auth/subscribe',
   async ({ email }, thunkAPI) => {
-    console.log("email", email);
+    console.log('email', email);
     try {
-      await API.get("api/auth/users/subscribe", {
+      await API.get('api/auth/users/subscribe', {
         params: {
           email,
         },
       });
-      toast.success("Thank you for subscribing to our newsletter.");
+      toast.success('Thank you for subscribing to our newsletter.');
     } catch (error) {
       toast.error(error.response.data.message);
       return thunkAPI.rejectWithValue(error.message);

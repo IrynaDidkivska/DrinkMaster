@@ -133,9 +133,9 @@
 - **Тарас Ковалик:** Розробник
   - [GitHub](https://github.com/tarik2454)
   - [LinkedIn](https://www.linkedin.com/in/taras-kovalyk/)
-- **Слєпченко Юлія:** Розробник
-  - [GitHub]
-  - [LinkedIn]
+- **Юлія Платонова:** Розробник
+  - [GitHub](https://github.com/YuliiaSliepchenko)
+  - [LinkedIn](www.linkedin.com/in/yuliia-platonova-7189b8273)
 - **Ілля Чечельницький:** Розробник
   - [GitHub]
   - [LinkedIn]

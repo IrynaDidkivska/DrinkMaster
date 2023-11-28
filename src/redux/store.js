@@ -1,4 +1,12 @@
+import storage from 'redux-persist/lib/storage';
 import { configureStore } from '@reduxjs/toolkit';
+
+import { userReducer } from './Auth/authSlice';
+import { filterReducer } from './Filters/filtersSlice';
+import { drinkReducer } from './Drinks/drinksSlice';
+import { themeReducer } from './theme/slice';
+import { globalReducer } from './Global/globalSlice';
+
 import {
   persistStore,
   persistReducer,
@@ -9,12 +17,6 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-import { userReducer } from './Auth/authSlice';
-import { filterReducer } from './Filters/filtersSlice';
-import { drinkReducer } from './Drinks/drinksSlice';
-import { themeReducer } from './theme/slice';
-import { globalReducer } from './Global/globalSlice';
 
 const persistConfigUser = {
   key: 'root',

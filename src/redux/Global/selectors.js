@@ -1,6 +1,6 @@
-export const isModalUserOpen = (state) => state.global.isModalUserOpen; // открывает поп-ап
+export const isModalUserOpen = state => state.global.isModalUserOpen;
 
-export const isModalEditOpen = (state) => state.global.isModalEditOpen; // открывает юзер апдейт модалку
+export const isModalEditOpen = state => state.global.isModalEditOpen;
 
-export const isModalMobileMenuOpen = (state) =>
-  state.global.isModalMobileMenuOpen; // открывает мобильное меню
+export const isModalMobileMenuOpen = state =>
+  state.global.isModalMobileMenuOpen;
