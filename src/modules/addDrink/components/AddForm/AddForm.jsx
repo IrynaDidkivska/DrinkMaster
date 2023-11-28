@@ -1,6 +1,20 @@
 import { useEffect, useState } from 'react';
-import { SpriteSVG } from '../../../../shared/icons/SpriteSVG';
+import { useDispatch, useSelector } from 'react-redux';
+import Input from './Input/Input';
+import RadioBtn from './RadioBtn/RadioBtn';
+
 import AddDrinkSelect from './AddDrinkSelect/AddDrinkSelect';
+import { selectIsAdult } from '@/redux/Auth/selectors';
+import {
+  selectNormalizedCategories,
+  selectNormalizedGlasses,
+} from '@/redux/Filters/selectors';
+import {
+  getCategoriesThunk,
+  getGlassesThunk,
+} from '@/redux/Filters/operations';
+
+import { SpriteSVG } from '@/shared/icons/SpriteSVG';
 import {
   AddFormWrapperStyled,
   AddImgContainerStyled,
@@ -9,17 +23,6 @@ import {
   ImgContainerStyled,
   InputWrapperStyled,
 } from './AddForm.styled';
-import Input from './Input/Input';
-import RadioBtn from './RadioBtn/RadioBtn';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  getCategoriesThunk,
-  getGlassesThunk,
-} from '../../../../redux/Filters/operations';
-import {
-  selectNormalizedCategories,
-  selectNormalizedGlasses,
-} from '../../../../redux/Filters/selectors.js';
 
 const AddForm = ({ setValues }) => {
   const {
@@ -33,6 +36,7 @@ const AddForm = ({ setValues }) => {
   const dispatch = useDispatch();
   const categories = useSelector(selectNormalizedCategories);
   const glasses = useSelector(selectNormalizedGlasses);
+  const isAdult = useSelector(selectIsAdult);
   const [previewImg, setPreviewImg] = useState(null);
 
   useEffect(() => {
@@ -97,6 +101,7 @@ const AddForm = ({ setValues }) => {
               label="Alcoholic"
               value="Alcoholic"
               changeF={setAlcoholic}
+              isDisabled={!isAdult}
             />
             <RadioBtn
               changeF={setAlcoholic}

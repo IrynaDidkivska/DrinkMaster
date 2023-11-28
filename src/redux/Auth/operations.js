@@ -1,7 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { API, clearToken, setToken } from '../../config/drinkConfig';
 import { toast } from 'react-toastify';
+
 import { loginRequest } from '@/shared/helpers/login';
+import { API, clearToken, setToken } from '../../config/drinkConfig';
 
 export const signupThunk = createAsyncThunk(
   'auth/signup',
@@ -48,12 +49,6 @@ export const logoutThunk = createAsyncThunk(
 export const currentUserThunk = createAsyncThunk(
   'auth/currentUser',
   async (_, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const savedToken = state.auth.token;
-    if (!savedToken) {
-      return thunkAPI.rejectWithValue('NO autorization!!!');
-    }
-    setToken(savedToken);
     try {
       const { data } = await API.get('api/auth/users/current');
 
@@ -62,6 +57,16 @@ export const currentUserThunk = createAsyncThunk(
       toast.error(error.response.data.message);
       return thunkAPI.rejectWithValue(error.message);
     }
+  },
+  {
+    condition: (_, { getState, extra }) => {
+      const state = getState();
+      const savedToken = state.auth.token;
+      if (!savedToken) {
+        return false;
+      }
+      setToken(savedToken);
+    },
   }
 );
 
