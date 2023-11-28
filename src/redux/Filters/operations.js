@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { API } from '../../config/drinkConfig';
+
+import { API } from '@/config/drinkConfig';
 
 export const getCategoriesThunk = createAsyncThunk(
   'filter/getCategories',

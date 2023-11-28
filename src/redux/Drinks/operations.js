@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { API } from '../../config/drinkConfig';
+
+import { API } from '@/config/drinkConfig';
 
 export const getAllDrinksThunk = createAsyncThunk(
   'drinks/getAll',
@@ -92,8 +93,6 @@ export const getByIDThunk = createAsyncThunk(
   }
 );
 
-// OWN
-
 // Отримання власних коктейлів
 export const getOwnThunk = createAsyncThunk(
   'drinks/getOwn',
@@ -106,6 +105,7 @@ export const getOwnThunk = createAsyncThunk(
     }
   }
 );
+
 // Видалення власних коктейлів
 export const deleteFromOwnThunk = createAsyncThunk(
   'drinks/deleteFromOwn',
@@ -120,7 +120,6 @@ export const deleteFromOwnThunk = createAsyncThunk(
 );
 
 // Favorites
-
 export const getFavoriteThunk = createAsyncThunk(
   'drinks/getFav',
   async (_, thunkAPI) => {
@@ -172,7 +171,6 @@ export const addNewDrinkThunk = createAsyncThunk(
 );
 
 //Отримання Privacy Policy та Public offering agreement
-
 export const getPolicyThunk = createAsyncThunk(
   'drinks/getPolicy',
   async (_, thunkAPI) => {

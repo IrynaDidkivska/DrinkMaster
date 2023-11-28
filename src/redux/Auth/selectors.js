@@ -1,7 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
 
-//getUser from state
-export const selectUser = state => state.auth.user; // об'єкт всього юзера
+export const selectUser = state => state.auth.user; 
 
 export const selectIsLoading = state => state.auth.isLoading;
 
@@ -16,3 +15,4 @@ export const selectSubscribe = state => state.auth.isSubscribed;
 export const selectIsAdult = createSelector([selectUser], user => {
   return user.isAdult;
 });
+
