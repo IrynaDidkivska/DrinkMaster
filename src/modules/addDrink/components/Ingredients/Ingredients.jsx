@@ -1,22 +1,22 @@
 import { useEffect, useState } from 'react';
-import Subtitle from '../../../../shared/components/Title/Subtitle';
+import { useDispatch } from 'react-redux';
+import { nanoid } from 'nanoid';
+import { getIngredientsThunk } from '@/redux/Filters/operations';
+import Subtitle from '@/shared/components/Title/Subtitle';
+import IngredientsCounter from './IngredientsCounter/IngredientsCounter';
 import IngredientItem from './IngredientItem/IngredientItem';
 import {
   IngredientsListStyled,
   IngredientsWrapperStyled,
   ListHeaderStyled,
 } from './Ingredients.styled';
-import IngredientsCounter from './IngredientsCounter/IngredientsCounter';
-import { nanoid } from 'nanoid';
-import { useDispatch } from 'react-redux';
-import { getIngredientsThunk } from '../../../../redux/Filters/operations';
 
 const Ingredients = ({ setIngredientsGeneral }) => {
   const dispatch = useDispatch();
   const [ingredients, setIngredients] = useState([
-    { id: nanoid(), title: '', ingredientId: '', measure: '1' },
-    { id: nanoid(), title: '', ingredientId: '', measure: '1' },
-    { id: nanoid(), title: '', ingredientId: '', measure: '1' },
+    { id: nanoid(), title: '', ingredientId: '', measure: '1 cl' },
+    { id: nanoid(), title: '', ingredientId: '', measure: '1 cl' },
+    { id: nanoid(), title: '', ingredientId: '', measure: '1 cl' },
   ]);
 
   useEffect(() => {
@@ -24,11 +24,13 @@ const Ingredients = ({ setIngredientsGeneral }) => {
   }, [ingredients]);
 
   useEffect(() => {
-    dispatch(getIngredientsThunk({ page: 1, limit: 100 }));
+    dispatch(getIngredientsThunk({ page: 0, limit: 0 }));
   }, [dispatch]);
 
   const removeIngredient = id => {
-    setIngredients(ingredients.filter(el => el.id !== id));
+    if (ingredients.length >= 3) {
+      setIngredients(ingredients.filter(el => el.id !== id));
+    }
   };
 
   const changeIngredient = ingredient => {

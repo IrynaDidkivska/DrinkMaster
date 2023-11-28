@@ -24,7 +24,7 @@ export const getAllDrinksThunk = createAsyncThunk(
 export const getAllSearchThunk = createAsyncThunk(
   'drinks/getAllSearch',
   async (
-    { ingredient = '', category = '', query = '', page = null, limit = null },
+    { ingredient = '', category = '', query = '', page = 1, limit = 10 },
     thunkAPI
   ) => {
     try {
@@ -37,8 +37,6 @@ export const getAllSearchThunk = createAsyncThunk(
           ingredientId: ingredient,
         },
       });
-
-      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -49,7 +47,7 @@ export const getAllSearchThunk = createAsyncThunk(
 export const paginationThunk = createAsyncThunk(
   'drinks/getPagination',
   async (
-    { ingredient = '', category = '', query = '', page = null, limit = null },
+    { ingredient = '', category = '', query = '', page = 1, limit = 10 },
     thunkAPI
   ) => {
     try {

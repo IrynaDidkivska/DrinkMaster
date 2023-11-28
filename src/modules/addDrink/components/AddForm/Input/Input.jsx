@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { InputStyled } from './Input.styled';
 
 const Input = ({ placeholder, type, changeF }) => {

@@ -27,6 +27,7 @@ const fitlerSlice = createSlice({
   reducers: {
     setQuery: (state, { payload }) => {
       state.searchQuery.query = payload;
+      state.page = 1;
     },
     setIngridient: (state, { payload }) => {
       state.searchQuery.ingredient = payload;

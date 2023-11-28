@@ -1,9 +1,14 @@
-import PropTypes from "prop-types";
-import Logo from "../../../../shared/components/Logo/Logo";
-import { StyledLink } from "../../../../shared/components/Navbar/Navbar.styled.js";
-import { Container } from "../../../../shared/styles/Container.js";
-import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher.jsx";
+import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
+import { isModalMobileMenuOpen } from '@/redux/Global/selectors.js';
+
+import { SpriteSVG } from '@/shared/icons/SpriteSVG.jsx';
+import Logo from '@/shared/components/Logo/Logo';
+import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher.jsx';
+
+import { StyledLink } from '@/shared/components/Navbar/Navbar.styled.js';
+import { Container } from '@/shared/styles/Container.js';
 import {
   Ellipse222,
   Ellipse223,
@@ -15,10 +20,7 @@ import {
   StyledMobileMenu,
   StyledMobileNavBar,
   StyledMobileWrapper,
-} from "./MobileMenu.styled";
-import { SpriteSVG } from "../../../../shared/icons/SpriteSVG.jsx";
-import { useSelector } from "react-redux";
-import { isModalMobileMenuOpen } from "../../../../redux/Global/selectors.js";
+} from './MobileMenu.styled';
 
 export const MobileMenu = ({ toggleMenu }) => {
   const isOpen = useSelector(isModalMobileMenuOpen);
@@ -47,7 +49,7 @@ export const MobileMenu = ({ toggleMenu }) => {
           <StyledMobileNavBar>
             <StyledLink
               to={{
-                pathname: "/home",
+                pathname: '/home',
               }}
               onClick={() => handleLinkClick()}
             >
@@ -55,7 +57,7 @@ export const MobileMenu = ({ toggleMenu }) => {
             </StyledLink>
             <StyledLink
               to={{
-                pathname: "/drinks",
+                pathname: '/drinks',
               }}
               onClick={() => handleLinkClick()}
             >
@@ -63,7 +65,7 @@ export const MobileMenu = ({ toggleMenu }) => {
             </StyledLink>
             <StyledLink
               to={{
-                pathname: "/add",
+                pathname: '/add',
               }}
               onClick={() => handleLinkClick()}
             >
@@ -71,7 +73,7 @@ export const MobileMenu = ({ toggleMenu }) => {
             </StyledLink>
             <StyledLink
               to={{
-                pathname: "/my",
+                pathname: '/my',
               }}
               onClick={() => handleLinkClick()}
             >
@@ -79,7 +81,7 @@ export const MobileMenu = ({ toggleMenu }) => {
             </StyledLink>
             <StyledLink
               to={{
-                pathname: "/favorites",
+                pathname: '/favorites',
               }}
               onClick={() => handleLinkClick()}
             >

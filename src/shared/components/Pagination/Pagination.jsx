@@ -1,37 +1,54 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import ReactPaginate from 'react-paginate';
+import { useMediaQuery } from 'react-responsive';
 import { useDispatch, useSelector } from 'react-redux';
+
+import { selectPage, selectSearchQuery } from '@/redux/Filters/selectors';
+import { setPage } from '@/redux/Filters/filtersSlice';
 import {
   selectBySearch,
   selectFilteredDrinks,
   selectTotalPages,
-} from '../../../redux/Drinks/selectors';
+} from '@/redux/Drinks/selectors';
+import { paginationThunk } from '@/redux/Drinks/operations';
+import { setSearch } from '@/redux/Drinks/drinksSlice';
 import DrinkCardItem from '../DrinkCardItem/DrinkCardItem';
-import { List } from '../DrinkList/DrinkList.styled';
-import { SpriteSVG } from '../../icons/SpriteSVG';
+import { SpriteSVG } from '@/shared/icons/SpriteSVG';
+
 import { StyledNext, StyledPrev } from './Pagination.styled';
-import { paginationThunk } from '../../../redux/Drinks/operations';
-import { setSearch } from '../../../redux/Drinks/drinksSlice';
-import { useMediaQuery } from 'react-responsive';
+import { List } from '../DrinkList/DrinkList.styled';
 
 const Pagination = () => {
-  const itemsPerPage = 9;
+  const isTabletScreen = useMediaQuery({ query: '(min-width: 768px)' });
+  const isSmallScreen = useMediaQuery({ query: '(max-width: 1439.98px)' });
+
+  const itemsPerPage = useMemo(() => {
+    return isSmallScreen ? 10 : 9;
+  }, [isSmallScreen]);
 
   const allDrinks = useSelector(selectBySearch);
   const totalPages = useSelector(selectTotalPages);
   const filteredDrinks = useSelector(selectFilteredDrinks);
+  const page = useSelector(selectPage);
+  const { query, category, ingredient } = useSelector(selectSearchQuery);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!allDrinks.length) {
-      dispatch(paginationThunk({}));
-    }
-  }, [allDrinks, dispatch]);
+    dispatch(
+      paginationThunk({
+        query,
+        category,
+        ingredient,
+        limit: itemsPerPage,
+        page,
+      })
+    );
+  }, [category, dispatch, ingredient, itemsPerPage, page, query]);
 
   const handlePageClick = event => {
-    const newPage = event.selected + 1;
-    dispatch(paginationThunk({ limit: itemsPerPage, page: newPage }));
+    dispatch(setPage(event.selected + 1));
+    window.scrollTo(0, 100);
   };
 
   const handleBigArrClick = event => {
@@ -42,8 +59,6 @@ const Pagination = () => {
     );
     dispatch(setSearch(pageCurrentItems));
   };
-
-  const isTabletScreen = useMediaQuery({ query: '(min-width: 768px)' });
 
   return (
     <>
