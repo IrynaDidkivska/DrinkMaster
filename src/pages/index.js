@@ -1,8 +1,11 @@
-export { default as AddDrink } from "./AddDrink/AddDrink";
-export { default as Drinks } from "./Drinks/Drinks";
-export { default as Favorites } from "./Favorites/Favorites";
-export { default as HomePage } from "./HomePage/HomePage";
-export { default as MyDrinks } from "./MyDrinks/MyDrinks";
-export { default as NotFound } from "./NotFound/NotFound";
-export { default as Signin } from "./Signin/Signin";
-export { default as Signup } from "./Signup/Signup";
+import { lazy } from "react";
+
+export const AddDrink = lazy(() => import("./AddDrink/AddDrink"));
+export const Drinks = lazy(() => import("./Drinks/Drinks"));
+export const DrinkWithID = lazy(() => import("./DrinkWithID/DrinkWithID"));
+export const Favorites = lazy(() => import("./Favorites/Favorites"));
+export const HomePage = lazy(() => import("./HomePage/HomePage"));
+export const MyDrinks = lazy(() => import("./MyDrinks/MyDrinks"));
+export const NotFound = lazy(() => import("./NotFound/NotFound"));
+export const Signin = lazy(() => import("./Signin/Signin"));
+export const Signup = lazy(() => import("./Signup/Signup"));
