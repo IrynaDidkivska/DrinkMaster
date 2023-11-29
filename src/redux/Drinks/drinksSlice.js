@@ -14,6 +14,7 @@ import {
   paginationThunk,
 } from './operations';
 import { toast } from 'react-toastify';
+import { redirect } from 'react-router-dom';
 
 const initialState = {
   drinks: {},
@@ -78,6 +79,9 @@ const drinksSlice = createSlice({
       })
       .addCase(addNewDrinkThunk.fulfilled, (state, { payload }) => {
         toast.success('Super! You have successfully created a new drink.');
+      })
+      .addCase(addNewDrinkThunk.rejected, (state, { payload }) => {
+        toast.error(payload);
       })
 
       .addMatcher(
