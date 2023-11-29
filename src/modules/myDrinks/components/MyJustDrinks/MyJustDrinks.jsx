@@ -7,20 +7,17 @@ import {
   addFavoriteThunk,
   deleteFromFavoriteThunk,
 } from '@/redux/Drinks/operations';
-
-import Coctail from '@/shared/img/image.png';
+import { DefaultStyledJustImages } from '@/shared/helpers/defaultImgHelper';
 
 import {
   DrinkIDImage,
   StyledJustButton,
   StyledJustDrinks,
-  StyledJustImages,
   StyledJustText,
   StyledJustType,
   StyledTitleSection,
   WrapperPosition,
 } from './MyJustDrinks.styled';
-import { DefaultStyledJustImages } from '@/shared/helpers/defaultImgHelper';
 
 const MyJustDrinks = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -75,7 +72,6 @@ const MyJustDrinks = () => {
         />
 
         {!imageLoaded && <DefaultStyledJustImages />}
-
       </WrapperPosition>
     </StyledJustDrinks>
   );

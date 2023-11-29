@@ -7,6 +7,7 @@ import { StyledTitle } from '@/shared/components/Title/Title.styled';
 
 import { selectMainCatalog } from '@/redux/Drinks/selectors';
 import { getAllDrinksThunk } from '@/redux/Drinks/operations';
+import useResponsive from '@/hooks/useResponsive';
 import DrinkCardItem from '@/shared/components/DrinkCardItem/DrinkCardItem';
 import Subtitle from '@/shared/components/Title/Subtitle';
 import Hero from '@/modules/main/components/Hero/Hero';
@@ -17,7 +18,6 @@ import {
   MainText,
   WrapperCategory,
 } from './HomePage.styled';
-import useResponsive from '@/hooks/useResponsive';
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -58,7 +58,9 @@ const HomePage = () => {
             destination for exploring, crafting, and mastering the world&apos;s
             finest beverages.
           </MainText>
-          <LigthBtn onClick={handleAddDrinkClick}>Add drink</LigthBtn>
+          <LigthBtn onClick={handleAddDrinkClick} type="button">
+            Add drink
+          </LigthBtn>
         </div>
         <Hero />
       </HomeWrapper>
@@ -78,7 +80,9 @@ const HomePage = () => {
         })}
       </ul>
       <BtnWrapper>
-        <LigthBtn onClick={handleOtherDrinks}>Other drinks</LigthBtn>
+        <LigthBtn onClick={handleOtherDrinks} type="button">
+          Other drinks
+        </LigthBtn>
       </BtnWrapper>
     </>
   );

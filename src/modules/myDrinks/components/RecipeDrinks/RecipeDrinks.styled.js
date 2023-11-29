@@ -44,6 +44,6 @@ export const StyledRecipeText = styled.p`
   }
 `;
 
-export const StyledLink = styled.p`
+export const StyledLink = styled.div`
   margin: 20px;
 `;

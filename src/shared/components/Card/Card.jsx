@@ -8,9 +8,9 @@ import {
   deleteFromFavoriteThunk,
   deleteFromOwnThunk,
 } from '@/redux/Drinks/operations';
-import Coctail from '../../../shared/img/image.png';
 import { SpriteSVG } from '@/shared/icons/SpriteSVG';
 import { confirmNamePage } from '@/shared/helpers/confirmNamePage';
+import { DefaultDrinkCardItemFaxImg } from '@/shared/helpers/defaultImgHelper';
 
 import {
   DrinkCardItemFaxBtn,
@@ -22,7 +22,6 @@ import {
   DrinkCardItemFaxNavi,
   DrinkCardItemFaxStatus,
 } from './Card.styled';
-import { DefaultDrinkCardItemFaxImg } from '@/shared/helpers/defaultImgHelper';
 
 const Card = ({ data }) => {
   const navigate = useNavigate();
@@ -49,7 +48,7 @@ const Card = ({ data }) => {
     <DrinkCardItemFaxContainer>
       <DrinkCardItemFaxImg
         src={data.drinkThumb}
-        alt={' '}
+        alt={data.drink}
         onLoad={() => setImageLoaded(true)}
         onError={() => setImageLoaded(false)}
       />
