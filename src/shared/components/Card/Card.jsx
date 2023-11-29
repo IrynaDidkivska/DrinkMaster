@@ -54,13 +54,17 @@ const Card = ({ data }) => {
         onError={() => setImageLoaded(false)}
       />
       {!imageLoaded && <DefaultDrinkCardItemFaxImg />}
+
       <DrinkCardItemFaxName>{data.drink}</DrinkCardItemFaxName>
       <DrinkCardItemFaxStatus>{data.alcoholic}</DrinkCardItemFaxStatus>
       <DrinkCardItemFaxDescription>
         {data.shortDescription}
       </DrinkCardItemFaxDescription>
       <DrinkCardItemFaxNavi>
-        <DrinkCardItemFaxBtn onClick={() => handleSeeMore(data._id)}>
+        <DrinkCardItemFaxBtn
+          onClick={() => handleSeeMore(data._id)}
+          type="button"
+        >
           See more
         </DrinkCardItemFaxBtn>
         <DrinkCardItemFaxDel type="button" onClick={handleRemove}>

@@ -45,7 +45,7 @@ const SearchForm = () => {
             value={queryStr}
             onChange={e => setQueryStr(e.target.value)}
           ></input>
-          <button type="submit">
+          <button type="button">
             <SpriteSVG name="search" />
           </button>
         </InputContStyled>

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const DrinkCardItemImage = styled.img`
@@ -47,7 +48,7 @@ const DrinkCardItemName = styled.h3`
   }
 `;
 
-const DrinkCardItemSeeMore = styled.a`
+const DrinkCardItemSeeMore = styled(Link)`
   font-family: 'Manrope-600', sans-serif;
   font-style: normal;
   font-weight: 500;

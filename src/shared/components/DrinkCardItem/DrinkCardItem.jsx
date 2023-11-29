@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import {
@@ -12,11 +11,6 @@ import { DefaultCardImage } from '@/shared/helpers/defaultImgHelper';
 
 const DrinkCardItem = ({ data }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
-  const navigate = useNavigate();
-
-  const handleSeeMore = _id => {
-    navigate(`/drinks/${_id}`);
-  };
 
   return (
     <li key={data._id} style={{ position: 'relative' }}>
@@ -29,7 +23,7 @@ const DrinkCardItem = ({ data }) => {
       {!imageLoaded && <DefaultCardImage />}
       <DrinkCardItemContainerDiscr>
         <DrinkCardItemName>{data.drink}</DrinkCardItemName>
-        <DrinkCardItemSeeMore onClick={() => handleSeeMore(data._id)}>
+        <DrinkCardItemSeeMore to={`/drinks/${data._id}`} rel="prefetch">
           See more
         </DrinkCardItemSeeMore>
       </DrinkCardItemContainerDiscr>

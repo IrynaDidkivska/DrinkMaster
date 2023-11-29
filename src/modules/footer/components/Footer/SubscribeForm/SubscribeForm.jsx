@@ -11,7 +11,7 @@ const SubscribeForm = () => {
   const handleSubscribe = async event => {
     event.preventDefault();
     try {
-      await dispatch(subscribeEmail({ email }));
+      dispatch(subscribeEmail({ email }));
       setEmail('');
     } catch (error) {
       toast.error(error.response.data.message);
@@ -19,7 +19,7 @@ const SubscribeForm = () => {
   };
 
   return (
-    <SubscribeFormStyled>
+    <SubscribeFormStyled method="get">
       <p>
         Subscribe up to our newsletter. Be in touch with latest news and special
         offers, etc.

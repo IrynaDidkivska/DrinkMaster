@@ -25,7 +25,7 @@ export const HomeWrapper = styled.div`
   }
 `;
 
-export const WrapperCategory = styled.div`
+export const WrapperCategory = styled.ul`
   display: flex;
   gap: 10px;
   flex-direction: row;

@@ -18,8 +18,10 @@ import LigthBtn from '@/shared/components/Buttons/LigthBtn';
 import Subtitle from '@/shared/components/Title/Subtitle';
 import FollowUs from '@/shared/components/FollowUs/FollowUs';
 import { AddDrinkWrapper, MediaWrapper } from './AddDrink.styled';
+import { useNavigate } from 'react-router-dom';
 
 const AddDrink = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [drinkPhoto, setDrinkPhoto] = useState(null);
   const [drink, setDrink] = useState(null);
@@ -51,7 +53,10 @@ const AddDrink = () => {
       return toast.error('Please fill in all fields');
     }
     const request = requestNormalize(newDrink);
-    dispatch(addNewDrinkThunk(request));
+    dispatch(addNewDrinkThunk(request))
+      .unwrap()
+      .then(() => navigate('/my'))
+      .catch(err => err.message);
   };
   return (
     <>
@@ -70,7 +75,9 @@ const AddDrink = () => {
           />
           <Ingredients setIngredientsGeneral={setIngredients} />
           <RecipePreparation setInstructions={setInstructions} />
-          <LigthBtn onClick={handleCreateDrink}>Add</LigthBtn>
+          <LigthBtn onClick={handleCreateDrink} type="button">
+            Add
+          </LigthBtn>
         </div>
         <div>
           <MediaWrapper>

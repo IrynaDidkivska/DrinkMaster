@@ -16,7 +16,7 @@ import {
   StyledPopupTitle,
 } from './EditProfile.styled';
 
-export const EditProfile = () => {
+export const EditProfile = ({ togglePopup }) => {
   const [isOpen, open, close] = useModal();
 
   const dispatch = useDispatch();
@@ -39,6 +39,7 @@ export const EditProfile = () => {
 
   const handleCloseModal = () => {
     close();
+    togglePopup();
   };
 
   return (

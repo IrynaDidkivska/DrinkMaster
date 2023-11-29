@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledWrapper = styled.div`
   position: relative;
@@ -16,7 +16,7 @@ export const StyledWrapper = styled.div`
     ),
     linear-gradient(1deg, #0a0a11 -0.56%, rgba(10, 10, 17, 0) 21.93%),
     linear-gradient(82deg, #0a0a11 11.89%, rgba(10, 10, 17, 0) 82.65%),
-    url("../../img/welcome.webp"),
+    url('../../img/welcome.webp'),
     lightgray -3px -13.319px / 100.511% 101.679% no-repeat;
   background-size: auto, auto, auto, 587px 812px;
   background-position: 80px 0;
@@ -24,7 +24,7 @@ export const StyledWrapper = styled.div`
   background-color: ${({ theme }) => theme.background.main};
 
   p {
-    font-family: "Manrope-400", sans-serif;
+    font-family: 'Manrope-400', sans-serif;
     text-align: center;
     font-size: 14px;
     font-style: normal;
@@ -57,8 +57,17 @@ export const StyledWrapper = styled.div`
 export const WelcomeWrapper = styled.div`
   z-index: 2;
   padding: 0 28px 0 28px;
+  p {
+    margin-top: 14px;
+  }
+  h2 {
+    text-align: center;
+  }
   @media screen and (min-width: 768px) {
     padding: 0 0 0 64px;
+    h2 {
+      text-align: left;
+    }
   }
   @media screen and (min-width: 1440px) {
     padding: 0 0 0 100px;

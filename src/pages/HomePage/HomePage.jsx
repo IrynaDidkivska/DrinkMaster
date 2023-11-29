@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -62,21 +62,21 @@ const HomePage = () => {
         </div>
         <Hero />
       </HomeWrapper>
-      <>
+      <ul>
         {categ.map(category => {
           const foreCoctails = allCatalog[category];
           return (
-            <React.Fragment key={category}>
+            <li key={category}>
               <Subtitle Subtitle={category}></Subtitle>
               <WrapperCategory>
                 {foreCoctails.slice(0, drinksToShow).map(drink => (
                   <DrinkCardItem key={drink._id} data={drink} />
                 ))}
               </WrapperCategory>
-            </React.Fragment>
+            </li>
           );
         })}
-      </>
+      </ul>
       <BtnWrapper>
         <LigthBtn onClick={handleOtherDrinks}>Other drinks</LigthBtn>
       </BtnWrapper>
