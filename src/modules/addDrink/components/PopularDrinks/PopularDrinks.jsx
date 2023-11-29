@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
-import Subtitle from "../../../../shared/components/Title/Subtitle";
+import Subtitle from '@/shared/components/Title/Subtitle';
 import {
   PopularContainer,
   PopularItemContainer,
@@ -10,11 +10,11 @@ import {
   PopularDiskr,
   PopularContainerDiscr,
   PopularWrapper,
-} from "./PopularDrinks.styled";
-import { getPopularThunk } from "../../../../redux/Drinks/operations";
-import { selectPopulars } from "../../../../redux/Drinks/selectors";
-import { Link } from "react-router-dom";
-import Coctail from "../../../../shared/img/image.png";
+} from './PopularDrinks.styled';
+import { getPopularThunk } from '@/redux/Drinks/operations';
+import { selectPopulars } from '@/redux/Drinks/selectors';
+import { Link } from 'react-router-dom';
+import { DefaultPopularImage } from '@/shared/helpers/defaultImgHelper';
 
 function PopularDrinks() {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -25,39 +25,24 @@ function PopularDrinks() {
     dispatch(getPopularThunk());
   }, [dispatch]);
 
-  const handleImageLoad = () => {
-    setImageLoaded(true);
-  };
-
-  const handleImageError = () => {
-    // Handle image load error if needed
-    setImageLoaded(false);
-  };
-
   return (
     <PopularWrapper>
-      <Subtitle Subtitle={"Popular drinks"}></Subtitle>
+      <Subtitle Subtitle={'Popular drinks'}></Subtitle>
       <PopularContainer>
         {populars?.map(({ description, drinkThumb, drink, _id }) => (
           <Link
             to={`/drinks/${_id}`}
             key={_id}
-            style={{ position: "relative" }}
+            style={{ position: 'relative' }}
           >
             <PopularItemContainer key={drink}>
               <PopularImage
                 src={drinkThumb}
-                alt={drink}
-                onLoad={handleImageLoad}
-                onError={handleImageError}
+                alt={' '}
+                onLoad={() => setImageLoaded(true)}
+                onError={() => setImageLoaded(false)}
               />
-              {!imageLoaded && (
-                <PopularImage
-                  src={Coctail}
-                  alt={drink}
-                  style={{ position: "absolute", top: 0, zIndex: 1 }}
-                />
-              )}
+              {!imageLoaded && <DefaultPopularImage />}
               <PopularContainerDiscr>
                 <PopularName>{drink}</PopularName>
                 <PopularDiskr>{description}</PopularDiskr>

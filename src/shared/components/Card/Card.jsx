@@ -22,6 +22,7 @@ import {
   DrinkCardItemFaxNavi,
   DrinkCardItemFaxStatus,
 } from './Card.styled';
+import { DefaultDrinkCardItemFaxImg } from '@/shared/helpers/defaultImgHelper';
 
 const Card = ({ data }) => {
   const navigate = useNavigate();
@@ -44,33 +45,16 @@ const Card = ({ data }) => {
     }
   };
 
-  const handleImageLoad = () => {
-    setImageLoaded(true);
-  };
-
-  const handleImageError = () => {
-    setImageLoaded(false);
-  };
-
   return (
     <DrinkCardItemFaxContainer>
       <DrinkCardItemFaxImg
         src={data.drinkThumb}
-        alt={data.drink}
-        onLoad={handleImageLoad}
-        onError={handleImageError}
-        loading="lazy"
-        width={335}
-        height={360}
+        alt={' '}
+        onLoad={() => setImageLoaded(true)}
+        onError={() => setImageLoaded(false)}
       />
-      {!imageLoaded && (
-        <DrinkCardItemFaxImg
-          src={Coctail}
-          alt={data.drink}
-          style={{ position: 'absolute', top: 0 }}
-          loading="lazy"
-        />
-      )}
+      {!imageLoaded && <DefaultDrinkCardItemFaxImg />}
+
       <DrinkCardItemFaxName>{data.drink}</DrinkCardItemFaxName>
       <DrinkCardItemFaxStatus>{data.alcoholic}</DrinkCardItemFaxStatus>
       <DrinkCardItemFaxDescription>

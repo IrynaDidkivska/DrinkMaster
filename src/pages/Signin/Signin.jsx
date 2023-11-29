@@ -1,20 +1,19 @@
-import { useFormik } from "formik";
-import * as Yup from "yup";
-import { useDispatch, useSelector } from "react-redux";
-import { selectIsLoading } from "../../redux/Auth/selectors";
-import { signinThunk } from "../../redux/Auth/operations";
-import { FaEye, FaEyeSlash, FaExclamationCircle } from "react-icons/fa";
+import { useFormik } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsLoading } from '../../redux/Auth/selectors';
+import { signinThunk } from '../../redux/Auth/operations';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import {
   InputWrapper,
   SignButton,
   StyledAuthLink,
   StyledForm,
   Wrapper,
-} from "./Signin.styled";
-import { toast } from "react-toastify";
-import Subtitle from "../../shared/components/Title/Subtitle";
-import { DivWrapper } from "../Signup/Signup.styled";
-import { useState } from "react";
+} from './Signin.styled';
+import Subtitle from '../../shared/components/Title/Subtitle';
+import { DivWrapper } from '../Signup/Signup.styled';
+import { useState } from 'react';
+import { loginValidationSchema } from './helpers/validationSignIn';
 
 const SignIn = () => {
   const dispatch = useDispatch();
@@ -22,20 +21,11 @@ const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
   const formik = useFormik({
     initialValues: {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
     },
-    validationSchema: Yup.object({
-      email: Yup.string()
-        .email("Invalid email address")
-        .required("Email is required"),
-      password: Yup.string()
-        .min(6, "Password must be at least 6 characters")
-        .required("Password is required"),
-    }),
-    onSubmit: (values) => {
-      // Handle form submission logic here
-
+    validationSchema: loginValidationSchema,
+    onSubmit: values => {
       const credentials = { password: values.password, email: values.email };
       dispatch(signinThunk(credentials));
     },
@@ -59,7 +49,7 @@ const SignIn = () => {
         ) : null}
         <DivWrapper>
           <InputWrapper
-            type={showPassword ? "text" : "password"}
+            type={showPassword ? 'text' : 'password'}
             id="password"
             name="password"
             placeholder="Password"
@@ -70,10 +60,10 @@ const SignIn = () => {
           {formik.values.password && ( // Check if the password field has any value
             <div
               style={{
-                position: "absolute",
-                right: "20px",
-                top: "15px",
-                cursor: "pointer",
+                position: 'absolute',
+                right: '20px',
+                top: '20px',
+                cursor: 'pointer',
               }}
               onClick={() => setShowPassword(!showPassword)}
             >
