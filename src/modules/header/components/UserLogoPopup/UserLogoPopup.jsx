@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
-import { useEffect, useCallback } from 'react';
+import { useEffect } from 'react';
 
 import { EditProfile } from '../EditProfile/EditProfile';
 
-import { PopUpWrapper, StyledUserPopup } from './UserLogoPopup.styled';
+import { StyledUserPopup } from './UserLogoPopup.styled';
 
 export const UserLogoPopup = ({ isOpen, togglePopup }) => {
   useEffect(() => {
@@ -20,20 +20,20 @@ export const UserLogoPopup = ({ isOpen, togglePopup }) => {
     };
   }, [isOpen, togglePopup]);
 
-  const handleClickOutside = useCallback(
-    event => {
-      if (event.target === event.currentTarget) {
-        togglePopup();
-      }
-    },
-    [togglePopup]
-  );
+  // const handleClickOutside = useCallback(
+  //   event => {
+  //     if (event.target === event.currentTarget) {
+  //       togglePopup();
+  //     }
+  //   },
+  //   [togglePopup]
+  // );
 
   return (
     <>
       {isOpen && (
         <>
-          <PopUpWrapper onClick={handleClickOutside} />
+          {/* <PopUpWrapper onClick={handleClickOutside} /> */}
           <StyledUserPopup>
             <EditProfile togglePopup={togglePopup} />
           </StyledUserPopup>
