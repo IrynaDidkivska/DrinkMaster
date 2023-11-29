@@ -43,3 +43,7 @@ export const StyledRecipeText = styled.p`
     order: 2;
   }
 `;
+
+export const StyledLink = styled.div`
+  margin: 20px;
+`;

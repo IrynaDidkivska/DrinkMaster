@@ -5,6 +5,11 @@ const DrinkCardItemImage = styled.img`
   width: 335px;
   height: 360px;
   border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.03);
+  }
 
   @media screen and (min-width: 768px) {
     width: 342px;
@@ -51,7 +56,11 @@ const DrinkCardItemSeeMore = styled(Link)`
   line-height: 18px;
   color: ${({ theme }) => theme.colors.link};
   cursor: pointer;
+  transition: transform 0.3s ease-in-out;
 
+  &:hover {
+    transform: scale(1.05);
+  }
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 18px;

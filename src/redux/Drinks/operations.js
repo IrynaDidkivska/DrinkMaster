@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { API } from '@/config/drinkConfig';
+import { redirect } from 'react-router-dom';
 
 export const getAllDrinksThunk = createAsyncThunk(
   'drinks/getAll',
@@ -167,6 +168,9 @@ export const addNewDrinkThunk = createAsyncThunk(
       const { data } = await API.post(`api/drinks/own/add`, body);
       return data;
     } catch (error) {
+      if (error.response.data.message) {
+        return thunkAPI.rejectWithValue(error.response.data.message);
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   }

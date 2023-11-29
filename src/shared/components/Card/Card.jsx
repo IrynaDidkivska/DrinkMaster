@@ -8,9 +8,9 @@ import {
   deleteFromFavoriteThunk,
   deleteFromOwnThunk,
 } from '@/redux/Drinks/operations';
-import Coctail from '../../../shared/img/image.png';
 import { SpriteSVG } from '@/shared/icons/SpriteSVG';
 import { confirmNamePage } from '@/shared/helpers/confirmNamePage';
+import { DefaultDrinkCardItemFaxImg } from '@/shared/helpers/defaultImgHelper';
 
 import {
   DrinkCardContent,
@@ -45,35 +45,18 @@ const Card = ({ data }) => {
     }
   };
 
-  const handleImageLoad = () => {
-    setImageLoaded(true);
-  };
-
-  const handleImageError = () => {
-    setImageLoaded(false);
-  };
-
   return (
     <DrinkCardItemFaxContainer>
       <DrinkCardItemFaxImg
         src={data.drinkThumb}
         alt={data.drink}
-        onLoad={handleImageLoad}
-        onError={handleImageError}
-        loading="lazy"
-        width={335}
-        height={360}
+        onLoad={() => setImageLoaded(true)}
+        onError={() => setImageLoaded(false)}
       />
-      {!imageLoaded && (
-        <DrinkCardItemFaxImg
-          src={Coctail}
-          alt={data.drink}
-          style={{ position: 'absolute', top: 0 }}
-          loading="lazy"
-        />
-      )}
+
       <DrinkCardContent>
         <div>
+          {!imageLoaded && <DefaultDrinkCardItemFaxImg />}
           <DrinkCardItemFaxName>{data.drink}</DrinkCardItemFaxName>
           <DrinkCardItemFaxStatus>{data.alcoholic}</DrinkCardItemFaxStatus>
         </div>

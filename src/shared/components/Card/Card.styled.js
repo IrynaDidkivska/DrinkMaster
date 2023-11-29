@@ -18,6 +18,11 @@ const DrinkCardItemFaxImg = styled.img`
   height: 360px;
   border-radius: 8px;
   object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.03);
+  }
 
   @media screen and (min-width: 768px) {
     margin-bottom: 24px;
@@ -134,6 +139,11 @@ const DrinkCardItemFaxBtn = styled.button`
   border-color: transparent;
   margin-right: 8px;
   cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.03);
+  }
 
   @media screen and (min-width: 768px) {
     font-size: 16px;

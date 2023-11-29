@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import Coctail from '../../img/image.png';
 import {
   DrinkCardItemImage,
   DrinkCardItemName,
@@ -8,37 +7,20 @@ import {
   DrinkCardItemContainerDiscr,
 } from './DrinkCardItem.styled';
 
+import { DefaultCardImage } from '@/shared/helpers/defaultImgHelper';
+
 const DrinkCardItem = ({ data }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
-  const handleImageLoad = () => {
-    setImageLoaded(true);
-  };
-
-  const handleImageError = () => {
-    setImageLoaded(false);
-  };
 
   return (
     <li key={data._id} style={{ position: 'relative' }}>
       <DrinkCardItemImage
         src={data.drinkThumb}
-        alt={data.drink}
-        onLoad={handleImageLoad}
-        onError={handleImageError}
-        loading="lazy"
-        width="335"
-        height="360"
+        alt={' '}
+        onLoad={() => setImageLoaded(true)}
+        onError={() => setImageLoaded(false)}
       />
-      {!imageLoaded && (
-        <DrinkCardItemImage
-          src={Coctail}
-          alt={data.drink}
-          style={{ position: 'absolute', top: 0 }}
-          loading="lazy"
-          width="335"
-          height="360"
-        />
-      )}
+      {!imageLoaded && <DefaultCardImage />}
       <DrinkCardItemContainerDiscr>
         <DrinkCardItemName>{data.drink}</DrinkCardItemName>
         <DrinkCardItemSeeMore to={`/drinks/${data._id}`} rel="prefetch">
