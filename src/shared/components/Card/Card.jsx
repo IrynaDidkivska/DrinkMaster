@@ -13,6 +13,7 @@ import { confirmNamePage } from '@/shared/helpers/confirmNamePage';
 import { DefaultDrinkCardItemFaxImg } from '@/shared/helpers/defaultImgHelper';
 
 import {
+  DrinkCardContent,
   DrinkCardItemFaxBtn,
   DrinkCardItemFaxContainer,
   DrinkCardItemFaxDel,
@@ -52,13 +53,17 @@ const Card = ({ data }) => {
         onLoad={() => setImageLoaded(true)}
         onError={() => setImageLoaded(false)}
       />
-      {!imageLoaded && <DefaultDrinkCardItemFaxImg />}
 
-      <DrinkCardItemFaxName>{data.drink}</DrinkCardItemFaxName>
-      <DrinkCardItemFaxStatus>{data.alcoholic}</DrinkCardItemFaxStatus>
-      <DrinkCardItemFaxDescription>
-        {data.shortDescription}
-      </DrinkCardItemFaxDescription>
+      <DrinkCardContent>
+        <div>
+          {!imageLoaded && <DefaultDrinkCardItemFaxImg />}
+          <DrinkCardItemFaxName>{data.drink}</DrinkCardItemFaxName>
+          <DrinkCardItemFaxStatus>{data.alcoholic}</DrinkCardItemFaxStatus>
+        </div>
+        <DrinkCardItemFaxDescription>
+          {data.shortDescription}
+        </DrinkCardItemFaxDescription>
+      </DrinkCardContent>
       <DrinkCardItemFaxNavi>
         <DrinkCardItemFaxBtn
           onClick={() => handleSeeMore(data._id)}

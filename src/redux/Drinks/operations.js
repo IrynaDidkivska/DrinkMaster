@@ -110,12 +110,13 @@ export const getOwnThunk = createAsyncThunk(
 // Видалення власних коктейлів
 export const deleteFromOwnThunk = createAsyncThunk(
   'drinks/deleteFromOwn',
-  async (id, thunkAPI) => {
+  async (id, { dispatch, rejectWithValue }) => {
     try {
       const { data } = await API.delete(`api/drinks/own/remove/${id}`);
+      dispatch(getOwnThunk());
       return data.id;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -159,6 +160,7 @@ export const deleteFromFavoriteThunk = createAsyncThunk(
     }
   }
 );
+
 export const addNewDrinkThunk = createAsyncThunk(
   'drinks/addNewDrink',
   async (body, thunkAPI) => {
