@@ -13,14 +13,13 @@ export const List = styled.ul`
     min-width: 704px;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 80px 20px;
     align-items: start;
   }
 
   @media screen and (min-width: 1440px) {
     min-width: 1240px;
     height: 100%;
-    gap: 20px;
     justify-content: flex-start;
   }
 `;

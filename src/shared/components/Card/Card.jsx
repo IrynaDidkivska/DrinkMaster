@@ -13,6 +13,7 @@ import { SpriteSVG } from '@/shared/icons/SpriteSVG';
 import { confirmNamePage } from '@/shared/helpers/confirmNamePage';
 
 import {
+  DrinkCardContent,
   DrinkCardItemFaxBtn,
   DrinkCardItemFaxContainer,
   DrinkCardItemFaxDel,
@@ -71,11 +72,15 @@ const Card = ({ data }) => {
           loading="lazy"
         />
       )}
-      <DrinkCardItemFaxName>{data.drink}</DrinkCardItemFaxName>
-      <DrinkCardItemFaxStatus>{data.alcoholic}</DrinkCardItemFaxStatus>
-      <DrinkCardItemFaxDescription>
-        {data.shortDescription}
-      </DrinkCardItemFaxDescription>
+      <DrinkCardContent>
+        <div>
+          <DrinkCardItemFaxName>{data.drink}</DrinkCardItemFaxName>
+          <DrinkCardItemFaxStatus>{data.alcoholic}</DrinkCardItemFaxStatus>
+        </div>
+        <DrinkCardItemFaxDescription>
+          {data.shortDescription}
+        </DrinkCardItemFaxDescription>
+      </DrinkCardContent>
       <DrinkCardItemFaxNavi>
         <DrinkCardItemFaxBtn
           onClick={() => handleSeeMore(data._id)}

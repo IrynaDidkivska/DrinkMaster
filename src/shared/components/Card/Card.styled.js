@@ -1,47 +1,49 @@
 import styled from 'styled-components';
 
 const DrinkCardItemFaxContainer = styled.li`
-  width: 335px;
-  position: relative;
+  display: flex;
+  flex-direction: column;
 
   @media screen and (min-width: 768px) {
-    .drinkCardItemFax-img {
-      width: 100%;
-    }
+    width: calc((100% - 1 * 20px) / 2);
   }
 
   @media screen and (min-width: 1440px) {
-    .drinkCardItemFax-img {
-      height: 676px;
-    }
+    width: calc((100% - 2 * 20px) / 3);
   }
 `;
 
 const DrinkCardItemFaxImg = styled.img`
-  width: 335px;
+  margin-bottom: 18px;
   height: 360px;
   border-radius: 8px;
   object-fit: cover;
 
   @media screen and (min-width: 768px) {
-    width: 342px;
-    height: 360px;
+    margin-bottom: 24px;
   }
 
   @media screen and (min-width: 1440px) {
-    width: 400px;
     height: 400px;
   }
 `;
 
+const DrinkCardContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+`;
+
 const DrinkCardItemFaxName = styled.p`
+  margin-bottom: 4px;
   font-family: 'Manrope-600', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
   justify-content: left;
-  padding-top: 18px;
+
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -58,6 +60,7 @@ const DrinkCardItemFaxName = styled.p`
 `;
 
 const DrinkCardItemFaxStatus = styled.p`
+  margin-bottom: 18px;
   font-family: 'Manrope-600', sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -65,9 +68,9 @@ const DrinkCardItemFaxStatus = styled.p`
   line-height: 18px;
   color: ${({ theme }) => theme.colors.link};
   justify-content: left;
-  padding-top: 4px;
 
   @media screen and (min-width: 768px) {
+    margin-bottom: 24px;
     font-size: 16px;
     line-height: 18px;
   }
@@ -79,34 +82,29 @@ const DrinkCardItemFaxStatus = styled.p`
 `;
 
 const DrinkCardItemFaxDescription = styled.p`
+  margin-bottom: 18px;
   font-family: 'Manrope-600', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
   justify-content: left;
-  padding-top: 18px;
 
   @media screen and (min-width: 768px) {
-    font-size: 16px;
-    line-height: 22px;
-    padding-top: 24px;
-  }
-
-  @media screen and (min-width: 1440px) {
+    margin-bottom: 24px;
     font-size: 16px;
     line-height: 22px;
   }
 `;
+
 const DrinkCardItemFaxNavi = styled.div`
   display: flex;
-  margin-top: 18px;
 `;
+
 const DrinkCardItemContainerDiscr = styled.div`
   width: 197px;
   height: 46px;
   display: flex;
-  margin-top: 18px;
 
   @media screen and (min-width: 768px) {
     .drinkCardItem-img {
@@ -164,6 +162,7 @@ const DrinkCardItemFaxDel = styled.button`
     width: 24px;
     height: 24px;
   }
+
   @media screen and (min-width: 768px) {
     width: 56px;
     height: 54px;
@@ -180,4 +179,5 @@ export {
   DrinkCardItemFaxNavi,
   DrinkCardItemFaxBtn,
   DrinkCardItemFaxDel,
+  DrinkCardContent,
 };
