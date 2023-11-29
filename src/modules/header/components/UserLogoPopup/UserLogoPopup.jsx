@@ -20,25 +20,11 @@ export const UserLogoPopup = ({ isOpen, togglePopup }) => {
     };
   }, [isOpen, togglePopup]);
 
-  // const handleClickOutside = useCallback(
-  //   event => {
-  //     if (event.target === event.currentTarget) {
-  //       togglePopup();
-  //     }
-  //   },
-  //   [togglePopup]
-  // );
-
   return (
     <>
-      {isOpen && (
-        <>
-          {/* <PopUpWrapper onClick={handleClickOutside} /> */}
-          <StyledUserPopup>
-            <EditProfile togglePopup={togglePopup} />
-          </StyledUserPopup>
-        </>
-      )}
+      <StyledUserPopup>
+        <EditProfile />
+      </StyledUserPopup>
     </>
   );
 };
