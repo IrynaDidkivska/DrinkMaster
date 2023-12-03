@@ -11,13 +11,6 @@ const initialState = {
   glasses: [],
   ingredients: [],
   searchResult: [],
-  page: 1,
-  //TODO винести в компонент
-  searchQuery: {
-    query: '',
-    category: '',
-    ingredient: '',
-  },
   error: '',
   isLoading: false,
 };
@@ -25,26 +18,6 @@ const initialState = {
 const fitlerSlice = createSlice({
   name: 'filter',
   initialState,
-  reducers: {
-    setQuery: (state, { payload }) => {
-      state.searchQuery.query = payload;
-      state.page = 1;
-    },
-    setIngridient: (state, { payload }) => {
-      state.searchQuery.ingredient = payload;
-    },
-    setCategory: (state, { payload }) => {
-      state.searchQuery.category = payload;
-    },
-    setPage: (state, { payload }) => {
-      state.page = payload;
-    },
-    clearFilter: state => {
-      state.searchQuery.query = '';
-      state.searchQuery.category = '';
-      state.searchQuery.ingredient = '';
-    },
-  },
   extraReducers: builder => {
     builder
       .addCase(getCategoriesThunk.fulfilled, (state, { payload }) => {
@@ -92,6 +65,3 @@ const fitlerSlice = createSlice({
 });
 
 export const filterReducer = fitlerSlice.reducer;
-
-export const { setQuery, setIngridient, setCategory, setPage, clearFilter } =
-  fitlerSlice.actions;
