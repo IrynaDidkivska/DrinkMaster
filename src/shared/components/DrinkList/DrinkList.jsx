@@ -10,7 +10,7 @@ const DrinkList = () => {
   return (
     <List>
       {allDrinks.map(drink => (
-        <DrinkCardItem key={drink._id} drink={drink} />
+        <DrinkCardItem key={drink._id} data={drink} />
       ))}
     </List>
   );

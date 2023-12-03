@@ -12,6 +12,7 @@ const initialState = {
   ingredients: [],
   searchResult: [],
   page: 1,
+  //TODO винести в компонент
   searchQuery: {
     query: '',
     category: '',
