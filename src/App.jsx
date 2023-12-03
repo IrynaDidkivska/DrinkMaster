@@ -20,14 +20,13 @@ import Loader from './shared/components/Loader/Loader';
 const Welcome = lazy(() =>
   import('./modules/welcome/components/Welcome/Welcome')
 );
-import Theme from './shared/components/Theme/Theme';
-import { getWakeUpServer } from './shared/services/api-service';
 
 import { Global } from './shared/styles/Global';
 import { darkTheme, lightTheme } from './shared/styles/theme';
+import { useTheme } from './hooks/useTheme';
 
 function App() {
-  const { theme } = useSelector(state => state.theme);
+  const { theme } = useTheme();
   const isRefresh = useSelector(state => state.auth.isRefresh);
   const dispatch = useDispatch();
   const { pathname } = useLocation();
@@ -40,15 +39,10 @@ function App() {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  useEffect(() => {
-    getWakeUpServer();
-  }, []);
-
   return isRefresh ? (
     <Loader />
   ) : (
     <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
-      <Theme />
       <Global />
       <Suspense>
         <Routes>

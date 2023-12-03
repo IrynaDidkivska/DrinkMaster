@@ -5,12 +5,7 @@ import {
   getCategoriesThunk,
   getIngredientsThunk,
 } from '@/redux/Filters/operations';
-import {
-  setCategory,
-  setIngridient,
-  setPage,
-  setQuery,
-} from '@/redux/Filters/filtersSlice';
+
 import {
   selectNormalizedCategories,
   selectNormalizedIngredients,
@@ -19,7 +14,7 @@ import { SpriteSVG } from '@/shared/icons/SpriteSVG';
 
 import { FormStyled, InputContStyled, SelectStyled } from './SerchForm.styled';
 
-const SearchForm = () => {
+const SearchForm = ({ setSearchParams }) => {
   const dispatch = useDispatch();
   const [queryStr, setQueryStr] = useState('');
   let categories = useSelector(selectNormalizedCategories);
@@ -32,7 +27,7 @@ const SearchForm = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-    dispatch(setQuery(queryStr));
+    setSearchParams(prev => ({ ...prev, query: queryStr, page: 1 }));
   };
 
   // const handleChangeIngridient = e => {
@@ -43,17 +38,14 @@ const SearchForm = () => {
   //TODO розбити на дві функції
   const handleOptionChange = (e, option) => {
     if (option === 'ing') {
-      dispatch(setIngridient(e.value));
-      dispatch(setPage(1));
+      setSearchParams(prev => ({ ...prev, ingredient: e.value, page: 1 }));
     }
     if (option === 'cat') {
       if (e.label === 'All categories') {
-        dispatch(setCategory(e.value));
-        dispatch(setPage(1));
+        setSearchParams(prev => ({ ...prev, category: e.value, page: 1 }));
         return;
       }
-      dispatch(setCategory(e.label));
-      dispatch(setPage(1));
+      setSearchParams(prev => ({ ...prev, category: e.label, page: 1 }));
     }
   };
 
