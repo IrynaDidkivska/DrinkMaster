@@ -6,27 +6,26 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectPage, selectSearchQuery } from '@/redux/Filters/selectors';
 import { setPage } from '@/redux/Filters/filtersSlice';
 import {
-  selectBySearch,
   selectFilteredDrinks,
   selectTotalPages,
 } from '@/redux/Drinks/selectors';
 import { paginationThunk } from '@/redux/Drinks/operations';
 import { setSearch } from '@/redux/Drinks/drinksSlice';
-import DrinkCardItem from '../DrinkCardItem/DrinkCardItem';
+
 import { SpriteSVG } from '@/shared/icons/SpriteSVG';
 
 import { StyledNext, StyledPrev } from './Pagination.styled';
-import { List } from '../DrinkList/DrinkList.styled';
+import useResponsive from '@/hooks/useResponsive';
 
 const Pagination = () => {
+  const { isSmallScreen } = useResponsive();
+
   const isTabletScreen = useMediaQuery({ query: '(min-width: 768px)' });
-  const isSmallScreen = useMediaQuery({ query: '(max-width: 1439.98px)' });
 
   const itemsPerPage = useMemo(() => {
     return isSmallScreen ? 10 : 9;
   }, [isSmallScreen]);
 
-  const allDrinks = useSelector(selectBySearch);
   const totalPages = useSelector(selectTotalPages);
   const filteredDrinks = useSelector(selectFilteredDrinks);
   const page = useSelector(selectPage);
@@ -62,12 +61,6 @@ const Pagination = () => {
 
   return (
     <>
-      <List>
-        {allDrinks.map(drink => (
-          <DrinkCardItem key={drink._id} data={drink} />
-        ))}
-      </List>
-
       <ReactPaginate
         breakLabel="..."
         nextLabel={

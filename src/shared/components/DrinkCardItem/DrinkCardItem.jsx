@@ -16,7 +16,7 @@ const DrinkCardItem = ({ data }) => {
     <li key={data._id} style={{ position: 'relative' }}>
       <DrinkCardItemImage
         src={data.drinkThumb}
-        alt={' '}
+        alt={data.drink}
         onLoad={() => setImageLoaded(true)}
         onError={() => setImageLoaded(false)}
       />
