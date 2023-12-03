@@ -1,4 +1,5 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 import {
   addNewDrinkThunk,
@@ -13,8 +14,6 @@ import {
   addFavoriteThunk,
   paginationThunk,
 } from './operations';
-import { toast } from 'react-toastify';
-import { redirect } from 'react-router-dom';
 
 const initialState = {
   drinks: {},

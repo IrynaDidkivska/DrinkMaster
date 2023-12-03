@@ -8,6 +8,7 @@ import {
 import {
   setCategory,
   setIngridient,
+  setPage,
   setQuery,
 } from '@/redux/Filters/filtersSlice';
 import {
@@ -34,6 +35,28 @@ const SearchForm = () => {
     dispatch(setQuery(queryStr));
   };
 
+  // const handleChangeIngridient = e => {
+  //   dispatch(setIngridient(e.value));
+  //   dispatch(setPage(1));
+  // };
+
+  //TODO розбити на дві функції
+  const handleOptionChange = (e, option) => {
+    if (option === 'ing') {
+      dispatch(setIngridient(e.value));
+      dispatch(setPage(1));
+    }
+    if (option === 'cat') {
+      if (e.label === 'All categories') {
+        dispatch(setCategory(e.value));
+        dispatch(setPage(1));
+        return;
+      }
+      dispatch(setCategory(e.label));
+      dispatch(setPage(1));
+    }
+  };
+
   return (
     <>
       <FormStyled onSubmit={onSubmit}>
@@ -44,7 +67,7 @@ const SearchForm = () => {
             value={queryStr}
             onChange={e => setQueryStr(e.target.value)}
           ></input>
-          <button type="button">
+          <button type="submit">
             <SpriteSVG name="search" />
           </button>
         </InputContStyled>
@@ -53,18 +76,13 @@ const SearchForm = () => {
           classNamePrefix="customSelect"
           placeholder="All categories"
           options={[{ label: 'All categories', value: '' }, ...categories]}
-          onChange={e => {
-            if (e.label === 'All categories') {
-              return dispatch(setCategory(e.value));
-            }
-            return dispatch(setCategory(e.label));
-          }}
+          onChange={e => handleOptionChange(e, 'cat')}
         />
         <SelectStyled
           classNamePrefix="customSelect"
           placeholder="Ingredients"
           options={[{ label: 'All ingregients', value: '' }, ...ingregients]}
-          onChange={e => dispatch(setIngridient(e.value))}
+          onChange={e => handleOptionChange(e, 'ing')}
         />
       </FormStyled>
     </>
