@@ -1,7 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-
 import { API } from '@/config/drinkConfig';
-import { redirect } from 'react-router-dom';
 
 export const getAllDrinksThunk = createAsyncThunk(
   'drinks/getAll',
@@ -124,10 +122,15 @@ export const deleteFromOwnThunk = createAsyncThunk(
 // Favorites
 export const getFavoriteThunk = createAsyncThunk(
   'drinks/getFav',
-  async (_, thunkAPI) => {
+  async ({ page = 1, limit = 10 }, thunkAPI) => {
     try {
-      const { data } = await API.get('api/drinks/favorite');
-      return data.data;
+      const { data } = await API.get('api/drinks/favorite', {
+        params: {
+          page,
+          limit,
+        },
+      });
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

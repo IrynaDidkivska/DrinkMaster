@@ -5,7 +5,7 @@ const useResponsive = () => {
     query: '(min-width: 375px) and (max-width: 1439.98px)',
   });
   const isMediumScreen = useMediaQuery({
-    query: '(min-width: 768px) and (max-width: 1439.98px)',
+    query: '(min-width: 768px)',
   });
   const isLargeScreen = useMediaQuery({ query: '(min-width: 1440px)' });
 

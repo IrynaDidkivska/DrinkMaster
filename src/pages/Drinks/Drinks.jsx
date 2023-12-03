@@ -20,8 +20,6 @@ const Drinks = () => {
   const totalPages = useSelector(selectTotalPages);
   const dispatch = useDispatch();
 
-  //  const isTabletScreen = useMediaQuery({ query: '(min-width: 768px)' });
-
   const itemsPerPage = useMemo(() => {
     return isSmallScreen ? 10 : 9;
   }, [isSmallScreen]);

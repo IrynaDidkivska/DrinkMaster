@@ -1,14 +1,12 @@
 import ReactPaginate from 'react-paginate';
-import { useMediaQuery } from 'react-responsive';
 
 import { SpriteSVG } from '@/shared/icons/SpriteSVG';
 
 import { StyledNext, StyledPrev } from './Pagination.styled';
+import useResponsive from '@/hooks/useResponsive';
 
-
-const Pagination = ({ handlePageClick, totalPages = 1, defaultPage }) => {
-
-  const isTabletScreen = useMediaQuery({ query: '(min-width: 768px)' });
+const Pagination = ({ handlePageClick, totalPages, defaultPage }) => {
+  const { isMediumScreen } = useResponsive();
 
   return (
     <>
@@ -20,16 +18,15 @@ const Pagination = ({ handlePageClick, totalPages = 1, defaultPage }) => {
           </StyledNext>
         }
         onPageChange={handlePageClick}
-        pageRangeDisplayed={(isTabletScreen && 7) || 3}
+        pageRangeDisplayed={(isMediumScreen && 7) || 3}
         marginPagesDisplayed={1}
-        pageCount={totalPages}
+        pageCount={totalPages || 0}
         forcePage={defaultPage - 1}
         previousLabel={
           <StyledPrev>
             <SpriteSVG name="left-padding" />
           </StyledPrev>
         }
-        renderOnZeroPageCount={null}
         containerClassName="pagination"
         pageLinkClassName="page-num"
         previousLinkClassName="page-num"
