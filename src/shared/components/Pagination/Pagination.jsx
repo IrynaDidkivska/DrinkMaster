@@ -5,7 +5,7 @@ import { SpriteSVG } from '@/shared/icons/SpriteSVG';
 
 import { StyledNext, StyledPrev } from './Pagination.styled';
 
-const Pagination = ({ handlePageClick, totalPages, defaultPage }) => {
+const Pagination = ({ handlePageClick, totalPages, defaultPage = 1 }) => {
   const isTabletScreen = useMediaQuery({ query: '(min-width: 768px)' });
 
   return (
