@@ -10,7 +10,6 @@ export const List = styled.ul`
   padding-top: 20px;
 
   @media screen and (min-width: 768px) {
-    min-width: 704px;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 80px 20px;
