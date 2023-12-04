@@ -22,9 +22,6 @@ export const StyledLogo = styled.div`
     svg {
       width: 28px;
       height: 28px;
-
-      fill: ${({ $isfooter, theme }) =>
-        $isfooter ? theme.footer.color : theme.colors.iconColor};
     }
   }
 `;

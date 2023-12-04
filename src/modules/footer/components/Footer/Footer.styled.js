@@ -139,26 +139,69 @@ export const StyledModalFooteer = styled.div`
   width: 335px;
   padding: 20px 30px;
   border-radius: 16px;
+  color: ${({ theme }) => theme.footer.color};
   background-color: ${({ theme }) => theme.popUp.secondary};
   transform: translate(-50%, -50%);
   position: absolute;
   top: 50%;
   left: 50%;
+  h3 {
+    margin-bottom: 16px;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 32px;
+  }
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #434d67;
+    border-radius: 20px;
+    border: 8px solid transparent;
+  }
+
   @media screen and (min-width: 768px) {
-    width: 600px;
+    width: 650px;
+    h3 {
+      font-size: 36px;
+      line-height: 1.1; /* 110% */
+    }
+  }
+  @media screen and (min-width: 1440px) {
+    width: 900px;
+    h3 {
+      margin-bottom: 20px;
+      font-size: 40px;
+    }
   }
 `;
 export const StyledBtnCloseFooter = styled.button`
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   padding: 0;
   background-color: transparent;
   border: none;
   position: fixed;
   top: 14px;
   right: 14px;
+  cursor: pointer;
+  transition: ${({ theme }) => theme.transition};
+
   svg {
     stroke: ${({ theme }) => theme.colors.active};
+    transition: ${({ theme }) => theme.transition};
+  }
+  &:hover,
+  &:focus {
+    svg {
+      scale: 1.3;
+    }
+  }
+  @media screen and (min-width: 1440px) {
+    width: 30px;
+    height: 30px;
   }
 `;
-

@@ -14,7 +14,6 @@ import FootelLink from './FootelLink/FootelLink';
 import SubscribeForm from './SubscribeForm/SubscribeForm';
 import ModalContent from './ModalContent/ModalContent';
 
-import { StyledContentTitle } from './ModalContent/ModalContent.styled';
 import {
   OverlayBottom,
   OverlayDesctop,
@@ -67,7 +66,7 @@ const Footer = () => {
         </StyledFooterTabletBox>
         <StyledFooterPrivacy>
           <StyledFooterSpan>
-            ©2023 Drink Master. All rights reserved.
+            &#169;2023 Drink Master. All rights reserved.
           </StyledFooterSpan>
           <StyledFooterPrivacyBlock>
             <button onClick={openPrivacy} type="button">
@@ -84,8 +83,8 @@ const Footer = () => {
       {isPrivacyModalOpen && (
         <Modal onClose={closePrivacy}>
           <StyledModalFooteer>
-            <StyledContentTitle>Privacy Policy</StyledContentTitle>
-            <StyledBtnCloseFooter onClick={closePrivacy}>
+            <h3>Privacy Policy</h3>
+            <StyledBtnCloseFooter onClick={closePrivacy} type="button">
               <SpriteSVG name={'close'} />
             </StyledBtnCloseFooter>
             {ModalContent(policyData)}
@@ -95,7 +94,7 @@ const Footer = () => {
       {isTermsModalOpen && (
         <Modal onClose={closeTerms}>
           <StyledModalFooteer>
-            <StyledContentTitle>Public offering agreement</StyledContentTitle>
+            <h3>Public offering agreement</h3>
             <StyledBtnCloseFooter onClick={closeTerms} type="button">
               <SpriteSVG name={'close'} />
             </StyledBtnCloseFooter>

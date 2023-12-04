@@ -10,7 +10,7 @@ const Logo = ({ isfooter }) => {
   };
 
   return (
-    <StyledLogo onClick={handleClick}>
+    <StyledLogo onClick={handleClick} $isfooter={isfooter}>
       <SpriteSVG name={'logo'} />
       <StyledLogoTitle $isfooter={isfooter}>Drink Master</StyledLogoTitle>
     </StyledLogo>

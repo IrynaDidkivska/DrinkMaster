@@ -1,14 +1,15 @@
-import { StyledContent, StyledModalContent } from './ModalContent.styled';
+import Loader from '@/shared/components/Loader/Loader';
+import { StyledModalContent } from './ModalContent.styled';
 
 const ModalContent = data => {
   return data ? (
     <StyledModalContent>
       {data.map((item, id) => (
-        <StyledContent key={id}>{item[`paragraph${id + 1}`]}</StyledContent>
+        <p key={id}>{item[`paragraph${id + 1}`]}</p>
       ))}
     </StyledModalContent>
   ) : (
-    'Loading...'
+    <Loader />
   );
 };
 
