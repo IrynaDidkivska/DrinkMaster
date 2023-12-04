@@ -7,13 +7,11 @@ import {
   StyledProfileName,
 } from './User.styled';
 import { useSelector } from 'react-redux';
-import ReactDOM from 'react-dom';
 
 import { UserLogoPopup } from '../UserLogoPopup/UserLogoPopup';
 
 export const User = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const portalRoot = document.getElementById('portal-root');
 
   const btnProfileRef = useRef(null);
   const popupRef = useRef(null);
@@ -40,18 +38,17 @@ export const User = () => {
     const handleClickOutside = event => {
       const insideButton =
         btnProfileRef.current && btnProfileRef.current.contains(event.target);
-      // const insidePopup = popupRef.current.contains(event.target);
+      const insideModal = event.target.closest('#modal-root');
 
-      console.log(portalRoot);
-
-      // Если клик внутри кнопки, то просто открываем/закрываем попап
       if (insideButton) {
         togglePopup();
         return;
       }
 
-      // Если клик снаружи и кнопки, закрываем попап
-      if (!portalRoot.contains(event.target)) {
+      if (
+        !popupRef.current ||
+        (!popupRef.current.contains(event.target) && !insideModal)
+      ) {
         closePopup();
       }
     };
@@ -61,7 +58,7 @@ export const User = () => {
     return () => {
       document.body.removeEventListener('click', handleClickOutside);
     };
-  }, [closePopup, portalRoot, togglePopup]);
+  }, [closePopup, togglePopup]);
 
   return (
     <>
@@ -74,16 +71,7 @@ export const User = () => {
         <StyledProfileName>{editString(username)}</StyledProfileName>
       </StyledBtnProfile>
 
-      {isOpen &&
-        ReactDOM.createPortal(
-          <UserLogoPopup
-            ref={popupRef}
-            data-testid="user-popup"
-            isOpen={isOpen}
-            togglePopup={togglePopup}
-          />,
-          portalRoot
-        )}
+      {isOpen && <UserLogoPopup ref={popupRef} togglePopup={togglePopup} />}
     </>
   );
 };

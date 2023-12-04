@@ -24,7 +24,7 @@ import {
   StyledUserFoto,
 } from './UserInfoModal.styled';
 
-export const UserInfoModal = ({ onClose }) => {
+export const UserInfoModal = ({ handleCloseModal }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [changedName, setChangedName] = useState(null);
   const [previewImage, setPreviewImage] = useState(null);
@@ -67,7 +67,7 @@ export const UserInfoModal = ({ onClose }) => {
     dispatch(updateUserThunk(formData))
       .unwrap()
       .then(() => {
-        onClose();
+        handleCloseModal();
       })
       .catch(error => {
         console.error('Error updating user', error.message);
@@ -78,9 +78,9 @@ export const UserInfoModal = ({ onClose }) => {
   };
 
   return (
-    <Modal onClose={onClose}>
+    <Modal onClose={handleCloseModal}>
       <StyledModal>
-        <StyledBtnClose onClick={onClose}>
+        <StyledBtnClose onClick={handleCloseModal}>
           <SpriteSVG name="close" />
         </StyledBtnClose>
 
@@ -129,5 +129,5 @@ export const UserInfoModal = ({ onClose }) => {
 };
 
 UserInfoModal.propTypes = {
-  onClose: PropTypes.func.isRequired,
+  handleCloseModal: PropTypes.func.isRequired,
 };

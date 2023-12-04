@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
+import { forwardRef, useEffect } from 'react';
 
 import { EditProfile } from '../EditProfile/EditProfile';
 
 import { StyledUserPopup } from './UserLogoPopup.styled';
 
-export const UserLogoPopup = ({ isOpen, togglePopup }) => {
+export const UserLogoPopup = forwardRef(({ togglePopup }, ref) => {
   useEffect(() => {
     const handleEscape = event => {
       if (event.code === 'Escape') {
@@ -18,18 +18,19 @@ export const UserLogoPopup = ({ isOpen, togglePopup }) => {
     return () => {
       window.removeEventListener('keydown', handleEscape);
     };
-  }, [isOpen, togglePopup]);
+  }, [togglePopup]);
 
   return (
     <>
-      <StyledUserPopup>
-        <EditProfile />
+      <StyledUserPopup ref={ref}>
+        <EditProfile togglePopup={togglePopup} />
       </StyledUserPopup>
     </>
   );
-};
+});
+
+UserLogoPopup.displayName = 'UserLogoPopup';
 
 UserLogoPopup.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
   togglePopup: PropTypes.func.isRequired,
 };

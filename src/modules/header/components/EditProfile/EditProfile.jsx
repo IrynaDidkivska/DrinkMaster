@@ -33,7 +33,7 @@ export const EditProfile = ({ togglePopup }) => {
       });
   };
 
-  const handleEditProfileClick = () => {
+  const handleOpenModal = () => {
     open();
   };
 
@@ -44,14 +44,14 @@ export const EditProfile = ({ togglePopup }) => {
 
   return (
     <>
-      <StyledBtnEditProfile onClick={handleEditProfileClick}>
+      <StyledBtnEditProfile onClick={handleOpenModal}>
         <StyledPopupTitle>Edit profile</StyledPopupTitle>
         <SpriteSVG name="edit-01" />
       </StyledBtnEditProfile>
 
       <StyledBtnLogOut onClick={handleLogout}>Log out</StyledBtnLogOut>
 
-      {isOpen && <UserInfoModal onClose={handleCloseModal} />}
+      {isOpen && <UserInfoModal handleCloseModal={handleCloseModal} />}
     </>
   );
 };
