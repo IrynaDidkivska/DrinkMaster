@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 
 import { UserLogoPopup } from '../UserLogoPopup/UserLogoPopup';
 import userFoto from '../../images/user.png';
-
 import {
   StyledBtnProfile,
   StyledImgProfile,
