@@ -37,12 +37,20 @@ const DrinkCardItemName = styled.h3`
   justify-content: left;
   padding-top: 14px;
 
+  // limiting the display of text with ellipses
+  max-width: 241px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
   @media screen and (min-width: 768px) {
+    max-width: 238px;
     font-size: 18px;
     line-height: 24px;
   }
 
   @media screen and (min-width: 1440px) {
+    max-width: 277px;
     font-size: 18px;
     line-height: 24px;
   }
