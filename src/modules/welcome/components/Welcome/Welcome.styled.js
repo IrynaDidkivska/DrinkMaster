@@ -17,13 +17,7 @@ export const StyledWrapper = styled.div`
   flex-direction: column;
   overflow: hidden;
 
-  background-image: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.6) 58.58%,
-      rgba(0, 0, 0, 0.35) 78.98%,
-      rgba(0, 0, 0, 0) 100%
-    ),
-    url(${welcomeBg375_1x});
+  background-image: url(${welcomeBg375_1x});
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
