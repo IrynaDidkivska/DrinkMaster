@@ -8,9 +8,14 @@ import {
 } from './DrinkCardItem.styled';
 
 import { DefaultCardImage } from '@/shared/helpers/defaultImgHelper';
+import { useNavigate } from 'react-router-dom';
 
 const DrinkCardItem = ({ data }) => {
+  const navigate = useNavigate();
   const [imageLoaded, setImageLoaded] = useState(false);
+  const handleClick = () => {
+    navigate(`/drinks/${data._id}`);
+  };
 
   return (
     <li key={data._id} style={{ position: 'relative' }}>
@@ -19,6 +24,7 @@ const DrinkCardItem = ({ data }) => {
         alt={data.drink}
         onLoad={() => setImageLoaded(true)}
         onError={() => setImageLoaded(false)}
+        onClick={handleClick}
       />
       {!imageLoaded && <DefaultCardImage />}
       <DrinkCardItemContainerDiscr>
