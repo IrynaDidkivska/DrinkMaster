@@ -13,6 +13,7 @@ import { confirmNamePage } from '@/shared/helpers/confirmNamePage';
 import { DefaultDrinkCardItemFaxImg } from '@/shared/helpers/defaultImgHelper';
 
 import {
+  DivRelative,
   DrinkCardContent,
   DrinkCardItemFaxBtn,
   DrinkCardItemFaxContainer,
@@ -52,6 +53,7 @@ const Card = ({ data }) => {
         alt={data.drink}
         onLoad={() => setImageLoaded(true)}
         onError={() => setImageLoaded(false)}
+        onClick={() => handleSeeMore(data._id)}
       />
 
       <DrinkCardContent>

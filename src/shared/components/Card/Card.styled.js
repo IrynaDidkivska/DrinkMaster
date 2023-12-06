@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const DrinkCardItemFaxContainer = styled.li`
   display: flex;
   flex-direction: column;
+  position: relative;
 
   @media screen and (min-width: 768px) {
     width: calc((100% - 1 * 20px) / 2);
@@ -106,6 +107,10 @@ const DrinkCardItemFaxNavi = styled.div`
   display: flex;
 `;
 
+const DivRelative = styled.div`
+  position: relative;
+`;
+
 const DrinkCardItemContainerDiscr = styled.div`
   width: 197px;
   height: 46px;
@@ -190,4 +195,5 @@ export {
   DrinkCardItemFaxBtn,
   DrinkCardItemFaxDel,
   DrinkCardContent,
+  DivRelative,
 };
