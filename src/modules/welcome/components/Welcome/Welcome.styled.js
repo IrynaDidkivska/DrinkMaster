@@ -1,5 +1,12 @@
 import styled from 'styled-components';
 
+import welcomeBg375_1x from '../../img/welcome-bg-375@1x.webp';
+import welcomeBg375_2x from '../../img/welcome-bg-375@2x.webp';
+import welcomeBg768_1x from '../../img/welcome-bg-768@1x.webp';
+import welcomeBg768_2x from '../../img/welcome-bg-768@2x.webp';
+import welcomeBg1440_1x from '../../img/welcome-bg-1440@1x.webp';
+import welcomeBg1440_2x from '../../img/welcome-bg-1440@2x.webp';
+
 export const StyledWrapper = styled.div`
   position: relative;
   display: flex;
@@ -9,68 +16,86 @@ export const StyledWrapper = styled.div`
   height: 100vh;
   flex-direction: column;
   overflow: hidden;
-  background: linear-gradient(
-      0deg,
-      rgba(10, 10, 17, 0.2) 0%,
-      rgba(10, 10, 17, 0.2) 100%
-    ),
-    linear-gradient(1deg, #0a0a11 -0.56%, rgba(10, 10, 17, 0) 21.93%),
-    linear-gradient(82deg, #0a0a11 11.89%, rgba(10, 10, 17, 0) 82.65%),
-    url('../../img/welcome.webp'),
-    lightgray -3px -13.319px / 100.511% 101.679% no-repeat;
-  background-size: auto, auto, auto, 587px 812px;
-  background-position: 80px 0;
+
+  background-image: url(${welcomeBg375_1x});
+  background-position: center;
+  background-size: cover;
   background-repeat: no-repeat;
   background-color: ${({ theme }) => theme.background.main};
 
-  p {
-    font-family: 'Manrope-400', sans-serif;
-    text-align: center;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1.28; /* 128.571% */
-    letter-spacing: -0.28px;
+  @media screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
+    background-image: url(${welcomeBg375_2x});
   }
 
   @media screen and (min-width: 768px) {
     align-items: flex-start;
-    background-size: auto, auto, auto, 733px 1024px;
-    background-position: 302px center;
-    p {
-      max-width: 470px;
-      font-size: 18px;
-      line-height: 1.33; /* 133.333% */
-      letter-spacing: -0.36px;
-      text-align: left;
+    background-image: url(${welcomeBg768_1x});
+
+    @media screen and (min-device-pixel-ratio: 2),
+      screen and (min-resolution: 192dpi),
+      screen and (min-resolution: 2dppx) {
+      background-image: url(${welcomeBg768_2x});
     }
   }
+
   @media screen and (min-width: 1440px) {
-    background-size: auto, auto, auto, 703px 983px;
-    background-position: 737px center;
-    p {
-      margin-top: 14px;
-      max-width: 485px;
+    background-image: url(${welcomeBg1440_1x});
+
+    @media screen and (min-device-pixel-ratio: 2),
+      screen and (min-resolution: 192dpi),
+      screen and (min-resolution: 2dppx) {
+      background-image: url(${welcomeBg1440_2x});
     }
   }
 `;
+
 export const WelcomeWrapper = styled.div`
   z-index: 2;
   padding: 0 28px 0 28px;
+
   p {
     margin-top: 14px;
   }
+
   h2 {
     text-align: center;
   }
+
   @media screen and (min-width: 768px) {
     padding: 0 0 0 64px;
+
     h2 {
       text-align: left;
     }
   }
+
   @media screen and (min-width: 1440px) {
     padding: 0 0 0 100px;
+  }
+`;
+
+export const WelcomeContent = styled.p`
+  font-family: 'Manrope-400', sans-serif;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.28;
+  letter-spacing: -0.28px;
+
+  @media screen and (min-width: 768px) {
+    max-width: 470px;
+    font-size: 18px;
+    line-height: 1.33;
+    letter-spacing: -0.36px;
+    text-align: left;
+  }
+
+  @media screen and (min-width: 1440px) {
+    margin-top: 14px;
+    max-width: 485px;
   }
 `;
 
@@ -80,6 +105,7 @@ export const StyledLinkWrapp = styled.div`
   justify-content: center;
   gap: 14px;
   margin-top: 40px;
+
   @media screen and (min-width: 768px) {
     justify-content: flex-start;
   }
@@ -93,7 +119,7 @@ export const OverlayCentered = styled.div`
   width: 257px;
   height: 247px;
   top: 84px;
-  right: 76px;
+  left: 42px;
   border-radius: 257px;
   background: rgba(188, 230, 210, 0.4);
   filter: blur(104.8543701171875px);
