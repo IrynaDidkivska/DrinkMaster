@@ -13,6 +13,7 @@ import { confirmNamePage } from '@/shared/helpers/confirmNamePage';
 import { DefaultDrinkCardItemFaxImg } from '@/shared/helpers/defaultImgHelper';
 
 import {
+  DivRelative,
   DrinkCardContent,
   DrinkCardItemFaxBtn,
   DrinkCardItemFaxContainer,
