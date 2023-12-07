@@ -100,7 +100,7 @@ export const StyledModalInput = styled.input`
   }
 `;
 
-export const StyledBtnEdit = styled.button`
+export const StyledIconWrapper = styled.div`
   width: 24px;
   height: 24px;
   padding: 0;
