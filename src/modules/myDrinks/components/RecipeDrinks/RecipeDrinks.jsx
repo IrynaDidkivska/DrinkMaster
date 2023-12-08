@@ -34,8 +34,10 @@ const RecipeDrinks = () => {
               <YouTube videoId={extractVideoId(details.video)} opts={opts} />
             </StyledLink>
           )}
+          {(details.video == 'Sorry, not specified' || !details.video) && (
+            <RecipeImage />
+          )}
         </StyledLink>
-        <RecipeImage />
       </StyledWrapperContent>
     </StyledRecipeDrinks>
   );
