@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const StyledSection = styled.section`
   position: relative;
-  overflow: hidden;
   width: 100%;
   margin: 0px;
   padding-top: 80px;

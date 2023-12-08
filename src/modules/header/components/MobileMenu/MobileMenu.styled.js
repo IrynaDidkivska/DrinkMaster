@@ -44,10 +44,13 @@ export const StyledBtnClose = styled.button`
   width: 32px;
   height: 32px;
   padding: 1px 0 0 0;
+  color: ${({ theme }) => theme.colors.mainText};
   background-color: transparent;
   border: none;
   svg {
-    stroke: ${({ theme }) => theme.colors.mainText};
+    width: 32px;
+    height: 32px;
+    stroke: currentColor;
   }
   @media screen and (min-width: 768px) {
     width: 38px;

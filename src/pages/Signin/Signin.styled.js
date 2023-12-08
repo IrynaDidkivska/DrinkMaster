@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { LinkStyled } from '../../shared/components/StyledLink/StyledLink.styled';
-import { StyledBtn } from '../../shared/components/Buttons/LigthBtn.styled';
+import { StyledBtn } from '@/shared/components/Buttons/LigthBtn.styled';
 import { switchBorderColor } from '../Signup/helpers/switchColor';
 
 export const StyledForm = styled.form`
