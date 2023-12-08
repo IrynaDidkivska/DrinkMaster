@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledHeader = styled.header`
   padding: 25px 0;
@@ -30,16 +30,20 @@ export const StyledRightWrapper = styled.div`
 
 export const StyledMobileMenuBtn = styled.button`
   display: flex;
+  justify-content: center;
   align-items: center;
   width: 32px;
   height: 32px;
   padding: 2px 0 0 0;
-
   border: none;
+  color: ${({ theme }) => theme.colors.mainText};
+  border-color: transparent;
   background-color: transparent;
 
   svg {
-    stroke: ${({ theme }) => theme.colors.mainText};
+    width: 32px;
+    height: 32px;
+    stroke: currentColor;
   }
   @media screen and (min-width: 768px) {
     width: 38px;
