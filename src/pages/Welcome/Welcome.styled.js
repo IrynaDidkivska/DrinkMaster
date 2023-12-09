@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-import welcomeBg375_1x from '../../img/welcome-bg-375@1x.webp';
-import welcomeBg375_2x from '../../img/welcome-bg-375@2x.webp';
-import welcomeBg768_1x from '../../img/welcome-bg-768@1x.webp';
-import welcomeBg768_2x from '../../img/welcome-bg-768@2x.webp';
-import welcomeBg1440_1x from '../../img/welcome-bg-1440@1x.webp';
-import welcomeBg1440_2x from '../../img/welcome-bg-1440@2x.webp';
+import welcomeBg375_1x from '@/modules/welcome/img/welcome-bg-375@1x.webp';
+import welcomeBg375_2x from '@/modules/welcome/img/welcome-bg-375@2x.webp';
+import welcomeBg768_1x from '@/modules/welcome/img/welcome-bg-768@1x.webp';
+import welcomeBg768_2x from '@/modules/welcome/img/welcome-bg-768@2x.webp';
+import welcomeBg1440_1x from '@/modules/welcome/img/welcome-bg-1440@1x.webp';
+import welcomeBg1440_2x from '@/modules/welcome/img/welcome-bg-1440@2x.webp';
 
 export const StyledWrapper = styled.div`
   position: relative;

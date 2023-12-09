@@ -1,13 +1,13 @@
 // Welcome Page Sign Links
 
-import styled from "styled-components";
-import { LinkStyled } from "../../StyledLink/StyledLink.styled";
+import styled from 'styled-components';
+import { LinkStyled } from '../../../../shared/components/StyledLink/StyledLink.styled';
 
 export const SignUp = styled(LinkStyled)`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Manrope-600", sans-serif;
+  font-family: 'Manrope-600', sans-serif;
   font-size: 14px;
   font-weight: 600;
   color: ${({ theme }) => theme.button.dark};
@@ -35,7 +35,7 @@ export const SignIn = styled(LinkStyled)`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Manrope-600", sans-serif;
+  font-family: 'Manrope-600', sans-serif;
   font-size: 14px;
   font-weight: 600;
   border: 1px solid rgba(243, 243, 243, 0.2);
