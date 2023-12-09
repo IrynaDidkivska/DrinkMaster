@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom';
-import AuthForm from '@/shared/components/AuthForm/AuthForm';
-import AuthLink from '@/shared/components/AuthForm/AuthLink/AuthLink';
+import AuthForm from '@/modules/welcome/components/AuthForm/AuthForm';
+import AuthLink from '@/modules/welcome/components/AuthLink/AuthLink';
 import Subtitle from '@/shared/components/Title/Subtitle';
 import {
   OverlayCentered,
@@ -13,6 +13,7 @@ import {
 
 const Welcome = () => {
   const location = useLocation();
+
   return (
     <StyledWrapper>
       <>

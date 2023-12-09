@@ -68,12 +68,11 @@ export const StyledDatetime = styled(Datetime)`
     padding: 14px 0 15px 24px;
     min-width: 335px;
     min-height: 54px;
-    text-align: center;
     font-family: 'Manrope-400';
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: 1.28; /* 26.52px */
+    line-height: 1.28;
     color: ${({ theme }) => theme.colors.mainText};
     background-color: transparent;
     outline: transparent;
@@ -122,4 +121,9 @@ export const StyleRedSvg = styled(StyledCalendarSvg)`
 
 export const StyleGreenSvg = styled(StyledCalendarSvg)`
   stroke: #3cbc81;
+`;
+
+export const SryledLinkWrapper = styled.div`
+  display: flex;
+  gap: 32px;
 `;

@@ -1,4 +1,4 @@
-// FormError.js
+import { StyledFormError } from './FormError.styled';
 
 const FormError = ({ touched, errors, fieldName }) => {
   const getValidationMessage = fieldName => {
@@ -17,15 +17,15 @@ const FormError = ({ touched, errors, fieldName }) => {
   };
 
   return (
-    <>
+    <StyledFormError>
       {touched && errors ? (
-        <div style={{ color: '#DA1414' }}>{errors}</div>
+        <span style={{ color: '#DA1414' }}>{errors}</span>
       ) : touched && !errors ? (
-        <div style={{ color: '#3CBC81' }}>
+        <span style={{ color: '#3CBC81' }}>
           {getValidationMessage(fieldName)}
-        </div>
+        </span>
       ) : null}
-    </>
+    </StyledFormError>
   );
 };
 
