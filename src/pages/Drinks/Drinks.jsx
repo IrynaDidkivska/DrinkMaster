@@ -7,14 +7,16 @@ import { selectTotalPages } from '@/redux/Drinks/selectors';
 import DrinkList from '@/shared/components/DrinkList/DrinkList';
 import Pagination from '@/shared/components/Pagination/Pagination';
 import Title from '@/shared/components/Title/Title';
+import { setPrevPage } from '@/redux/Drinks/drinksSlice';
 
 const Drinks = () => {
   const { isSmallScreen } = useResponsive();
+  const prevPage = useSelector(state => state.drinks.prevPage);
   const [searchParams, setSearchParams] = useState({
     query: '',
     category: '',
     ingredient: '',
-    page: 1,
+    page: prevPage,
   });
   const { query, category, ingredient, page } = searchParams;
   const totalPages = useSelector(selectTotalPages);
@@ -38,6 +40,7 @@ const Drinks = () => {
 
   const handlePageClick = event => {
     setSearchParams(prev => ({ ...prev, page: event.selected + 1 }));
+    dispatch(setPrevPage(event.selected + 1));
     window.scrollTo(0, 100);
   };
 
