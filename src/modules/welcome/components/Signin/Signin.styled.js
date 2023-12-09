@@ -1,14 +1,35 @@
 import styled from 'styled-components';
-import { LinkStyled } from '../../shared/components/StyledLink/StyledLink.styled';
-import { StyledBtn } from '../../shared/components/Buttons/LigthBtn.styled';
-import { switchBorderColor } from '../Signup/helpers/switchColor';
+
+import { switchBorderColor } from '../../helpers/switchColor';
+
+import { LinkStyled } from '@/shared/components/StyledLink/StyledLink.styled';
+import { StyledBtn } from '@/shared/components/Buttons/LigthBtn.styled';
 
 export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   justify-content: center;
   gap: 28px;
+`;
+
+export const StyledSubtitleWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  @media screen and (min-width: 768px) {
+    align-items: stretch;
+  }
+`;
+
+export const StyledSubitleContent = styled.p`
+  margin-top: 11px !important;
+  font-size: 11px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 12px;
+  }
 `;
 
 export const InputWrapper = styled.input`
@@ -16,12 +37,11 @@ export const InputWrapper = styled.input`
   padding: 14px 0 15px 24px;
   min-width: 335px;
   min-height: 54px;
-  text-align: center;
   font-family: 'Manrope-400';
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
-  line-height: 1.28; /* 26.52px */
+  line-height: 1.28;
   color: ${({ theme }) => theme.colors.mainText};
   background-color: transparent;
   outline: transparent;
@@ -54,6 +74,12 @@ export const SignButton = styled(StyledBtn)`
   min-width: 335px;
   min-height: 54px;
 `;
+
+export const SryledLinkWrapper = styled.div`
+  display: flex;
+  gap: 32px;
+`;
+
 export const StyledAuthLink = styled(LinkStyled)`
   padding: 0;
   font-family: 'Manrope-600', sans-serif;

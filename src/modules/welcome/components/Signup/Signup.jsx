@@ -1,10 +1,14 @@
 import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { signupThunk } from '../../../../redux/Auth/operations';
-import { selectIsLoading } from '../../../../redux/Auth/selectors';
 import 'react-datetime/css/react-datetime.css';
 import { useState } from 'react';
+
+import { signupThunk } from '@/redux/Auth/operations';
+import { selectIsLoading } from '@/redux/Auth/selectors';
+
+import FormError from '../FormError/FormError';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+
 import { validationSchemaSignUp } from '../../helpers/validationSchemaSignUp.js';
 import {
   DivWrapper,
@@ -15,7 +19,7 @@ import {
   StyledDatatimeWrapper,
   StyledDatetime,
 } from './Signup.styled';
-import { SpriteSVG } from '../../../../shared/icons/SpriteSVG';
+import { SpriteSVG } from '@/shared/icons/SpriteSVG';
 import {
   InputWrapper,
   SignButton,
@@ -23,12 +27,11 @@ import {
   StyledForm,
   Wrapper,
 } from '../Signin/Signin.styled';
-import Subtitle from '../../../../shared/components/Title/Subtitle';
+import Subtitle from '@/shared/components/Title/Subtitle';
 import {
   convertDateFormatHelper,
   handleDateChangeHelper,
 } from '../../helpers/dataHelper.js';
-import FormError from '../FormError/FormError';
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
