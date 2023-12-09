@@ -19,9 +19,7 @@ export const StyledSubtitleWrapper = styled.div`
   gap: 8px;
 
   @media screen and (min-width: 768px) {
-    flex-direction: row;
     align-items: stretch;
-    gap: 18px;
   }
 `;
 
