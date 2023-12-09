@@ -52,6 +52,7 @@ const Card = ({ data }) => {
         alt={data.drink}
         onLoad={() => setImageLoaded(true)}
         onError={() => setImageLoaded(false)}
+        onClick={() => handleSeeMore(data._id)}
       />
 
       <DrinkCardContent>

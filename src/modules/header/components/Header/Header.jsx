@@ -51,9 +51,12 @@ const Header = () => {
 
             <User />
             {isSmallScreen && (
-              <StyledMobileMenuBtn onClick={toggleMenu}>
-                <SpriteSVG name="toggle" />
+              <StyledMobileMenuBtn type="button" onClick={toggleMenu}>
+                <SpriteSVG name={'toggle'} />
               </StyledMobileMenuBtn>
+              // <DrinkCardItemFaxDel type="button" onClick={toggleMenu}>
+              //   <SpriteSVG name={'trash'} />
+              // </DrinkCardItemFaxDel>
             )}
           </StyledRightWrapper>
         </SrtledHeaderInner>
