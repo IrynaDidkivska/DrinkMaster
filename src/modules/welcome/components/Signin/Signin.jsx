@@ -63,6 +63,8 @@ const SignIn = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.email}
+            $isError={formik.touched.email && Boolean(formik.errors.email)}
+            $isSuccess={formik.touched.email && !formik.errors.email}
           />
           <FormError
             touched={formik.touched.email}
@@ -80,6 +82,10 @@ const SignIn = () => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.password}
+              $isError={
+                formik.touched.password && Boolean(formik.errors.password)
+              }
+              $isSuccess={formik.touched.password && !formik.errors.password}
             />
             {formik.values.password && (
               <div
