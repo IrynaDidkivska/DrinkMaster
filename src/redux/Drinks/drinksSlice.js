@@ -28,6 +28,7 @@ const initialState = {
   totalPages: null,
   error: '',
   isLoading: false,
+  prevPage: 1,
 };
 
 const drinksSlice = createSlice({
@@ -37,6 +38,9 @@ const drinksSlice = createSlice({
   reducers: {
     setSearch: (state, { payload }) => {
       state.search = payload;
+    },
+    setPrevPage: (state, { payload }) => {
+      state.prevPage = payload;
     },
   },
   extraReducers: builder => {
@@ -139,4 +143,4 @@ const drinksSlice = createSlice({
 });
 
 export const drinkReducer = drinksSlice.reducer;
-export const { setSearch } = drinksSlice.actions;
+export const { setSearch, setPrevPage } = drinksSlice.actions;
