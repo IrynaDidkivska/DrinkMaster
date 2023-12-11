@@ -67,15 +67,14 @@ const drinksSlice = createSlice({
         state.drinkDetails = payload;
       })
       .addCase(getOwnThunk.fulfilled, (state, { payload }) => {
-        state.own = payload;
+        state.own = payload.data;
+        state.totalPages = payload.totalPages;
       })
       .addCase(deleteFromOwnThunk.fulfilled, (state, { payload }) => {
         state.own = state.own.filter(item => item.drinkId !== payload);
       })
       .addCase(deleteFromFavoriteThunk.fulfilled, (state, { payload }) => {
-        state.favorite = state.favorite.filter(
-          item => item.drinkId !== payload
-        );
+        state.favorite = state.favorite.filter(item => item._id !== payload);
       })
       .addCase(addNewDrinkThunk.fulfilled, () => {
         toast.success('Super! You have successfully created a new drink.');

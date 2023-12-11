@@ -85,8 +85,13 @@ export const getByIDThunk = createAsyncThunk(
 // Отримання власних коктейлів
 export const getOwnThunk = createAsyncThunk(
   'drinks/getOwn',
-  thunkWrapper(async () => {
-    const { data } = await API.get('api/drinks/own');
+  thunkWrapper(async ({ page = 1, limit = 10 }) => {
+    const { data } = await API.get('api/drinks/own', {
+      params: {
+        page,
+        limit,
+      },
+    });
     return data;
   })
 );
@@ -128,9 +133,10 @@ export const addFavoriteThunk = createAsyncThunk(
 export const deleteFromFavoriteThunk = createAsyncThunk(
   'drinks/deleteFromFav',
   thunkWrapper(async (id, { dispatch }) => {
-    const { data } = await API.delete(`api/drinks/favorite/remove/${id}`);
-    dispatch(getFavoriteThunk());
-    return data.id;
+    const data = await API.delete(`api/drinks/favorite/remove/${id}`);
+
+    // dispatch(getFavoriteThunk());
+    return id;
   })
 );
 
