@@ -11,7 +11,7 @@ export const StyledMobileMenu = styled.div`
   transition: ${({ theme }) => theme.transition};
   background-color: ${({ theme }) => theme.background.main};
   position: fixed;
-  top: -103%;
+  top: -120%;
   left: 0;
   z-index: 10;
 
