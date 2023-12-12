@@ -18,6 +18,7 @@ import {
   StyledForm,
   StyledSubitleContent,
   StyledSubtitleWrapper,
+  StyledTextFocus,
   Wrapper,
 } from './Signin.styled';
 import Subtitle from '@/shared/components/Title/Subtitle';
@@ -49,7 +50,10 @@ const SignIn = () => {
       <StyledSubtitleWrapper>
         <Subtitle Subtitle="Sign In" />
         <StyledSubitleContent>
-          *you can also use a test credentials
+          <div>*you can also use a test credentials</div>
+          <div>
+            only <StyledTextFocus>press Signin button</StyledTextFocus>
+          </div>
         </StyledSubitleContent>
       </StyledSubtitleWrapper>
 

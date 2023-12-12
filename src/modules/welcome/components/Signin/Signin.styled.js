@@ -23,13 +23,23 @@ export const StyledSubtitleWrapper = styled.div`
   }
 `;
 
-export const StyledSubitleContent = styled.p`
-  margin-top: 11px !important;
+export const StyledSubitleContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 11px;
   font-size: 11px;
 
   @media screen and (min-width: 768px) {
     font-size: 12px;
   }
+`;
+
+export const StyledTextFocus = styled.span`
+  padding-left: 3px;
+  font-family: 'Manrope-500';
+  font-size: inherit;
+  color: rgb(60, 188, 129);
 `;
 
 export const InputWrapper = styled.input`
