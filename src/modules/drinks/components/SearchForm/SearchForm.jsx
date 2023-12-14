@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-
 import {
   getCategoriesThunk,
   getIngredientsThunk,
@@ -13,10 +12,19 @@ import {
 import { SpriteSVG } from '@/shared/icons/SpriteSVG';
 
 import { FormStyled, InputContStyled, SelectStyled } from './SerchForm.styled';
+import { useSearchParams } from 'react-router-dom';
 
-const SearchForm = ({ setSearchParams }) => {
+const SearchForm = () => {
   const dispatch = useDispatch();
-  const [queryStr, setQueryStr] = useState('');
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  let allParams = {
+    page: searchParams.get('page') || '',
+    category: searchParams.get('category') || '',
+    ingredient: searchParams.get('ingredient') || '',
+    query: searchParams.get('query') || '',
+  };
+  const [queryStr, setQueryStr] = useState(allParams.query);
   let categories = useSelector(selectNormalizedCategories);
   let ingregients = useSelector(selectNormalizedIngredients);
 
@@ -27,7 +35,7 @@ const SearchForm = ({ setSearchParams }) => {
 
   const onSubmit = e => {
     e.preventDefault();
-    setSearchParams(prev => ({ ...prev, query: queryStr, page: 1 }));
+    setSearchParams({ ...allParams, query: queryStr, page: 1 });
   };
 
   // const handleChangeIngridient = e => {
@@ -38,14 +46,14 @@ const SearchForm = ({ setSearchParams }) => {
   //TODO розбити на дві функції
   const handleOptionChange = (e, option) => {
     if (option === 'ing') {
-      setSearchParams(prev => ({ ...prev, ingredient: e.value, page: 1 }));
+      setSearchParams({ ...allParams, ingredient: e.value, page: 1 });
     }
     if (option === 'cat') {
       if (e.label === 'All categories') {
-        setSearchParams(prev => ({ ...prev, category: e.value, page: 1 }));
+        setSearchParams({ ...allParams, category: e.value, page: 1 });
         return;
       }
-      setSearchParams(prev => ({ ...prev, category: e.label, page: 1 }));
+      setSearchParams({ ...allParams, category: e.label, page: 1 });
     }
   };
 
