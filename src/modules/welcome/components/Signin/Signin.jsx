@@ -18,6 +18,7 @@ import {
   StyledForm,
   StyledSubitleContent,
   StyledSubtitleWrapper,
+  StyledTextFocus,
   Wrapper,
 } from './Signin.styled';
 import Subtitle from '@/shared/components/Title/Subtitle';
@@ -49,7 +50,10 @@ const SignIn = () => {
       <StyledSubtitleWrapper>
         <Subtitle Subtitle="Sign In" />
         <StyledSubitleContent>
-          *you can also use a test credentials
+          <div>*you can also use a test credentials</div>
+          <div>
+            only <StyledTextFocus>press Signin button</StyledTextFocus>
+          </div>
         </StyledSubitleContent>
       </StyledSubtitleWrapper>
 
@@ -63,6 +67,8 @@ const SignIn = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.email}
+            $isError={formik.touched.email && Boolean(formik.errors.email)}
+            $isSuccess={formik.touched.email && !formik.errors.email}
           />
           <FormError
             touched={formik.touched.email}
@@ -80,6 +86,10 @@ const SignIn = () => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.password}
+              $isError={
+                formik.touched.password && Boolean(formik.errors.password)
+              }
+              $isSuccess={formik.touched.password && !formik.errors.password}
             />
             {formik.values.password && (
               <div

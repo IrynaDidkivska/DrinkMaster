@@ -3,6 +3,7 @@ import { paginationThunk } from '@/redux/Drinks/operations';
 import DrinkList from '@/shared/components/DrinkList/DrinkList';
 import Pagination from '@/shared/components/Pagination/Pagination';
 import Title from '@/shared/components/Title/Title';
+import { setPrevPage } from '@/redux/Drinks/drinksSlice';
 
 const Drinks = () => {
   return (

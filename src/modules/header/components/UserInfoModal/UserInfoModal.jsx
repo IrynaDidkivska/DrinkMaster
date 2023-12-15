@@ -28,7 +28,6 @@ export const UserInfoModal = ({ onClose }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [changedName, setChangedName] = useState(null);
   const [previewImage, setPreviewImage] = useState(null);
-  const [isEditing, setIsEditing] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -71,9 +70,6 @@ export const UserInfoModal = ({ onClose }) => {
       })
       .catch(error => {
         console.error('Error updating user', error.message);
-      })
-      .finally(() => {
-        setIsEditing(false);
       });
   };
 
@@ -106,13 +102,11 @@ export const UserInfoModal = ({ onClose }) => {
           <StyledModalInput
             value={changedName || username}
             onChange={event => setChangedName(event.target.value)}
-            disabled={!isEditing}
           />
 
           <StyledBtnEdit
             onClick={event => {
               event.preventDefault();
-              setIsEditing(true);
             }}
           >
             <SpriteSVG name="edit-02" />
