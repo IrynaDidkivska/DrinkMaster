@@ -59,6 +59,7 @@ export const paginationThunk = createAsyncThunk(
           ingredientId: ingredient,
         },
       });
+
       return data;
     }
   )

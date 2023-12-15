@@ -52,6 +52,9 @@ const drinksSlice = createSlice({
         state.filteredDrinks = payload.data;
       })
       .addCase(paginationThunk.fulfilled, (state, { payload }) => {
+        if (payload.data.length === 0) {
+          toast.error('Cocktails not found!!!');
+        }
         state.search = payload.data;
         state.totalPages = payload.totalPages;
         state.page = 1;

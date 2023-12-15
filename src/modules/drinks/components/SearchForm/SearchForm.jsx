@@ -16,17 +16,18 @@ import { useSearchParams } from 'react-router-dom';
 
 const SearchForm = () => {
   const dispatch = useDispatch();
-
   const [searchParams, setSearchParams] = useSearchParams();
-  let allParams = {
-    page: searchParams.get('page') || '',
-    category: searchParams.get('category') || '',
-    ingredient: searchParams.get('ingredient') || '',
-    query: searchParams.get('query') || '',
-  };
-  const [queryStr, setQueryStr] = useState(allParams.query);
   let categories = useSelector(selectNormalizedCategories);
   let ingregients = useSelector(selectNormalizedIngredients);
+  let allParams = Object.fromEntries(searchParams);
+
+  for (const key of Object.keys(allParams)) {
+    searchParams.get(key)
+      ? (allParams[key] = searchParams.get(key))
+      : delete allParams[key];
+  }
+
+  const [queryStr, setQueryStr] = useState(allParams.query || '');
 
   useEffect(() => {
     dispatch(getCategoriesThunk());
@@ -35,25 +36,31 @@ const SearchForm = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-    setSearchParams({ ...allParams, query: queryStr, page: 1 });
+    if (queryStr) {
+      setSearchParams({ ...allParams, query: queryStr, page: 1 });
+    } else {
+      delete allParams.query;
+      setSearchParams(allParams);
+    }
   };
-
-  // const handleChangeIngridient = e => {
-  //   dispatch(setIngridient(e.value));
-  //   dispatch(setPage(1));
-  // };
 
   //TODO розбити на дві функції
   const handleOptionChange = (e, option) => {
     if (option === 'ing') {
-      setSearchParams({ ...allParams, ingredient: e.value, page: 1 });
+      if (!e.value) {
+        delete allParams.ingredient;
+        setSearchParams(allParams);
+      } else {
+        setSearchParams({ ...allParams, ingredient: e.value, page: 1 });
+      }
     }
     if (option === 'cat') {
-      if (e.label === 'All categories') {
-        setSearchParams({ ...allParams, category: e.value, page: 1 });
-        return;
+      if (!e.value) {
+        delete allParams.category;
+        setSearchParams(allParams);
+      } else {
+        setSearchParams({ ...allParams, category: e.label, page: 1 });
       }
-      setSearchParams({ ...allParams, category: e.label, page: 1 });
     }
   };
 
@@ -75,12 +82,26 @@ const SearchForm = () => {
         <SelectStyled
           classNamePrefix="customSelect"
           placeholder="All categories"
+          value={
+            allParams.category
+              ? categories.find(
+                  category => category.label === allParams.category
+                )
+              : { label: 'All categories', value: '' }
+          }
           options={[{ label: 'All categories', value: '' }, ...categories]}
           onChange={e => handleOptionChange(e, 'cat')}
         />
         <SelectStyled
           classNamePrefix="customSelect"
           placeholder="Ingredients"
+          value={
+            allParams.ingredient
+              ? ingregients.find(
+                  ingredient => ingredient.value === allParams.ingredient
+                )
+              : { label: 'All ingregients', value: '' }
+          }
           options={[{ label: 'All ingregients', value: '' }, ...ingregients]}
           onChange={e => handleOptionChange(e, 'ing')}
         />
