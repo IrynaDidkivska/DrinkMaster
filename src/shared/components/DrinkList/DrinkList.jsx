@@ -7,6 +7,7 @@ import { List } from './DrinkList.styled';
 
 const DrinkList = () => {
   const allDrinks = useSelector(selectBySearch);
+
   return (
     <List>
       {allDrinks.map(drink => (
