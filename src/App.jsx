@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
-import { Suspense, lazy, useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 
@@ -14,20 +14,17 @@ import {
   Favorites,
   HomePage,
   MyDrinks,
+  Welcome,
 } from './pages';
+import { useTheme } from './hooks/useTheme';
 import { currentUserThunk } from './redux/Auth/operations';
 import Loader from './shared/components/Loader/Loader';
-const Welcome = lazy(() =>
-  import('./modules/welcome/components/Welcome/Welcome')
-);
-import Theme from './shared/components/Theme/Theme';
-import { getWakeUpServer } from './shared/services/api-service';
 
 import { Global } from './shared/styles/Global';
 import { darkTheme, lightTheme } from './shared/styles/theme';
 
 function App() {
-  const { theme } = useSelector(state => state.theme);
+  const { theme } = useTheme();
   const isRefresh = useSelector(state => state.auth.isRefresh);
   const dispatch = useDispatch();
   const { pathname } = useLocation();
@@ -40,15 +37,10 @@ function App() {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  useEffect(() => {
-    getWakeUpServer();
-  }, []);
-
   return isRefresh ? (
     <Loader />
   ) : (
     <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
-      <Theme />
       <Global />
       <Suspense>
         <Routes>

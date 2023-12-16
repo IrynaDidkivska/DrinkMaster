@@ -1,43 +1,14 @@
-import { StyledLink, StyledNavBar } from "./Navbar.styled";
+import navLinksData from '@/shared/data/nav-links-data';
+import { StyledLink, StyledNavBar } from './Navbar.styled';
 
 const Navbar = () => {
   return (
     <StyledNavBar>
-      <StyledLink
-        to={{
-          pathname: "/home",
-        }}
-      >
-        Home
-      </StyledLink>
-      <StyledLink
-        to={{
-          pathname: "/drinks",
-        }}
-      >
-        Drinks
-      </StyledLink>
-      <StyledLink
-        to={{
-          pathname: "/add",
-        }}
-      >
-        Add drink
-      </StyledLink>
-      <StyledLink
-        to={{
-          pathname: "/my",
-        }}
-      >
-        My drinks
-      </StyledLink>
-      <StyledLink
-        to={{
-          pathname: "/favorites",
-        }}
-      >
-        Favorites
-      </StyledLink>
+      {navLinksData.map((navItem, index) => (
+        <StyledLink key={index} to={{ pathname: navItem.path }}>
+          {navItem.label}
+        </StyledLink>
+      ))}
     </StyledNavBar>
   );
 };

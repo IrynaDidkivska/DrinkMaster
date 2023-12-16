@@ -3,62 +3,43 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { API, clearToken, setToken } from '@/config/drinkConfig';
 import { loginRequest } from '@/shared/helpers/login';
+import authThunkWrapper from '../helpers/authThunkWrapper';
 
 export const signupThunk = createAsyncThunk(
   'auth/signup',
-  async (credentials, { rejectWithValue }) => {
-    try {
-      const { data } = await API.post('api/auth/users/signup', credentials);
-      const reg = { email: data.email, password: credentials.password };
-      const loginResponse = await loginRequest(reg);
-      return loginResponse;
-    } catch (error) {
-      toast.error(error.response.data.message);
-      return rejectWithValue(error.message);
-    }
-  }
+  authThunkWrapper(async credentials => {
+    const { data } = await API.post('api/auth/users/signup', credentials);
+    const reg = { email: data.email, password: credentials.password };
+    const loginResponse = await loginRequest(reg);
+    return loginResponse;
+  })
 );
 
 export const signinThunk = createAsyncThunk(
   'auth/signin',
-  async (credentials, thunkAPI) => {
-    try {
-      const { data } = await API.post('api/auth/users/login', credentials);
-      setToken(data.token);
-      return data;
-    } catch (error) {
-      toast.error(error.response.data.message);
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
+  authThunkWrapper(async credentials => {
+    const { data } = await API.post('api/auth/users/login', credentials);
+    setToken(data.token);
+    return data;
+  })
 );
 
 export const logoutThunk = createAsyncThunk(
   'auth/logout',
-  async (_, thunkAPI) => {
-    try {
-      const { data } = await API.post('api/auth/users/logout');
-      clearToken();
-      return data;
-    } catch (error) {
-      toast.error(error.response.data.message);
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
+  authThunkWrapper(async () => {
+    const { data } = await API.post('api/auth/users/logout');
+    clearToken();
+    return data;
+  })
 );
 export const currentUserThunk = createAsyncThunk(
   'auth/currentUser',
-  async (_, thunkAPI) => {
-    try {
-      const { data } = await API.get('api/auth/users/current');
-
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  },
+  authThunkWrapper(async () => {
+    const { data } = await API.get('api/auth/users/current');
+    return data;
+  }),
   {
-    condition: (_, { getState, extra }) => {
+    condition: (_, { getState }) => {
       const state = getState();
       const savedToken = state.auth.token;
       if (!savedToken) {
@@ -72,31 +53,21 @@ export const currentUserThunk = createAsyncThunk(
 // Update
 export const updateUserThunk = createAsyncThunk(
   'auth/updateUser',
-  async (data, thunkAPI) => {
-    try {
-      const res = await API.patch('api/auth/users/update', data);
-      return res.data;
-    } catch (error) {
-      toast.error(error.response.data.message);
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
+  authThunkWrapper(async data => {
+    const res = await API.patch('api/auth/users/update', data);
+    return res.data;
+  })
 );
 
 // subscribeEmail
 export const subscribeEmail = createAsyncThunk(
   'auth/subscribe',
-  async ({ email }, thunkAPI) => {
-    try {
-      await API.get('api/auth/users/subscribe', {
-        params: {
-          email,
-        },
-      });
-      toast.success('Thank you for subscribing to our newsletter.');
-    } catch (error) {
-      toast.error(error.response.data.message);
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
+  authThunkWrapper(async ({ email }) => {
+    await API.get('api/auth/users/subscribe', {
+      params: {
+        email,
+      },
+    });
+    toast.success('Thank you for subscribing to our newsletter.');
+  })
 );

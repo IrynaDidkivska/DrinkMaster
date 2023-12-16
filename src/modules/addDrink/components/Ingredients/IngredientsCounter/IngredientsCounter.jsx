@@ -12,6 +12,11 @@ const IngredientsCounter = ({ ingredientsList = [], setIngredients }) => {
   const arr = [...ingredientsList];
 
   const addIngredient = () => {
+    if (arr.length === 10) {
+      return toast.warn(
+        'Whoah whoah! You can add a maximum of 10 ingredients!'
+      );
+    }
     arr.push({ id: nanoid(), title: '', ingredientId: '', measure: '1 cl' });
   };
   const removeIngredient = () => {

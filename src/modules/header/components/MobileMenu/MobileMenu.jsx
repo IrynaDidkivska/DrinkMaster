@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { isModalMobileMenuOpen } from '@/redux/Global/selectors.js';
 
-import mobileMenuData from '../../data/mobile-menu-data.js';
+import navLinksData from '@/shared/data/nav-links-data.js';
 
 import { SpriteSVG } from '@/shared/icons/SpriteSVG.jsx';
 import Logo from '@/shared/components/Logo/Logo';
@@ -49,13 +49,13 @@ export const MobileMenu = ({ toggleMenu }) => {
       <StyledMobileBody>
         <Container>
           <StyledMobileNavBar>
-            {mobileMenuData.map((menuItem, index) => (
+            {navLinksData.map((navItem, index) => (
               <StyledLink
                 key={index}
-                to={{ pathname: menuItem.path }}
+                to={{ pathname: navItem.path }}
                 onClick={() => handleLinkClick()}
               >
-                {menuItem.label}
+                {navItem.label}
               </StyledLink>
             ))}
           </StyledMobileNavBar>

@@ -8,6 +8,7 @@ const modalRoot = document.querySelector('#modal-root');
 
 const Modal = ({ children, onClose }) => {
   useEffect(() => {
+    document.body.style.overflow = 'hidden';
     const handleEscape = event => {
       if (event.code === 'Escape') {
         onClose();
@@ -16,6 +17,7 @@ const Modal = ({ children, onClose }) => {
 
     window.addEventListener('keydown', handleEscape);
     return () => {
+      document.body.style.overflow = 'unset';
       window.removeEventListener('keydown', handleEscape);
     };
   }, [onClose]);

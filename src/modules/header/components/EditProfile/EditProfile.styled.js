@@ -1,8 +1,8 @@
-import styled from "styled-components";
-import { StyledBtn } from "../../../../shared/components/Buttons/LigthBtn.styled";
+import styled from 'styled-components';
+import { StyledBtn } from '@/shared/components/Buttons/LigthBtn.styled';
 
 export const StyledPopupTitle = styled.p`
-  font-family: "Manrope-500", sans-serif;
+  font-family: 'Manrope-500', sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;

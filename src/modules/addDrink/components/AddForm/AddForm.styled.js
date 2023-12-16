@@ -42,6 +42,17 @@ export const ImgContainerStyled = styled.div`
   background-color: ${({ theme }) => theme.background.dropdown};
   border-radius: 8px;
   margin-bottom: 40px;
+  & label,
+  span {
+    display: ${props => (props.$bgImg ? `none` : `flex`)};
+  }
+  &:hover {
+    & label,
+    span {
+      display: flex;
+    }
+  }
+
   @media screen and (min-width: 768px) {
     width: 320px;
     height: 320px;

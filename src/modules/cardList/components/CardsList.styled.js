@@ -5,6 +5,7 @@ export const List = styled.ul`
   flex-direction: column;
   gap: 40px;
   margin-top: 40px;
+  padding-bottom: 80px;
 
   @media screen and (min-width: 768px) {
     flex-direction: row;

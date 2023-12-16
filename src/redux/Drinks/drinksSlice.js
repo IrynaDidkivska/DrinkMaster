@@ -1,4 +1,5 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 import {
   addNewDrinkThunk,
@@ -13,8 +14,6 @@ import {
   addFavoriteThunk,
   paginationThunk,
 } from './operations';
-import { toast } from 'react-toastify';
-import { redirect } from 'react-router-dom';
 
 const initialState = {
   drinks: {},
@@ -29,6 +28,7 @@ const initialState = {
   totalPages: null,
   error: '',
   isLoading: false,
+  prevPage: 1,
 };
 
 const drinksSlice = createSlice({
@@ -38,6 +38,9 @@ const drinksSlice = createSlice({
   reducers: {
     setSearch: (state, { payload }) => {
       state.search = payload;
+    },
+    setPrevPage: (state, { payload }) => {
+      state.prevPage = payload;
     },
   },
   extraReducers: builder => {
@@ -53,12 +56,16 @@ const drinksSlice = createSlice({
         state.filteredDrinks = payload.data;
       })
       .addCase(paginationThunk.fulfilled, (state, { payload }) => {
+        if (payload.data.length === 0) {
+          toast.error('Cocktails not found!!!');
+        }
         state.search = payload.data;
         state.totalPages = payload.totalPages;
         state.page = 1;
       })
       .addCase(getFavoriteThunk.fulfilled, (state, { payload }) => {
-        state.favorite = payload;
+        state.favorite = payload.data;
+        state.totalPages = payload.totalPages;
       })
       .addCase(addFavoriteThunk.fulfilled, (state, { payload }) => {
         state.favorite.push(payload);
@@ -67,17 +74,16 @@ const drinksSlice = createSlice({
         state.drinkDetails = payload;
       })
       .addCase(getOwnThunk.fulfilled, (state, { payload }) => {
-        state.own = payload;
+        state.own = payload.data;
+        state.totalPages = payload.totalPages;
       })
       .addCase(deleteFromOwnThunk.fulfilled, (state, { payload }) => {
         state.own = state.own.filter(item => item.drinkId !== payload);
       })
       .addCase(deleteFromFavoriteThunk.fulfilled, (state, { payload }) => {
-        state.favorite = state.favorite.filter(
-          item => item.drinkId !== payload
-        );
+        state.favorite = state.favorite.filter(item => item._id !== payload);
       })
-      .addCase(addNewDrinkThunk.fulfilled, (state, { payload }) => {
+      .addCase(addNewDrinkThunk.fulfilled, () => {
         toast.success('Super! You have successfully created a new drink.');
       })
       .addCase(addNewDrinkThunk.rejected, (state, { payload }) => {
@@ -140,4 +146,4 @@ const drinksSlice = createSlice({
 });
 
 export const drinkReducer = drinksSlice.reducer;
-export const { setSearch } = drinksSlice.actions;
+export const { setSearch, setPrevPage } = drinksSlice.actions;

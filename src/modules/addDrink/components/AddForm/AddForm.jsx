@@ -73,9 +73,11 @@ const AddForm = ({ setValues }) => {
               id="addImg"
               onChange={handleChangeImg}
             />
-            <SpriteSVG name="plus" />
+            <SpriteSVG name={previewImg ? 'reload-img' : 'plus'} />
           </AddImgLabelStyled>
-          <AddImgContainerStyled> Add image</AddImgContainerStyled>
+          <AddImgContainerStyled>
+            {previewImg ? 'Change image' : 'Add image'}
+          </AddImgContainerStyled>
         </ImgContainerStyled>
         <InputWrapperStyled>
           <Input

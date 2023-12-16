@@ -7,10 +7,11 @@ import { List } from './DrinkList.styled';
 
 const DrinkList = () => {
   const allDrinks = useSelector(selectBySearch);
+
   return (
     <List>
       {allDrinks.map(drink => (
-        <DrinkCardItem key={drink._id} drink={drink} />
+        <DrinkCardItem key={drink._id} data={drink} />
       ))}
     </List>
   );

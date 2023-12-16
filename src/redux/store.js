@@ -22,7 +22,7 @@ const persistConfigUser = {
   key: 'root',
   version: 1,
   storage,
-  whitelist: ['token', 'avatar', 'username', 'theme'],
+  whitelist: ['token', 'avatar', 'username', 'theme', 'prevPage'],
 };
 
 const persistConfigTheme = {

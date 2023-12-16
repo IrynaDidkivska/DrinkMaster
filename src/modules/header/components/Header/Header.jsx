@@ -21,7 +21,7 @@ import {
 import Navbar from '@/shared/components/Navbar/Navbar.jsx';
 
 const Header = () => {
-  const { isLargeScreen, isMediumScreen } = useResponsive();
+  const { isLargeScreen, isSmallScreen } = useResponsive();
 
   const dispatch = useDispatch();
 
@@ -50,15 +50,18 @@ const Header = () => {
             {isLargeScreen && <ThemeSwitcher />}
 
             <User />
-            {isMediumScreen && (
-              <StyledMobileMenuBtn onClick={toggleMenu}>
-                <SpriteSVG name="toggle" />
+            {isSmallScreen && (
+              <StyledMobileMenuBtn type="button" onClick={toggleMenu}>
+                <SpriteSVG name={'toggle'} />
               </StyledMobileMenuBtn>
+              // <DrinkCardItemFaxDel type="button" onClick={toggleMenu}>
+              //   <SpriteSVG name={'trash'} />
+              // </DrinkCardItemFaxDel>
             )}
           </StyledRightWrapper>
         </SrtledHeaderInner>
       </Container>
-      {isMediumScreen && <MobileMenu isOpen={isOpen} toggleMenu={toggleMenu} />}
+      {isSmallScreen && <MobileMenu isOpen={isOpen} toggleMenu={toggleMenu} />}
     </StyledHeader>
   );
 };

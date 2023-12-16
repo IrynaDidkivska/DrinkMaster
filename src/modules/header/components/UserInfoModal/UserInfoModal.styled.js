@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { StyledBtn } from '../../../../shared/components/Buttons/LigthBtn.styled';
+import { StyledBtn } from '@/shared/components/Buttons/LigthBtn.styled';
 
 export const StyledModal = styled.div`
   width: 335px;
