@@ -16,12 +16,12 @@ import {
   MyDrinks,
   Welcome,
 } from './pages';
+import { useTheme } from './hooks/useTheme';
 import { currentUserThunk } from './redux/Auth/operations';
 import Loader from './shared/components/Loader/Loader';
 
 import { Global } from './shared/styles/Global';
 import { darkTheme, lightTheme } from './shared/styles/theme';
-import { useTheme } from './hooks/useTheme';
 
 function App() {
   const { theme } = useTheme();

@@ -1,20 +1,18 @@
 import ReactPaginate from 'react-paginate';
-
-import { SpriteSVG } from '@/shared/icons/SpriteSVG';
-
-import { StyledNext, StyledPrev } from './Pagination.styled';
-import useResponsive from '@/hooks/useResponsive';
 import { useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+
+import { SpriteSVG } from '@/shared/icons/SpriteSVG';
+import useResponsive from '@/hooks/useResponsive';
 import { selectTotalPages } from '@/redux/Drinks/selectors';
 import { checkPage } from '@/redux/helpers/paginationCheckPage';
+import { StyledNext, StyledPrev } from './Pagination.styled';
 
 const Pagination = ({ paginationThunk }) => {
   const dispatch = useDispatch();
   const totalPages = useSelector(selectTotalPages);
-  const { isSmallScreen } = useResponsive();
-  const { isMediumScreen } = useResponsive();
+  const { isSmallScreen, isMediumScreen } = useResponsive();
   const [paginationParams, setPaginationParams] = useSearchParams();
   const allParams = Object.fromEntries(paginationParams);
   const defaultPage = checkPage(
@@ -30,7 +28,7 @@ const Pagination = ({ paginationThunk }) => {
     if (!paginationParams.get('page')) {
       setPaginationParams({ page: 1 });
     }
-  }, []);
+  }, [paginationParams, setPaginationParams]);
 
   useEffect(() => {
     dispatch(
