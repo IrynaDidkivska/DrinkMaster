@@ -92,7 +92,7 @@ export const SelectStyled = styled(Select)`
   width: 100%;
   .customSelect__ {
     &control {
-      color: ${({ theme }) => theme.colors.mainText}; //#F3F3F3
+      color: ${({ theme }) => theme.colors.active}; //#F3F3F3
       line-height: 1.28;
       border-radius: 200px;
       background-color: ${({ theme }) => theme.popUp.secondary}; //#161F37
@@ -143,14 +143,14 @@ export const SelectStyled = styled(Select)`
       }
     }
     &placeholder {
-      color: ${({ theme }) => theme.popUp.main};
+      color: ${({ theme }) => theme.colors.active};
 
       @media (min-width: 768px) {
         font-size: 17px;
       }
     }
     &single-value {
-      color: ${({ theme }) => theme.colors.mainText};
+      color: ${({ theme }) => theme.colors.active};
       padding: 0;
     }
     &indicators {
@@ -161,7 +161,7 @@ export const SelectStyled = styled(Select)`
       }
     }
     &input-container {
-      color: ${({ theme }) => theme.colors.mainText};
+      color: ${({ theme }) => theme.colors.active};
       margin: 0;
       padding: 0;
     }
