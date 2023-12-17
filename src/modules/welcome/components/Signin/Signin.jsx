@@ -1,12 +1,11 @@
 import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 import { selectIsLoading } from '@/redux/Auth/selectors';
 import { signinThunk } from '@/redux/Auth/operations';
 import { validationSchemaSignIn } from '../../helpers/validationSchemaSignIn';
-import { getWakeUpServer } from '@/shared/services/api-service';
 
 import FormError from '../FormError/FormError';
 
@@ -28,10 +27,6 @@ const SignIn = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const [showPassword, setShowPassword] = useState(false);
-
-  useEffect(() => {
-    getWakeUpServer();
-  }, []);
 
   const formik = useFormik({
     initialValues: {

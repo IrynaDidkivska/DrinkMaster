@@ -19,7 +19,6 @@ import {
 import { useTheme } from './hooks/useTheme';
 import { currentUserThunk } from './redux/Auth/operations';
 import Loader from './shared/components/Loader/Loader';
-import ServerMessage from './shared/components/Loader/ServerMessage';
 
 import { Global } from './shared/styles/Global';
 import { darkTheme, lightTheme } from './shared/styles/theme';
@@ -39,7 +38,7 @@ function App() {
   }, [pathname]);
 
   return isRefresh ? (
-    <ServerMessage />
+    <Loader />
   ) : (
     <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
       <Global />
