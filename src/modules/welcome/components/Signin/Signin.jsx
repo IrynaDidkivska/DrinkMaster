@@ -6,7 +6,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { selectIsLoading } from '@/redux/Auth/selectors';
 import { signinThunk } from '@/redux/Auth/operations';
 import { validationSchemaSignIn } from '../../helpers/validationSchemaSignIn';
-import { getWakeUpServer } from '@/shared/services/api-service';
+// import { getWakeUpServer } from '@/shared/services/api-service';
 
 import FormError from '../FormError/FormError';
 
@@ -29,9 +29,9 @@ const SignIn = () => {
   const isLoading = useSelector(selectIsLoading);
   const [showPassword, setShowPassword] = useState(false);
 
-  useEffect(() => {
-    getWakeUpServer();
-  }, []);
+  // useEffect(() => {
+  //   getWakeUpServer();
+  // }, []);
 
   const formik = useFormik({
     initialValues: {
