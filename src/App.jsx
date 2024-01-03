@@ -22,7 +22,6 @@ import Loader from './shared/components/Loader/Loader';
 
 import { Global } from './shared/styles/Global';
 import { darkTheme, lightTheme } from './shared/styles/theme';
-import ServerMessage from './shared/components/SharedLayout/ServerMessage';
 
 function App() {
   const { theme } = useTheme();
@@ -39,7 +38,7 @@ function App() {
   }, [pathname]);
 
   return isRefresh ? (
-    <ServerMessage />
+    <Loader />
   ) : (
     <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
       <Global />
